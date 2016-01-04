@@ -17,6 +17,9 @@ public abstract class Ownable extends Field {
     protected Player fieldowner;
     protected int fieldprice;
     protected boolean fieldowned;
+    protected int houses;
+    protected int houseprice;
+    // evt. array til leje priserne.
 
     
 }
