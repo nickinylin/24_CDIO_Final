@@ -13,7 +13,7 @@ public class Labor extends Ownable {
      
     public Labor(String name) {
         super(name);
-        super.fieldprice=2500;
+        super.fieldprice=3000;
         super.fieldowned=false;
     }
 
