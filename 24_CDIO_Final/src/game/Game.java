@@ -97,7 +97,9 @@ public class Game {
 								players[i].movePlayer(players[i], Dice.getSum());
 								GUI.setCar(players[i].getPlayerPosition(), players[i].getName());
 								players[i].setJailDice(0);
+								players[i].setJail(false);
 								count--;
+								continue;
 							}
 							players[i].setJailDice(players[i].getJailDice()+1);
 							continue;
