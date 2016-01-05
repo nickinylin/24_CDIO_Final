@@ -28,7 +28,7 @@ public abstract class Field {
 	public static Field[] createFields() {
 
 		fields = new Field[] { 
-				new Refuge ("Start",4000),
+				new Refuge ("Start", "Start", 4000),
 				new Territory ("Rødovrevej",1,1200,1000,50,250,750,2250,4000,6000),
 				new Luck ("Prøv lykken"),
 				new Territory ("Hvidovrevej",1,1200,1000,50,250,750,2250,4000,6000),
@@ -38,7 +38,7 @@ public abstract class Field {
 				new Luck ("Prøv lykken"),
 				new Territory ("Valby Langgade", 2, 2000, 1000,100,600,1800,5400,8000,11000),
 				new Territory ("Allegade", 2, 2400, 1000,150,800,2000,6000,9000,12000),
-				new Empty ("På besøg i fængsel"),
+				new Refuge ("På besøg i fængsel", "Visit", 0),
 				new Territory ("Frederiksberg Alle", 3, 2800,2000,200,1000,3000,9000,12500,15000),
 				new Labor ("Tuborg Squash"),
 				new Territory ("Bulowsvej", 3, 2800,2000,200,1000,3000,9000,12500,15000),
@@ -48,7 +48,7 @@ public abstract class Field {
 				new Luck ("Prøv lykken"),
 				new Territory ("Hellerupvej", 4, 3600,2000,300,1400,4000,11000,15000,19000),
 				new Territory ("Stranvejen",4, 4000,2000,350,1600,4400,12000,16000,20000),
-				new Empty ("Parkering"),
+				new Refuge ("Parkering", "Parking", 0),
 				new Territory ("Trianglen",5,4400,3000,350,1800,5000,14000,17500,21000),
 				new Luck ("Prøv lykken"),
 				new Territory ("Østerbrogade",5,4400,3000,350,1800,5000,14000,17500,21000),
@@ -147,20 +147,39 @@ public abstract class Field {
 				}
 
 			} else if (field instanceof Refuge) {
-				list[i] = new desktop_fields.Refuge.Builder()
-						.setTitle(fields[i].fieldname)
-						.setSubText("Bonus")
-						.setPicture("GUI/desktop_resources/pics/money.png")
-						.setBgColor(Color.GREEN)
-						.setFgColor(Color.BLACK)
-						.build();
+				Refuge refuge = (Refuge) field;
+				if (refuge.type == "Start") {
+					list[i] = new desktop_fields.Refuge.Builder()
+							.setTitle(fields[i].fieldname)
+							.setSubText("START")
+							.setPicture("GUI/desktop_resources/pics/money.png")
+							.setBgColor(Color.RED)
+							.setFgColor(Color.BLACK)
+							.build();
+				} else if (refuge.type == "Visit") {
+					list[i] = new desktop_fields.Refuge.Builder()
+							.setTitle(fields[i].fieldname)
+							.setSubText("På besøg")
+							.setPicture("Jail.jpg")
+							.setBgColor(Color.GREEN)
+							.setFgColor(Color.BLACK)
+							.build();
+				} else if (refuge.type == "Parking") {
+					list[i] = new desktop_fields.Refuge.Builder()
+							.setTitle(fields[i].fieldname)
+							.setSubText("Parkering")
+							.setPicture("Cones.jpg")
+							.setBgColor(Color.GREEN)
+							.setFgColor(Color.BLACK)
+							.build();
+				}
 
 			} else if (field instanceof Labor) {
 				list[i] = new Brewery.Builder()
 						.setTitle(fields[i].fieldname)
 						.setDescription("Rent: 100xDices")
 						.setSubText("")
-						.setBgColor(Color.YELLOW)
+						.setBgColor(Color.GREEN)
 						.setFgColor(Color.BLACK)
 						.setRent("100xDices")
 						.setPicture(fields[i].getName())
@@ -172,7 +191,7 @@ public abstract class Field {
 						.setTitle(fields[i].fieldname)
 						.setDescription("TAX: "+tax.getRent()+"")
 						.setSubText("Pay "+tax.getRent()+" in TAXES")
-						.setBgColor(Color.RED)
+						.setBgColor(Color.GRAY)
 						.build(); 
 
 			} else if (field instanceof Fleet) {
@@ -191,13 +210,8 @@ public abstract class Field {
 						.build();
 			} else if (field instanceof Jail) {
 				list[i] = new desktop_fields.Jail.Builder()
-						.setPicture("GUI/desktop_resources/pics/GoToJail.png")
-						.setBgColor(Color.BLUE)
-						.setFgColor(Color.WHITE)
-						.build();
-			} else if (field instanceof Jail) {
-				list[i] = new desktop_fields.Jail.Builder()
-						.setPicture("GUI/desktop_resources/pics/GoToJail.png")
+						.setPicture("GoToJail.jpg")
+						.setSubText("Gå i fængsel")
 						.setBgColor(new Color(85, 81, 139))
 						.setFgColor(Color.WHITE)
 						.build();

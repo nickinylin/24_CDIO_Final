@@ -12,9 +12,11 @@ public class Refuge extends Field {
     
     protected String fieldname;
     protected int bonus;
+    protected String type;
     
-    public Refuge(String name, int bonus){
+    public Refuge(String name, String type, int bonus){
         super(name);
+        this.type = type;
         this.bonus = bonus;
     }
     
@@ -23,7 +25,11 @@ public class Refuge extends Field {
         player.giveMoney(bonus);
         GUI.setBalance(player.getName(), player.getMoney());
     }
-
+    
+    public String type() {
+    	return type;
+    }
+    
     public int getRent() {
         return bonus;
     }
