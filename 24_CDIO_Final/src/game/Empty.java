@@ -1,8 +1,8 @@
 package game;
 
-public class Jail extends Field {
+public class Empty extends Field {
 	
-    public Jail(String name) {
+    public Empty(String name) {
         super(name);
     }
 

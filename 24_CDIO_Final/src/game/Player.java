@@ -131,14 +131,6 @@ public class Player {
         return true;
     }
     
-    public boolean moveToJail(Player player) {
-    	jail.getJailStatus(player);
-    }
-    
-    public boolean getJailStatus() {
-        return this.jail;
-    }
-    
     public boolean bankrupt() {
         
         boolean lose = false;
