@@ -30,7 +30,7 @@ public class Fleet extends Ownable {
         int fieldrent = 0;
         int count = 0;
         
-        for (Field f : field) {
+        for (Field f : fields) {
             if (f instanceof Fleet) {
                 Fleet fleet = (Fleet) f;
                 if (fleet.fieldowned && fleet.fieldowner.equals(fieldowner)) {

@@ -7,8 +7,11 @@
 package game;
 
 import java.awt.Color;
+import java.util.Arrays;
+import java.util.Collections;
 
 import desktop_fields.Brewery;
+import desktop_fields.Chance;
 import desktop_fields.Shipping;
 import desktop_fields.Street;
 import desktop_resources.GUI;
@@ -16,7 +19,7 @@ import desktop_resources.GUI;
 public abstract class Field {
 
 	protected String fieldname;
-	protected static Field[] field;
+	protected static Field[] fields;
 
 	/**
 	 * creates the fields for both the GUI and gamelogic to interact with.
@@ -24,7 +27,7 @@ public abstract class Field {
 	 */
 	public static Field[] createFields() {
 
-		field = new Field[] { 
+		fields = new Field[] { 
 				new Refuge ("Start",4000),
 				new Territory ("Rødovrevej",1,1200,1000,50,250,750,2250,4000,6000),
 				new Luck ("Prøv lykken"),
@@ -66,11 +69,148 @@ public abstract class Field {
 				new Tax ("Ekstraordinær statsskat - betal",2000,"false"),
 				new Territory ("Rådhuspladsen",8,8000,4000,1000,4000,12000,28000,34000,40000),
 		};
+		desktop_fields.Field list[] = new desktop_fields.Field[fields.length];
 
-		desktop_fields.Field list[] = new desktop_fields.Field[field.length];
+		// We shuffle the array list field, so every game has a random board.
+//		java.util.List<?> lists = (java.util.List<?>) Arrays.asList(fields);
+//		Collections.shuffle(lists);
+
+		for (int i = 0; i < fields.length; i++) {
+			Field field = fields[i];
+			if (field instanceof Territory) {
+				Territory territory = (Territory) field;
+
+				if (territory.getFieldGroup() == 1) {
+					list[i] = new Street.Builder()
+							.setTitle(fields[i].fieldname)
+							.setSubText("Costs: "+territory.fieldprice+"")
+							.setDescription("Rent: "+territory.getRent()+"")
+							.setBgColor(new Color(56, 132, 218))
+							.setFgColor(Color.BLACK)
+							.build();
+				} else if (territory.getFieldGroup() == 2) {
+					list[i] = new Street.Builder()
+							.setTitle(fields[i].fieldname)
+							.setSubText("Costs: "+territory.fieldprice+"")
+							.setDescription("Rent: "+territory.getRent()+"")
+							.setBgColor(new Color(224, 71, 52))
+							.setFgColor(Color.BLACK)
+							.build();
+				} else if (territory.getFieldGroup() == 3) {
+					list[i] = new Street.Builder()
+							.setTitle(fields[i].fieldname)
+							.setSubText("Costs: "+territory.fieldprice+"")
+							.setDescription("Rent: "+territory.getRent()+"")
+							.setBgColor(new Color(225, 231, 0))
+							.setFgColor(Color.BLACK)
+							.build();
+				} else if (territory.getFieldGroup() == 4) {
+					list[i] = new Street.Builder()
+							.setTitle(fields[i].fieldname)
+							.setSubText("Costs: "+territory.fieldprice+"")
+							.setDescription("Rent: "+territory.getRent()+"")
+							.setBgColor(new Color(140, 121, 121))
+							.setFgColor(Color.WHITE)
+							.build();
+				}else if (territory.getFieldGroup() == 5) {
+					list[i] = new Street.Builder()
+							.setTitle(fields[i].fieldname)
+							.setSubText("Costs: "+territory.fieldprice+"")
+							.setDescription("Rent: "+territory.getRent()+"")
+							.setBgColor(new Color(255, 18, 31))
+							.setFgColor(Color.WHITE)
+							.build();
+				} else if (territory.getFieldGroup() == 6) {
+					list[i] = new Street.Builder()
+							.setTitle(fields[i].fieldname)
+							.setSubText("Costs: "+territory.fieldprice+"")
+							.setDescription("Rent: "+territory.getRent()+"")
+							.setBgColor(new Color(250, 250, 250))
+							.setFgColor(Color.BLACK)
+							.build();
+				} else if (territory.getFieldGroup() == 7) {
+					list[i] = new Street.Builder()
+							.setTitle(fields[i].fieldname)
+							.setSubText("Costs: "+territory.fieldprice+"")
+							.setDescription("Rent: "+territory.getRent()+"")
+							.setBgColor(new Color(255, 202, 70))
+							.setFgColor(Color.WHITE)
+							.build();
+				} else if (territory.getFieldGroup() == 8) {
+					list[i] = new Street.Builder()
+							.setTitle(fields[i].fieldname)
+							.setSubText("Costs: "+territory.fieldprice+"")
+							.setDescription("Rent: "+territory.getRent()+"")
+							.setBgColor(new Color(112, 21, 97))
+							.setFgColor(Color.WHITE)
+							.build();
+				}
+
+			} else if (field instanceof Refuge) {
+				list[i] = new desktop_fields.Refuge.Builder()
+						.setTitle(fields[i].fieldname)
+						.setSubText("Bonus")
+						.setPicture("GUI/desktop_resources/pics/money.png")
+						.setBgColor(Color.GREEN)
+						.setFgColor(Color.BLACK)
+						.build();
+
+			} else if (field instanceof Labor) {
+				list[i] = new Brewery.Builder()
+						.setTitle(fields[i].fieldname)
+						.setDescription("Rent: 100xDices")
+						.setSubText("")
+						.setBgColor(Color.YELLOW)
+						.setFgColor(Color.BLACK)
+						.setRent("100xDices")
+						.setPicture(fields[i].getName())
+						.build(); 
+
+			} else if (field instanceof Tax) {
+				Tax tax = (Tax) field;
+				list[i] = new desktop_fields.Tax.Builder()
+						.setTitle(fields[i].fieldname)
+						.setDescription("TAX: "+tax.getRent()+"")
+						.setSubText("Pay "+tax.getRent()+" in TAXES")
+						.setBgColor(Color.RED)
+						.build(); 
+
+			} else if (field instanceof Fleet) {
+				list[i] = new Shipping.Builder()
+						.setTitle(fields[i].fieldname)
+						.setDescription("Rent: 500-4000")
+						.setSubText("")
+						.setBgColor(Color.WHITE)
+						.setFgColor(Color.BLACK)
+						.setRent("500 per owned Fleet")
+						.build();
+			} else if (field instanceof Luck) {
+				list[i] = new Chance.Builder()
+						.setBgColor(Color.BLACK)
+						.setFgColor(Color.WHITE)
+						.build();
+			} else if (field instanceof Jail) {
+				list[i] = new desktop_fields.Jail.Builder()
+						.setPicture("GUI/desktop_resources/pics/GoToJail.png")
+						.setBgColor(Color.BLUE)
+						.setFgColor(Color.WHITE)
+						.build();
+			} else if (field instanceof Jail) {
+				list[i] = new desktop_fields.Jail.Builder()
+						.setPicture("GUI/desktop_resources/pics/GoToJail.png")
+						.setBgColor(new Color(85, 81, 139))
+						.setFgColor(Color.WHITE)
+						.build();
+			} else if (field instanceof Empty) {
+				list[i] = new desktop_fields.Empty.Builder()
+						.setBgColor(new Color(85, 81, 139))
+						.setFgColor(Color.WHITE)
+						.build();
+			}
+		}
 
 		GUI.create(list);
-		return field;
+		return fields;
 	}
 
 	/**
@@ -84,10 +224,10 @@ public abstract class Field {
 	 */
 	public void sellAllFields(Player player) {
 
-		for (int i = 0; i < field.length; i++) {
+		for (int i = 0; i < fields.length; i++) {
 
-			if (field[i] instanceof Territory) {
-				Territory territory = (Territory) field[i];
+			if (fields[i] instanceof Territory) {
+				Territory territory = (Territory) fields[i];
 				if (territory.fieldowned && territory.fieldowner.equals(player)) {
 					player.giveMoney(territory.fieldprice);
 					territory.fieldowned = false;
@@ -98,8 +238,8 @@ public abstract class Field {
 				}
 			}
 
-			if (field[i] instanceof Labor) {
-				Labor labor = (Labor) field[i];
+			if (fields[i] instanceof Labor) {
+				Labor labor = (Labor) fields[i];
 				if (labor.fieldowned && labor.fieldowner.equals(player)) {
 					player.giveMoney(labor.fieldprice);
 					labor.fieldowned = false;
@@ -110,8 +250,8 @@ public abstract class Field {
 				}
 			}
 
-			if (field[i] instanceof Fleet) {
-				Fleet fleet = (Fleet) field[i];
+			if (fields[i] instanceof Fleet) {
+				Fleet fleet = (Fleet) fields[i];
 				if (fleet.fieldowned && fleet.fieldowner.equals(player)) {
 					player.giveMoney(fleet.fieldprice);
 					fleet.fieldowned = false;
@@ -139,7 +279,7 @@ public abstract class Field {
 	}
 
 	public static int getNumberOfFields() {
-		return field.length;
+		return fields.length;
 	}
 
 

@@ -23,7 +23,6 @@ public class Game {
         fields = Field.createFields();
         
         
-        
         // How many Players?
         String NumberofPlayers = GUI.getUserSelection("", "2 Players", "3 Players", "4 Players", "5 Players", "6 Players");
         
