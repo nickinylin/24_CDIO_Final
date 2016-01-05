@@ -11,8 +11,10 @@ public CardsTransaction(String cardtext, int value){
 	this.cardtext=cardtext;
 	this.value=value;
 }
-public void play(){
-	
+public int getvalue(){
+	return value;
+
 }
+
 
 }

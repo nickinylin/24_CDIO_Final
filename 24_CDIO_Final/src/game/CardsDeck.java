@@ -79,11 +79,11 @@ public CardsDeck(){
 	//Discard kan fjernes og shuffledeck kan simplificeres hvis Get out of jail kortene fjernes.
 	
 	
-	public Cards drawcard(Player player){
+	public Cards drawcard(){
 	Cards card=deck[currentdecksize];
 	deck[currentdecksize]=null;
 currentdecksize=currentdecksize-1;
-	return card;
+return card;
 	}
 	public void shuffledeck(){
 		while (discardsize>0){
