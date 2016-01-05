@@ -40,7 +40,7 @@ public abstract class Field {
 				new Territory ("Allegade", 2, 2400, 1000,150,800,2000,6000,9000,12000),
 				new Refuge ("På besøg i fængsel", "Visit", 0),
 				new Territory ("Frederiksberg Alle", 3, 2800,2000,200,1000,3000,9000,12500,15000),
-				new Labor ("Tuborg Squash"),
+				new Labor ("Tuborg"),
 				new Territory ("Bulowsvej", 3, 2800,2000,200,1000,3000,9000,12500,15000),
 				new Territory ("Gl. Kongevej", 3, 3200,2000,250,1250,3750,10000,14000,18000),
 				new Fleet ("Mols-linien! En genvej i Danmark"),
@@ -56,7 +56,7 @@ public abstract class Field {
 				new Fleet ("Scanlines! Gedser - Rostock"),
 				new Territory ("Bredgade",6,5200,3000,450,2200,6600,16000,19500,23000),
 				new Territory ("Kgs. Nytorv",6,5200,3000,450,2200,6600,16000,19500,23000),
-				new Labor ("Coca-Cola"),
+				new Labor ("Carlsberg"),
 				new Territory ("Østergade",6,5600,3000,500,2400,7200,17000,20500,24000),
 				new Jail ("De fængsles"),
 				new Territory ("Amagertorv",7,6000,4000,550,2600,7800,18000,22000,25000),
@@ -161,7 +161,7 @@ public abstract class Field {
 							.setTitle(fields[i].fieldname)
 							.setSubText("På besøg")
 							.setPicture("Jail.jpg")
-							.setBgColor(new Color(109, 109, 109))
+							.setBgColor(new Color(127, 127, 127))
 							.setFgColor(Color.BLACK)
 							.build();
 				} else if (refuge.type == "Parking") {
@@ -180,9 +180,9 @@ public abstract class Field {
 						.setDescription("Rent: 100xDices")
 						.setSubText("")
 						.setBgColor(Color.GREEN)
-						.setFgColor(Color.BLACK)
+						.setFgColor(Color.WHITE)
 						.setRent("100xDices")
-						.setPicture(fields[i].getName())
+						.setPicture(""+fields[i].fieldname+".jpg")
 						.build(); 
 
 			} else if (field instanceof Tax) {
@@ -212,7 +212,7 @@ public abstract class Field {
 				list[i] = new desktop_fields.Jail.Builder()
 						.setPicture("GoToJail.jpg")
 						.setSubText("Gå i fængsel")
-						.setBgColor(new Color(100, 100, 100))
+						.setBgColor(new Color(127, 127, 125))
 						.setFgColor(Color.WHITE)
 						.build();
 			} else if (field instanceof Empty) {
