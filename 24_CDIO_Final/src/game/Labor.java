@@ -19,8 +19,23 @@ public class Labor extends Ownable {
 
     @Override
     public int getRent() {
-        int fieldrent = 100 * Dice.getSum();
-        return fieldrent;
+    	int count=0;
+    	for (Field f : fields) {
+            if (f instanceof Labor) {
+                Labor labor = (Labor) f;
+                if (labor.fieldowned && labor.fieldowner.equals(fieldowner)) {
+                    count++;
+                }
+            }
+        }
+        if (count == 2){
+        	int fieldrent = 200 * Dice.getSum();	
+        	return fieldrent;
+        }
+        else{
+        	int fieldrent = 100* Dice.getSum();
+        	return fieldrent;
+        }
     }
 
     @Override
