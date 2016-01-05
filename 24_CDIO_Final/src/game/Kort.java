@@ -1,7 +1,7 @@
 package game;
 
 public abstract class Kort {
-protected String titel;
+protected String titel;	
 protected Boolean holdable;
 protected String cardtext;
 

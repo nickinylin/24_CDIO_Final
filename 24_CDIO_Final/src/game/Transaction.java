@@ -8,6 +8,7 @@ public Transaction(String titel, String cardtext, int value){
 	this.cardtext=cardtext;
 	this.value=value;
 }
+
 public void play(){
 	
 }
