@@ -9,6 +9,7 @@ package game;
 public class Dice {
     private static int value1;
     private static int value2;
+
     
     /**
      * Creating the dices and calling the roll() method, to set dices value to a random,
@@ -49,6 +50,11 @@ public class Dice {
      */
     public static int getSum(){
         return value1 + value2;
+    }
+    
+    public static boolean issame(){
+    	return value1 == value2;
+    	
     }
     
 }

@@ -17,6 +17,7 @@ public class Player {
     private static Player[] id;
     private int move = 0;
     private boolean jail = false;
+    private int jailDice = 0;
     
     public static Player[] addPlayer(int antal) {
         
@@ -163,5 +164,13 @@ public class Player {
 
 	public void setJail(boolean jail) {
 		this.jail = jail;
+	}
+
+	public int getJailDice() {
+		return jailDice;
+	}
+
+	public void setJailDice(int jailDice) {
+		this.jailDice = jailDice;
 	}
 }
