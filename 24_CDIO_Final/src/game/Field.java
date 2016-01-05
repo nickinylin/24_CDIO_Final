@@ -69,59 +69,6 @@ public abstract class Field {
 
 		desktop_fields.Field list[] = new desktop_fields.Field[field.length];
 
-		for (int i = 0; i < field.length; i++) {
-			Field fields = field[i];
-			if (fields instanceof Territory) {
-				list[i] = new Street.Builder()
-						.setTitle(field[i].fieldname)
-						.setSubText("Costs: "+field[i].getPrice()+"")
-						.setDescription("Rent: "+field[i].getRent()+"")
-						if (field[i].) {
-						.setBgColor(Color.DARK_GRAY)
-						.setFgColor(Color.WHITE)
-						}
-						.build();
-
-			} else if (fields instanceof Refuge) {
-				list[i] = new desktop_fields.Refuge.Builder()
-						.setTitle(field[i].fieldname)
-						.setDescription("You collect "+field[i].getRent()+"")
-						.setSubText("Bonus")
-						.setPicture("GUI/desktop_resources/pics/money.png")
-						.setBgColor(Color.GREEN)
-						.setFgColor(Color.BLACK)
-						.build();
-
-			} else if (fields instanceof Labor) {
-				list[i] = new Brewery.Builder()
-						.setTitle(field[i].fieldname)
-						.setDescription("Rent: 100xDices")
-						.setSubText("")
-						.setBgColor(Color.YELLOW)
-						.setFgColor(Color.BLACK)
-						.setRent("100xDices")
-						.setPicture(field[i].getName())
-						.build(); 
-
-			} else if (fields instanceof Tax) {
-				list[i] = new desktop_fields.Tax.Builder()
-						.setTitle(field[i].fieldname)
-						.setDescription("TAX: "+field[i].getRent()+"")
-						.setSubText("Pay "+field[i].getRent()+" in TAXES")
-						.setBgColor(Color.RED)
-						.build(); 
-
-			} else if (fields instanceof Fleet) {
-				list[i] = new Shipping.Builder()
-						.setTitle(field[i].fieldname)
-						.setDescription("Rent: 500-4000")
-						.setSubText("")
-						.setBgColor(Color.BLUE)
-						.setFgColor(Color.WHITE)
-						.setRent("500 per owned Fleet")
-						.build();
-			}
-		}
 		GUI.create(list);
 		return field;
 	}
