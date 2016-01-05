@@ -118,7 +118,7 @@ public abstract class Field {
 							.setSubText("Costs: "+territory.fieldprice+"")
 							.setDescription("Rent: "+territory.getRent()+"")
 							.setBgColor(new Color(255, 18, 31))
-							.setFgColor(Color.WHITE)
+							.setFgColor(Color.BLACK)
 							.build();
 				} else if (territory.getFieldGroup() == 6) {
 					list[i] = new Street.Builder()
@@ -134,7 +134,7 @@ public abstract class Field {
 							.setSubText("Costs: "+territory.fieldprice+"")
 							.setDescription("Rent: "+territory.getRent()+"")
 							.setBgColor(new Color(255, 202, 70))
-							.setFgColor(Color.WHITE)
+							.setFgColor(Color.BLACK)
 							.build();
 				} else if (territory.getFieldGroup() == 8) {
 					list[i] = new Street.Builder()
@@ -179,7 +179,7 @@ public abstract class Field {
 						.setTitle(fields[i].fieldname)
 						.setDescription("Rent: 100xDices")
 						.setSubText("")
-						.setBgColor(new Color())
+						.setBgColor(new Color(1, 76, 28))
 						.setFgColor(Color.WHITE)
 						.setRent("100xDices")
 						.setPicture(""+fields[i].fieldname+".jpg")
