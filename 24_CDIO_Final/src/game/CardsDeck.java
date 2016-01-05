@@ -5,18 +5,18 @@ import java.util.Collections;
 
 import kortdeck.GetOutofJail;
 
-public class Provlykkendeck {
-private Kort[] deck;
-private Kort[] discard;
+public class CardsDeck {
+private Cards[] deck;
+private Cards[] discard;
 private int currentdecksize;
 private int discardsize;
-public Provlykkendeck(){
-	deck = new Kort[]{
-		new Transaction(),
+public CardsDeck(){
+	deck = new Cards[]{
+		new CardsTransaction(),
 		new GetOutofJail(),
-		new Moveto()
+		new CardsMoveto()
 	};
-	discard = new Kort[deck.length];
+	discard = new Cards[deck.length];
 	currentdecksize=deck.length;
 	discardsize=0;
 }
@@ -24,8 +24,8 @@ public Provlykkendeck(){
 	//Discard kan fjernes og shuffledeck kan simplificeres hvis Get out of jail kortene fjernes.
 	
 	
-	public Kort drawcard(){
-	Kort card=deck[currentdecksize];
+	public Cards drawcard(){
+	Cards card=deck[currentdecksize];
 	deck[currentdecksize]=null;
 currentdecksize=currentdecksize-1;
 	return card;
@@ -42,7 +42,7 @@ currentdecksize=currentdecksize-1;
 		
 	}
 	
-	public void discardcard(Kort card){
+	public void discardcard(Cards card){
 		discard[deck.length-discardsize]=card;
 		discardsize++;	
 	}

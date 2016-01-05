@@ -131,9 +131,8 @@ public class Player {
         return true;
     }
     
-    public boolean moveToJail() {
-    	jail = true;
-    	return this.jail;
+    public boolean moveToJail(Player player) {
+    	jail.getJailStatus(player);
     }
     
     public boolean getJailStatus() {

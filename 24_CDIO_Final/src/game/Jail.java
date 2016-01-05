@@ -4,12 +4,18 @@ public class Jail {
 
 	private boolean jail;
 
-	public boolean putInJail() {
+	public boolean setInJail() {
+		jail = true;
+		return jail;
+	}
+	
+	public boolean getOutofJail() {
+		jail = false;
 		return jail;
 	}
 
-	public void getJailStatus(boolean jail) {
-		this.jail = jail;
+	public void getJailStatus(Player player) {
+		this.jail = player;
 	}
 	
 	
