@@ -141,17 +141,7 @@ public abstract class Field {
 	public static int getNumberOfFields() {
 		return field.length;
 	}
-	/**
-	 * Method gets the rent of the field.
-	 * @return rentoffield
-	 */
-	public abstract int getRent();
 
-	/**
-	 * Method gets the price of the field.
-	 * @return Priceoffield
-	 */
-	public abstract int getPrice();
 
 
 }
