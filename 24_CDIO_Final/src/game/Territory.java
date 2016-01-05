@@ -17,6 +17,7 @@ public class Territory extends Ownable {
     private int fieldrenthouse4;
     private int fieldrenthotel;
     private final int fieldgroup;
+    private int buildingNumbers = 0;
 
     public Territory(String name, int fieldgroup, int fieldvalue, int fieldPriceBuilding, int fieldrent, int fieldrenthouse1, int fieldrenthouse2,int fieldrenthouse3, int fieldrenthouse4, int fieldrenthotel) {
     	super(name);
@@ -31,8 +32,9 @@ public class Territory extends Ownable {
         this.fieldrenthotel = fieldrenthotel;
         this.fieldgroup = fieldgroup;
         
-        
     }
+    
+    
 
     @Override
     public int getRent() {
@@ -81,5 +83,17 @@ public class Territory extends Ownable {
 	
 	public int getFieldGroup() {
 		return fieldgroup;
+	}
+
+
+
+	public int getBuildingNumbers() {
+		return buildingNumbers;
+	}
+
+
+
+	public void setBuildingNumbers(int buildingNumbers) {
+		this.buildingNumbers = buildingNumbers;
 	}
 }
