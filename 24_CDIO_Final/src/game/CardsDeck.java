@@ -38,8 +38,33 @@ public CardsDeck(){
 			new CardsTransaction("Vognvask & smøring.", "Betal 300kr for vognvask og smøring.", -300),
 			new CardsTransaction("Ejendomsskat.", "Ejendomsskatterne er steget. Ekstraudgifterne er: 800kr pr. hus. 2300kr pr. hotel.", -800, 2300),
 			new CardsTransaction("Oliepris.", "Oliepriserne er steget og De skal betale: 500kr pr. hus. 2000kr pr. hotel.", -500, 2000),,
-		new GetOutofJail(),
-		new CardsMoveto()
+			new CardsTransaction("De skal holde familiefest og får et tilskud fra hver medspiller på kr. 500", 500*amountofplayers);
+			new CardsTransaction("Det er Deres fødselsdag. Modtag af hver medspiller kr. 200", 200*amountofplayers);
+			new CardsTransaction("De har lagt penge ud til et sammenskudsgilde. Mærkværdigvis betaler alle straks. Modtag fra hver spiller kr. 500", 500*amountofplayers);
+			new CardsTransaction("De modtager Matador-legatet for værdigt trængende på kr. 40.000. Ved værdigt trængende forstås, at Deres formue, dvs. Deres kantante penge + skøder + bygninger, ikke overstiger kr. 15.000", if(formue<15000){
+				formue = formue+40000)}
+//			new GetOutofJail(),
+			new CardsMoveto("Ryk 3 felter frem", 3);
+			new CardsMoveto("Ryk 3 felter tilbage", -3);
+			new CardsMoveto("Ryk 3 felter tilbage", -3);
+			
+			new CardsMoveto("Ryk frem til START", Start);
+			new CardsMoveto("Ryk frem til START", Start);
+			
+			new CardsMoveto("Gå i fængsel. Ryk direkte til fængslet. Selv om De passerer START, indkasserer De ikke kr. 4000", Jail);
+			new CardsMoveto("Gå i fængsel. Ryk direkte til fængslet. Selv om De passerer START, indkasserer De ikke kr. 4000", Jail);
+			
+			new CardsMoveto("Ryk frem til Strandvejen. Hvis de passerer START indkassér da kr. 4000", Strandvejen);
+			new CardsMoveto("Ryk frem til Grønningen. Hvis De passerer START, indkassér da kr. 4000", Grønningen);
+			new CardsMoveto("Ryk frem til Vimmelskaftet. Hvis De passerer START, indkassér da kr. 4000", Vimmelskaftet);
+			new CardsMoveto("Ryk frem til Frederiksberg Allé. Hvis De passerer START, indkassér da kr. 4000", Frederiksberg Allé);
+			new CardsMoveto("Tag ind på rådhuspladsen", Rådhuspladsen);
+			
+			new CardsMoveto("Ryk brikken frem til det nærmeste rederi og betal ejeren to gange den leje, han ellers er berretiget til. Hvis selskabet ikke ejes af nogen, kan De købe det af banken", nærmeste rederi);
+			new CardsMoveto("Ryk brikken frem til det nærmeste rederi og betal ejeren to gange den leje, han ellers er berretiget til. Hvis selskabet ikke ejes af nogen, kan De købe det af banken", nærmeste rederi);
+			new CardsMoveto("Tag med den nærmeste færge. Flyt brikken frem, og hvis De passerer START indkassér da kr. 4000", nærmeste færge);
+			new CardsMoveto("Tag med Mols-linien. Flyt brikken frem, og hvis de passerer START, indkassér da kr. 4000", Mols-linien);
+			new GetOutofJail()
 	};
 	discard = new Cards[deck.length];
 	currentdecksize=deck.length;
