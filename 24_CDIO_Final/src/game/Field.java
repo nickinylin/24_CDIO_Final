@@ -152,7 +152,7 @@ public abstract class Field {
 					list[i] = new desktop_fields.Refuge.Builder()
 							.setTitle(fields[i].fieldname)
 							.setSubText("START")
-							.setPicture("GUI/desktop_resources/pics/money.png")
+							.setPicture("money.png")
 							.setBgColor(Color.RED)
 							.setFgColor(Color.BLACK)
 							.build();
@@ -169,7 +169,7 @@ public abstract class Field {
 							.setTitle(fields[i].fieldname)
 							.setSubText("Parkering")
 							.setPicture("Cones.jpg")
-							.setBgColor(Color.GREEN)
+							.setBgColor(Color.WHITE)
 							.setFgColor(Color.BLACK)
 							.build();
 				}
