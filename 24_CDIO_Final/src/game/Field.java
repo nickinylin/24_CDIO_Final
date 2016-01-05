@@ -179,7 +179,7 @@ public abstract class Field {
 						.setTitle(fields[i].fieldname)
 						.setDescription("Rent: 100xDices")
 						.setSubText("")
-						.setBgColor(Color.GREEN)
+						.setBgColor(new Color())
 						.setFgColor(Color.WHITE)
 						.setRent("100xDices")
 						.setPicture(""+fields[i].fieldname+".jpg")
