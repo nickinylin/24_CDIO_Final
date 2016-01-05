@@ -10,6 +10,7 @@ public class Bank {
     
     private int money;
     private int assets;
+ 
     
     /**
      * This is only used when a new player is created, and this function gives the player 30000

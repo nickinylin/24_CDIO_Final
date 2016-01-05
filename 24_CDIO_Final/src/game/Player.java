@@ -16,7 +16,7 @@ public class Player {
     private String name;
     private static Player[] id;
     private int move = 0;
-    private Jail jail;
+    private boolean jail = false;
     
     public static Player[] addPlayer(int antal) {
         
@@ -156,4 +156,12 @@ public class Player {
     public void setAssets(int newamount){
         bank.setAssets(newamount);
     }
+
+	public boolean isJail() {
+		return jail;
+	}
+
+	public void setJail(boolean jail) {
+		this.jail = jail;
+	}
 }
