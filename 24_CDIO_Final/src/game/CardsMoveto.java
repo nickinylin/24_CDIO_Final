@@ -1,10 +1,10 @@
 package game;
 
-public class Moveto  extends Kort{
+public class CardsMoveto  extends Cards{
 private int destination;
 
-public Moveto(String cardtext, int destination){
-//	this.titel=titel;
+public CardsMoveto(String titel, String cardtext, int destination){
+	this.titel=titel;
 	this.cardtext=cardtext;
 	this.destination=destination;
 }

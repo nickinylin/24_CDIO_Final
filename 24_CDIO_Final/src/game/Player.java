@@ -16,6 +16,7 @@ public class Player {
     private String name;
     private static Player[] id;
     private int move = 0;
+    private Jail jail;
     
     public static Player[] addPlayer(int antal) {
         
@@ -128,6 +129,14 @@ public class Player {
             if (other.name != null) return false;
         } else if (!name.equals(other.name)) return false;
         return true;
+    }
+    
+    public boolean moveToJail(Player player) {
+    	jail.getJailStatus(player);
+    }
+    
+    public boolean getJailStatus() {
+        return this.jail;
     }
     
     public boolean bankrupt() {
