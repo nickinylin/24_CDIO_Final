@@ -3,8 +3,8 @@ package game;
 public class Moveto  extends Kort{
 private int destination;
 
-public Moveto(String titel, String cardtext, int destination){
-	this.titel=titel;
+public Moveto(String cardtext, int destination){
+//	this.titel=titel;
 	this.cardtext=cardtext;
 	this.destination=destination;
 }
