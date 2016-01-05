@@ -28,7 +28,6 @@ public class Labor extends Ownable {
         return fieldname;
     }
 
-    @Override
     public int getPrice() {
         return super.fieldprice;
     }

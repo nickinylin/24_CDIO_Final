@@ -55,7 +55,7 @@ public class Fleet extends Ownable {
     public String getName() {
         return fieldname;
     }
-    @Override
+
     public int getPrice() {
         return fieldprice;
     }

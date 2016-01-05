@@ -6,6 +6,8 @@
 
 package game;
 
+import desktop_resources.GUI;
+
 public class Refuge extends Field {
     
     protected String fieldname;
@@ -22,7 +24,6 @@ public class Refuge extends Field {
         GUI.setBalance(player.getName(), player.getMoney());
     }
 
-    @Override
     public int getRent() {
         return bonus;
     }
@@ -32,7 +33,6 @@ public class Refuge extends Field {
         return fieldname;
     }
 
-    @Override
     public int getPrice() {
         return 0;
     }

@@ -43,7 +43,6 @@ public class Territory extends Ownable {
         return fieldname;
     }
 
-    @Override
     public int getPrice() {
         return fieldprice;
     }
