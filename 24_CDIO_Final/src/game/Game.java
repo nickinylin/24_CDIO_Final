@@ -39,7 +39,54 @@ public class Game {
         
         
         while (true) {
-    
+        	
+            for (int i = 0; i < players.length; i++) {
+                
+                int count = 1;
+                
+                for (int x = 0; x < players.length; x++) {
+                    
+                    if (players[x].bankrupt()) {
+                        GUI.removeAllCars(players[x].getName());
+                        count++;
+                    }
+                }
+                
+                // If there is only one player left
+                if (count == players.length) {
+                    
+                    for (int x = 0; x < players.length; x++) {
+                        
+                        if (players[x].bankrupt() == false) {
+                            GUI.displayChanceCard("<center>"+players[x].getName()+" have won the game with a total of <br><br> "+players[x].getAssets()+"<br>assets.");
+                            GUI.showMessage("");
+                            return;
+                        }
+                    }
+                    
+                }
+                
+                // If a player is bankrupt
+                if (players[i].getAssets() < 0) {
+                    continue;
+                }
+                
+                GUI.displayChanceCard(fields[i].landOnField(players[i]));
+                
+                
+                // Roll Dices
+                GUI.getUserButtonPressed("", players[i].getName()+": Roll Dices");
+                Dice.roll();
+                GUI.setDice(Dice.getDice1(), Dice.getDice2());
+                
+                // Move Player
+                players[i].movePlayer(players[i], Dice.getSum());
+                
+                // This determains what action will accure depending on the field type.
+                fields[players[i].getPlayerPosition()-1].landOnField(players[i]);
+                players[i].bankrupt();
+                
+            }
         }
         
     }
