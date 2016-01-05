@@ -161,7 +161,7 @@ public abstract class Field {
 							.setTitle(fields[i].fieldname)
 							.setSubText("På besøg")
 							.setPicture("Jail.jpg")
-							.setBgColor(Color.GREEN)
+							.setBgColor(new Color(109, 109, 109))
 							.setFgColor(Color.BLACK)
 							.build();
 				} else if (refuge.type == "Parking") {
@@ -212,7 +212,7 @@ public abstract class Field {
 				list[i] = new desktop_fields.Jail.Builder()
 						.setPicture("GoToJail.jpg")
 						.setSubText("Gå i fængsel")
-						.setBgColor(new Color(85, 81, 139))
+						.setBgColor(new Color(100, 100, 100))
 						.setFgColor(Color.WHITE)
 						.build();
 			} else if (field instanceof Empty) {
