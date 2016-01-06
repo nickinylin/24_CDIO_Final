@@ -9,14 +9,8 @@ public class Jail extends Field {
         super(name);
     }
     
-    public void JailEmpty(String name) {
-
+    public void gotoJail(Player player) {
+    	
     }
-
-	@Override
-	public void landOnField(Player player) {
-		player.setJail(true);
-		
-	}
     
 }
