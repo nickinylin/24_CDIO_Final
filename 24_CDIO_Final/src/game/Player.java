@@ -15,7 +15,7 @@ public class Player {
     private Bank bank;
     private String name;
     private static Player[] id;
-    private int move = 0;
+    private static int move = 0;
     private boolean jail = false;
     private int jailDice = 0;
     
@@ -115,8 +115,8 @@ public class Player {
      * Method gets the position the player is on the board.
      * @return int position
      */
-    public int getPlayerPosition() {
-        return this.move;
+    public static int getPlayerPosition() {
+        return move;
     }
     
     
@@ -158,7 +158,7 @@ public class Player {
         bank.setAssets(newamount);
     }
 
-	public boolean isJail() {
+	public boolean isInJail() {
 		return jail;
 	}
 
@@ -166,11 +166,11 @@ public class Player {
 		this.jail = jail;
 	}
 
-	public int getJailDice() {
+	public int getJailTurn() {
 		return jailDice;
 	}
 
-	public void setJailDice(int jailDice) {
+	public void setJailTurn(int jailDice) {
 		this.jailDice = jailDice;
 	}
 }

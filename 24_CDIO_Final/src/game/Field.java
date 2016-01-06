@@ -227,12 +227,6 @@ public abstract class Field {
 		return fields;
 	}
 
-	/**
-	 * This method is used when a player lands on a field. landOnField defines what happens when a player lands on a field.
-	 * @param
-	 */
-	public abstract void landOnField(Player player);  
-
 	/*
 	 * This method will sell all player assets
 	 */

@@ -8,13 +8,6 @@ package game;
 
 public class Fleet extends Ownable {
     
-    protected String fieldname;
-    
-    private int RENT_1 = 500;
-    private int RENT_2 = 1000;
-    private int RENT_3 = 2000;
-    private int RENT_4 = 4000;
-    
     public Fleet(String name) {
         super(name);
         super.fieldprice = 4000;
@@ -39,12 +32,11 @@ public class Fleet extends Ownable {
             }
         }
         
-        
         switch (count) {
-            case 1: fieldrent = RENT_1; break;
-            case 2: fieldrent = RENT_2; break;
-            case 3: fieldrent = RENT_3; break;
-            case 4: fieldrent = RENT_4; break;       
+            case 1: fieldrent = 500; break;
+            case 2: fieldrent = 1000; break;
+            case 3: fieldrent = 2000; break;
+            case 4: fieldrent = 4000; break;       
         }
         
         return fieldrent;
