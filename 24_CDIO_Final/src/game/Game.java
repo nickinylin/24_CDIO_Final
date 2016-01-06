@@ -82,13 +82,6 @@ public class Game {
 						players[i].setJail(false);
 						players[i].setJailDice(0);
 						GUI.setBalance(players[i].getName(), players[i].getMoney());
-						GUI.getUserButtonPressed("", players[i].getName()+": Roll Dices");
-						Dice.roll();
-						GUI.setDice(Dice.getDice1(), Dice.getDice2());
-						GUI.removeCar(players[i].getPlayerPosition(), players[i].getName());
-						players[i].movePlayer(players[i], Dice.getSum());
-						GUI.setCar(players[i].getPlayerPosition(), players[i].getName());
-						continue;
 
 						//Hvis spilleren vælger at kaste terningerne:
 					} else {
@@ -117,13 +110,12 @@ public class Game {
 							 */
 
 						} else{
+							GUI.getUserButtonPressed("Du har været i fængsel i 3 omgange og skal betale 1000 for at komme ud", "Betal 1000");
 							players[i].payMoney(1000);
 							GUI.setBalance(players[i].getName(), players[i].getMoney());
-							GUI.displayChanceCard("Du har været i fængsel i 3 omgange og betaler automatisk 1000 kr for at komme ud");
 							players[i].setJail(false);
 							players[i].setJailDice(0);
 						}
-
 
 					}
 
