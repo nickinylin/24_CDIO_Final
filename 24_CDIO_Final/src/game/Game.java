@@ -7,6 +7,15 @@
 package game;
 
 import desktop_resources.GUI;
+import fields.Empty;
+import fields.Field;
+import fields.Fleet;
+import fields.Jail;
+import fields.Labor;
+import fields.Luck;
+import fields.Ownable;
+import fields.Refuge;
+import fields.Territory;
 import setup.Setup;
 
 public class Game {
