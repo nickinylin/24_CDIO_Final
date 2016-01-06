@@ -13,7 +13,7 @@ public class Luck extends Field {
         super(name);
     }
 
-	@Override
+	
 	public void landOnField(Player player) {
 		Cards card= deck.drawcard();
 		if (card instanceof CardsMoveto) {
