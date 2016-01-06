@@ -1,7 +1,7 @@
 package game;
 
 public class CardsMoveto extends Cards {
-	private int moves;
+	private int moves=0;
 	private String destination;
 
 	// public CardsMoveto(String titel, String cardtext, int destination) -
