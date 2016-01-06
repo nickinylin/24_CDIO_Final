@@ -116,10 +116,6 @@ public class Player {
         bank.setAssets(newamount);
     }
 
-	public boolean isInJail() {
-		return jail;
-	}
-
 	public void setJail(boolean jail) {
 		this.jail = jail;
 	}
@@ -130,5 +126,8 @@ public class Player {
 
 	public void setJailDice(int jailDice) {
 		this.jailDice = jailDice;
+	}
+	public boolean isInJail() {
+		return jail;
 	}
 }
