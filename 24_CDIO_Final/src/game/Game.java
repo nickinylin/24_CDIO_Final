@@ -7,10 +7,12 @@
 package game;
 
 import desktop_resources.GUI;
+import setup.Setup;
+
 
 public class Game {
 
-	private static Player[] players;
+
 	private static Field[] fields;
 
 
@@ -23,20 +25,8 @@ public class Game {
 		// Create Fields
 		fields = Field.createFields();
 
-
-		// How many Players?
-		String NumberofPlayers = GUI.getUserSelection("", "2 Players", "3 Players", "4 Players", "5 Players", "6 Players");
-
-		// Create Player 1,2,3,4,5,6
-		switch (NumberofPlayers) {
-		case "6 Players": players = Player.addPlayer(6); break;
-		case "5 Players": players = Player.addPlayer(5); break;
-		case "4 Players": players = Player.addPlayer(4); break;
-		case "3 Players": players = Player.addPlayer(3); break;
-		case "2 Players": players = Player.addPlayer(2); break;
-		default: ;
-		}
-
+		Setup setup = new Setup();
+		Player[] players = setup.createPlayers();
 
 
 		while (true) {
