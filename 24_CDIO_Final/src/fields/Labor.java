@@ -4,7 +4,9 @@
  * @version 04/01-2016
  **/
 
-package game;
+package fields;
+
+import game.Dice;
 
 public class Labor extends Ownable {
     

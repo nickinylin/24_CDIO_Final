@@ -4,7 +4,7 @@
  * @version 04/01-2016
  **/
 
-package game;
+package fields;
 
 public class Fleet extends Ownable {
     

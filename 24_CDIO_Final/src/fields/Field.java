@@ -4,7 +4,7 @@
  * @version 04/01-2016
  **/
 
-package game;
+package fields;
 
 import java.awt.Color;
 import java.util.Arrays;
@@ -15,6 +15,7 @@ import desktop_fields.Chance;
 import desktop_fields.Shipping;
 import desktop_fields.Street;
 import desktop_resources.GUI;
+import game.Player;
 
 public abstract class Field {
 

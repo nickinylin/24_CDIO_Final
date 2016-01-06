@@ -1,4 +1,4 @@
-package game;
+package cards;
 
 public class CardsMoveto extends Cards {
 	private int moves=0;
