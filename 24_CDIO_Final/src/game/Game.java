@@ -6,11 +6,24 @@
 
 package game;
 
+import cards.Cards;
+import cards.CardsDeck;
+import cards.CardsMoveto;
 import desktop_resources.GUI;
+import fields.Empty;
+import fields.Field;
+import fields.Fleet;
+import fields.Jail;
+import fields.Labor;
+import fields.Luck;
+import fields.Ownable;
+import fields.Refuge;
+import fields.Territory;
 import setup.Setup;
 
-public class Game {
 
+public class Game {
+	private CardsDeck deck;
 	private static Player[] player;
 	protected static Field[] fields;
 
@@ -20,10 +33,13 @@ public class Game {
 
 	public Game() {
 
+		deck = new CardsDeck();
+		
 		// Create Fields
 		fields = Field.createFields();
 		
-		new Setup();
+		Setup setup = new Setup();
+		player = setup.createPlayers();
 		
 		String test = GUI.getUserButtonPressed("Vælg en knap", "1","2","3","4","5");
 
@@ -33,18 +49,14 @@ public class Game {
 			
 			for (int i = 0; i < player.length; i++) {
 				
-				if (player[i].isInJail()) {
-					
-					doJailTurn(player[i]);
-					
-				} else {
-					
-					doNormalTurn(player[i]);
-					
-				}
-				
 				if (player[i].bankrupt()) {
 					checkWinner();
+				} 
+				
+				if (player[i].isInJail()) {
+					doJailTurn(player[i]);
+				} else {
+					doNormalTurn(player[i]);
 				}
 				
 			}
@@ -59,23 +71,124 @@ public class Game {
 	
 	public void doNormalTurn(Player player) {
 		
-		Field currentfield = fields[Player.getPlayerPosition()-1];
+        // Roll Dices
+        GUI.getUserButtonPressed("", player.getName()+": Roll Dices");
+        Dice.roll();
+        GUI.setDice(Dice.getDice1(), Dice.getDice2());
+		
+        // Move Player
+        player.movePlayer(player, Dice.getSum());
+        
+        // Where is Player?
+		Field currentfield = fields[player.getPlayerPosition()-1];
 
+		// Which action should be taken?
 		if (currentfield instanceof Ownable) {
 
 			landOnOwnable(player, currentfield);
 
 		} else if (currentfield instanceof Luck) {
 			
-			
+			landOnLuck(player, currentfield);
 
 		} else if (currentfield instanceof Jail) {
+			
+			landOnJail(player, currentfield);
 
 		} else if (currentfield instanceof Refuge) {
+			
+			landOnJail(player, currentfield);
 
 		} else if (currentfield instanceof Empty) {
+			
+			landOnEmpty(player, currentfield);
 
 		}
+		
+	}
+
+	private void landOnEmpty(Player player, Field currentfield) {
+		
+		// Nothing should happen here
+		
+	}
+
+	private void landOnJail(Player player, Field currentfield) {
+		
+		// Move player to Jail
+		
+	}
+
+	private void landOnLuck(Player player, Field currentfield) {
+		
+		// Draw a luck card
+		
+
+			Cards card = deck.drawcard();
+			if (card instanceof CardsMoveto) {
+	            CardsMoveto move=(CardsMoveto) card;
+	            if (move.getExtraMoves()==0){
+	            	
+	            }
+	            	
+	            
+	            }
+
+			if(player.getPlayerPosition()>0 && player.getPlayerPosition()<10)
+			{
+			player.setPlayerPosistion(player, 6);
+			Fleet ships = (Fleet)fields[6];
+				if(ships.fieldowned)
+				{
+					player.setPlayerPosistion(player, 6);
+					landOnOwnable(player,fields[6]);
+				}
+				else
+					player.setPlayerPosistion(player, 6);
+					landOnOwnable(player,fields[6]);
+			}
+			else if(player.getPlayerPosition()>=11 && player.getPlayerPosition()<=20)
+			{
+			player.setPlayerPosistion(player, 16);
+			Fleet ships = (Fleet)fields[16];
+				if(ships.fieldowned)
+				{
+				player.setPlayerPosistion(player, 16);
+				landOnOwnable(player,fields[16]);
+				}
+				else
+					player.setPlayerPosistion(player, 16);
+					landOnOwnable(player,fields[16]);
+			}
+			else if(player.getPlayerPosition()>=21 && player.getPlayerPosition()<=30)
+			{
+			player.setPlayerPosistion(player, 26);
+			Fleet ships = (Fleet)fields[26];
+				if(ships.fieldowned)
+				{
+				player.setPlayerPosistion(player, 26);
+				landOnOwnable(player,fields[26]);
+				}
+				else
+					player.setPlayerPosistion(player, 26);
+					landOnOwnable(player,fields[26]);
+			}
+			else if(player.getPlayerPosition()>=31 && player.getPlayerPosition()<=40)
+			{
+			player.setPlayerPosistion(player, 36);
+			Fleet ships = (Fleet)fields[36];
+				if(ships.fieldowned)
+				{
+				player.setPlayerPosistion(player, 36);
+				landOnOwnable(player,fields[36]);
+				}
+				else
+					player.setPlayerPosistion(player, 36);
+					landOnOwnable(player,fields[36]);
+			}
+			
+	            
+		
 		
 	}
 
@@ -210,11 +323,22 @@ public class Game {
 	}
 
 
-	public static void checkWinner() {
+	public void checkWinner() {
 		
-		GUI.displayChanceCard("<center>"+player.getName()+" have won the game with a total of <br><br> "+players[x].getAssets()+"<br>assets.");
-		GUI.showMessage("");
-		return;
+		int numberofplayers = player.length;
+		int count = 0;
+		
+		for (int i = 0; i < player.length; i++) {
+			
+			if (player[i].bankrupt()) {
+				count++;
+			}
+			
+			if (numberofplayers == count) {
+				GUI.displayChanceCard("<center>"+ player[i].getName() +" have won the game with a total of <br><br> "+player[i].getAssets()+"<br>assets.");
+			}
+			
+		}
 		
 	}
 

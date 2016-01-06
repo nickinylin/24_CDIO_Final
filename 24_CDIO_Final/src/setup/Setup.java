@@ -22,8 +22,12 @@ import game.Territory;
 public class Setup {
 	private static Player[] id;
 
+<<<<<<< HEAD
 	
 	public static Field[] createFields() {
+=======
+	public Setup() {
+>>>>>>> branch 'master' of https://github.com/nickinylin/24_CDIO_Final
 		
 
 		Field[] fields = new Field[] { 

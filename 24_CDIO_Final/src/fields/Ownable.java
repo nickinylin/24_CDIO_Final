@@ -4,9 +4,10 @@
  * @version 04/01-2016
  **/
 
-package game;
+package fields;
 
 import desktop_resources.GUI;
+import game.Player;
 
 public abstract class Ownable extends Field {
     
@@ -14,9 +15,9 @@ public abstract class Ownable extends Field {
         super(name);
     }
     
-    protected Player fieldowner;
+    public Player fieldowner;
     protected int fieldprice;
-    protected boolean fieldowned;
+    public boolean fieldowned;
     
     public abstract int getRent();
     
