@@ -2,7 +2,7 @@ package game;
 
 public class Luck extends Field {
 	
-	private CardsDeck card;
+	private CardsDeck deck;
 	
     public Luck(String name) {
         super(name);
@@ -10,7 +10,15 @@ public class Luck extends Field {
 
 	@Override
 	public void landOnField(Player player) {
-		card.drawcard();	
+		Cards card= deck.drawcard();
+		if (card instanceof CardsMoveto) {
+            CardsMoveto move=(CardsMoveto) card;
+            if (move.getExtraMoves()==0){
+            	
+            }
+            	
+            
+            }
 	}
     
 }
