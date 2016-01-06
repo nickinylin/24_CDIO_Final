@@ -116,7 +116,7 @@ public class Player {
         bank.setAssets(newamount);
     }
 
-	public boolean isJail() {
+	public boolean isInJail() {
 		return jail;
 	}
 
