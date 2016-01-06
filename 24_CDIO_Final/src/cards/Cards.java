@@ -1,4 +1,4 @@
-package game;
+package cards;
 
 public abstract class Cards {
 	protected Boolean holdable;

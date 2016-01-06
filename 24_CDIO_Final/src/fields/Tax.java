@@ -4,9 +4,10 @@
  * @version 04/01-2016
  **/
 
-package game;
+package fields;
 
 import desktop_resources.GUI;
+import game.Player;
 
 public class Tax extends Field {
     protected String fieldname;
