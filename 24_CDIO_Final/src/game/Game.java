@@ -59,7 +59,7 @@ public class Game {
 	
 	public void doNormalTurn(Player player) {
 		
-		Field currentfield = fields[Player.getPlayerPosition()-1];
+		Field currentfield = fields[player.getPlayerPosition()-1];
 
 		if (currentfield instanceof Ownable) {
 
