@@ -15,7 +15,7 @@ public abstract class Ownable extends Field {
         super(name);
     }
     
-    protected Player fieldowner;
+    public Player fieldowner;
     protected int fieldprice;
     public boolean fieldowned;
     

@@ -47,15 +47,10 @@ public class Game {
 				} 
 				
 				if (player[i].isInJail()) {
-					
 					doJailTurn(player[i]);
-					
 				} else {
-					
 					doNormalTurn(player[i]);
-					
 				}
-				
 				
 			}
 			
@@ -69,6 +64,13 @@ public class Game {
 	
 	public void doNormalTurn(Player player) {
 		
+        // Roll Dices
+        GUI.getUserButtonPressed("", player.getName()+": Roll Dices");
+        Dice.roll();
+        GUI.setDice(Dice.getDice1(), Dice.getDice2());
+		
+        player.movePlayer(player, Dice.getSum());
+        
 		Field currentfield = fields[player.getPlayerPosition()-1];
 
 		if (currentfield instanceof Ownable) {
@@ -260,8 +262,6 @@ public class Game {
 			}
 			
 		}
-		
-
 		
 	}
 
