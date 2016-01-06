@@ -69,10 +69,13 @@ public class Game {
         Dice.roll();
         GUI.setDice(Dice.getDice1(), Dice.getDice2());
 		
+        // Move Player
         player.movePlayer(player, Dice.getSum());
         
+        // Where is Player?
 		Field currentfield = fields[player.getPlayerPosition()-1];
 
+		// Which action should be taken?
 		if (currentfield instanceof Ownable) {
 
 			landOnOwnable(player, currentfield);
