@@ -33,6 +33,10 @@ public class Game {
 			
 			for (int i = 0; i < player.length; i++) {
 				
+				if (player[i].bankrupt()) {
+					checkWinner();
+				} 
+				
 				if (player[i].isInJail()) {
 					
 					doJailTurn(player[i]);
@@ -43,9 +47,6 @@ public class Game {
 					
 				}
 				
-				if (player[i].bankrupt()) {
-					checkWinner();
-				}
 				
 			}
 			
@@ -67,15 +68,39 @@ public class Game {
 
 		} else if (currentfield instanceof Luck) {
 			
-			
+			landOnLuck(player, currentfield);
 
 		} else if (currentfield instanceof Jail) {
+			
+			landOnJail(player, currentfield);
 
 		} else if (currentfield instanceof Refuge) {
+			
+			landOnJail(player, currentfield);
 
 		} else if (currentfield instanceof Empty) {
+			
+			landOnEmpty(player, currentfield);
 
 		}
+		
+	}
+
+	private void landOnEmpty(Player player, Field currentfield) {
+		
+		// Nothing should happen here
+		
+	}
+
+	private void landOnJail(Player player, Field currentfield) {
+		
+		// Move player to Jail
+		
+	}
+
+	private void landOnLuck(Player player, Field currentfield) {
+		
+		// Draw a luck card
 		
 	}
 
@@ -210,11 +235,24 @@ public class Game {
 	}
 
 
-	public static void checkWinner() {
+	public void checkWinner() {
 		
-		GUI.displayChanceCard("<center>"+player.getName()+" have won the game with a total of <br><br> "+players[x].getAssets()+"<br>assets.");
-		GUI.showMessage("");
-		return;
+		int numberofplayers = player.length;
+		int count = 0;
+		
+		for (int i = 0; i < player.length; i++) {
+			
+			if (player[i].bankrupt()) {
+				count++;
+			}
+			
+			if (numberofplayers == count) {
+				GUI.displayChanceCard("<center>"+ player[i].getName() +" have won the game with a total of <br><br> "+player[i].getAssets()+"<br>assets.");
+			}
+			
+		}
+		
+
 		
 	}
 
