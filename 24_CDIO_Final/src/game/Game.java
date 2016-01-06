@@ -71,10 +71,12 @@ public class Game {
 				if (players[i].getAssets() < 0) {
 					continue;
 				}
-
+				// Tjekker om spilleren er i fængsel
 				if (players[i].isJail()){
 
+					//Ser om spilleren vil betale for at komme ud eller slå med terningerne
 					boolean boo = GUI.getUserLeftButtonPressed(""+players[i].getName()+"", "Betal 1000 kr", "Slå med terningerne");
+					//hvis spilleren vælger at betale bliver han trukket 1000 og får en normal tur
 					if (boo) {
 						players[i].payMoney(1000);
 						players[i].setJail(false);
@@ -87,12 +89,15 @@ public class Game {
 						players[i].movePlayer(players[i], Dice.getSum());
 						GUI.setCar(players[i].getPlayerPosition(), players[i].getName());
 						continue;
-					} else {
 
+						//Hvis spilleren vælger at kaste terningerne:
+					} else {
+						// Kontrollerer om han har været i fængsel i 3 omgange
 						if (players[i].getJailDice() < 3){
 							GUI.getUserButtonPressed("", players[i].getName()+": Roll Dices");
 							Dice.roll();
 							GUI.setDice(Dice.getDice1(), Dice.getDice2());
+							//Hvis han slår to ens kommer han ud af fængslet og får en ekstra tur
 							if (Dice.issame()){
 								players[i].movePlayer(players[i], Dice.getSum());
 								GUI.setCar(players[i].getPlayerPosition(), players[i].getName());
@@ -100,10 +105,25 @@ public class Game {
 								players[i].setJail(false);
 								count--;
 								continue;
+								// Hvis han ikke slår to ens bliver det næste spillers tur
+							} else {
+
+								players[i].setJailDice(players[i].getJailDice()+1);
+								continue;
 							}
-							players[i].setJailDice(players[i].getJailDice()+1);
-							continue;
+							/**
+							 * Hvis han har været i fængsel 3 omgange, betaler man automatisk 1000 for at komme ud
+							 * og får en normal tur herefter
+							 */
+
+						} else{
+							players[i].payMoney(1000);
+							GUI.setBalance(players[i].getName(), players[i].getMoney());
+							GUI.displayChanceCard("Du har været i fængsel i 3 omgange og betaler automatisk 1000 kr for at komme ud");
+							players[i].setJail(false);
+							players[i].setJailDice(0);
 						}
+
 
 					}
 
