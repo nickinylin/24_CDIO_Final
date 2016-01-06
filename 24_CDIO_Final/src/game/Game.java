@@ -32,8 +32,7 @@ public class Game {
 		// Create Fields
 		fields = Field.createFields();
 		
-		Setup setup = new Setup();
-		Player[] players = setup.createPlayers();
+		new Setup();
 		
 		String test = GUI.getUserButtonPressed("Vælg en knap", "1","2","3","4","5");
 
@@ -69,7 +68,7 @@ public class Game {
 	
 	public void doNormalTurn(Player player) {
 		
-		Field currentfield = fields[Player.getPlayerPosition()-1];
+		Field currentfield = fields[player.getPlayerPosition()-1];
 
 		if (currentfield instanceof Ownable) {
 

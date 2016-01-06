@@ -17,7 +17,7 @@ public class Player {
     private String name;
     private int move = 0;
     private boolean jail = false;
-    private int jailDice = 0;
+    private int jailTurn = 0;
     
     
     
@@ -121,12 +121,12 @@ public class Player {
 		this.jail = jail;
 	}
 
-	public int getJailDice() {
-		return jailDice;
+	public int getJailTurn() {
+		return jailTurn;
 	}
 
-	public void setJailDice(int jailDice) {
-		this.jailDice = jailDice;
+	public void setJailTurn(int jailTurn) {
+		this.jailTurn = jailTurn;
 	}
 	public boolean isInJail() {
 		return jail;
