@@ -10,7 +10,7 @@ public class Luck extends Field {
 
 	@Override
 	public void landOnField(Player player) {
-		card.drawcard(player);	
+		card.drawcard();	
 	}
     
 }
