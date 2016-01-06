@@ -15,7 +15,8 @@ public class Player {
     
     private Bank bank;
     private String name;
-    private int move = 0;
+    private int move = 1;
+    private int extraturn = 0;
     private boolean jail = false;
     private int jailTurn = 0;
     
@@ -25,6 +26,7 @@ public class Player {
         this.name = name;
         this.bank = new Bank();
     }
+    
     /**
      * Method gets the name of the player.
      * @return String Playername
@@ -32,17 +34,29 @@ public class Player {
     public String getName() {
         return name;
     }
+    
+    public int getNumberOfExtraTurns() {
+    	return extraturn;
+    }
+    
+    public int setNumberOfExtraTurns(int roll) {
+    	extraturn = extraturn + roll;
+    	return extraturn;
+    }
+    
+    public int resetExtraTurns() {
+    	extraturn = 0;
+    	return extraturn;
+    }
+    
     /**
      * Method moves the player in the GUI
      * @param player
      * @param move
      */
     public void movePlayer(Player player, int move) {
-        
-        if (this.move == 0) {
-            this.move = move;
-            GUI.setCar(move, player.getName());
-        } else if (this.move + move > Field.getNumberOfFields()) {
+    	
+    	if (this.move + move > Field.getNumberOfFields()) {
             int go = this.move + move;
             int newmove = go%Field.getNumberOfFields();
             bank.giveMoney(4000);

@@ -76,10 +76,10 @@ public class Game {
         Dice.roll();
         GUI.setDice(Dice.getDice1(), Dice.getDice2());
 		
-        // Move Player
+        // Move the Player
         player.movePlayer(player, Dice.getSum());
         
-        // Where is Player?
+        // Where is the Player?
 		Field currentfield = fields[player.getPlayerPosition()-1];
 
 		// Which action should be taken?
@@ -103,6 +103,20 @@ public class Game {
 			
 			landOnEmpty(player, currentfield);
 
+		}
+		
+		if (Dice.issame()) {
+			
+			if (player.getNumberOfExtraTurns() < 3) {
+				
+				doNormalTurn(player);
+				
+			} else {
+				
+				// Move play to jail
+				
+			}
+			
 		}
 		
 	}
@@ -194,16 +208,18 @@ public class Game {
 
 	private void landOnOwnable(Player player, Field currentfield) {
 		if (currentfield instanceof Territory) {
-
+			
 			if (((Ownable) currentfield).fieldowned) {
-
+				
 				// Hvem ejer feltet?
 				if (((Ownable) currentfield).fieldowner.equals(player)) {
-
-					// Du ejer det selv
+					
+					// Player ejer det selv
 					int numberofgroupfields = 0;
-					int ownedfields = 0;
-
+					int numberofownedfields = 0;
+					
+					Field[] ownedfields = new Field[3];
+					
 					for (Field f : fields) {
 						if (f instanceof Territory) {
 							Territory t = (Territory) f;
@@ -211,57 +227,78 @@ public class Game {
 							if (t.getFieldGroup() == ((Territory) currentfield).getFieldGroup()) {
 								numberofgroupfields++;
 								if (t.getOwner().equals(player) ) {
-									ownedfields++;
+									numberofownedfields++;
 								}
 							}
 						}
 					}
-
-					if (numberofgroupfields == ownedfields) {
+					
+					if (numberofgroupfields == numberofownedfields) {
 						
-						//buyhouse or hotel
+						boolean buybuilding = GUI.getUserLeftButtonPressed(""+player.getName()+" vil du købe huse eller hoteller på dine grunde?", "Ja", "Nej");
+
+						if (buybuilding) {
+							String buy = GUI.getUserSelection(""+player.getName()+" vælg hvilke grunde du vil købe hus på", "1", "2", "3");
+						}
+						
 					}
 
 				} else {
 
-					// Du skal betale rente
+					// What is the rent?
+					// Need to find rent
 					((Ownable) currentfield).payRent(player);
 
 				}
 
-			} else { // The field was not owned
+			} else { // The Territory field was not owned
 				
-				// Want to buy field?
+				boolean buyfield = GUI.getUserLeftButtonPressed(""+player.getName()+" du er landet på "+((Territory) currentfield).getName()+", vil du købe grunden?", "Ja", "Nej");
+
+				if (buyfield) {
+					((Territory) currentfield).buyField(player);
+				}
+				
 			}
 
 		} else if (currentfield instanceof Fleet) {
 			
 			if (((Ownable) currentfield).fieldowned) {
 				
-				if (((Ownable) currentfield).fieldowner.equals(player)) {
-					// Du ejer selv flåden.
-				} else {
-					// Du skal betale rente
+				if (((Ownable) currentfield).fieldowner.equals(player) == false) {
+
 					((Ownable) currentfield).payRent(player);
+					
 				}
 				
 			} else {
-				// buy fleet
+				
+				boolean buyfleet = GUI.getUserLeftButtonPressed(""+player.getName()+" du er landet på "+((Fleet) currentfield).getName()+", vil du købe flåden?", "Ja", "Nej");
+				
+				if (buyfleet) {
+					((Fleet) currentfield).buyField(player);
+				}
+				
 			}
 
 		} else if (currentfield instanceof Labor) {
 
 			if (((Ownable) currentfield).fieldowned) {
 				
-				if (((Ownable) currentfield).fieldowner.equals(player)) {
-					// Du ejer slev Labor
-				} else {
-					// Du skal betale rente
+				if (((Ownable) currentfield).fieldowner.equals(player) == false) {
+
 					((Ownable) currentfield).payRent(player);
+					
 				}
 				
 			} else {
-				// buy labor
+				
+				boolean buylabor = GUI.getUserLeftButtonPressed(""+player.getName()+" du er landet på "+((Labor) currentfield).getName()+", vil du købe denne fabrik?", "Ja", "Nej");
+				
+				if (buylabor) {
+					((Labor) currentfield).buyField(player);
+				}
+				
 			}
 			
 		}
