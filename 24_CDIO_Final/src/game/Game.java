@@ -32,7 +32,8 @@ public class Game {
 		// Create Fields
 		fields = Field.createFields();
 		
-		new Setup();
+		Setup setup = new Setup();
+		player = setup.createPlayers();
 		
 		String test = GUI.getUserButtonPressed("Vælg en knap", "1","2","3","4","5");
 

@@ -11,7 +11,6 @@ public class Setup {
 	
 
 	public Setup() {
-		createPlayers();
 		
 	}
 	
