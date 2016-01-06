@@ -51,7 +51,10 @@ public class Fleet extends Ownable {
     public int getPrice() {
         return fieldprice;
     }
-    
+    public boolean getFieldOwned()
+    {
+    	return fieldowned;
+    }
     
     
 }
