@@ -10,7 +10,11 @@ public class Setup {
 	private static Player[] id;
 	
 
-
+	public Setup() {
+		createPlayers();
+		
+	}
+	
 	public Player[] createPlayers() {
 		// How many Players?
 		Player[] players = null;
