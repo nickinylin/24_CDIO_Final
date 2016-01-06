@@ -33,7 +33,7 @@ public abstract class Field {
 				new Luck ("Prøv lykken"),
 				new Territory ("Hvidovrevej",1,1200,1000,50,250,750,2250,4000,6000),
 				new Tax ("Betal indkomst skat",4000, "special"),
-				new Fleet ("Scanlines! Helsingør - Helsingborg"),
+				new Fleet ("Scanlines!<br> Helsingør - Helsingborg"),
 				new Territory ("Roskildevej",2, 2000, 1000,100,600,1800,5400,8000,11000),
 				new Luck ("Prøv lykken"),
 				new Territory ("Valby Langgade", 2, 2000, 1000,100,600,1800,5400,8000,11000),
@@ -43,7 +43,7 @@ public abstract class Field {
 				new Labor ("Tuborg"),
 				new Territory ("Bulowsvej", 3, 2800,2000,200,1000,3000,9000,12500,15000),
 				new Territory ("Gl. Kongevej", 3, 3200,2000,250,1250,3750,10000,14000,18000),
-				new Fleet ("Mols-linien! En genvej i Danmark"),
+				new Fleet ("Mols-linien!<br> En genvej i Danmark"),
 				new Territory ("Bernstorffsvej", 4, 3600,2000,300,1400,4000,11000,15000,19000),
 				new Luck ("Prøv lykken"),
 				new Territory ("Hellerupvej", 4, 3600,2000,300,1400,4000,11000,15000,19000),
@@ -53,7 +53,7 @@ public abstract class Field {
 				new Luck ("Prøv lykken"),
 				new Territory ("Østerbrogade",5,4400,3000,350,1800,5000,14000,17500,21000),
 				new Territory ("Grønningen",5,4800,3000,400,2000,6000,15000,18500,22000),
-				new Fleet ("Scanlines! Gedser - Rostock"),
+				new Fleet ("Scanlines!<br> Gedser - Rostock"),
 				new Territory ("Bredgade",6,5200,3000,450,2200,6600,16000,19500,23000),
 				new Territory ("Kgs. Nytorv",6,5200,3000,450,2200,6600,16000,19500,23000),
 				new Labor ("Carlsberg"),
@@ -63,7 +63,7 @@ public abstract class Field {
 				new Territory ("Vimmelskaftet",7,6000,4000,550,2600,7800,18000,22000,25000),
 				new Luck ("Prøv lykken"),
 				new Territory ("Nygade",7,6400,4000,600,3000,9000,20000,24000,28000),
-				new Fleet ("Scanlines! Rødby - Puttgarden"),
+				new Fleet ("Scanlines!<br> Rødby - Puttgarden"),
 				new Luck ("Prøv lykken"),
 				new Territory ("Frederiksberggade",8,7000,4000,700,3500,10000,22000,26000,30000),
 				new Tax ("Ekstraordinær statsskat - betal",2000,"false"),
@@ -197,7 +197,7 @@ public abstract class Field {
 			} else if (field instanceof Fleet) {
 				list[i] = new Shipping.Builder()
 						.setTitle(fields[i].fieldname)
-						.setDescription("Rent: 500-4000")
+						.setDescription("Rent: 500-4000<br>"+fields[i].fieldname)
 						.setSubText("")
 						.setBgColor(Color.WHITE)
 						.setFgColor(Color.BLACK)
@@ -208,6 +208,7 @@ public abstract class Field {
 						.setBgColor(Color.BLACK)
 						.setFgColor(Color.WHITE)
 						.build();
+				
 			} else if (field instanceof Jail) {
 				list[i] = new desktop_fields.Jail.Builder()
 						.setPicture("GoToJail.jpg")

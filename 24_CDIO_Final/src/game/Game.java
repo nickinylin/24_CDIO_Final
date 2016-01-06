@@ -127,6 +127,7 @@ public class Game {
 				players[i].bankrupt();
 
 			}
+			
 		}
 
 	}

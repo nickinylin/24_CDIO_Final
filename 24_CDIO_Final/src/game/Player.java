@@ -44,8 +44,9 @@ public class Player {
         } else if (this.move + move > Field.getNumberOfFields()) {
             int go = this.move + move;
             int newmove = go%Field.getNumberOfFields();
-            
+            bank.giveMoney(4000);
             GUI.removeCar(this.move, player.getName());
+            GUI.setBalance(name, bank.getMoney());
             this.move = newmove;
             GUI.setCar(newmove, player.getName());
         } else {
@@ -63,8 +64,20 @@ public class Player {
     public int getPlayerPosition() {
         return this.move;
     }
-    
-    
+    public void setPlayerPosistion(Player player, int destination){
+    if (move>destination){
+
+    bank.giveMoney(4000);
+    GUI.removeCar(this.move, name);
+	move=destination;
+    GUI.setBalance(name, bank.getMoney());
+    GUI.setCar(move, name);
+    }
+    else
+    GUI.removeCar(this.move, name);
+	move=destination;
+    GUI.setCar(move, name);
+    }
     @Override
     public boolean equals(Object obj) {
         if (this == obj) return true;
