@@ -6,7 +6,7 @@ import game.Bank;
 import game.Player;
 
 public class PlayerController {
-    private int move = 1;
+    
     private Bank bank;
 
 	/**
@@ -15,10 +15,9 @@ public class PlayerController {
      * @param move
      */
 	
-	//TODO refactor - move to controller
     public void movePlayer(Player player, int move, Field[] fields) {
     	
-    	if (this.move + move > fields.length) {
+    	if (player.getMove() + move > fields.length) {
             int go = this.move + move;
             int newmove = go%fields.length;
             bank.giveMoney(4000);

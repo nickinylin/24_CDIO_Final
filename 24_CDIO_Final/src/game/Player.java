@@ -18,6 +18,7 @@ public class Player {
     private int extraturn = 0;
     private boolean jail = false;
     private int jailTurn = 0;
+    private int move = 1;
     
     
     
@@ -103,5 +104,13 @@ public class Player {
 	}
 	public boolean isInJail() {
 		return jail;
+	}
+
+	public int getMove() {
+		return move;
+	}
+
+	public void setMove(int move) {
+		this.move = move;
 	}
 }
