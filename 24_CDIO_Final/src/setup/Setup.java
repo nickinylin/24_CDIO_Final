@@ -154,7 +154,6 @@ public class Setup {
 
 			} else if (field instanceof Refuge) {
 				Refuge refuge = (Refuge) field;
-				System.out.println("%%%% "+field.getName());
 				if (refuge.type() == "Start") {
 					list[i] = new desktop_fields.Refuge.Builder()
 							.setTitle(field.getName())
