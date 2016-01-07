@@ -19,14 +19,14 @@ public abstract class Ownable extends Field {
     protected int fieldprice;
     public boolean fieldowned;
     
-    public abstract int getRent();
+    public abstract int getRent(Field[] fields);
     
     /**
      * Bruges når en spiller lander på et felt der er ejet af en anden spiller.
      * @param player
      */
-    public void payRent(Player player) {
-        int payamount = getRent();
+    public void payRent(Player player, Field[] fields) {
+        int payamount = getRent(fields);
         player.payMoney(payamount);
         this.fieldowner.giveMoney(payamount);
         
@@ -39,7 +39,7 @@ public abstract class Ownable extends Field {
      * N�r spilleren �nsker at k�be et ledigt felt. Tager den aktuelle Player.
      * @param player
      */
-    public void buyField(Player player){
+    public void buyField(Player player, Field[] fields){
         player.payMoney(fieldprice);
         player.setAssets(fieldprice);
         fieldowned = true;
@@ -48,26 +48,26 @@ public abstract class Ownable extends Field {
         // Kald direkte til GUI fra entiti er et problem
         GUI.setOwner(player.getPlayerPosition(), player.getName());
         GUI.setBalance(player.getName(), player.getMoney());
-        GUI.setSubText(player.getPlayerPosition(), "Leje: "+getRent()+"");
+        GUI.setSubText(player.getPlayerPosition(), "Leje: "+getRent(fields)+"");
     }
     
-    public void updateFieldGroup(Player player, Field field) {
+    public void updateFieldGroup(Player player, Field currentField, Field[] fields) {
     	
 			for (int i = 0; i < fields.length; i++) {
 				Field f = fields[i];
 				if (f instanceof Territory) {
 					Territory territory = (Territory) f;
 
-					if (territory.getFieldGroup() == ((Territory) field).getFieldGroup()) {
-						GUI.setSubText(i+1, "Leje: "+territory.getRent()+"");
+					if (territory.getFieldGroup() == ((Territory) currentField).getFieldGroup()) {
+						GUI.setSubText(i+1, "Leje: "+territory.getRent(fields)+"");
 					}
 				}
 				
 				if (f instanceof Fleet) {
 					Fleet fleet = (Fleet) f;
 					
-					if (player.equals(((Fleet) field).fieldowner)) {
-						GUI.setSubText(i+1, "Leje: "+fleet.getRent()+"");
+					if (player.equals(((Fleet) currentField).fieldowner)) {
+						GUI.setSubText(i+1, "Leje: "+fleet.getRent(fields)+"");
 					}
 				}
 			}

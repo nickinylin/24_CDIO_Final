@@ -38,7 +38,7 @@ public class Territory extends Ownable {
     
 
     @Override
-    public int getRent() {
+    public int getRent(Field[] fields) {
         return fieldrent;
     }
 

@@ -19,7 +19,7 @@ public class Fleet extends Ownable {
      * @return
      */
     @Override
-    public int getRent() {
+    public int getRent(Field[] fields) {
         int fieldrent = 0;
         int count = 0;
         

@@ -19,7 +19,7 @@ public class Labor extends Ownable {
     }
 
     @Override
-    public int getRent() {
+    public int getRent(Field[] fields) {
     	int count=0;
     	for (Field f : fields) {
             if (f instanceof Labor) {

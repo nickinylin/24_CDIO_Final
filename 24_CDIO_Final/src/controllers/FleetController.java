@@ -14,7 +14,7 @@ public class FleetController {
 
 			if (fleet.fieldowner.equals(player) == false) {
 
-				fleet.payRent(player);
+				fleet.payRent(player, fields);
 
 			}
 
@@ -23,7 +23,7 @@ public class FleetController {
 			boolean buyfleet = GUI.getUserLeftButtonPressed(""+player.getName()+" du er landet på "+fleet.getName()+", vil du købe flåden?", "Ja", "Nej");
 
 			if (buyfleet) {
-				fleet.buyField(player);
+				fleet.buyField(player, fields);
 			}
 
 		}
