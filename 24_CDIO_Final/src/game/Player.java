@@ -56,9 +56,9 @@ public class Player {
      */
     public void movePlayer(Player player, int move) {
     	
-    	if (this.move + move > Field.getNumberOfFields()) {
+    	if (this.move + move > Game.fields.length) {
             int go = this.move + move;
-            int newmove = go%Field.getNumberOfFields();
+            int newmove = go%Game.fields.length;
             bank.giveMoney(4000);
             GUI.removeCar(this.move, player.getName());
             GUI.setBalance(name, bank.getMoney());
