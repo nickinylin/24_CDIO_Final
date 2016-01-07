@@ -120,7 +120,8 @@ public class Player {
 		return move;
 	}
 
-	public void setMove(int move) {   
+	public void setMove(int move) {
+		//TODO denne metode er forkert
 		if (this.move>move){
 		    bank.giveMoney(4000);
 		    }
