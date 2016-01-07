@@ -97,7 +97,7 @@ public class Setup {
 					list[i] = new Street.Builder()
 							.setTitle(field.getName())
 							.setSubText("Costs: "+territory.getPrice()+"")
-							.setDescription("Rent: "+territory.getRent()+"")
+							.setDescription("Rent: "+territory.getRent(fields)+"")
 							.setBgColor(new Color(56, 132, 218))
 							.setFgColor(Color.BLACK)
 							.build();
@@ -105,7 +105,7 @@ public class Setup {
 					list[i] = new Street.Builder()
 							.setTitle(fields[i].getName() )
 							.setSubText("Costs: "+territory.getPrice() +"")
-							.setDescription("Rent: "+territory.getRent()+"")
+							.setDescription("Rent: "+territory.getRent(fields)+"")
 							.setBgColor(new Color(224, 71, 52))
 							.setFgColor(Color.BLACK)
 							.build();
@@ -113,7 +113,7 @@ public class Setup {
 					list[i] = new Street.Builder()
 							.setTitle(fields[i].getName() )
 							.setSubText("Costs: "+territory.getPrice() +"")
-							.setDescription("Rent: "+territory.getRent()+"")
+							.setDescription("Rent: "+territory.getRent(fields)+"")
 							.setBgColor(new Color(225, 231, 0))
 							.setFgColor(Color.BLACK)
 							.build();
@@ -121,7 +121,7 @@ public class Setup {
 					list[i] = new Street.Builder()
 							.setTitle(fields[i].getName())
 							.setSubText("Costs: "+territory.getPrice()+"")
-							.setDescription("Rent: "+territory.getRent()+"")
+							.setDescription("Rent: "+territory.getRent(fields)+"")
 							.setBgColor(new Color(140, 121, 121))
 							.setFgColor(Color.WHITE)
 							.build();
@@ -129,7 +129,7 @@ public class Setup {
 					list[i] = new Street.Builder()
 							.setTitle(fields[i].getName())
 							.setSubText("Costs: "+territory.getPrice()+"")
-							.setDescription("Rent: "+territory.getRent()+"")
+							.setDescription("Rent: "+territory.getRent(fields)+"")
 							.setBgColor(new Color(255, 18, 31))
 							.setFgColor(Color.BLACK)
 							.build();
@@ -137,7 +137,7 @@ public class Setup {
 					list[i] = new Street.Builder()
 							.setTitle(fields[i].getName())
 							.setSubText("Costs: "+territory.getPrice()+"")
-							.setDescription("Rent: "+territory.getRent()+"")
+							.setDescription("Rent: "+territory.getRent(fields)+"")
 							.setBgColor(new Color(250, 250, 250))
 							.setFgColor(Color.BLACK)
 							.build();
@@ -145,7 +145,7 @@ public class Setup {
 					list[i] = new Street.Builder()
 							.setTitle(fields[i].getName())
 							.setSubText("Costs: "+territory.getName()+"")
-							.setDescription("Rent: "+territory.getRent()+"")
+							.setDescription("Rent: "+territory.getRent(fields)+"")
 							.setBgColor(new Color(255, 202, 70))
 							.setFgColor(Color.BLACK)
 							.build();
@@ -153,7 +153,7 @@ public class Setup {
 					list[i] = new Street.Builder()
 							.setTitle(fields[i].getName())
 							.setSubText("Costs: "+territory.getPrice()+"")
-							.setDescription("Rent: "+territory.getRent()+"")
+							.setDescription("Rent: "+territory.getRent(fields)+"")
 							.setBgColor(new Color(112, 21, 97))
 							.setFgColor(Color.WHITE)
 							.build();
