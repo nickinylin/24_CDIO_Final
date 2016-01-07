@@ -88,7 +88,7 @@ public class Game {
 
 		} else if (currentfield instanceof Luck) {
 			
-			landOnLuck(player, currentfield);
+			//landOnLuck(player, currentfield);
 
 		} else if (currentfield instanceof Jail) {
 			
@@ -312,10 +312,9 @@ public class Game {
 
 							if (t.getFieldGroup() == ((Territory) currentfield).getFieldGroup()) {
 								numberofgroupfields++;
-								if (t.getOwner().equals(player) ) {
+								if (player.equals(t.getOwner())) {
 									ownedfields[i++] = t;
 									numberofownedfields++;
-									
 								}
 							}
 						}
