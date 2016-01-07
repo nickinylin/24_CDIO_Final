@@ -101,17 +101,9 @@ public class Game {
 			landOnJail(player, currentfield);
 
 		} else if (currentfield instanceof Refuge) {
-			
-			landOnJail(player, currentfield);
-
+			jailController.jail();
 		} else if (currentfield instanceof Tax) {
-			
-			landOnTax(player, currentfield);
-
-		} else if (currentfield instanceof Empty) {
-			
-			landOnEmpty(player, currentfield);
-
+			taxController.payTax(player, ((Tax) currentfield));
 		}
 		
 		if (Dice.issame()) {
@@ -131,92 +123,7 @@ public class Game {
 		
 	}
 
-	private void landOnEmpty(Player player, Field currentfield) {
-		
-		// Nothing should happen here
-		
-	}
-	
-	private void landOnTax(Player player, Field currentfield) {
-		
-		if (((Tax) currentfield).getSpecial() == "special") {
 
-            GUI.displayChanceCard("<center>"+player.getName()+" have landed on a TAX field");
-            
-            boolean boo = GUI.getUserLeftButtonPressed(""+player.getName()+"", "Pay 10%", "Pay "+ ((Tax) currentfield).getRent() +"");
-            
-            if (boo) {
-                int payamount = player.getAssets()*10/100;
-                
-                if (player.getMoney() > payamount) {
-                    player.payMoney(payamount);
-                    GUI.setBalance(player.getName(), player.getMoney());
-                    
-                } else {
-                    
-            		String paymethod = GUI.getUserButtonPressed("Hvordan vil du betale?", "Sælg felt", "Sælg bygning", "Bankrupt");
-            		
-            		if (paymethod == "Sælg felt") {
-            			//Sælg felt metode
-            		} else if (paymethod == "Sælg bygning") {
-            			
-            		} else if (paymethod == "Bankrupt") {
-            			player.bankrupt();
-            		}
-                    
-                }
-                
-                GUI.displayChanceCard("<center>"+player.getName()+" have landed on a TAX field<br><br>You paid "+payamount+".");
-                
-            } else {
-            	
-                if (player.getMoney() > ((Tax) currentfield).getRent()) {
-                	
-                    player.payMoney(((Tax) currentfield).getRent());
-                    GUI.setBalance(player.getName(), player.getMoney());
-                    
-                } else {
-                	
-            		String paymethod = GUI.getUserButtonPressed("Hvordan vil du betale?", "Sælg felt", "Sælg bygning", "Bankrupt");
-            		
-            		if (paymethod == "Sælg felt") {
-            			//Sælg felt metode
-            		} else if (paymethod == "Sælg bygning") {
-            			
-            		} else if (paymethod == "Bankrupt") {
-            			player.bankrupt();
-            		}
-            		
-                }
-                GUI.displayChanceCard("<center>"+player.getName()+" have landed on a TAX field<br><br>You paid "+((Tax) currentfield).getRent()+".");
-            }
-            GUI.setBalance(player.getName(), player.getMoney());
-        
-		} else { // There was no special tax option
-            
-            if (player.getMoney() < ((Tax) currentfield).getRent()) {
-            	
-        		String paymethod = GUI.getUserButtonPressed("Hvordan vil du betale?", "Sælg felt", "Sælg bygning", "Bankrupt");
-        		
-        		if (paymethod == "Sælg felt") {
-        			//Sælg felt metode
-        		} else if (paymethod == "Sælg bygning") {
-        			
-        		} else if (paymethod == "Bankrupt") {
-        			player.bankrupt();
-        		}
-        		
-            } else {
-            	
-                player.payMoney(((Tax) currentfield).getRent());
-                GUI.setBalance(player.getName(), player.getMoney());
-                GUI.displayChanceCard("<center>"+player.getName()+" have landed on a TAX field<br><br>You paid "+((Tax) currentfield).getRent()+".");
-                
-            }
-            
-        }
-		
-	}
 
 	private void landOnJail(Player player, Field currentfield) {
 		
