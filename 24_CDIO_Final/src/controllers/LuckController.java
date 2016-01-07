@@ -8,7 +8,7 @@ import game.Player;
 
 public class LuckController {
 
-	private void landOnLuck(Player player, Field currentfield) {
+	public void landOnLuck(Player player, Field[] fields) {
 		
 		// Draw a luck card
 		

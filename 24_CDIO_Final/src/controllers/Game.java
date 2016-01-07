@@ -95,12 +95,12 @@ public class Game {
 			fleetController.landOnFleet(player, ((Fleet) currentfield), fields);
 		} else if (currentfield instanceof Labor) {
 			laborController.landOnLabor(player, ((Labor) currentfield), fields);
-		} else if (currentfield instanceof Luck) {
-			luckController.landOnLuck();
-		} else if (currentfield instanceof Jail) {
-			jailController.jail();
 		} else if (currentfield instanceof Refuge) {
 			refugeController.landOnRefuge(player, ((Refuge) currentfield), fields);
+		} else if (currentfield instanceof Luck) {
+			luckController.landOnLuck(player, fields);
+		} else if (currentfield instanceof Jail) {
+			jailController.jail();
 		} else if (currentfield instanceof Tax) {
 			taxController.payTax(player, ((Tax) currentfield));
 		}

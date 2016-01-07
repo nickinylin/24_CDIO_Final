@@ -4,6 +4,7 @@ import desktop_resources.GUI;
 import fields.Field;
 import fields.Fleet;
 import fields.Ownable;
+import fields.Refuge;
 import game.Player;
 
 public class RefugeController {
