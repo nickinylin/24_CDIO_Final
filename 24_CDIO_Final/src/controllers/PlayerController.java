@@ -27,15 +27,13 @@ public class PlayerController {
 				try {
 					Thread.sleep(100);
 					if (player.getPlayerPosition() + i > fields.length) {
-						int x = 1;
-			            int go = player.getPlayerPosition() + move;
+			            int go = player.getPlayerPosition() + i;
 			            int newmove = go%fields.length;
 			            GUI.removeAllCars(player.getName());
-			            GUI.setCar(newmove+x, player.getName());
-						x++;
+			            GUI.setCar(newmove, player.getName());
 					} else {
 						GUI.removeAllCars(player.getName());
-						GUI.setCar(+i, player.getName());
+						GUI.setCar(player.getPlayerPosition()+i, player.getName());
 					}
 				}
 				catch(InterruptedException E) {
@@ -65,6 +63,5 @@ public class PlayerController {
 		}
 
 	}
-
 
 }

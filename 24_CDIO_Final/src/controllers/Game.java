@@ -42,7 +42,7 @@ public class Game {
 	}
 
 	public Game() {
-
+		
 		Setup setup = new Setup();
 		// Create Fields players and card deck
 		fields = setup.createFields();
