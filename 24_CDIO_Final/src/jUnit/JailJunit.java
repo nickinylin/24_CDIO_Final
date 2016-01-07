@@ -27,9 +27,7 @@ public class JailJunit {
 		player1.setJail(true);
 		int expected=player1.getMoney()-1000;
 		
-		
-		
-		fail("Not yet implemented");
+
 	}
 
 }
