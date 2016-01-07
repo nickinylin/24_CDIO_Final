@@ -29,9 +29,10 @@ public class Game {
 	private TaxController taxController = new TaxController();
 	private LuckController luckController = new LuckController();
 	private TerritoryController territoryController = new TerritoryController();
-	private FleetController FleetController = new FleetController();
-	private LaborController LaborController = new LaborController();
+	private FleetController fleetController = new FleetController();
+	private LaborController laborController = new LaborController();
 	private JailController jailController = new JailController();
+	private RefugeController refugeController = new RefugeController();
 	private static Player[] player;
 	protected static Field[] fields;
 
@@ -88,20 +89,18 @@ public class Game {
 		Field currentfield = fields[player.getPlayerPosition()-1];
 
 		// Which action should be taken?
-		if (currentfield instanceof Ownable) {
-
-			landOnOwnable(player, currentfield);
-
+		if (currentfield instanceof Territory) {
+			territoryController.landOnTerritory(player, ((Territory) currentfield), fields);
+		} else if (currentfield instanceof Fleet) {
+			fleetController.landOnFleet(player, ((Fleet) currentfield), fields);
+		} else if (currentfield instanceof Labor) {
+			laborController.landOnLabor(player, ((Labor) currentfield), fields);
 		} else if (currentfield instanceof Luck) {
-			
-			//landOnLuck(player, currentfield);
-
+			luckController.landOnLuck();
 		} else if (currentfield instanceof Jail) {
-			
-			landOnJail(player, currentfield);
-
-		} else if (currentfield instanceof Refuge) {
 			jailController.jail();
+		} else if (currentfield instanceof Refuge) {
+			refugeController.landOnRefuge(player, ((Refuge) currentfield), fields);
 		} else if (currentfield instanceof Tax) {
 			taxController.payTax(player, ((Tax) currentfield));
 		}
