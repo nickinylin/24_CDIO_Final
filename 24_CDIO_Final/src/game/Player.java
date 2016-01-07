@@ -49,7 +49,29 @@ public class Player {
     	return extraturn;
     }
     
-  
+    /**
+     * Method gets the position the player is on the board.
+     * @return int position
+     */
+    public int getPlayerPosition() {
+        return this.move;
+    }
+    
+    public void setPlayerPosistion(int destination){
+    	this.move = this.move + destination;
+//    if (move>destination){
+//
+//    bank.giveMoney(4000);
+//    GUI.removeCar(this.move, player.getName());
+//	move=destination;
+//    GUI.setBalance(player.getName(), bank.getMoney());
+//    GUI.setCar(move, player.getName());
+//    }
+//    else
+//    GUI.removeCar(this.move, player.getName());
+//	move=destination;
+//    GUI.setCar(move, player.getName());
+    }
     
     
 

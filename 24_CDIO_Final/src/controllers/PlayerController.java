@@ -6,53 +6,63 @@ import game.Bank;
 import game.Player;
 
 public class PlayerController {
-    
-    private Bank bank;
+
+	private Bank bank;
 
 	/**
-     * Method moves the player in the GUI
-     * @param player
-     * @param move
-     */
-	
-    public void movePlayer(Player player, int move, Field[] fields) {
-    	
-    	if (player.getMove() + move > fields.length) {
-            int go = this.move + move;
-            int newmove = go%fields.length;
-            bank.giveMoney(4000);
-            GUI.removeCar(this.move, player.getName());
-            GUI.setBalance(player.getName(), bank.getMoney());
-            this.move = newmove;
-            GUI.setCar(newmove, player.getName());
-        } else {
-            GUI.removeCar(this.move, player.getName());
-            this.move = this.move + move;
-            GUI.setCar(this.move, player.getName());
-        }
-        
-    }
-    
-    /**
-     * Method gets the position the player is on the board.
-     * @return int position
-     */
-    public int getPlayerPosition() {
-        return this.move;
-    }
-    public void setPlayerPosistion(Player player, int destination){
-    if (move>destination){
+	 * Method moves the player in the GUI
+	 * @param player
+	 * @param move
+	 */
 
-    bank.giveMoney(4000);
-    GUI.removeCar(this.move, player.getName());
-	move=destination;
-    GUI.setBalance(player.getName(), bank.getMoney());
-    GUI.setCar(move, player.getName());
-    }
-    else
-    GUI.removeCar(this.move, player.getName());
-	move=destination;
-    GUI.setCar(move, player.getName());
-    }
+	public void movePlayer(Player player, int move, Field[] fields) {
+
+		int nextposition = player.getPlayerPosition() + move;
+		int maxmove = nextposition%fields.length;
+
+		if (nextposition >= fields.length) {
+
+			for (int i = 1; i < move; i++) {
+
+				try {
+					Thread.sleep(200);
+					if (player.getPlayerPosition() + i >= fields.length) {
+						int x = 1;
+						GUI.removeCar(player.getMove()+i, player.getName());
+						GUI.setCar(x, player.getName());
+						x++;
+					} else {
+						GUI.removeCar(player.getMove()+i-1, player.getName());
+						GUI.setCar(+i, player.getName());
+					}
+				}
+				catch(InterruptedException E) {
+					Thread.currentThread().interrupt();
+				}
+
+			}
+
+			bank.giveMoney(4000);
+			GUI.setBalance(player.getName(), bank.getMoney());
+
+		} else {
+
+			for (int i = 1; i <= move+1; i++) {
+
+				try {
+					Thread.sleep(200);
+					GUI.removeCar(player.getPlayerPosition()+i-1, player.getName());
+					GUI.setCar(player.getPlayerPosition()+i, player.getName());
+				}
+				catch(InterruptedException E) {
+					Thread.currentThread().interrupt();
+				}
+
+			}
+			player.setPlayerPosistion(move);
+		}
+
+	}
+
 
 }
