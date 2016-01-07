@@ -33,6 +33,7 @@ public class Game {
 	private LaborController laborController = new LaborController();
 	private JailController jailController = new JailController();
 	private RefugeController refugeController = new RefugeController();
+	private PlayerController playerController = new PlayerController();
 	private static Player[] player;
 	protected static Field[] fields;
 
@@ -83,10 +84,10 @@ public class Game {
         GUI.setDice(Dice.getDice1(), Dice.getDice2());
 		
         // Move the Player
-        player.movePlayer(player, Dice.getSum(), fields);
+        playerController.movePlayer(player, Dice.getSum(), fields);
         
         // Where is the Player?
-		Field currentfield = fields[player.getPlayerPosition()-1];
+		Field currentfield = fields[playerController.getPlayerPosition()-1];
 
 		// Which action should be taken?
 		if (currentfield instanceof Territory) {
@@ -156,8 +157,8 @@ public class Game {
 				GUI.setDice(Dice.getDice1(), Dice.getDice2());
 				//Hvis han slår to ens kommer han ud af fængslet og får en ekstra tur
 				if (Dice.issame()){
-					player.movePlayer(player, Dice.getSum(), fields);
-					GUI.setCar(player.getPlayerPosition(), player.getName());
+					playerController.movePlayer(player, Dice.getSum(), fields);
+					GUI.setCar(playerController.getPlayerPosition(), player.getName());
 					player.setJailTurn(0);
 					player.setJail(false);
 					
