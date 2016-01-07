@@ -30,15 +30,4 @@ public class FleetController {
 
 	}
 	
-    public void buyFleet(Player player, Field[] fields){
-        player.payMoney(fields.fieldprice);
-        player.setAssets(fieldprice);
-        fieldowned = true;
-        fieldowner = player;
-        // TODO Bør flyttes til alle controlers
-        // Kald direkte til GUI fra entities er et problem
-        GUI.setOwner(player.getPlayerPosition(), player.getName());
-        GUI.setBalance(player.getName(), player.getMoney());
-        GUI.setSubText(player.getPlayerPosition(), "Leje: "+getRent(fields)+"");
-    }
 }
