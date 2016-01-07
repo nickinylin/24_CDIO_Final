@@ -57,7 +57,7 @@ public class Player {
         return this.move;
     }
     
-    public void setPlayerPosistion(int destination){
+    public void setPlayerPosition(int destination){
     	this.move = this.move + destination;
     }
     
@@ -114,17 +114,6 @@ public class Player {
 	}
 	public boolean isInJail() {
 		return jail;
-	}
-
-	public int getMove() {
-		return move;
-	}
-
-	public void setMove(int move) {   
-		if (this.move>move){
-		    bank.giveMoney(4000);
-		    }
-		this.move = move;		  
 	}
 
 }

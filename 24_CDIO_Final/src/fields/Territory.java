@@ -40,6 +40,7 @@ public class Territory extends Ownable {
 
     @Override
     public int getRent(Field[] fields) {
+    	// TODO her mangler vi at den udregner hvad lejen er med antal huse
         return fieldrent;
     }
     

@@ -26,14 +26,15 @@ public class PlayerController {
 
 				try {
 					Thread.sleep(100);
-					if (player.getPlayerPosition() + i >= fields.length) {
+					if (player.getPlayerPosition() + i > fields.length) {
 						int x = 1;
-						GUI.removeCar(i, player.getName());
-						GUI.removeCar(x, player.getName());
-						GUI.setCar(x, player.getName());
+			            int go = player.getPlayerPosition() + move;
+			            int newmove = go%fields.length;
+			            GUI.removeAllCars(player.getName());
+			            GUI.setCar(newmove+x, player.getName());
 						x++;
 					} else {
-						GUI.removeCar(player.getMove()+i-1, player.getName());
+						GUI.removeAllCars(player.getName());
 						GUI.setCar(+i, player.getName());
 					}
 				}
@@ -42,9 +43,9 @@ public class PlayerController {
 				}
 
 			}
-
-			bank.giveMoney(4000);
-			GUI.setBalance(player.getName(), bank.getMoney());
+			player.setPlayerPosition(maxmove);
+			//bank.giveMoney(4000);
+			//GUI.setBalance(player.getName(), bank.getMoney());
 
 		} else {
 
@@ -60,7 +61,7 @@ public class PlayerController {
 				}
 
 			}
-			player.setPlayerPosistion(move);
+			player.setPlayerPosition(move);
 		}
 
 	}
