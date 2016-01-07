@@ -1,14 +1,14 @@
-//package controllers;
-//
-//import cards.Cards;
-//import cards.CardsMoveto;
-//import fields.Field;
-//import fields.Fleet;
-//import game.Player;
-//
-//public class LuckController {
-//
-//	public void landOnLuck(Player player, Field[] fields) {
+package controllers;
+
+import cards.Cards;
+import cards.CardsMoveto;
+import fields.Field;
+import fields.Fleet;
+import game.Player;
+
+public class LuckController {
+
+	public void landOnLuck(Player player, Field[] fields) {
 //		
 //		// Draw a luck card
 //		
@@ -92,5 +92,5 @@
 //	            
 //		
 //		
-//	}
-//}
+	}
+}

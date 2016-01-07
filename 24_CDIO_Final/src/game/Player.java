@@ -15,10 +15,10 @@ public class Player {
     
     private Bank bank;
     private String name;
-    private int move = 1;
     private int extraturn = 0;
     private boolean jail = false;
     private int jailTurn = 0;
+    private int move = 1;
     
     
     
@@ -50,50 +50,31 @@ public class Player {
     }
     
     /**
-     * Method moves the player in the GUI
-     * @param player
-     * @param move
-     */
-    //TODO refactor - move to controller
-    public void movePlayer(Player player, int move, Field[] fields) {
-    	
-    	if (this.move + move > fields.length) {
-            int go = this.move + move;
-            int newmove = go%fields.length;
-            bank.giveMoney(4000);
-            GUI.removeCar(this.move, player.getName());
-            GUI.setBalance(name, bank.getMoney());
-            this.move = newmove;
-            GUI.setCar(newmove, player.getName());
-        } else {
-            GUI.removeCar(this.move, player.getName());
-            this.move = this.move + move;
-            GUI.setCar(this.move, player.getName());
-        }
-        
-    }
-    
-    /**
      * Method gets the position the player is on the board.
      * @return int position
      */
     public int getPlayerPosition() {
         return this.move;
     }
-    public void setPlayerPosistion(Player player, int destination){
-    if (move>destination){
+    
+    public void setPlayerPosistion(int destination){
+    	this.move = this.move + destination;
+//    if (move>destination){
+//
+//    bank.giveMoney(4000);
+//    GUI.removeCar(this.move, player.getName());
+//	move=destination;
+//    GUI.setBalance(player.getName(), bank.getMoney());
+//    GUI.setCar(move, player.getName());
+//    }
+//    else
+//    GUI.removeCar(this.move, player.getName());
+//	move=destination;
+//    GUI.setCar(move, player.getName());
+    }
+    
+    
 
-    bank.giveMoney(4000);
-    GUI.removeCar(this.move, name);
-	move=destination;
-    GUI.setBalance(name, bank.getMoney());
-    GUI.setCar(move, name);
-    }
-    else
-    GUI.removeCar(this.move, name);
-	move=destination;
-    GUI.setCar(move, name);
-    }
     @Override
     public boolean equals(Object obj) {
         if (this == obj) return true;
@@ -145,5 +126,13 @@ public class Player {
 	}
 	public boolean isInJail() {
 		return jail;
+	}
+
+	public int getMove() {
+		return move;
+	}
+
+	public void setMove(int move) {
+		this.move = move;
 	}
 }
