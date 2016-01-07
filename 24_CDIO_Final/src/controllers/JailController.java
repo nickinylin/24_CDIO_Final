@@ -8,7 +8,7 @@ import game.Player;
 public class JailController {
 
 	public void jail(Player player) {
-		player.setJail(true);
+		player.setIsInJail(true);
 
 		if (player.getPlayerPosition() > 10) {
 			player.payMoney(4000);
@@ -20,7 +20,7 @@ public class JailController {
 
 	public void payJail(Player player) {
 		player.payMoney(1000);
-		player.setJail(false);
+		player.setIsInJail(false);
 		player.setJailTurn(0);
 		GUI.setBalance(player.getName(), player.getMoney());
 	}
@@ -34,7 +34,7 @@ public class JailController {
 			
 			//Hvis han slår to ens kommer han ud af fængslet og får en ekstra tur
 			if (Dice.issame()){
-				player.setJail(false);
+				player.setIsInJail(false);
 				player.setJailTurn(0);
 				return true;
 			}
@@ -54,7 +54,7 @@ public class JailController {
 			player.payMoney(1000);
 			GUI.setBalance(player.getName(), player.getMoney());
 			GUI.displayChanceCard("Du har været i fængsel i 3 omgange og betaler automatisk 1000 kr for at komme ud");
-			player.setJail(false);
+			player.setIsInJail(false);
 			player.setJailTurn(0);
 			
 		}
@@ -64,7 +64,7 @@ public class JailController {
 		PlayerController.movePlayer(player, Dice.getSum(), fields);
 		GUI.setCar(player.getPlayerPosition(), player.getName());
 		player.setJailTurn(0);
-		player.setJail(false);
+		player.setIsInJail(false);
 	}
 
 }

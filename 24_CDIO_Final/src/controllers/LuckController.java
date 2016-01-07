@@ -28,7 +28,7 @@ private CardsDeck deck=new CardsDeck();
                     player.setPlayerPosition(i);
                     if(player.getPlayerPosition()>i)
                     	player.payMoney(4000);
-                    player.setJail(true);
+                    player.setIsInJail(true);
                     }
                     else if(fields[i] instanceof Refuge){
                     	player.setPlayerPosition(i);

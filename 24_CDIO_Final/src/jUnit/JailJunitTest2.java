@@ -29,11 +29,11 @@ public class JailJunitTest2
 	public void testAfToEns() 
 	{
 		boolean expected=true;
-		player1.setJail(true);
+		player1.setIsInJail(true);
 		Dice.getDice1();
 		Dice.getDice2();
 		Dice.getDice1() = Dice.getDice2();
-		assertEquals(expected, player1.setJail(false));
+		assertEquals(expected, player1.setIsInJail(false));
 		
 		
 		

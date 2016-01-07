@@ -49,10 +49,12 @@ public class Fleet extends Ownable {
     public int getPrice() {
         return fieldprice;
     }
+    
     public boolean getFieldOwned()
     {
     	return fieldowned;
     }
+    
 	@Override
 	public void buyField(Player player, Field[] fields) {
         player.payMoney(fieldprice);

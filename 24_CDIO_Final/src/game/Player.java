@@ -101,7 +101,7 @@ public class Player {
         bank.setAssets(newamount);
     }
 
-	public void setJail(boolean jail) {
+	public void setIsInJail(boolean jail) {
 		this.jail = jail;
 	}
 

@@ -16,6 +16,7 @@ public class FleetController {
 
 				fleet.payRent(player, fields);
 				GUI.setBalance(player.getName(), player.getMoney());
+				
 			}
 
 		} else {

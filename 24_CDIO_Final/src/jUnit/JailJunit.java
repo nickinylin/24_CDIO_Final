@@ -21,11 +21,11 @@ public class JailJunit {
 	
 	@Test
 	public void pay1000() {
-		player1.setJail(true);
+		player1.setIsInJail(true);
 		
 		
 		int expected=player1.getMoney()-1000;
-		if (player1.setJail(true)){
+		if (player1.setIsInJail(true)){
 			System.out.println("Er i jail");
 		}
 		
