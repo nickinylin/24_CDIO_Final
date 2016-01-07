@@ -59,18 +59,6 @@ public class Player {
     
     public void setPlayerPosistion(int destination){
     	this.move = this.move + destination;
-//    if (move>destination){
-//
-//    bank.giveMoney(4000);
-//    GUI.removeCar(this.move, player.getName());
-//	move=destination;
-//    GUI.setBalance(player.getName(), bank.getMoney());
-//    GUI.setCar(move, player.getName());
-//    }
-//    else
-//    GUI.removeCar(this.move, player.getName());
-//	move=destination;
-//    GUI.setCar(move, player.getName());
     }
     
     
@@ -132,7 +120,11 @@ public class Player {
 		return move;
 	}
 
-	public void setMove(int move) {
-		this.move = move;
+	public void setMove(int move) {   
+		if (this.move>move){
+		    bank.giveMoney(4000);
+		    }
+		this.move = move;		  
 	}
+
 }

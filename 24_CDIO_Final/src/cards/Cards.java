@@ -4,7 +4,7 @@ public abstract class Cards {
 	protected Boolean holdable;
 	protected String cardtext;
 
-	protected String getText() {
+public String getText() {
 		return cardtext;
 	}
 
