@@ -10,7 +10,6 @@ import desktop_resources.GUI;
 import game.Player;
 
 public class Tax extends Field {
-    protected String fieldname;
     private int taxAmount;
     private String special;
     
@@ -22,11 +21,6 @@ public class Tax extends Field {
     
     public int getRent() {
         return taxAmount;
-    }
-    
-    @Override
-    public String getName() {
-        return this.fieldname;
     }
     
     public String getSpecial() {

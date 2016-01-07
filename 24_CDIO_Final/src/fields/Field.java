@@ -284,8 +284,17 @@ public abstract class Field {
 	 * Method returns the name of the field.
 	 * @return fieldName
 	 */
+<<<<<<< HEAD
+	public final String getName() {
+		return fieldname;
+	}
+
+	public Field(String name) {
+		this.fieldname = name;
+=======
 	public String getName() {
 		return this.fieldname;
+>>>>>>> branch 'master' of https://github.com/nickinylin/24_CDIO_Final
 	}
 
 	public static int getNumberOfFields() {

@@ -39,7 +39,10 @@ public class Territory extends Ownable {
     public int getRent() {
         return fieldrent;
     }
+<<<<<<< HEAD
+=======
 
+>>>>>>> branch 'master' of https://github.com/nickinylin/24_CDIO_Final
 
     public int getPrice() {
         return fieldprice;

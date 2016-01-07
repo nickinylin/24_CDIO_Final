@@ -10,7 +10,6 @@ import game.Dice;
 
 public class Labor extends Ownable {
     
-    protected String fieldname;
     Dice dice = new Dice();
      
     public Labor(String name) {
@@ -40,10 +39,6 @@ public class Labor extends Ownable {
         }
     }
 
-    @Override
-    public String getName() {
-        return fieldname;
-    }
 
     public int getPrice() {
         return super.fieldprice;

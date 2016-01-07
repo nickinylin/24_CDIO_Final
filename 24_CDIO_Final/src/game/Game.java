@@ -34,13 +34,11 @@ public class Game {
 
 	public Game() {
 
-		deck = new CardsDeck();
-		
-		// Create Fields
-		fields = Field.createFields();
-		
 		Setup setup = new Setup();
+		// Create Fields players and card deck
+		fields = setup.createFields();
 		player = setup.createPlayers();
+		deck = new CardsDeck();
 		
 		String test = GUI.getUserButtonPressed("Vælg en knap", "1","2","3","4","5");
 
