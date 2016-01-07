@@ -7,6 +7,7 @@
 package fields;
 
 import desktop_resources.GUI;
+import game.Player;
 
 public class Territory extends Ownable {
     
@@ -118,5 +119,15 @@ public class Territory extends Ownable {
 
 	public void setBuildingNumbers(int buildingNumbers) {
 		this.buildingNumbers = buildingNumbers;
+	}
+
+
+
+	@Override
+	public void buyField(Player player, Field[] fields) {
+        player.payMoney(fieldprice);
+        player.setAssets(fieldprice);
+        fieldowned = true;
+        fieldowner = player;
 	}
 }

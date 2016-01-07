@@ -6,6 +6,8 @@
 
 package fields;
 
+import game.Player;
+
 public class Fleet extends Ownable {
     
     public Fleet(String name) {
@@ -51,6 +53,13 @@ public class Fleet extends Ownable {
     {
     	return fieldowned;
     }
+	@Override
+	public void buyField(Player player, Field[] fields) {
+        player.payMoney(fieldprice);
+        player.setAssets(fieldprice);
+        fieldowned = true;
+        fieldowner = player;
+	}
     
     
 }

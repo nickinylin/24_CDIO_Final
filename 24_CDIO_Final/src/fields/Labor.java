@@ -7,6 +7,7 @@
 package fields;
 
 import game.Dice;
+import game.Player;
 
 public class Labor extends Ownable {
     
@@ -43,5 +44,17 @@ public class Labor extends Ownable {
     public int getPrice() {
         return super.fieldprice;
     }
+
+	@Override
+	public void buyField(Player player, Field[] fields) {
+        player.payMoney(fieldprice);
+        player.setAssets(fieldprice);
+        fieldowned = true;
+        fieldowner = player;
+        
+        GUI.setOwner(player.getPlayerPosition(), player.getName());
+        GUI.setBalance(player.getName(), player.getMoney());
+        GUI.setSubText(player.getPlayerPosition(), "Leje: "+getRent(fields)+"");
+	}
 
 }

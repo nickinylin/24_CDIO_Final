@@ -39,8 +39,8 @@ public class Player {
     	return extraturn;
     }
     
-    public int setNumberOfExtraTurns(int roll) {
-    	extraturn = extraturn + roll;
+    public int setNumberOfExtraTurns(int rollturn) {
+    	extraturn = extraturn + rollturn;
     	return extraturn;
     }
     

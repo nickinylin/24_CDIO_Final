@@ -40,17 +40,7 @@ public abstract class Ownable extends Field {
      * N�r spilleren �nsker at k�be et ledigt felt. Tager den aktuelle Player.
      * @param player
      */
-    public void buyField(Player player, Field[] fields){
-        player.payMoney(fieldprice);
-        player.setAssets(fieldprice);
-        fieldowned = true;
-        fieldowner = player;
-        // TODO Bør flyttes til alle controlers
-        // Kald direkte til GUI fra entiti er et problem
-        GUI.setOwner(player.getPlayerPosition(), player.getName());
-        GUI.setBalance(player.getName(), player.getMoney());
-        GUI.setSubText(player.getPlayerPosition(), "Leje: "+getRent(fields)+"");
-    }
+    public abstract void buyField(Player player, Field[] fields);
     
     public void updateFieldGroup(Player player, Field currentField, Field[] fields) {
     	
