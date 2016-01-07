@@ -55,7 +55,7 @@ private CardsDeck deck=new CardsDeck();
                 			Fleet ships = (Fleet)fields[5];
                 				if(ships.fieldowned)
                 				{
-                					player.payMoney(ships.getRent(fields));
+                					player.payMoney(ships.getRent(fields)*2);
                 					
                 				}
                 				else
@@ -67,7 +67,7 @@ private CardsDeck deck=new CardsDeck();
                 			Fleet ships = (Fleet)fields[15];
                 				if(ships.fieldowned)
                 				{
-                					player.payMoney(ships.getRent(fields));
+                					player.payMoney(ships.getRent(fields)*2);
                 				}
                 				else
                 					fleetcontroller.landOnFleet(player,ships,fields);
@@ -78,7 +78,7 @@ private CardsDeck deck=new CardsDeck();
                 			Fleet ships = (Fleet)fields[25];
                 				if(ships.fieldowned)
                 				{
-                					player.payMoney(ships.getRent(fields));
+                					player.payMoney(ships.getRent(fields)*2);
                 				}
                 				else
                 					fleetcontroller.landOnFleet(player,ships,fields);
@@ -89,7 +89,7 @@ private CardsDeck deck=new CardsDeck();
                 			Fleet ships = (Fleet)fields[35];
                 				if(ships.fieldowned)
                 				{
-                					player.payMoney(ships.getRent(fields));
+                					player.payMoney(ships.getRent(fields)*2);
                 				}
                 				else
                 					fleetcontroller.landOnFleet(player,ships,fields);
