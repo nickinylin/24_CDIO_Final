@@ -1,9 +1,6 @@
 package controllers;
 
-import cards.Cards;
-import cards.CardsDeck;
-import cards.CardsMoveto;
-import cards.CardsTransaction;
+import cards.*;
 import desktop_resources.GUI;
 import fields.*;
 import game.Player;
@@ -12,7 +9,7 @@ public class LuckController {
 	
 private CardsDeck deck=new CardsDeck();
 
-	public void landOnLuck(Player player, Field[] fields) {
+	public void landOnLuck(Player player, Field[] fields,Player[] group) {
 //		
 //		// Draw a luck card
 //		
@@ -125,7 +122,7 @@ private CardsDeck deck=new CardsDeck();
                     	taxcontroller.payTax(player, tax); 		
 	            	}
 	            	else if (fields[destination] instanceof Luck){
-	            		landOnLuck(player, fields);
+	            		landOnLuck(player, fields, group);
 	            	}
 	            	else if(fields[destination] instanceof Jail){
 	                 	JailController jailcontroller= new JailController();
@@ -138,6 +135,15 @@ private CardsDeck deck=new CardsDeck();
 			if(card instanceof CardsTransaction){
 				CardsTransaction transaction= (CardsTransaction) card;
 				player.giveMoney(transaction.getvalue());
+			}
+			if (card instanceof CardsShare){
+				CardsShare transaction= (CardsShare) card;
+				int moneyPool;
+				moneyPool=transaction.getvalue()*group.length;
+				for(int i=0; i<=group.length;i++){
+					group[i].payMoney(transaction.getvalue());
+				}
+				player.giveMoney(moneyPool);
 			}
 	}
 }
