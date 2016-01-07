@@ -6,6 +6,8 @@
 
 package fields;
 
+import desktop_resources.GUI;
+
 public class Territory extends Ownable {
     
     private int fieldPriceBuilding;

@@ -4,7 +4,7 @@
  * @version 04/01-2016
  **/
 
-package game;
+package controllers;
 
 import cards.Cards;
 import cards.CardsDeck;
@@ -20,11 +20,18 @@ import fields.Ownable;
 import fields.Refuge;
 import fields.Tax;
 import fields.Territory;
+import game.Dice;
+import game.Player;
 import setup.Setup;
 
 
 public class Game {
-	private CardsDeck deck;
+	private TaxController taxController = new TaxController();
+	private LuckController luckController = new LuckController();
+	private TerritoryController territoryController = new TerritoryController();
+	private FleetController FleetController = new FleetController();
+	private LaborController LaborController = new LaborController();
+	private JailController jailController = new JailController();
 	private static Player[] player;
 	protected static Field[] fields;
 
@@ -38,7 +45,7 @@ public class Game {
 		// Create Fields players and card deck
 		fields = setup.createFields();
 		player = setup.createPlayers();
-		deck = new CardsDeck();
+		data.deck = new CardsDeck();
 		
 		String test = GUI.getUserButtonPressed("Vælg en knap", "1","2","3","4","5");
 
@@ -223,7 +230,7 @@ public class Game {
 		// Draw a luck card
 		
 
-			Cards card = deck.drawcard();
+			Cards card = data.deck.drawcard();
 			if (card instanceof CardsMoveto) {
 	            CardsMoveto move=(CardsMoveto) card;
 	            if (move.getExtraMoves()==0){
