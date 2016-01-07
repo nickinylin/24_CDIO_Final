@@ -48,7 +48,6 @@ public class Game {
 		fields = setup.createFields();
 		player = setup.createPlayers();
 		
-		String test = GUI.getUserButtonPressed("Vælg en knap", "1","2","3","4","5");
 
 		boolean noWinner = true;
 		
