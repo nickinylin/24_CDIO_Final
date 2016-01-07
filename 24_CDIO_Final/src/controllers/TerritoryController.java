@@ -50,7 +50,7 @@ public class TerritoryController {
 
 					// What is the rent?
 					((Ownable) territory).payRent(player, fields);
-
+					GUI.setBalance(player.getName(), player.getMoney());
 				}
 
 			} else { // The Territory field was not owned
@@ -58,8 +58,12 @@ public class TerritoryController {
 				boolean buyfield = GUI.getUserLeftButtonPressed(""+player.getName()+" du er landet på "+((Territory) territory).getName()+", vil du købe grunden?", "Ja", "Nej");
 
 				if (buyfield) {
-					// opdater alle felters leje
+
 					((Territory) territory).buyField(player, fields);
+			        GUI.setOwner(player.getPlayerPosition(), player.getName());
+			        GUI.setBalance(player.getName(), player.getMoney());
+			        // TODO upgrade fields
+//			        territory.updateFieldGroup(player, territory, fields);
 				}
 
 			}

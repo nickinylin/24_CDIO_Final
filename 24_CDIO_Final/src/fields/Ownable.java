@@ -52,9 +52,7 @@ public abstract class Ownable extends Field {
 					if (territory.getFieldGroup() == ((Territory) currentField).getFieldGroup()) {
 						GUI.setSubText(i+1, "Leje: "+territory.getRent(fields)+"");
 					}
-				}
-				
-				if (f instanceof Fleet) {
+				} else if (f instanceof Fleet) {
 					Fleet fleet = (Fleet) f;
 					
 					if (player.equals(((Fleet) currentField).fieldowner)) {

@@ -15,7 +15,7 @@ public class FleetController {
 			if (fleet.fieldowner.equals(player) == false) {
 
 				fleet.payRent(player, fields);
-
+				GUI.setBalance(player.getName(), player.getMoney());
 			}
 
 		} else {
@@ -24,6 +24,10 @@ public class FleetController {
 
 			if (buyfleet) {
 				fleet.buyField(player, fields);
+		        GUI.setOwner(player.getPlayerPosition(), player.getName());
+		        GUI.setBalance(player.getName(), player.getMoney());
+		        // TODO upgrade fields
+//		        fleet.updateFieldGroup(player, fleet, fields);
 			}
 
 		}

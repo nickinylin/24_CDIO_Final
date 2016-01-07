@@ -51,10 +51,6 @@ public class Labor extends Ownable {
         player.setAssets(fieldprice);
         fieldowned = true;
         fieldowner = player;
-        
-        GUI.setOwner(player.getPlayerPosition(), player.getName());
-        GUI.setBalance(player.getName(), player.getMoney());
-        GUI.setSubText(player.getPlayerPosition(), "Leje: "+getRent(fields)+"");
 	}
 
 }
