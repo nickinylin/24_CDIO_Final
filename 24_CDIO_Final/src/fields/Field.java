@@ -83,7 +83,6 @@ public abstract class Field {
 		return fieldname;
 	}
 
-
 	public static int getNumberOfFields() {
 		return fields.length;
 	}
@@ -91,5 +90,6 @@ public abstract class Field {
 	public void setName(String name) {
 		this.fieldname = name;
 	}
+
 
 }

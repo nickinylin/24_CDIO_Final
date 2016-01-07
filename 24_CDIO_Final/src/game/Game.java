@@ -325,8 +325,7 @@ public class Game {
 						boolean buybuilding = GUI.getUserLeftButtonPressed(""+player.getName()+" vil du købe huse eller hoteller på dine grunde?", "Ja", "Nej");
 
 						if (buybuilding) {
-							ownedfields[0].getName();
-							String buy = GUI.getUserSelection(""+player.getName()+" vælg hvilke grunde du vil købe hus på", "1", "2", "3");
+							String buy = GUI.getUserSelection(""+player.getName()+" vælg hvilke grunde du vil købe hus på", ""+ownedfields[0].getName()+"", ""+ownedfields[1].getName()+"", ""+ownedfields[2].getName()+"");
 						}
 						
 					}
@@ -343,6 +342,7 @@ public class Game {
 				boolean buyfield = GUI.getUserLeftButtonPressed(""+player.getName()+" du er landet på "+((Territory) currentfield).getName()+", vil du købe grunden?", "Ja", "Nej");
 
 				if (buyfield) {
+					// opdater alle felters leje
 					((Territory) currentfield).buyField(player);
 				}
 				
