@@ -13,6 +13,7 @@ public class JailController {
 		if (player.getPlayerPosition() > 10) {
 			player.payMoney(4000);
 			player.setMove(10);
+			// move player
 		}
 
 	}

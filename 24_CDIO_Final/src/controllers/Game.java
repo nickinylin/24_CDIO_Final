@@ -114,7 +114,7 @@ public class Game {
 				
 			} else {
 				
-				// Move play to jail
+				jailController.jail(player);
 				
 			}
 			
@@ -139,9 +139,7 @@ public class Game {
 			}
 				PlayerController.movePlayer(player, Dice.getSum(), fields);
 			}
-
-
-
+		
 	}
 
 
