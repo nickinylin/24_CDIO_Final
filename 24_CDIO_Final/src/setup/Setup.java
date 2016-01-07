@@ -158,7 +158,7 @@ public class Setup {
 //					list[i] = new desktop_fields.Refuge.Builder()
 //							.setTitle(fields[i].getName())
 //							.setSubText("START")
-//							.setPicture("money.png")
+//							.setPicture("images/money.png")
 //							.setBgColor(Color.RED)
 //							.setFgColor(Color.BLACK)
 //							.build();
@@ -166,7 +166,7 @@ public class Setup {
 //					list[i] = new desktop_fields.Refuge.Builder()
 //							.setTitle(fields[i].getName())
 //							.setSubText("På besøg")
-//							.setPicture("Jail.jpg")
+//							.setPicture("images/Jail.jpg")
 //							.setBgColor(new Color(127, 127, 127))
 //							.setFgColor(Color.BLACK)
 //							.build();
@@ -174,7 +174,7 @@ public class Setup {
 //					list[i] = new desktop_fields.Refuge.Builder()
 //							.setTitle(fields[i].getName())
 //							.setSubText("Parkering")
-//							.setPicture("Cones.jpg")
+//							.setPicture("images/Cones.jpg")
 //							.setBgColor(Color.WHITE)
 //							.setFgColor(Color.BLACK)
 //							.build();
@@ -188,7 +188,7 @@ public class Setup {
 //						.setBgColor(new Color(1, 76, 28))
 //						.setFgColor(Color.WHITE)
 //						.setRent("100xDices")
-//						.setPicture(""+fields[i].getName()+".jpg")
+//						.setPicture("images/"+fields[i].getName()+".jpg")
 //						.build(); 
 //
 //			} else if (field instanceof Tax) {
@@ -217,7 +217,7 @@ public class Setup {
 //				
 //			} else if (field instanceof Jail) {
 //				list[i] = new desktop_fields.Jail.Builder()
-//						.setPicture("GoToJail.jpg")
+//						.setPicture("images/GoToJail.jpg")
 //						.setSubText("Gå i fængsel")
 //						.setBgColor(new Color(127, 127, 125))
 //						.setFgColor(Color.WHITE)

@@ -153,7 +153,7 @@ public abstract class Field {
 					list[i] = new desktop_fields.Refuge.Builder()
 							.setTitle(fields[i].fieldname)
 							.setSubText("START")
-							.setPicture("money.png")
+							.setPicture("images/money.png")
 							.setBgColor(Color.RED)
 							.setFgColor(Color.BLACK)
 							.build();
@@ -161,7 +161,7 @@ public abstract class Field {
 					list[i] = new desktop_fields.Refuge.Builder()
 							.setTitle(fields[i].fieldname)
 							.setSubText("På besøg")
-							.setPicture("Jail.jpg")
+							.setPicture("images/Jail.jpg")
 							.setBgColor(new Color(127, 127, 127))
 							.setFgColor(Color.BLACK)
 							.build();
@@ -169,7 +169,7 @@ public abstract class Field {
 					list[i] = new desktop_fields.Refuge.Builder()
 							.setTitle(fields[i].fieldname)
 							.setSubText("Parkering")
-							.setPicture("Cones.jpg")
+							.setPicture("images/Cones.jpg")
 							.setBgColor(Color.WHITE)
 							.setFgColor(Color.BLACK)
 							.build();
@@ -183,7 +183,7 @@ public abstract class Field {
 						.setBgColor(new Color(1, 76, 28))
 						.setFgColor(Color.WHITE)
 						.setRent("100xDices")
-						.setPicture(""+fields[i].fieldname+".jpg")
+						.setPicture("images/"+fields[i].fieldname+".jpg")
 						.build(); 
 
 			} else if (field instanceof Tax) {
@@ -212,7 +212,7 @@ public abstract class Field {
 				
 			} else if (field instanceof Jail) {
 				list[i] = new desktop_fields.Jail.Builder()
-						.setPicture("GoToJail.jpg")
+						.setPicture("images/GoToJail.jpg")
 						.setSubText("Gå i fængsel")
 						.setBgColor(new Color(127, 127, 125))
 						.setFgColor(Color.WHITE)
