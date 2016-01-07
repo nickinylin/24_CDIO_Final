@@ -51,8 +51,8 @@ private CardsDeck deck=new CardsDeck();
                     	FleetController fleetcontroller= new FleetController();
                     	if(player.getPlayerPosition()>0 && player.getPlayerPosition()<10)
                 			{
-                			player.setMove(6);
-                			Fleet ships = (Fleet)fields[6];
+                			player.setMove(5);
+                			Fleet ships = (Fleet)fields[5];
                 				if(ships.fieldowned)
                 				{
                 					fleetcontroller.landOnFleet(player,ships,fields);
@@ -64,8 +64,8 @@ private CardsDeck deck=new CardsDeck();
                 			}
                 			else if(player.getPlayerPosition()>=11 && player.getPlayerPosition()<=20)
                 			{
-                			player.setMove(16);
-                			Fleet ships = (Fleet)fields[16];
+                			player.setMove(15);
+                			Fleet ships = (Fleet)fields[15];
                 				if(ships.fieldowned)
                 				{
             					fleetcontroller.landOnFleet(player,ships,fields);
@@ -76,8 +76,8 @@ private CardsDeck deck=new CardsDeck();
                 			}
                 			else if(player.getPlayerPosition()>=21 && player.getPlayerPosition()<=30)
                 			{
-                			player.setMove(26);
-                			Fleet ships = (Fleet)fields[26];
+                			player.setMove(25);
+                			Fleet ships = (Fleet)fields[25];
                 				if(ships.fieldowned)
                 				{
                 					fleetcontroller.landOnFleet(player,ships,fields);
@@ -88,8 +88,8 @@ private CardsDeck deck=new CardsDeck();
                 			}
                 			else if(player.getPlayerPosition()>=31 && player.getPlayerPosition()<=40)
                 			{
-                			player.setMove(36);
-                			Fleet ships = (Fleet)fields[36];
+                			player.setMove(35);
+                			Fleet ships = (Fleet)fields[35];
                 				if(ships.fieldowned)
                 				{
                 					fleetcontroller.landOnFleet(player,ships,fields);
