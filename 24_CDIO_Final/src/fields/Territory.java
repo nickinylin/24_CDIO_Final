@@ -11,6 +11,7 @@ public class Territory extends Ownable {
     private String fieldname;
     private int fieldPriceBuilding;
     private int fieldrent;
+    private int houses = 0;
     private int fieldrenthouse1;
     private int fieldrenthouse2;
     private int fieldrenthouse3;
@@ -49,9 +50,19 @@ public class Territory extends Ownable {
         return fieldprice;
     }
 
-	public String getFieldname() {
-		return fieldname;
-	}
+    public int buyHouse() {
+    	houses = houses + 1;
+    	return houses;
+    }
+    
+    public int sellHouse() {
+    	houses = houses - 1;
+    	return houses;
+    }
+    
+    public int getHouse() {
+    	return houses;
+    }
 
 	public int getFieldrent() {
 		return fieldrent;

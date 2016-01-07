@@ -113,6 +113,7 @@ public class Game {
 		if (Dice.issame()) {
 			
 			if (player.getNumberOfExtraTurns() < 3) {
+				
 				player.setNumberOfExtraTurns(1);
 				doNormalTurn(player);
 				
@@ -332,7 +333,6 @@ public class Game {
 				} else {
 
 					// What is the rent?
-					// Need to find rent
 					((Ownable) currentfield).payRent(player);
 
 				}
