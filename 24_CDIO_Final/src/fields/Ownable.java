@@ -42,26 +42,7 @@ public abstract class Ownable extends Field {
      */
     public abstract void buyField(Player player, Field[] fields);
     
-    public void updateFieldGroup(Player player, Field currentField, Field[] fields) {
-    	
-			for (int i = 0; i < fields.length; i++) {
-				Field f = fields[i];
-				if (f instanceof Territory) {
-					Territory territory = (Territory) f;
-
-					if (territory.getFieldGroup() == ((Territory) currentField).getFieldGroup()) {
-						GUI.setSubText(i+1, "Leje: "+territory.getRent(fields)+"");
-					}
-				} else if (f instanceof Fleet) {
-					Fleet fleet = (Fleet) f;
-					
-					if (player.equals(((Fleet) currentField).fieldowner)) {
-						GUI.setSubText(i+1, "Leje: "+fleet.getRent(fields)+"");
-					}
-				}
-			}
-
-    }
+    public abstract void updateFieldGroup(Player player, Field currentField, Field[] fields);
     
     public void setStatus(boolean boo) {
         fieldowned = boo;

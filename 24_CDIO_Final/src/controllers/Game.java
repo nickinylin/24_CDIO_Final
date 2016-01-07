@@ -98,9 +98,9 @@ public class Game {
 		} else if (currentfield instanceof Refuge) {
 			refugeController.landOnRefuge(player, ((Refuge) currentfield), fields);
 		} else if (currentfield instanceof Luck) {
-			luckController.landOnLuck(player, fields, this.player);
+			//luckController.landOnLuck(player, fields, this.player);
 		} else if (currentfield instanceof Jail) {
-			jailController.jail(player);
+			jailController.jail(player, fields);
 		} else if (currentfield instanceof Tax) {
 			taxController.payTax(player, ((Tax) currentfield));
 		}
@@ -114,7 +114,7 @@ public class Game {
 				
 			} else {
 				
-				jailController.jail(player);
+				jailController.jail(player, fields);
 				
 			}
 			
@@ -125,9 +125,9 @@ public class Game {
 
 	public void doJailTurn(Player player) {
 
-		boolean boo = GUI.getUserLeftButtonPressed(""+player.getName()+"", "Betal 1000 kr", "Slå med terningerne");
+		boolean payFine = GUI.getUserLeftButtonPressed(""+player.getName()+"", "Betal 1000 kr", "Slå med terningerne");
 
-		if (boo) {
+		if (payFine) {
 			
 			jailController.payJail(player);
 			doNormalTurn(player);

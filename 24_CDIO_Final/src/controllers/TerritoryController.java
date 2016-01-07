@@ -59,10 +59,9 @@ public class TerritoryController {
 				if (buyfield) {
 
 					((Territory) territory).buyField(player, fields);
-			        GUI.setOwner(player.getPlayerPosition(), player.getName());
 			        GUI.setBalance(player.getName(), player.getMoney());
 			        // TODO upgrade fields
-//			        territory.updateFieldGroup(player, territory, fields);
+			        territory.updateFieldGroup(player, territory, fields);
 				}
 
 			}

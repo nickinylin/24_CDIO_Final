@@ -25,10 +25,9 @@ public class FleetController {
 
 			if (buyfleet) {
 				fleet.buyField(player, fields);
-		        GUI.setOwner(player.getPlayerPosition(), player.getName());
 		        GUI.setBalance(player.getName(), player.getMoney());
 		        // TODO upgrade fields
-//		        fleet.updateFieldGroup(player, fleet, fields);
+		        fleet.updateFieldGroup(player, fleet, fields);
 			}
 
 		}

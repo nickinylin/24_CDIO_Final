@@ -7,13 +7,13 @@ import game.Player;
 
 public class JailController {
 
-	public void jail(Player player) {
+	public void jail(Player player, Field[] fields) {
 		player.setIsInJail(true);
 
 		if (player.getPlayerPosition() > 10) {
 			player.payMoney(4000);
 			player.setPlayerPosition(10);
-			// move player
+			PlayerController.movePlayer(player, 11, fields);
 		}
 
 	}

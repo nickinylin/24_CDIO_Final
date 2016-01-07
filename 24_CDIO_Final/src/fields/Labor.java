@@ -53,4 +53,10 @@ public class Labor extends Ownable {
         fieldowner = player;
 	}
 
+	@Override
+	public void updateFieldGroup(Player player, Field currentField, Field[] fields) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

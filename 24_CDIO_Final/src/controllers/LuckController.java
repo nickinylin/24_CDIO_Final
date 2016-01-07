@@ -122,7 +122,7 @@ private CardsDeck deck=new CardsDeck();
 	            	}
 	            	else if(fields[destination] instanceof Jail){
 	                 	JailController jailcontroller= new JailController();
-                    	jailcontroller.jail(player);
+                    	jailcontroller.jail(player, fields);
 	            	}
 	            	
 	            	
