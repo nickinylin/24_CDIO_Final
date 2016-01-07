@@ -23,6 +23,12 @@ import fields.Territory;
 public class Setup {
 
 	private static Player[] id;
+	
+	
+	/**
+	 * creates the fields for both the GUI and gamelogic to interact with.
+	 * @return Field[]
+	 */
 
 	public Field[] createFields() {
 
