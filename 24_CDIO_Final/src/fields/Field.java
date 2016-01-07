@@ -22,6 +22,10 @@ public abstract class Field {
 	protected String fieldname;
 	protected static Field[] fields;
 
+	public Field(String name) {
+		fieldname = name;
+	}
+
 	/**
 	 * creates the fields for both the GUI and gamelogic to interact with.
 	 * @return Field[]
@@ -280,16 +284,25 @@ public abstract class Field {
 	 * Method returns the name of the field.
 	 * @return fieldName
 	 */
+<<<<<<< HEAD
 	public final String getName() {
 		return fieldname;
 	}
 
 	public Field(String name) {
 		this.fieldname = name;
+=======
+	public String getName() {
+		return this.fieldname;
+>>>>>>> branch 'master' of https://github.com/nickinylin/24_CDIO_Final
 	}
 
 	public static int getNumberOfFields() {
 		return fields.length;
+	}
+
+	public void setName(String name) {
+		this.fieldname = name;
 	}
 
 
