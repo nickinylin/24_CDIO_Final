@@ -87,7 +87,7 @@ public class Game {
         playerController.movePlayer(player, Dice.getSum(), fields);
         
         // Where is the Player?
-		Field currentfield = fields[playerController.getPlayerPosition()-1];
+		Field currentfield = fields[player.getPlayerPosition()-1];
 
 		// Which action should be taken?
 		if (currentfield instanceof Territory) {
@@ -158,7 +158,7 @@ public class Game {
 				//Hvis han slår to ens kommer han ud af fængslet og får en ekstra tur
 				if (Dice.issame()){
 					playerController.movePlayer(player, Dice.getSum(), fields);
-					GUI.setCar(playerController.getPlayerPosition(), player.getName());
+					GUI.setCar(player.getPlayerPosition(), player.getName());
 					player.setJailTurn(0);
 					player.setJail(false);
 					
