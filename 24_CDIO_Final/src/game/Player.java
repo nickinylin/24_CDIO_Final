@@ -116,16 +116,4 @@ public class Player {
 		return jail;
 	}
 
-	public int getMove() {
-		return move;
-	}
-
-	public void setMove(int move) {
-		//TODO denne metode er forkert
-		if (this.move>move){
-		    bank.giveMoney(4000);
-		    }
-		this.move = move;		  
-	}
-
 }
