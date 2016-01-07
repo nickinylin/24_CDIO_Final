@@ -65,5 +65,6 @@ public abstract class Ownable extends Field {
     public Player getOwner() {
         return fieldowner;
     }
+
     
 }

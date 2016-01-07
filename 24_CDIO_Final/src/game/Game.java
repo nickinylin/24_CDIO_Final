@@ -304,8 +304,9 @@ public class Game {
 					// Player ejer det selv
 					int numberofgroupfields = 0;
 					int numberofownedfields = 0;
+					int i = 0;
 					
-					Field[] ownedfields = new Field[3];
+					Territory[] ownedfields = new Territory[3];
 					
 					for (Field f : fields) {
 						if (f instanceof Territory) {
@@ -314,7 +315,9 @@ public class Game {
 							if (t.getFieldGroup() == ((Territory) currentfield).getFieldGroup()) {
 								numberofgroupfields++;
 								if (t.getOwner().equals(player) ) {
+									ownedfields[i++] = t;
 									numberofownedfields++;
+									
 								}
 							}
 						}
@@ -325,6 +328,7 @@ public class Game {
 						boolean buybuilding = GUI.getUserLeftButtonPressed(""+player.getName()+" vil du købe huse eller hoteller på dine grunde?", "Ja", "Nej");
 
 						if (buybuilding) {
+							ownedfields[0].getName();
 							String buy = GUI.getUserSelection(""+player.getName()+" vælg hvilke grunde du vil købe hus på", "1", "2", "3");
 						}
 						

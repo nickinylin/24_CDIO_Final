@@ -8,7 +8,6 @@ package fields;
 
 public class Territory extends Ownable {
     
-    private String fieldname;
     private int fieldPriceBuilding;
     private int fieldrent;
     private int houses = 0;
@@ -32,7 +31,6 @@ public class Territory extends Ownable {
         this.fieldrenthouse4 = fieldrenthouse4;
         this.fieldrenthotel = fieldrenthotel;
         this.fieldgroup = fieldgroup;
-        
     }
     
     
@@ -41,10 +39,7 @@ public class Territory extends Ownable {
     public int getRent() {
         return fieldrent;
     }
-    
-    public String getName() {
-        return fieldname;
-    }
+
 
     public int getPrice() {
         return fieldprice;

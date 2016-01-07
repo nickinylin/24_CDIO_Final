@@ -22,6 +22,10 @@ public abstract class Field {
 	protected String fieldname;
 	protected static Field[] fields;
 
+	public Field(String name) {
+		fieldname = name;
+	}
+
 	/**
 	 * creates the fields for both the GUI and gamelogic to interact with.
 	 * @return Field[]
@@ -281,15 +285,15 @@ public abstract class Field {
 	 * @return fieldName
 	 */
 	public String getName() {
-		return fieldname;
-	}
-
-	public Field(String name) {
-		this.fieldname = name;
+		return this.fieldname;
 	}
 
 	public static int getNumberOfFields() {
 		return fields.length;
+	}
+
+	public void setName(String name) {
+		this.fieldname = name;
 	}
 
 
