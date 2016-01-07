@@ -7,7 +7,7 @@ import game.Player;
 
 public class PlayerController {
 
-	private Bank bank;
+	private static Bank bank;
 
 	/**
 	 * Method moves the player in the GUI
@@ -15,7 +15,7 @@ public class PlayerController {
 	 * @param move
 	 */
 
-	public void movePlayer(Player player, int move, Field[] fields) {
+	public static void movePlayer(Player player, int move, Field[] fields) {
 
 		int nextposition = player.getPlayerPosition() + move;
 		int maxmove = nextposition%fields.length;
@@ -25,7 +25,7 @@ public class PlayerController {
 			for (int i = 1; i <= move; i++) {
 
 				try {
-					Thread.sleep(200);
+					Thread.sleep(100);
 					if (player.getPlayerPosition() + i >= fields.length) {
 						int x = 1;
 						GUI.removeCar(player.getMove()+i, player.getName());
@@ -50,7 +50,7 @@ public class PlayerController {
 			for (int i = 1; i <= move; i++) {
 
 				try {
-					Thread.sleep(200);
+					Thread.sleep(100);
 					GUI.removeCar(player.getPlayerPosition()+i-1, player.getName());
 					GUI.setCar(player.getPlayerPosition()+i, player.getName());
 				}

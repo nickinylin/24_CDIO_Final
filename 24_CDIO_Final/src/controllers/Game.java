@@ -83,7 +83,7 @@ public class Game {
         GUI.setDice(Dice.getDice1(), Dice.getDice2());
 		
         // Move the Player
-        playerController.movePlayer(player, Dice.getSum(), fields);
+        PlayerController.movePlayer(player, Dice.getSum(), fields);
         
         // Where is the Player?
 		Field currentfield = fields[player.getPlayerPosition()-1];
