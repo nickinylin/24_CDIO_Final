@@ -49,7 +49,7 @@ public class TerritoryController {
 				} else {
 
 					// What is the rent?
-					((Ownable) territory).payRent(player);
+					((Ownable) territory).payRent(player, fields);
 
 				}
 
@@ -59,7 +59,7 @@ public class TerritoryController {
 
 				if (buyfield) {
 					// opdater alle felters leje
-					((Territory) territory).buyField(player);
+					((Territory) territory).buyField(player, fields);
 				}
 
 			}
