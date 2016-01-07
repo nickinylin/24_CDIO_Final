@@ -43,7 +43,7 @@ public class PlayerController {
 				}
 
 			}
-			player.setPlayerPosistion(maxmove);
+			player.setPlayerPosition(maxmove);
 			//bank.giveMoney(4000);
 			//GUI.setBalance(player.getName(), bank.getMoney());
 
@@ -61,7 +61,7 @@ public class PlayerController {
 				}
 
 			}
-			player.setPlayerPosistion(move);
+			player.setPlayerPosition(move);
 		}
 
 	}

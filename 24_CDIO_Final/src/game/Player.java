@@ -57,7 +57,7 @@ public class Player {
         return this.move;
     }
     
-    public void setPlayerPosistion(int destination){
+    public void setPlayerPosition(int destination){
     	this.move = this.move + destination;
     }
     
