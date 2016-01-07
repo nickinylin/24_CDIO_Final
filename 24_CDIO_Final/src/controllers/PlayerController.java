@@ -15,7 +15,7 @@ public class PlayerController {
 	 * @param move
 	 */
 
-	public static void movePlayer(Player player, int move, Field[] fields) {
+	public void movePlayer(Player player, int move, Field[] fields) {
 
 		int nextposition = player.getPlayerPosition() + move;
 		int maxmove = nextposition%fields.length;
