@@ -18,7 +18,19 @@
 //			if (card instanceof CardsMoveto) {
 //	            CardsMoveto move=(CardsMoveto) card;
 //	            if (move.getExtraMoves()==0){
-//	            	
+//	    
+
+            	for (int i =1;i<fields.length;i++) {
+                    if (fields[i].getName().equals(move.getDestination())){
+                    if (fields[i] instanceof Empty){
+                    player.setPlayerDestination(player, i);
+                    if(player.getPosistion()>i)
+                    	player.payMoney(4000);
+                    player.setJail(true);
+                    }
+                    if(fields[i] instanceof )
+	}	
+            	}
 //	            }
 //	            	
 //	            
