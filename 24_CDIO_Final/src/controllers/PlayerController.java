@@ -28,7 +28,8 @@ public class PlayerController {
 					Thread.sleep(100);
 					if (player.getPlayerPosition() + i >= fields.length) {
 						int x = 1;
-						GUI.removeCar(player.getMove()+i, player.getName());
+						GUI.removeCar(i, player.getName());
+						GUI.removeCar(x, player.getName());
 						GUI.setCar(x, player.getName());
 						x++;
 					} else {
