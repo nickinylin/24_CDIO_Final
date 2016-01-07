@@ -22,7 +22,7 @@ public class PlayerController {
 
 		if (nextposition >= fields.length) {
 
-			for (int i = 1; i < move; i++) {
+			for (int i = 1; i <= move; i++) {
 
 				try {
 					Thread.sleep(200);
@@ -47,7 +47,7 @@ public class PlayerController {
 
 		} else {
 
-			for (int i = 1; i <= move+1; i++) {
+			for (int i = 1; i <= move; i++) {
 
 				try {
 					Thread.sleep(200);
