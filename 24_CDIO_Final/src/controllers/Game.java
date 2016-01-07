@@ -4,7 +4,7 @@
  * @version 04/01-2016
  **/
 
-package game;
+package controllers;
 
 import cards.Cards;
 import cards.CardsDeck;
@@ -20,11 +20,18 @@ import fields.Ownable;
 import fields.Refuge;
 import fields.Tax;
 import fields.Territory;
+import game.Dice;
+import game.Player;
 import setup.Setup;
 
 
 public class Game {
-	private CardsDeck deck;
+	private TaxController taxController = new TaxController();
+	private LuckController luckController = new LuckController();
+	private TerritoryController territoryController = new TerritoryController();
+	private FleetController FleetController = new FleetController();
+	private LaborController LaborController = new LaborController();
+	private JailController jailController = new JailController();
 	private static Player[] player;
 	protected static Field[] fields;
 
@@ -38,7 +45,6 @@ public class Game {
 		// Create Fields players and card deck
 		fields = setup.createFields();
 		player = setup.createPlayers();
-		deck = new CardsDeck();
 		
 		String test = GUI.getUserButtonPressed("Vælg en knap", "1","2","3","4","5");
 
@@ -218,177 +224,10 @@ public class Game {
 		
 	}
 
-	private void landOnLuck(Player player, Field currentfield) {
-		
-		// Draw a luck card
-		
 
-			Cards card = deck.drawcard();
-			if (card instanceof CardsMoveto) {
-	            CardsMoveto move=(CardsMoveto) card;
-	            if (move.getExtraMoves()==0){
-	            	
-	            }
-	            	
-	            
-	            }
-
-			if(player.getPlayerPosition()>0 && player.getPlayerPosition()<10)
-			{
-			player.setPlayerPosistion(player, 6);
-			Fleet ships = (Fleet)fields[6];
-				if(ships.fieldowned)
-				{
-					player.setPlayerPosistion(player, 6);
-					landOnOwnable(player,fields[6]);
-				}
-				else
-					player.setPlayerPosistion(player, 6);
-					landOnOwnable(player,fields[6]);
-			}
-			else if(player.getPlayerPosition()>=11 && player.getPlayerPosition()<=20)
-			{
-			player.setPlayerPosistion(player, 16);
-			Fleet ships = (Fleet)fields[16];
-				if(ships.fieldowned)
-				{
-				player.setPlayerPosistion(player, 16);
-				landOnOwnable(player,fields[16]);
-				}
-				else
-					player.setPlayerPosistion(player, 16);
-					landOnOwnable(player,fields[16]);
-			}
-			else if(player.getPlayerPosition()>=21 && player.getPlayerPosition()<=30)
-			{
-			player.setPlayerPosistion(player, 26);
-			Fleet ships = (Fleet)fields[26];
-				if(ships.fieldowned)
-				{
-				player.setPlayerPosistion(player, 26);
-				landOnOwnable(player,fields[26]);
-				}
-				else
-					player.setPlayerPosistion(player, 26);
-					landOnOwnable(player,fields[26]);
-			}
-			else if(player.getPlayerPosition()>=31 && player.getPlayerPosition()<=40)
-			{
-			player.setPlayerPosistion(player, 36);
-			Fleet ships = (Fleet)fields[36];
-				if(ships.fieldowned)
-				{
-				player.setPlayerPosistion(player, 36);
-				landOnOwnable(player,fields[36]);
-				}
-				else
-					player.setPlayerPosistion(player, 36);
-					landOnOwnable(player,fields[36]);
-			}
-			
-	            
-		
-		
-	}
 
 	private void landOnOwnable(Player player, Field currentfield) {
-		if (currentfield instanceof Territory) {
-			
-			if (((Ownable) currentfield).fieldowned) {
-				
-				// Hvem ejer feltet?
-				if (((Ownable) currentfield).fieldowner.equals(player)) {
-					
-					// Player ejer det selv
-					int numberofgroupfields = 0;
-					int numberofownedfields = 0;
-					int i = 0;
-					
-					Territory[] ownedfields = new Territory[3];
-					
-					for (Field f : fields) {
-						if (f instanceof Territory) {
-							Territory t = (Territory) f;
-
-							if (t.getFieldGroup() == ((Territory) currentfield).getFieldGroup()) {
-								numberofgroupfields++;
-								if (player.equals(t.getOwner())) {
-									ownedfields[i++] = t;
-									numberofownedfields++;
-								}
-							}
-						}
-					}
-					
-					if (numberofgroupfields == numberofownedfields) {
-						
-						boolean buybuilding = GUI.getUserLeftButtonPressed(""+player.getName()+" vil du købe huse eller hoteller på dine grunde?", "Ja", "Nej");
-
-						if (buybuilding) {
-							String buy = GUI.getUserSelection(""+player.getName()+" vælg hvilke grunde du vil købe hus på", ""+ownedfields[0].getName()+"", ""+ownedfields[1].getName()+"", ""+ownedfields[2].getName()+"");
-						}
-						
-					}
-
-				} else {
-
-					// What is the rent?
-					((Ownable) currentfield).payRent(player);
-
-				}
-
-			} else { // The Territory field was not owned
-				
-				boolean buyfield = GUI.getUserLeftButtonPressed(""+player.getName()+" du er landet på "+((Territory) currentfield).getName()+", vil du købe grunden?", "Ja", "Nej");
-
-				if (buyfield) {
-					// opdater alle felters leje
-					((Territory) currentfield).buyField(player);
-				}
-				
-			}
-
-		} else if (currentfield instanceof Fleet) {
-			
-			if (((Ownable) currentfield).fieldowned) {
-				
-				if (((Ownable) currentfield).fieldowner.equals(player) == false) {
-
-					((Ownable) currentfield).payRent(player);
-					
-				}
-				
-			} else {
-				
-				boolean buyfleet = GUI.getUserLeftButtonPressed(""+player.getName()+" du er landet på "+((Fleet) currentfield).getName()+", vil du købe flåden?", "Ja", "Nej");
-				
-				if (buyfleet) {
-					((Fleet) currentfield).buyField(player);
-				}
-				
-			}
-
-		} else if (currentfield instanceof Labor) {
-
-			if (((Ownable) currentfield).fieldowned) {
-				
-				if (((Ownable) currentfield).fieldowner.equals(player) == false) {
-
-					((Ownable) currentfield).payRent(player);
-					
-				}
-				
-			} else {
-				
-				boolean buylabor = GUI.getUserLeftButtonPressed(""+player.getName()+" du er landet på "+((Labor) currentfield).getName()+", vil du købe denne fabrik?", "Ja", "Nej");
-				
-				if (buylabor) {
-					((Labor) currentfield).buyField(player);
-				}
-				
-			}
-			
-		}
+		
 	}
 
 	public void doJailTurn(Player player) {

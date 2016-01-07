@@ -44,11 +44,35 @@ public abstract class Ownable extends Field {
         player.setAssets(fieldprice);
         fieldowned = true;
         fieldowner = player;
+        // TODO Bør flyttes til alle controlers
+        // Kald direkte til GUI fra entiti er et problem
         GUI.setOwner(player.getPlayerPosition(), player.getName());
         GUI.setBalance(player.getName(), player.getMoney());
         GUI.setSubText(player.getPlayerPosition(), "Leje: "+getRent()+"");
     }
     
+    public void updateFieldGroup(Player player, Field field) {
+    	
+			for (int i = 0; i < fields.length; i++) {
+				Field f = fields[i];
+				if (f instanceof Territory) {
+					Territory territory = (Territory) f;
+
+					if (territory.getFieldGroup() == ((Territory) field).getFieldGroup()) {
+						GUI.setSubText(i+1, "Leje: "+territory.getRent()+"");
+					}
+				}
+				
+				if (f instanceof Fleet) {
+					Fleet fleet = (Fleet) f;
+					
+					if (player.equals(((Fleet) field).fieldowner)) {
+						GUI.setSubText(i+1, "Leje: "+fleet.getRent()+"");
+					}
+				}
+			}
+
+    }
     
     public void setStatus(boolean boo) {
         fieldowned = boo;
