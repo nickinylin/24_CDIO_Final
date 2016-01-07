@@ -14,7 +14,7 @@ public class LaborController {
 
 			if (labor.fieldowner.equals(player) == false) {
 
-				labor.payRent(player);
+				labor.payRent(player, fields);
 
 			}
 
@@ -23,7 +23,7 @@ public class LaborController {
 			boolean buylabor = GUI.getUserLeftButtonPressed(""+player.getName()+" du er landet på "+labor.getName()+", vil du købe denne fabrik?", "Ja", "Nej");
 
 			if (buylabor) {
-				labor.buyField(player);
+				labor.buyField(player, fields);
 			}
 
 		}
