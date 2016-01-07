@@ -98,7 +98,7 @@ public class Game {
 		} else if (currentfield instanceof Refuge) {
 			refugeController.landOnRefuge(player, ((Refuge) currentfield), fields);
 		} else if (currentfield instanceof Luck) {
-			luckController.landOnLuck(player, fields);
+			luckController.landOnLuck(player, fields, this.player);
 		} else if (currentfield instanceof Jail) {
 			jailController.jail(player);
 		} else if (currentfield instanceof Tax) {

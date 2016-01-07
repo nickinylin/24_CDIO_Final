@@ -47,20 +47,15 @@ public class CardsDeck {
 				// new CardsTransaction("Oliepriserne er steget og De skal
 				// betale: 500kr pr. hus. 2000kr pr. hotel.", -500, 2000),
 				
-				// new CardsTransaction("De skal holde familiefest og får et
-				// tilskud fra hver medspiller på kr. 500",
-				// 500*amountofplayers),
+				new CardsShare("De skal holde familiefest og får et tilskud fra hver medspiller på kr. 500", 500),
 				
-				// new CardsTransaction("Det er Deres fødselsdag. Modtag af hver
-				// medspiller kr. 200", 200*amountofplayers),
+				 new CardsShare("Det er Deres fødselsdag. Modtag af hver medspiller kr. 200", 200),
 				
-				// new CardsTransaction("De har lagt penge ud til et
-				// sammenskudsgilde. Mærkværdigvis betaler alle straks. Modtag
-				// fra hver spiller kr. 500", 500*amountofplayers),
+				 new CardsShare("De har lagt penge ud til et sammenskudsgilde. Mærkværdigvis betaler alle straks. Modtag fra hver spiller kr. 500", 500),
 				
 				// new CardsTransaction("De modtager Matador-legatet for værdigt
 				// trængende på kr. 40.000. Ved værdigt trængende forstås, at
-				// Deres formue, dvs. Deres kantante penge + skøder + bygninger,
+				// Deres formue, dvs. Deres kontante penge + skøder + bygninger,
 				// ikke overstiger kr. 15.000", if(formue<15000){
 				// formue = formue+40000)}
 				
@@ -96,7 +91,7 @@ public class CardsDeck {
 		};
 
 		discard = new Cards[deck.length];
-		currentdecksize = deck.length;
+		currentdecksize = deck.length-1;
 		discardsize = 0;
 	}
 
