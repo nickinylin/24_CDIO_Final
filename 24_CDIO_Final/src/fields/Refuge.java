@@ -11,7 +11,6 @@ import game.Player;
 
 public class Refuge extends Field {
     
-    protected String fieldname;
     protected int bonus;
     protected String type;
     
@@ -33,11 +32,6 @@ public class Refuge extends Field {
     
     public int getRent() {
         return bonus;
-    }
-
-    @Override
-    public String getName() {
-        return fieldname;
     }
 
     public int getPrice() {

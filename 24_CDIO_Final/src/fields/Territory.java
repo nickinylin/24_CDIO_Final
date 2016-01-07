@@ -8,7 +8,6 @@ package fields;
 
 public class Territory extends Ownable {
     
-    private String fieldname;
     private int fieldPriceBuilding;
     private int fieldrent;
     private int houses = 0;
@@ -40,10 +39,6 @@ public class Territory extends Ownable {
     @Override
     public int getRent() {
         return fieldrent;
-    }
-    
-    public String getName() {
-        return fieldname;
     }
 
     public int getPrice() {

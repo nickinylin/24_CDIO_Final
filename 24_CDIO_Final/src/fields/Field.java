@@ -280,7 +280,7 @@ public abstract class Field {
 	 * Method returns the name of the field.
 	 * @return fieldName
 	 */
-	public String getName() {
+	public final String getName() {
 		return fieldname;
 	}
 
