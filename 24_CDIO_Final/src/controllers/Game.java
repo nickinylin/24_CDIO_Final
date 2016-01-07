@@ -34,8 +34,8 @@ public class Game {
 	private JailController jailController = new JailController();
 	private RefugeController refugeController = new RefugeController();
 	private PlayerController playerController = new PlayerController();
-	private static Player[] player;
-	protected static Field[] fields;
+	private Player[] player;
+	protected Field[] fields;
 
 	public static void main(String[] args) {
 		new Game();
