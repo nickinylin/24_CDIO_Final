@@ -25,22 +25,22 @@ private CardsDeck deck=new CardsDeck();
             	for (int i =0;i<fields.length;i++) {
                     if (fields[i].getName().equals(move.getDestination())){
                     if (fields[i] instanceof Empty){
-                    player.setPlayerPosition(i);
+                    player.setPlayerPositionToField(i);
                     if(player.getPlayerPosition()>i)
                     	player.payMoney(4000);
                     player.setIsInJail(true);
                     }
                     else if(fields[i] instanceof Refuge){
-                    	player.setPlayerPosition(i);
+                    	player.setPlayerPositionToField(i);
                     }
                     else if (fields[i] instanceof Territory){
-                    	player.setPlayerPosition(i);
+                    	player.setPlayerPositionToField(i);
                     	TerritoryController territorycontroller= new TerritoryController();
                     	Territory territory= (Territory)fields[i];
                     	territorycontroller.landOnTerritory(player, territory, fields);
                     }
                     else if(fields[i] instanceof Fleet){
-                    	player.setPlayerPosition(i);
+                    	player.setPlayerPositionToField(i);
                     	FleetController fleetcontroller= new FleetController();
                     	Fleet fleet= (Fleet)fields[i];
                     	fleetcontroller.landOnFleet(player, fleet, fields);
@@ -51,7 +51,7 @@ private CardsDeck deck=new CardsDeck();
                     	FleetController fleetcontroller= new FleetController();
                     	if(player.getPlayerPosition()>35 && player.getPlayerPosition()<=5)
                 			{
-                			player.setPlayerPosition(5);
+                			player.setPlayerPositionToField(5);
                 			Fleet ships = (Fleet)fields[5];
                 				if(ships.fieldowned)
                 				{
@@ -63,7 +63,7 @@ private CardsDeck deck=new CardsDeck();
                 			}
                 			else if(player.getPlayerPosition()>5 && player.getPlayerPosition()<=15)
                 			{
-                			player.setPlayerPosition(15);
+                			player.setPlayerPositionToField(5);
                 			Fleet ships = (Fleet)fields[15];
                 				if(ships.fieldowned)
                 				{
@@ -74,7 +74,7 @@ private CardsDeck deck=new CardsDeck();
                 			}
                 			else if(player.getPlayerPosition()>15 && player.getPlayerPosition()<=25)
                 			{
-                			player.setPlayerPosition(25);
+                			player.setPlayerPositionToField(25);
                 			Fleet ships = (Fleet)fields[25];
                 				if(ships.fieldowned)
                 				{
@@ -85,7 +85,7 @@ private CardsDeck deck=new CardsDeck();
                 			}
                 			else if(player.getPlayerPosition()>25 && player.getPlayerPosition()<=35)
                 			{
-                			player.setPlayerPosition(35);
+                			player.setPlayerPositionToField(35);
                 			Fleet ships = (Fleet)fields[35];
                 				if(ships.fieldowned)
                 				{
