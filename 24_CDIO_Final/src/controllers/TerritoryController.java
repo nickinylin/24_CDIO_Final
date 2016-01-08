@@ -111,6 +111,11 @@ public class TerritoryController {
 				((Territory) territory).setPawned(true);
 				GUI.setBalance(player.getName(), player.getMoney());
 				territory.updateFieldGroup(player, territory, fields);
+			case BTN5:
+				((Territory) territory).setPawned(false);
+				GUI.setBalance(player.getName(), player.getMoney());
+				territory.updateFieldGroup(player, territory, fields);
+				break;
 			default:
 			}
 
