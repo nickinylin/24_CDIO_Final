@@ -7,7 +7,8 @@ import game.Player;
 
 public class PlayerController {
 
-	private static Bank bank;
+
+	
 
 	/**
 	 * Method moves the player in the GUI
@@ -17,6 +18,7 @@ public class PlayerController {
 
 	public static void movePlayer(Player player, int move, Field[] fields) {
 
+		
 		int nextposition = player.getPlayerPosition() + move;
 		int maxmove = nextposition%fields.length;
 
@@ -42,8 +44,8 @@ public class PlayerController {
 
 			}
 			player.setPlayerPositionToField(maxmove);
-			//bank.giveMoney(4000);
-			//GUI.setBalance(player.getName(), bank.getMoney());
+			player.giveMoney(4000);
+			GUI.setBalance(player.getName(), player.getMoney());
 
 		} else {
 
