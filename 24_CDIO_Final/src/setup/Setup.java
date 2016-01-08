@@ -144,7 +144,7 @@ public class Setup {
 				} else if (territory.getFieldGroup() == 7) {
 					list[i] = new Street.Builder()
 							.setTitle(fields[i].getName())
-							.setSubText("Costs: "+territory.getName()+"")
+							.setSubText("Costs: "+territory.getPrice()+"")
 							.setDescription("Rent: "+territory.getBaseRent()+"")
 							.setBgColor(new Color(255, 202, 70))
 							.setFgColor(Color.BLACK)
