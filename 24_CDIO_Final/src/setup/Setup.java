@@ -348,12 +348,16 @@ public class Setup {
 				name = "Player "+(i+1);
 			}
 
-
 			Car.Builder builder = new Car.Builder();
 
 			builder.typeCar();
 			
-			builder.primaryColor(Color.RED);
+			if (i==1) {
+				builder.primaryColor(Color.RED);
+			} else {
+				builder.primaryColor(Color.BLUE);
+			}
+			
 
 			Car car = builder.build();
 
@@ -362,6 +366,7 @@ public class Setup {
 
 			GUI.addPlayer(name, player.getMoney(), car);
 			GUI.setCar(1, name);
+			
 		}		
 
 

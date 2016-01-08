@@ -57,10 +57,13 @@ public class Player {
         return this.move;
     }
     
-    public void setPlayerPosition(int destination){
+    public void setPlayerPosition(int destination) {
     	this.move = this.move + destination;
     }
     
+    public void setPlayerPositionToField(int destination) {
+    	this.move = destination;
+    }
     
 
     @Override

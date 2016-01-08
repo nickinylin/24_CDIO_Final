@@ -41,7 +41,7 @@ public class PlayerController {
 				}
 
 			}
-			player.setPlayerPosition(maxmove);
+			player.setPlayerPositionToField(maxmove);
 			//bank.giveMoney(4000);
 			//GUI.setBalance(player.getName(), bank.getMoney());
 
