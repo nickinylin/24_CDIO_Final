@@ -96,6 +96,8 @@ public class TerritoryController {
 				territory.updateFieldGroup(player, territory, fields);
 				break;
 			case BTN2:
+				
+				//TODO valg af felt
 				String sellto = GUI.getUserButtonPressed(player.getName(), "Sælg felt til Spillere", "Sælg felt til Bank", "Fortryd");
 				if ("Sælg felt til Bank" == sellto) {
 					((Territory) territory).sellFieldToPlayer(players, player, ((Territory) territory), fields);
