@@ -13,16 +13,15 @@ public class JailController {
 		
 		player.setIsInJail(true);
 
-		if (player.getPlayerPosition() > 11) {
+		if (player.getPlayerPosition()-1 > 11) {
 			
-			player.payMoney(4000);
 			player.setPlayerPositionToField(11);
 			GUI.removeAllCars(player.getName());
 			GUI.setCar(11, player.getName());
 			
 		} else {
 
-			player.setPlayerPositionToField(10);
+			player.setPlayerPositionToField(11);
 			GUI.removeAllCars(player.getName());
 			GUI.setCar(11, player.getName());
 			
@@ -34,7 +33,7 @@ public class JailController {
 		
 		player.payMoney(1000);
 		player.setIsInJail(false);
-		player.setJailTurn(0);
+		player.resetJailTurn();
 		GUI.setBalance(player.getName(), player.getMoney());
 		
 	}
@@ -49,18 +48,18 @@ public class JailController {
 			//Hvis player slår to ens kommer han ud af fængslet og får en ekstra tur
 			if (Dice.issame()){
 				player.setIsInJail(false);
-				player.setJailTurn(0);
+				player.resetJailTurn();
 				return true;
 			}
 			player.setJailTurn(1);
 			GUI.showMessage("You are still in Jail");
 			return false;
 		} else {
+			player.setIsInJail(false);
+			player.resetJailTurn();
 			player.payMoney(1000);
 			GUI.setBalance(player.getName(), player.getMoney());
 			GUI.displayChanceCard("Du har været i fængsel i 3 omgange og betaler automatisk 1000 kr for at komme ud");
-			player.setIsInJail(false);
-			player.setJailTurn(0);
 			
 			GUI.getUserButtonPressed("", player.getName()+": Roll Dices");
 			Dice.roll();

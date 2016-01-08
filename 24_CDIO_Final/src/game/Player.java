@@ -119,4 +119,8 @@ public class Player {
 		return jail;
 	}
 
+	public void resetJailTurn() {
+		this.jailTurn = 0;
+	}
+
 }
