@@ -66,4 +66,8 @@ public class PlayerController {
 
 	}
 
+	public Player[] getPlayers() {
+		return pla;
+	}
+
 }

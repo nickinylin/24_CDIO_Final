@@ -178,4 +178,41 @@ public class Territory extends Ownable {
 	public int getBaseRent() {
 		return fieldrent;
 	}
+
+
+	public void sellFieldToPlayer(Player[] players, Player currentplayer, Territory currentfield, Field[] fields) {
+		
+		int pris = GUI.getUserInteger("Pris");
+		
+		String[] playernames = new String[players.length-1];
+		int j = 0;
+		
+		for (int i = 0; i < players.length ; i++) {
+			if (currentplayer.getName().equals(players[i].getName())) {
+				
+			} else {
+				playernames[j] = players[i].getName();
+				j++;
+			}
+		}
+		
+		String spiller = GUI.getUserSelection("Sælg til", playernames);
+		currentplayer.giveMoney(pris);
+	}
+
+	public void sellFieldToBank(Player player, Territory currentfield, Field[] fields) {
+		
+		for (int i = 0; i < fields.length; i++) {
+			Field f = fields[i];
+			if (f instanceof Territory) {
+				Territory territory = (Territory) f;
+
+				if (territory.getFieldGroup() == currentfield.getFieldGroup() && player.equals(territory.fieldowner)) {
+					int price = (int) (currentfield.fieldprice);
+					player.giveMoney(price);
+					GUI.removeOwner(i);
+				}
+			} 
+		}
+	}
 }

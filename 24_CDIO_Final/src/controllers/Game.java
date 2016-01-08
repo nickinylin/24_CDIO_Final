@@ -34,7 +34,7 @@ public class Game {
 	private JailController jailController = new JailController();
 	private RefugeController refugeController = new RefugeController();
 	private PlayerController playerController = new PlayerController();
-	private Player[] player;
+	private Player[] players;
 	protected Field[] fields;
 
 	public static void main(String[] args) {
@@ -46,23 +46,23 @@ public class Game {
 		Setup setup = new Setup();
 		// Create Fields players and card deck
 		fields = setup.createFields();
-		player = setup.createPlayers();
+		players = setup.createPlayers();
 		
 
 		boolean noWinner = true;
 		
 		while (noWinner) {
 			
-			for (int i = 0; i < player.length; i++) {
+			for (int i = 0; i < players.length; i++) {
 				
-				if (player[i].bankrupt()) {
+				if (players[i].bankrupt()) {
 					checkWinner();
 				} 
 				
-				if (player[i].isInJail()) {
-					doJailTurn(player[i]);
+				if (players[i].isInJail()) {
+					doJailTurn(players[i]);
 				} else {
-					doNormalTurn(player[i]);
+					doNormalTurn(players[i]);
 				}
 				
 			}
@@ -92,21 +92,7 @@ public class Game {
 				
 				Field currentfield = fields[player.getPlayerPosition()-1];
 				
-				if (currentfield instanceof Territory) {
-					territoryController.landOnTerritory(player, ((Territory) currentfield), fields);
-				} else if (currentfield instanceof Fleet) {
-					fleetController.landOnFleet(player, ((Fleet) currentfield), fields);
-				} else if (currentfield instanceof Labor) {
-					laborController.landOnLabor(player, ((Labor) currentfield), fields);
-				} else if (currentfield instanceof Refuge) {
-					refugeController.landOnRefuge(player, ((Refuge) currentfield), fields);
-				} else if (currentfield instanceof Luck) {
-					//luckController.landOnLuck(player, fields, this.player);
-				} else if (currentfield instanceof Jail) {
-					jailController.jail(player, fields);
-				} else if (currentfield instanceof Tax) {
-					taxController.payTax(player, ((Tax) currentfield));
-				}
+				chooseAction(player, currentfield);
 				
 				doNormalTurn(player);
 			} else {
@@ -120,9 +106,15 @@ public class Game {
         // Where is the Player?
 		Field currentfield = fields[player.getPlayerPosition()-1];
 		
+		chooseAction(player, currentfield);
+		
+		
+	}
+
+	private void chooseAction(Player player, Field currentfield) {
 		// Which action should be taken?
 		if (currentfield instanceof Territory) {
-			territoryController.landOnTerritory(player, ((Territory) currentfield), fields);
+			territoryController.landOnTerritory(players, player, ((Territory) currentfield), fields);
 		} else if (currentfield instanceof Fleet) {
 			fleetController.landOnFleet(player, ((Fleet) currentfield), fields);
 		} else if (currentfield instanceof Labor) {
@@ -130,14 +122,12 @@ public class Game {
 		} else if (currentfield instanceof Refuge) {
 			refugeController.landOnRefuge(player, ((Refuge) currentfield), fields);
 		} else if (currentfield instanceof Luck) {
-			luckController.landOnLuck(player, fields, this.player);
+			luckController.landOnLuck(player, fields, this.players);
 		} else if (currentfield instanceof Jail) {
 //			jailController.jail(player, fields);
 		} else if (currentfield instanceof Tax) {
 			taxController.payTax(player, ((Tax) currentfield));
 		}
-		
-		
 	}
 
 
@@ -163,17 +153,17 @@ public class Game {
 
 	public void checkWinner() {
 		
-		int numberofplayers = player.length;
+		int numberofplayers = players.length;
 		int count = 0;
 		
-		for (int i = 0; i < player.length; i++) {
+		for (int i = 0; i < players.length; i++) {
 			
-			if (player[i].bankrupt()) {
+			if (players[i].bankrupt()) {
 				count++;
 			}
 			
 			if (numberofplayers == count) {
-				GUI.displayChanceCard("<center>"+ player[i].getName() +" have won the game with a total of <br><br> "+player[i].getAssets()+"<br>assets.");
+				GUI.displayChanceCard("<center>"+ players[i].getName() +" have won the game with a total of <br><br> "+players[i].getAssets()+"<br>assets.");
 			}
 			
 		}
