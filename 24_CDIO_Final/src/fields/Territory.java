@@ -40,9 +40,33 @@ public class Territory extends Ownable {
 
 
 	@Override
-	public int getRent(Field[] fields) {
+	public int getRent(Player player, Field[] fields) {
 		// TODO her mangler vi at den udregner hvad lejen er med antal huse
-		return fieldrent;
+		// Send field med?
+		int numberingroup = 0;
+		int numberofowned = 0;
+		
+		for (int i = 0; i < fields.length; i++) {
+			Field f = fields[i];
+			if (f instanceof Territory) {
+				Territory territory = (Territory) f;
+
+				if (fieldgroup == territory.getFieldGroup() && player.equals(territory.fieldowner)) {
+					numberingroup++;
+					if (player.equals(territory.fieldowner)) {
+						numberofowned++;
+					}
+				}
+				
+			}
+		}
+		
+		if (numberingroup == numberofowned) {
+			return fieldrent * 2;
+		} else {
+			return fieldrent;
+		}
+		
 	}
 
 	public void setPawned(boolean pawn) {
@@ -142,10 +166,16 @@ public class Territory extends Ownable {
 
 				if (territory.getFieldGroup() == ((Territory) currentField).getFieldGroup() && player.equals(territory.fieldowner)) {
 					GUI.setOwner(i+1, player.getName());
-					GUI.setSubText(i+1, "Leje: "+territory.getRent(fields)+"");
+					GUI.setSubText(i+1, "Leje: "+territory.getRent(player, fields)+"");
 				}
 			} 
 		}
 
+	}
+
+
+
+	public int getBaseRent() {
+		return fieldrent;
 	}
 }

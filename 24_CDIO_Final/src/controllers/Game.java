@@ -86,6 +86,27 @@ public class Game {
 		if (Dice.issame()) {
 			if (player.getNumberOfExtraTurns() < 3) {
 				player.setNumberOfExtraTurns(1);
+				
+				PlayerController.movePlayer(player, Dice.getSum(), fields);
+				
+				Field currentfield = fields[player.getPlayerPosition()-1];
+				
+				if (currentfield instanceof Territory) {
+					territoryController.landOnTerritory(player, ((Territory) currentfield), fields);
+				} else if (currentfield instanceof Fleet) {
+					fleetController.landOnFleet(player, ((Fleet) currentfield), fields);
+				} else if (currentfield instanceof Labor) {
+					laborController.landOnLabor(player, ((Labor) currentfield), fields);
+				} else if (currentfield instanceof Refuge) {
+					refugeController.landOnRefuge(player, ((Refuge) currentfield), fields);
+				} else if (currentfield instanceof Luck) {
+					//luckController.landOnLuck(player, fields, this.player);
+				} else if (currentfield instanceof Jail) {
+					jailController.jail(player, fields);
+				} else if (currentfield instanceof Tax) {
+					taxController.payTax(player, ((Tax) currentfield));
+				}
+				
 				doNormalTurn(player);
 			} else {
 				jailController.jail(player, fields);

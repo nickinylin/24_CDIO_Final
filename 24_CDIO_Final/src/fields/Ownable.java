@@ -20,14 +20,14 @@ public abstract class Ownable extends Field {
     protected int fieldprice;
     public boolean fieldowned;
     
-    public abstract int getRent(Field[] fields);
+    public abstract int getRent(Player player, Field[] fields);
     
     /**
      * Bruges når en spiller lander på et felt der er ejet af en anden spiller.
      * @param player
      */
     public void payRent(Player player, Field[] fields) {
-        int payamount = getRent(fields);
+        int payamount = getRent(player, fields);
         player.payMoney(payamount);
         this.fieldowner.giveMoney(payamount);
         

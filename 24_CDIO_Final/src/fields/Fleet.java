@@ -22,7 +22,7 @@ public class Fleet extends Ownable {
 	 * @return
 	 */
 	@Override
-	public int getRent(Field[] fields) {
+	public int getRent(Player player, Field[] fields) {
 		int fieldrent = 0;
 		int count = 0;
 
@@ -72,7 +72,7 @@ public class Fleet extends Ownable {
 
 				if (player.equals(((Fleet) currentField).fieldowner) && player.equals(fleet.fieldowner)) {
 					GUI.setOwner(i+1, player.getName());
-					GUI.setSubText(i+1, "Leje: "+fleet.getRent(fields)+"");
+					GUI.setSubText(i+1, "Leje: "+fleet.getRent(player, fields)+"");
 				}
 			}
 		}
