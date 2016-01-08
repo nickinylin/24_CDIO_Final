@@ -58,7 +58,7 @@ public class TerritoryController {
 			final String BTN3 = "Sælg felt (Bank)";
 			final String BTN4 = "pantsæt";
 			final String BTN5 = "Afslut";
-			String button = GUI.getUserSelection("message", BTN1, BTN2, BTN3, BTN4, BTN5);
+			String button = GUI.getUserButtonPressed("message", BTN1, BTN2, BTN3, BTN4, BTN5);
 
 			switch(button) {
 			case BTN1:
