@@ -40,7 +40,7 @@ public class JailController {
 
 	public boolean rollOutOfJail(Player player, Field[] fields) {
 
-		if (player.getJailTurn() < 3){
+		if (player.getJailTurn() < 2){
 			GUI.getUserButtonPressed("", player.getName()+": Roll Dices");
 			Dice.roll();
 			GUI.setDice(Dice.getDice1(), Dice.getDice2());
