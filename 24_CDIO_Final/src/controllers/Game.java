@@ -77,6 +77,7 @@ public class Game {
 	
 	public void doNormalTurn(Player player) {
 		
+		
         // Roll Dices
         GUI.getUserButtonPressed("", player.getName()+": Roll Dices");
         Dice.roll();
@@ -118,7 +119,7 @@ public class Game {
         
         // Where is the Player?
 		Field currentfield = fields[player.getPlayerPosition()-1];
-
+		
 		// Which action should be taken?
 		if (currentfield instanceof Territory) {
 			territoryController.landOnTerritory(player, ((Territory) currentfield), fields);
@@ -131,7 +132,7 @@ public class Game {
 		} else if (currentfield instanceof Luck) {
 			//luckController.landOnLuck(player, fields, this.player);
 		} else if (currentfield instanceof Jail) {
-			jailController.jail(player, fields);
+//			jailController.jail(player, fields);
 		} else if (currentfield instanceof Tax) {
 			taxController.payTax(player, ((Tax) currentfield));
 		}

@@ -19,7 +19,7 @@ public class PlayerController {
 
 		
 		int nextposition = player.getPlayerPosition() + move;
-		int maxmove = nextposition%fields.length;
+		int maxmove = (nextposition-1)%fields.length+1;
 
 		if (nextposition >= fields.length) {
 
@@ -42,9 +42,7 @@ public class PlayerController {
 				}
 
 			}
-			if (maxmove == 0) {
-				player.setPlayerPositionToField(1);
-			}
+			
 			player.setPlayerPositionToField(maxmove);
 			player.giveMoney(4000);
 			GUI.setBalance(player.getName(), player.getMoney());
