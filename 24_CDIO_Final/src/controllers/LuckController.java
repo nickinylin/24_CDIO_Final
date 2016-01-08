@@ -53,7 +53,7 @@ private PlayerController playercontroller= new PlayerController();
                     	playercontroller.movePlayer(player, x, fields);
                     	TerritoryController territorycontroller= new TerritoryController();
                     	Territory territory= (Territory)fields[i];
-                    	territorycontroller.landOnTerritory(player, territory, fields);
+                    	territorycontroller.landOnTerritory(group, player, territory, fields);
                     }
                     else if(fields[i] instanceof Fleet){
                     	int x;
@@ -146,7 +146,7 @@ private PlayerController playercontroller= new PlayerController();
 	            	if(fields[destination] instanceof Territory){
                     	TerritoryController territorycontroller= new TerritoryController();
                     	Territory territory= (Territory)fields[destination];
-                    	territorycontroller.landOnTerritory(player, territory, fields);
+                    	territorycontroller.landOnTerritory(group, player, territory, fields);
 	            	}
 	            	else if(fields[destination] instanceof Fleet){
                     	FleetController fleetcontroller= new FleetController();
@@ -177,7 +177,7 @@ private PlayerController playercontroller= new PlayerController();
 				CardsShare transaction= (CardsShare) card;
 				int moneyPool;
 				moneyPool=transaction.getvalue()*group.length;
-				for(int i=0; i<=group.length;i++){
+				for(int i=0; i<group.length;i++){
 					group[i].payMoney(transaction.getvalue());
 				}
 				player.giveMoney(moneyPool);

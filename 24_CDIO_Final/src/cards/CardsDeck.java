@@ -89,7 +89,8 @@ public class CardsDeck {
 //				 new CardsMoveto("Tag med den nærmeste færge. Flyt brikken frem, og hvis De passerer START indkassér da kr. 4000", "tour"),
 				// new GetOutofJail()
 		};
-
+		
+shuffledeck();
 		discard = new Cards[deck.length];
 		currentdecksize = deck.length-1;
 		discardsize = 0;
@@ -99,6 +100,9 @@ public class CardsDeck {
 	// kortene fjernes.
 
 	public Cards drawcard() {
+		if(currentdecksize==0)
+			shuffledeck();
+		
 		Cards card = deck[currentdecksize];
 		deck[currentdecksize] = null;
 		currentdecksize = currentdecksize - 1;
