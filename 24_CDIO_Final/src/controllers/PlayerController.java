@@ -2,7 +2,6 @@ package controllers;
 
 import desktop_resources.GUI;
 import fields.Field;
-import game.Bank;
 import game.Player;
 
 public class PlayerController {
