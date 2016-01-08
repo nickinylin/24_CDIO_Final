@@ -102,10 +102,6 @@ public class Territory extends Ownable {
 		return houses;
 	}
 
-	public int getFieldrent() {
-		return fieldrent;
-	}
-
 	public int getFieldrenthouse1() {
 		return fieldrenthouse1;
 	}

@@ -108,7 +108,6 @@ public class Game {
 		
 		chooseAction(player, currentfield);
 		
-		
 	}
 
 	private void chooseAction(Player player, Field currentfield) {
