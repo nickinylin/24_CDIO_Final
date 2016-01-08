@@ -81,6 +81,16 @@ public class Game {
         GUI.getUserButtonPressed("", player.getName()+": Roll Dices");
         Dice.roll();
         GUI.setDice(Dice.getDice1(), Dice.getDice2());
+        
+        // Check for doubles
+		if (Dice.issame()) {
+			if (player.getNumberOfExtraTurns() < 3) {
+				player.setNumberOfExtraTurns(1);
+				doNormalTurn(player);
+			} else {
+				jailController.jail(player, fields);
+			}
+		}
 		
         // Move the Player
         PlayerController.movePlayer(player, Dice.getSum(), fields);
@@ -105,20 +115,6 @@ public class Game {
 			taxController.payTax(player, ((Tax) currentfield));
 		}
 		
-		if (Dice.issame()) {
-			
-			if (player.getNumberOfExtraTurns() < 3) {
-				
-				player.setNumberOfExtraTurns(1);
-				doNormalTurn(player);
-				
-			} else {
-				
-				jailController.jail(player, fields);
-				
-			}
-			
-		}
 		
 	}
 
