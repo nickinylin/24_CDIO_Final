@@ -98,14 +98,14 @@ public class TerritoryController {
 
 			if (sellto == "Sælg felt til Spillere") {
 
-				Territory[] thisfield = new Territory[1];
-
+				Territory[] thisfield = new Territory[10];
+				int k = 0;
 				for (Field f : fields) {
 					if (f instanceof Territory) {
 						Territory t = (Territory) f;
 
 						if (buyfield == t.getName()) {
-							thisfield[1] = t;
+							thisfield[k++] = t;
 						}
 					}
 				}
@@ -123,22 +123,23 @@ public class TerritoryController {
 				}
 
 				String spiller = GUI.getUserSelection("Sælg "+buyfield+" til", playernames);
-
+				int g = 0;
 				Player[] buyplayer = new Player[1];
 				for (int z = 0; z < players.length ; z++) {
 					if (players[z].getName() == spiller) {
-						buyplayer[1] = players[z];
+						buyplayer[g++] = players[z];
 					}
 				}
 
-				thisfield[1].buyField(buyplayer[1], fields);
+				thisfield[0].buyField(buyplayer[0], fields);
 				int pris = GUI.getUserInteger("Pris");
 				player.giveMoney(pris);
-				buyplayer[1].payMoney(pris);
-				GUI.setBalance(buyplayer[1].getName(), buyplayer[1].getMoney());
+				buyplayer[0].giveMoney(thisfield[0].getPrice());
+				buyplayer[0].payMoney(pris);
+				GUI.setBalance(buyplayer[0].getName(), buyplayer[0].getMoney());
 				GUI.setBalance(player.getName(), player.getMoney());
 
-				thisfield[1].updateFieldGroup(buyplayer[1], thisfield[1], fields);
+				thisfield[0].updateFieldGroup(buyplayer[0], thisfield[0], fields);
 
 			} else if (sellto == "Sælg felt til Bank"){
 				currentfield.sellFieldToBank(player, currentfield, fields);
