@@ -63,5 +63,13 @@ public class JUnitBuyField {
 
 		assertEquals(100, ((Territory) currentfield).getRent(spiller1, fields) );
 	}
+	
+	@Test
+	public void test3OfTheSameDices() {
+		Field currentfield = fields[spiller1.getPlayerPosition()-1];
+		((Territory) currentfield).buyField(spiller1, fields);
+
+		assertEquals(spiller1, ((Territory) currentfield).fieldowner);
+	}
 
 }

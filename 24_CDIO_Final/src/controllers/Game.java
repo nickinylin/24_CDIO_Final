@@ -42,72 +42,73 @@ public class Game {
 	}
 
 	public Game() {
-		
+
 		Setup setup = new Setup();
 		// Create Fields players and card deck
 		fields = setup.createFields();
 		players = setup.createPlayers();
-		
+
 
 		boolean noWinner = true;
-		
+
 		while (noWinner) {
-			
+
 			for (int i = 0; i < players.length; i++) {
-				
+
 				if (players[i].bankrupt()) {
 					checkWinner();
 				} 
-				
+
 				if (players[i].isInJail()) {
 					doJailTurn(players[i]);
 				} else {
 					doNormalTurn(players[i]);
 				}
-				
+
 			}
-			
+
 		}
-		
+
 
 
 	}
 
-	
-	
+
+
 	public void doNormalTurn(Player player) {
-		
-		
-        // Roll Dices
-        GUI.getUserButtonPressed("", player.getName()+": Roll Dices");
-        Dice.roll();
-        GUI.setDice(Dice.getDice1(), Dice.getDice2());
-        
-        // Check for doubles
+
+
+		// Roll Dices
+		GUI.getUserButtonPressed("", player.getName()+": Roll Dices");
+		Dice.roll();
+		GUI.setDice(Dice.getDice1(), Dice.getDice2());
+
+		// Check for doubles
 		if (Dice.issame()) {
+			player.setNumberOfExtraTurns(1);
 			if (player.getNumberOfExtraTurns() < 3) {
-				player.setNumberOfExtraTurns(1);
-				
+
 				PlayerController.movePlayer(player, Dice.getSum(), fields);
-				
+
 				Field currentfield = fields[player.getPlayerPosition()-1];
-				
+
 				chooseAction(player, currentfield);
-				
+
 				doNormalTurn(player);
 			} else {
 				jailController.jail(player, fields);
+
 			}
+		} else {
+
+			// Move the Player
+			PlayerController.movePlayer(player, Dice.getSum(), fields);
+
+			// Where is the Player?
+			Field currentfield = fields[player.getPlayerPosition()-1];
+
+			chooseAction(player, currentfield);
 		}
-		
-        // Move the Player
-        PlayerController.movePlayer(player, Dice.getSum(), fields);
-        
-        // Where is the Player?
-		Field currentfield = fields[player.getPlayerPosition()-1];
-		
-		chooseAction(player, currentfield);
-		
 	}
 
 	private void chooseAction(Player player, Field currentfield) {
@@ -121,7 +122,7 @@ public class Game {
 		} else if (currentfield instanceof Refuge) {
 			refugeController.landOnRefuge(player, ((Refuge) currentfield), fields);
 		} else if (currentfield instanceof Luck) {
-//			luckController.landOnLuck(player, fields, this.players);
+			//			luckController.landOnLuck(player, fields, this.players);
 		} else if (currentfield instanceof Jail) {
 			jailController.jail(player, fields);
 		} else if (currentfield instanceof Tax) {
@@ -135,39 +136,40 @@ public class Game {
 		boolean payFine = GUI.getUserLeftButtonPressed(""+player.getName()+"", "Betal 1000 kr", "Slå med terningerne");
 
 		if (payFine) {
-			
+
 			jailController.payJail(player);
 			doNormalTurn(player);
-			
+
 		} else {
 
 			if (jailController.rollOutOfJail(player, fields)) {
 				PlayerController.movePlayer(player, Dice.getSum(), fields);
 				GUI.setCar(player.getPlayerPosition(), player.getName());
+				doNormalTurn(player);
 			}
-			
+
 		}
-		
+
 	}
 
 
 	public void checkWinner() {
-		
+
 		int numberofplayers = players.length;
 		int count = 0;
-		
+
 		for (int i = 0; i < players.length; i++) {
-			
+
 			if (players[i].bankrupt()) {
 				count++;
 			}
-			
+
 			if (numberofplayers == count) {
 				GUI.displayChanceCard("<center>"+ players[i].getName() +" have won the game with a total of <br><br> "+players[i].getAssets()+"<br>assets.");
 			}
-			
+
 		}
-		
+
 	}
 
 }

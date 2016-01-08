@@ -24,10 +24,10 @@ public class Dice {
      * and setting a new value for dice1 and dice2
      */
     public static void roll(){
-        value1 = (int)(Math.random()*6)+1;
-        value2 = (int)(Math.random()*6)+1;
-//    	value1 = 30;
-//    	value2 = 0;
+//        value1 = (int)(Math.random()*6)+1;
+//        value2 = (int)(Math.random()*6)+1;
+    	value1 = 6;
+    	value2 = 6;
     }
     
     /**
@@ -58,5 +58,10 @@ public class Dice {
     	return value1 == value2;
     	
     }
+    public static void testRollDiceSame() {
+    	value1 = 6;
+    	value2 = 6;
+    }
+    
     
 }

@@ -12,6 +12,7 @@ public class JailController {
 	public void jail(Player player, Field[] fields) {
 		
 		player.setIsInJail(true);
+		player.resetExtraTurns();
 
 		if (player.getPlayerPosition()-1 > 11) {
 			
@@ -49,6 +50,9 @@ public class JailController {
 			if (Dice.issame()){
 				player.setIsInJail(false);
 				player.resetJailTurn();
+				player.setNumberOfExtraTurns(1);
+				
+				
 				return true;
 			}
 			player.setJailTurn(1);
