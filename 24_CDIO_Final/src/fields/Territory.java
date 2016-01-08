@@ -198,6 +198,7 @@ public class Territory extends Ownable {
 		
 		String spiller = GUI.getUserSelection("Sælg til", playernames);
 		currentplayer.giveMoney(pris);
+		
 	}
 
 	public void sellFieldToBank(Player player, Territory currentfield, Field[] fields) {
