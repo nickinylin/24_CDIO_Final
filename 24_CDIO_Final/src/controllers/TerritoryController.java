@@ -48,7 +48,7 @@ public class TerritoryController {
 
 			} else {
 
-				((Ownable) territory).payRent(player, fields);
+				((Territory) territory).payRent(player, fields);
 				GUI.setBalance(player.getName(), player.getMoney());
 			}
 
