@@ -26,8 +26,8 @@ public class Dice {
     public static void roll(){
 //        value1 = (int)(Math.random()*6)+1;
 //        value2 = (int)(Math.random()*6)+1;
-    	value1 = 0;
-    	value2 = 1;
+    	value1 = 30;
+    	value2 = 0;
     }
     
     /**

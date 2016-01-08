@@ -123,7 +123,7 @@ public class Game {
 		} else if (currentfield instanceof Luck) {
 //			luckController.landOnLuck(player, fields, this.players);
 		} else if (currentfield instanceof Jail) {
-//			jailController.jail(player, fields);
+			jailController.jail(player, fields);
 		} else if (currentfield instanceof Tax) {
 			taxController.payTax(player, ((Tax) currentfield));
 		}
@@ -141,11 +141,12 @@ public class Game {
 			
 		} else {
 
-			if (jailController.rollOutOfJail(player)) {
-				jailController.doubbleRollJail(player, fields);
-			}
+			if (jailController.rollOutOfJail(player, fields)) {
 				PlayerController.movePlayer(player, Dice.getSum(), fields);
+				GUI.setCar(player.getPlayerPosition(), player.getName());
 			}
+			
+		}
 		
 	}
 

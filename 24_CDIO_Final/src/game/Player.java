@@ -113,7 +113,7 @@ public class Player {
 	}
 
 	public void setJailTurn(int jailTurn) {
-		this.jailTurn = jailTurn;
+		this.jailTurn = this.jailTurn + jailTurn;
 	}
 	public boolean isInJail() {
 		return jail;
