@@ -53,12 +53,43 @@ public class TerritoryController {
 			}
 
 		} else { // The Territory field was not owned
+			int count = 0;
+			String[] tempmenu = new String[5];
+			boolean ownsfields = false;
+			
 			final String BTN1 = "Buy field";
 			final String BTN2 = "Sælg felt (Spillere)";
 			final String BTN3 = "Sælg felt (Bank)";
 			final String BTN4 = "pantsæt";
 			final String BTN5 = "Afslut";
-			String button = GUI.getUserButtonPressed(player.getName(), BTN1, BTN2, BTN3, BTN4, BTN5);
+			
+			tempmenu[count++] = BTN1;
+			
+			for (Field f : fields) {
+				if (f instanceof Territory) {
+					Territory t = (Territory) f;
+
+					if (t.getOwner() == player) {
+						ownsfields = true;
+					}
+				}
+			}
+
+			if (ownsfields) {
+				tempmenu[count++] = BTN2;
+				tempmenu[count++] = BTN3;
+				tempmenu[count++] = BTN4;
+			}
+
+			tempmenu[count++] = BTN5;
+
+			String[] menu = new String[count];
+			
+			for (int i = 0; i < menu.length; i++) {
+				menu[i] = tempmenu[i];
+			}
+			
+			String button = GUI.getUserButtonPressed(player.getName(), menu);
 
 			switch(button) {
 			case BTN1:

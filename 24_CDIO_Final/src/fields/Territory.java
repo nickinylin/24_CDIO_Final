@@ -48,10 +48,11 @@ public class Territory extends Ownable {
 		
 		for (int i = 0; i < fields.length; i++) {
 			Field f = fields[i];
+			
 			if (f instanceof Territory) {
 				Territory territory = (Territory) f;
 
-				if (fieldgroup == territory.getFieldGroup() && player.equals(territory.fieldowner)) {
+				if (fieldgroup == territory.getFieldGroup()) {
 					numberingroup++;
 					if (player.equals(territory.fieldowner)) {
 						numberofowned++;
@@ -198,6 +199,14 @@ public class Territory extends Ownable {
 		
 		String spiller = GUI.getUserSelection("Sælg til", playernames);
 		currentplayer.giveMoney(pris);
+		
+		for (int i = 0; i < players.length ; i++) {
+			if (players[i].getName() == spiller) {
+				players[i].payMoney(pris);
+				GUI.setBalance(players[i].getName(), players[i].getMoney());
+			}
+		}
+
 		
 	}
 
