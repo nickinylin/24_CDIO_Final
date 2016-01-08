@@ -45,10 +45,10 @@ public class Territory extends Ownable {
 		// Send field med?
 		int numberingroup = 0;
 		int numberofowned = 0;
-		
+
 		for (int i = 0; i < fields.length; i++) {
 			Field f = fields[i];
-			
+
 			if (f instanceof Territory) {
 				Territory territory = (Territory) f;
 
@@ -58,16 +58,16 @@ public class Territory extends Ownable {
 						numberofowned++;
 					}
 				}
-				
+
 			}
 		}
-		
+
 		if (numberingroup == numberofowned) {
 			return fieldrent * 2;
 		} else {
 			return fieldrent;
 		}
-		
+
 	}
 
 	public void setPawned(boolean pawn) {
@@ -177,37 +177,42 @@ public class Territory extends Ownable {
 	}
 
 
-	public void sellFieldToPlayer(Player[] players, Player currentplayer, Territory currentfield, Field[] fields) {
-		
-		int pris = GUI.getUserInteger("Pris");
-		
+	public Player sellFieldToPlayer(Player[] players, Player currentplayer, Territory currentfield, Field[] fields) {
+
 		String[] playernames = new String[players.length-1];
 		int j = 0;
-		
+
 		for (int i = 0; i < players.length ; i++) {
 			if (currentplayer.getName().equals(players[i].getName())) {
-				
+
 			} else {
 				playernames[j] = players[i].getName();
 				j++;
 			}
 		}
-		
+
 		String spiller = GUI.getUserSelection("Sælg til", playernames);
-		currentplayer.giveMoney(pris);
-		
+
 		for (int i = 0; i < players.length ; i++) {
 			if (players[i].getName() == spiller) {
-				players[i].payMoney(pris);
-				GUI.setBalance(players[i].getName(), players[i].getMoney());
+				return players[i];
 			}
 		}
-
-		
+		return currentplayer;
 	}
 
+		//		currentplayer.giveMoney(pris);
+		//		
+		//		for (int i = 0; i < players.length ; i++) {
+		//			if (players[i].getName() == spiller) {
+		//				players[i].payMoney(pris);
+		//				GUI.setBalance(players[i].getName(), players[i].getMoney());
+		//			}
+		//		}
+
+
 	public void sellFieldToBank(Player player, Territory currentfield, Field[] fields) {
-		
+
 		for (int i = 0; i < fields.length; i++) {
 			Field f = fields[i];
 			if (f instanceof Territory) {

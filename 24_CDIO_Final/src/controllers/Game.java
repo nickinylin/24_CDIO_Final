@@ -93,6 +93,7 @@ public class Game {
 				Field currentfield = fields[player.getPlayerPosition()-1];
 
 				chooseAction(player, currentfield);
+				chooseMenu(player, currentfield, fields);
 
 				doNormalTurn(player);
 			} else {
@@ -108,8 +109,65 @@ public class Game {
 			Field currentfield = fields[player.getPlayerPosition()-1];
 
 			chooseAction(player, currentfield);
+			chooseMenu(player, currentfield, fields);
 		}
 	}
+
+	private void chooseMenu(Player player, Field currentfield, Field[] fields) {
+		// TODO Auto-generated method stub
+		for (Field f : fields) {
+			if (f instanceof Territory) {
+				Territory t = (Territory) f;
+
+				if (t.fieldowned && player.equals(t.getOwner())) {
+
+				} else {
+
+				}
+
+			} else if (f instanceof Fleet) {
+
+			} else if (f instanceof Labor) {
+
+			} else if (f instanceof Jail) {
+
+			} else if (f instanceof Luck) {
+
+			} else if (f instanceof Empty) {
+
+			}
+		}
+	}
+
+	//	public boolean checkBuyBuilding(Player player, Field currentfield, Field[] field) {
+	//		
+	//		int numberofgroupfields = 0;
+	//		int numberofownedfields = 0;
+	//		int i = 0;
+	//
+	//		Territory[] ownedfields = new Territory[3];
+	//
+	//		for (Field f : fields) {
+	//			if (f instanceof Territory) {
+	//				Territory t = (Territory) f;
+	//
+	//				if (t.getFieldGroup() == ((Territory) currentfield).getFieldGroup()) {
+	//					numberofgroupfields++;
+	//					if (player.equals(t.getOwner())) {
+	//						ownedfields[i++] = t;
+	//						numberofownedfields++;
+	//					}
+	//				}
+	//			}
+	//		}
+	//
+	//		if (numberofgroupfields == numberofownedfields) {
+	//			return true;
+	//		} else {
+	//			return false;
+	//		}
+	//	}
+
 
 	private void chooseAction(Player player, Field currentfield) {
 		// Which action should be taken?
