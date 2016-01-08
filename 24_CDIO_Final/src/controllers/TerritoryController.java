@@ -48,7 +48,7 @@ public class TerritoryController {
 
 			} else {
 
-				((Ownable) territory).payRent(player, fields);
+				((Territory) territory).payRent(player, fields);
 				GUI.setBalance(player.getName(), player.getMoney());
 			}
 
@@ -58,10 +58,9 @@ public class TerritoryController {
 			boolean ownsfields = false;
 			
 			final String BTN1 = "Buy field";
-			final String BTN2 = "Sælg felt (Spillere)";
-			final String BTN3 = "Sælg felt (Bank)";
-			final String BTN4 = "pantsæt";
-			final String BTN5 = "Afslut";
+			final String BTN2 = "Sælg felt";
+			final String BTN3 = "Pantsæt";
+			final String BTN4 = "Afslut";
 			
 			tempmenu[count++] = BTN1;
 			
@@ -78,10 +77,9 @@ public class TerritoryController {
 			if (ownsfields) {
 				tempmenu[count++] = BTN2;
 				tempmenu[count++] = BTN3;
-				tempmenu[count++] = BTN4;
 			}
 
-			tempmenu[count++] = BTN5;
+			tempmenu[count++] = BTN4;
 
 			String[] menu = new String[count];
 			
@@ -98,20 +96,23 @@ public class TerritoryController {
 				territory.updateFieldGroup(player, territory, fields);
 				break;
 			case BTN2:
-				((Territory) territory).sellFieldToPlayer(players, player, ((Territory) territory), fields);
-				GUI.setBalance(player.getName(), player.getMoney());
-				territory.updateFieldGroup(player, territory, fields);
+				String sellto = GUI.getUserButtonPressed(player.getName(), "Sælg felt til Spillere", "Sælg felt til Bank", "Fortryd");
+				if ("Sælg felt til Bank" == sellto) {
+					((Territory) territory).sellFieldToPlayer(players, player, ((Territory) territory), fields);
+					GUI.setBalance(player.getName(), player.getMoney());
+					territory.updateFieldGroup(player, territory, fields);
+				} else if ("Sælg felt til Bank" == sellto){
+					((Territory) territory).sellFieldToBank(player, ((Territory) territory), fields);
+					GUI.setBalance(player.getName(), player.getMoney());
+					territory.updateFieldGroup(player, territory, fields);
+				}
 				break;
 			case BTN3:
-				((Territory) territory).sellFieldToBank(player, ((Territory) territory), fields);
+				((Territory) territory).setPawned(true);
 				GUI.setBalance(player.getName(), player.getMoney());
 				territory.updateFieldGroup(player, territory, fields);
 				break;
 			case BTN4:
-				((Territory) territory).setPawned(true);
-				GUI.setBalance(player.getName(), player.getMoney());
-				territory.updateFieldGroup(player, territory, fields);
-			case BTN5:
 				((Territory) territory).setPawned(false);
 				GUI.setBalance(player.getName(), player.getMoney());
 				territory.updateFieldGroup(player, territory, fields);
