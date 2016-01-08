@@ -73,10 +73,10 @@ private PlayerController playercontroller= new PlayerController();
                     	if(player.getPlayerPosition()>35 && player.getPlayerPosition()<=5)
                 			{
                         	int x;
-    						if(player.getPlayerPosition()>5)
-                        x = fields.length-player.getPlayerPosition();
-    						else
+                        	if(player.getPlayerPosition()>=0)
     							x = 5-player.getPlayerPosition();
+                        	else
+                        		x=5+fields.length-player.getPlayerPosition();
                         	playercontroller.movePlayer(player, x, fields);
                 			Fleet ships = (Fleet)fields[5];
                 				if(ships.fieldowned)
@@ -140,6 +140,8 @@ private PlayerController playercontroller= new PlayerController();
             	}
 	}
 	            else{
+	            	if(player.getPlayerPosition()-move.getExtraMoves()<0)
+	            		playercontroller.movePlayer(player, fields.length+player.getPlayerPosition()-move.getExtraMoves(), fields);
 	            	playercontroller.movePlayer(player,move.getExtraMoves(),fields);
 	            	int destination=player.getPlayerPosition();
 	            	
