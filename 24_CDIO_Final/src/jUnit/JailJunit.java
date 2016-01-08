@@ -25,7 +25,7 @@ public class JailJunit {
 		
 		
 		int expected=player1.getMoney()-1000;
-		if (player1.setIsInJail(true)){
+		if (player1.isInJail()){
 			System.out.println("Er i jail");
 		}
 		
