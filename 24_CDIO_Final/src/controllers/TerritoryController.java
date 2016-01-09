@@ -146,7 +146,13 @@ public class TerritoryController {
 
 		case button3:
 
-			String pantsæt = GUI.getUserButtonPressed(player.getName(), "Pantsæt Felt", "Tilbagekøb af Felt", "Fortryd");
+			String pantsæt;
+
+			if (checkPawnField(player, currentfield, fields)) {
+				pantsæt = GUI.getUserButtonPressed(player.getName(), "Pantsæt Felt", "Tilbagekøb af Felt", "Fortryd");
+			} else {
+				pantsæt = GUI.getUserButtonPressed(player.getName(), "Pantsæt Felt", "Fortryd");
+			}
 
 			if (pantsæt == "Pantsæt Felt") {
 
@@ -172,18 +178,17 @@ public class TerritoryController {
 					}
 				}
 
-				thisfield[0].setOwner(null);
 				thisfield[0].setOwnedToFalse();
 				thisfield[0].setPawned(true);
-				
+
 				player.giveMoney((int) (thisfield[0].getPawnPrice()));
 				GUI.setBalance(player.getName(), player.getMoney());
 
 				GUI.setTitleText(getfieldnumber, thisfield[0].getName());
 				GUI.setSubText(getfieldnumber, "Pantsat");
-				
+
 			} else if (pantsæt == "Tilbagekøb af Felt") {
-				
+
 				String[] pawnfieldlist = getPlayerPawnedFields(player, fields);
 
 				String pawnfield = GUI.getUserSelection(player.getName(), pawnfieldlist);
@@ -205,11 +210,10 @@ public class TerritoryController {
 
 					}
 				}
-				
-				thisfield[0].setOwner(player);
+
 				thisfield[0].setOwned();
 				thisfield[0].setPawned(false);
-				
+
 				player.payMoney((int) (thisfield[0].getPawnPrice()));
 				GUI.setBalance(player.getName(), player.getMoney());
 
@@ -224,16 +228,21 @@ public class TerritoryController {
 
 
 	private boolean checkPawnField(Player player, Territory currentfield, Field[] fields) {
+		int i = 0;
 		for (Field f : fields) {
 			if (f instanceof Territory) {
 				Territory t = (Territory) f;
 
 				if (t.getPawned() && player.equals(t.getOwner())) {
-					return true;
+					i++;
 				}
 			}
 		}
-		return false;
+		if (i > 0) {
+			return true;
+		} else {
+			return false;
+		}
 	}
 
 
@@ -278,7 +287,7 @@ public class TerritoryController {
 		}
 		return fieldlist;
 	}
-	
+
 	private String[] getPlayerOwnedFields(Player player, Field[] fields) {
 
 		int i = 0;
@@ -347,25 +356,20 @@ public class TerritoryController {
 			return false;
 		}
 	}
-	
+
 	private boolean checkBuildingExists(Player player, Territory currentfield, Field[] fields) {
-		int buildings = 0;
 
 		for (Field f : fields) {
 			if (f instanceof Territory) {
 				Territory t = (Territory) f;
 
 				if (player.equals(t.getOwner()) && t.getHouse() > 0) {
-					buildings++;
+					return true;
 				}
 			}
 		}
 
-		if (buildings > 0) {
-			return true;
-		} else {
-			return false;
-		}
+		return false;
 	}
 
 	private boolean checkBuyField(Player player, Territory currentfield, Field[] fields) {
