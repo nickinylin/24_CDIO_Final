@@ -101,7 +101,10 @@ public class Game {
 
 			}
 		} else {
-
+			
+			// Reset players extra turn
+			player.resetExtraTurns();
+			
 			// Move the Player
 			PlayerController.movePlayer(player, Dice.getSum(), fields);
 
@@ -138,36 +141,6 @@ public class Game {
 			}
 		}
 	}
-
-	//	public boolean checkBuyBuilding(Player player, Field currentfield, Field[] field) {
-	//		
-	//		int numberofgroupfields = 0;
-	//		int numberofownedfields = 0;
-	//		int i = 0;
-	//
-	//		Territory[] ownedfields = new Territory[3];
-	//
-	//		for (Field f : fields) {
-	//			if (f instanceof Territory) {
-	//				Territory t = (Territory) f;
-	//
-	//				if (t.getFieldGroup() == ((Territory) currentfield).getFieldGroup()) {
-	//					numberofgroupfields++;
-	//					if (player.equals(t.getOwner())) {
-	//						ownedfields[i++] = t;
-	//						numberofownedfields++;
-	//					}
-	//				}
-	//			}
-	//		}
-	//
-	//		if (numberofgroupfields == numberofownedfields) {
-	//			return true;
-	//		} else {
-	//			return false;
-	//		}
-	//	}
-
 
 	private void chooseAction(Player player, Field currentfield) {
 		// Which action should be taken?
