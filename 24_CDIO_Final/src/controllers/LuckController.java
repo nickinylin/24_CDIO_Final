@@ -142,25 +142,29 @@ private PlayerController playercontroller= new PlayerController();
                     }
             	
 	}
+	            //kort der ikke bevæger en til en fast destination
 	            else{
+	            	// om kort rykker en bagud
 	            	if(move.getExtraMoves()<0){
 	            	if(player.getPlayerPosition()+move.getExtraMoves()<player.getPlayerPosition()){
 	            		if(player.getPlayerPosition()+move.getExtraMoves()<1){
 		            		player.setPlayerPosition(move.getExtraMoves()+fields.length-1);
+			            	int destination=player.getPlayerPosition()-1;
 		            		GUI.removeAllCars(player.getName());
 		            		GUI.setCar(player.getPlayerPosition()+1, player.getName());
-	            		}
+	            		}	            		
 	            		else{
 	            		player.setPlayerPosition(move.getExtraMoves());
+		            	int destination=player.getPlayerPosition()-1;
 	            		GUI.removeAllCars(player.getName());
-	            		GUI.setCar(player.getPlayerPosition()-1, player.getName());
+	            		GUI.setCar(player.getPlayerPosition(), player.getName());
 	            		}
 	            		}
 	            		
 	            	}
 	            	else
 	            	playercontroller.movePlayer(player,move.getExtraMoves(),fields);
-	            	int destination=player.getPlayerPosition();
+	            	int destination=player.getPlayerPosition()-1;
 	            	
 	            	if(fields[destination] instanceof Territory){
                     	TerritoryController territorycontroller= new TerritoryController();
@@ -191,6 +195,7 @@ private PlayerController playercontroller= new PlayerController();
 			if(card instanceof CardsTransaction){
 				CardsTransaction transaction= (CardsTransaction) card;
 				player.giveMoney(transaction.getvalue());
+				GUI.setBalance(player.getName(), player.getMoney());
 			}
 			if (card instanceof CardsShare){
 				CardsShare transaction= (CardsShare) card;
@@ -198,8 +203,11 @@ private PlayerController playercontroller= new PlayerController();
 				moneyPool=transaction.getvalue()*group.length;
 				for(int i=0; i<group.length;i++){
 					group[i].payMoney(transaction.getvalue());
+					GUI.setBalance(group[i].getName(), group[i].getMoney());
 				}
 				player.giveMoney(moneyPool);
+				GUI.setBalance(player.getName(), player.getMoney());
+				
 			}
 	}
 }
