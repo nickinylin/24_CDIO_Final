@@ -40,17 +40,16 @@ public class TerritoryController {
 		if (checkBuyField(player, currentfield, fields)) {
 			tempmenu[count++] = button1;
 		}
-
 		if (checkOwnField(player, currentfield, fields)) {
 			tempmenu[count++] = button2;
 			tempmenu[count++] = button3;
-		}
-		if (checkPawnField(player, currentfield, fields)) {
+		} else if (checkPawnField(player, currentfield, fields)) {
 			tempmenu[count++] = button3;
 		}
-
 		if (checkBuyBuilding(player, currentfield, fields)) {
 			tempmenu[count++] = button4;
+		}
+		if (checkBuildingExists(player, currentfield, fields)){
 			tempmenu[count++] = button5;
 		}
 
@@ -282,7 +281,6 @@ public class TerritoryController {
 	
 	private String[] getPlayerOwnedFields(Player player, Field[] fields) {
 
-		int numberofownedfields = 0;
 		int i = 0;
 
 		Territory[] tempownedfields = new Territory[22];
@@ -292,7 +290,6 @@ public class TerritoryController {
 				Territory t = (Territory) f;
 
 				if (player.equals(t.getOwner())) {
-					numberofownedfields++;
 					tempownedfields[i++] = t;
 				}
 			}
@@ -336,7 +333,7 @@ public class TerritoryController {
 
 				if (t.getFieldGroup() == currentfield.getFieldGroup()) {
 					numberofgroupfields++;
-					if (player.equals(t.getOwner())) {
+					if (player.equals(t.getOwner()) && t.getPawned() == false) {
 						ownedfields[i++] = t;
 						numberofownedfields++;
 					}
@@ -345,6 +342,26 @@ public class TerritoryController {
 		}
 
 		if (numberofgroupfields == numberofownedfields) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+	
+	private boolean checkBuildingExists(Player player, Territory currentfield, Field[] fields) {
+		int buildings = 0;
+
+		for (Field f : fields) {
+			if (f instanceof Territory) {
+				Territory t = (Territory) f;
+
+				if (player.equals(t.getOwner()) && t.getHouse() > 0) {
+					buildings++;
+				}
+			}
+		}
+
+		if (buildings > 0) {
 			return true;
 		} else {
 			return false;
