@@ -47,8 +47,8 @@ public abstract class Ownable extends Field {
     
     public abstract void updateFieldGroup(Player player, Field currentField, Field[] fields);
     
-    public void setStatus(boolean boo) {
-        fieldowned = boo;
+    public void setOwned() {
+        fieldowned = true;
     }
     
     public boolean getStatus() {

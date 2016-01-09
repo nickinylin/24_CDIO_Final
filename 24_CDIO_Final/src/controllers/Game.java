@@ -66,6 +66,19 @@ public class Game {
 				}
 
 			}
+			
+			//TODO
+			for (int i = 0; i < players.length; i++) {
+				System.out.println(players.length);
+				int bankrupt = 0;
+				if (players[i].bankrupt()) {
+					bankrupt++;
+				}
+						
+				if (bankrupt == players.length-1) {
+					noWinner = false;
+				}
+			}
 
 		}
 

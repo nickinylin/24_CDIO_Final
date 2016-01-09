@@ -80,12 +80,15 @@ public class Player {
     
     public boolean bankrupt() {
         
-        boolean lose = false;
+        boolean bankrupt = false;
         
         if (getAssets() < 0) {
-            lose = true;
+            bankrupt = true;
+        } else if (getAssets() > 0) {
+        	//TODO
+        	// menu med sælg assets for at gå videre
         }
-        return lose;
+        return bankrupt;
     }
     
     public int getMoney(){
