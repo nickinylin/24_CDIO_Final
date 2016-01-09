@@ -18,6 +18,7 @@ private PlayerController playercontroller= new PlayerController();
 //		
 			Cards card = deck.drawcard();
 			GUI.displayChanceCard(card.getText());
+			GUI.getUserButtonPressed(player.getName() +" Du har trukket et prøv lykken kort", "Fortsæt");
 			if (card instanceof CardsMoveto) {
 	            CardsMoveto move=(CardsMoveto) card;
 	            if (move.getExtraMoves()==0){
@@ -28,10 +29,10 @@ private PlayerController playercontroller= new PlayerController();
                     if (fields[i] instanceof Empty){
                     	int x;
 						if(player.getPlayerPosition()>i)
-                    x = fields.length-player.getPlayerPosition();
+                    x = fields.length-player.getPlayerPosition()+i+1;
 						else
 							x = i-player.getPlayerPosition();
-                    	playercontroller.movePlayer(player, x, fields);
+                    	playercontroller.movePlayer(player, ++x, fields);
                     if(player.getPlayerPosition()>i)
                     	player.payMoney(4000);
                     player.setIsInJail(true);
@@ -39,18 +40,18 @@ private PlayerController playercontroller= new PlayerController();
                     else if(fields[i] instanceof Refuge){
                     	int x;
 						if(player.getPlayerPosition()>i)
-                    x = fields.length-player.getPlayerPosition();
+				             x = fields.length-player.getPlayerPosition()+i+1;
 						else
 							x = i-player.getPlayerPosition();
-                    	playercontroller.movePlayer(player, x, fields);
+                    	playercontroller.movePlayer(player, ++x, fields);
                     }
                     else if (fields[i] instanceof Territory){
                     	int x;
 						if(player.getPlayerPosition()>i)
-                    x = fields.length-player.getPlayerPosition();
+				             x = fields.length-player.getPlayerPosition()+i+1;
 						else
 							x = i-player.getPlayerPosition();
-                    	playercontroller.movePlayer(player, x, fields);
+                    	playercontroller.movePlayer(player, ++x, fields);
                     	TerritoryController territorycontroller= new TerritoryController();
                     	Territory territory= (Territory)fields[i];
                     	territorycontroller.landOnTerritory(group, player, territory, fields);
@@ -58,17 +59,18 @@ private PlayerController playercontroller= new PlayerController();
                     else if(fields[i] instanceof Fleet){
                     	int x;
 						if(player.getPlayerPosition()>i)
-                    x = fields.length-player.getPlayerPosition();
+				             x = fields.length-player.getPlayerPosition()+i+1;
 						else
 							x = i-player.getPlayerPosition();
-                    	playercontroller.movePlayer(player, x, fields);
+                    	playercontroller.movePlayer(player, ++x, fields);
                     	FleetController fleetcontroller= new FleetController();
                     	Fleet fleet= (Fleet)fields[i];
                     	fleetcontroller.landOnFleet(player, fleet, fields);
                     }
                     
 	}
-                    else if(move.getDestination().equals("fleet")){
+            	}
+                    if(move.getDestination().equals("fleet")){
                     	FleetController fleetcontroller= new FleetController();
                     	if(player.getPlayerPosition()>35 && player.getPlayerPosition()<=5)
                 			{
@@ -77,7 +79,8 @@ private PlayerController playercontroller= new PlayerController();
     							x = 5-player.getPlayerPosition();
                         	else
                         		x=5+fields.length-player.getPlayerPosition();
-                        	playercontroller.movePlayer(player, x, fields);
+                        	
+                        	playercontroller.movePlayer(player, ++x, fields);
                 			Fleet ships = (Fleet)fields[5];
                 				if(ships.fieldowned)
                 				{
@@ -94,7 +97,7 @@ private PlayerController playercontroller= new PlayerController();
                             x = fields.length-player.getPlayerPosition();
         						else
         							x = 15-player.getPlayerPosition();
-                            	playercontroller.movePlayer(player, x, fields);
+                            	playercontroller.movePlayer(player, ++x, fields);
                 			Fleet ships = (Fleet)fields[15];
                 				if(ships.fieldowned)
                 				{
@@ -110,7 +113,7 @@ private PlayerController playercontroller= new PlayerController();
                             x = fields.length-player.getPlayerPosition();
         						else
         							x = 25-player.getPlayerPosition();
-                            	playercontroller.movePlayer(player, x, fields);
+                            	playercontroller.movePlayer(player, ++x, fields);
                 			Fleet ships = (Fleet)fields[25];
                 				if(ships.fieldowned)
                 				{
@@ -126,7 +129,7 @@ private PlayerController playercontroller= new PlayerController();
                             x = fields.length-player.getPlayerPosition();
         						else
         							x = 35-player.getPlayerPosition();
-                            	playercontroller.movePlayer(player, x, fields);
+                            	playercontroller.movePlayer(player, ++x, fields);
                 			Fleet ships = (Fleet)fields[35];
                 				if(ships.fieldowned)
                 				{
@@ -137,11 +140,25 @@ private PlayerController playercontroller= new PlayerController();
                 			}
 	
                     }
-            	}
+            	
 	}
 	            else{
-	            	if(player.getPlayerPosition()-move.getExtraMoves()<0)
-	            		playercontroller.movePlayer(player, fields.length+player.getPlayerPosition()-move.getExtraMoves(), fields);
+	            	if(move.getExtraMoves()<0){
+	            	if(player.getPlayerPosition()+move.getExtraMoves()<player.getPlayerPosition()){
+	            		if(player.getPlayerPosition()+move.getExtraMoves()<1){
+		            		player.setPlayerPosition(move.getExtraMoves()+fields.length-1);
+		            		GUI.removeAllCars(player.getName());
+		            		GUI.setCar(player.getPlayerPosition()+1, player.getName());
+	            		}
+	            		else{
+	            		player.setPlayerPosition(move.getExtraMoves());
+	            		GUI.removeAllCars(player.getName());
+	            		GUI.setCar(player.getPlayerPosition()-1, player.getName());
+	            		}
+	            		}
+	            		
+	            	}
+	            	else
 	            	playercontroller.movePlayer(player,move.getExtraMoves(),fields);
 	            	int destination=player.getPlayerPosition();
 	            	
