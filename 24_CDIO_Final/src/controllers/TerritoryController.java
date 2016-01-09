@@ -142,9 +142,44 @@ public class TerritoryController {
 				thisfield[0].updateFieldGroup(buyplayer[0], thisfield[0], fields);
 
 			} else if (sellto == "Sælg felt til Bank"){
-				currentfield.sellFieldToBank(player, currentfield, fields);
+				
+				Territory[] thisfield = new Territory[1];
+				int x = 0;
+				int getfieldnumber = 0;
+				
+				for (int w = 0; w < fields.length; w++) {
+					Field f = fields[w];
+
+					if (f instanceof Territory) {
+						Territory t = (Territory) f;
+
+						if (buyfield == t.getName()) {
+							thisfield[x++] = t;
+							getfieldnumber = w+1;
+						}
+
+					}
+				}
+				
+//				for (Field f : fields) {
+//					if (f instanceof Territory) {
+//						Territory t = (Territory) f;
+//
+//						if (buyfield == t.getName()) {
+//							thisfield[x++] = t;
+//							getfieldnumber = x+1;
+//						}
+//					}
+//				}
+				
+				thisfield[0].setOwner(null);
+				thisfield[0].setOwnedToFalse();
+				
+				player.giveMoney(thisfield[0].getPrice());
 				GUI.setBalance(player.getName(), player.getMoney());
-				currentfield.updateFieldGroup(player, currentfield, fields);
+
+				GUI.removeOwner(getfieldnumber);
+				GUI.setSubText(getfieldnumber, "Pris: "+thisfield[0].getPrice());
 			}
 			break;
 

@@ -59,6 +59,10 @@ public abstract class Ownable extends Field {
         fieldowner = player;
     }
     
+    public void setOwnedToFalse() {
+        fieldowned = false;
+    }
+    
     public Player getOwner() {
         return fieldowner;
     }

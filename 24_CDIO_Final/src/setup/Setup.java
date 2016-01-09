@@ -53,7 +53,7 @@ public class Setup {
 				new Territory ("Bernstorffsvej", 4, 3600,2000,300,1400,4000,11000,15000,19000),
 				new Luck ("Prøv lykken"),
 				new Territory ("Hellerupvej", 4, 3600,2000,300,1400,4000,11000,15000,19000),
-				new Territory ("Stranvejen",4, 4000,2000,350,1600,4400,12000,16000,20000),
+				new Territory ("Strandvejen",4, 4000,2000,350,1600,4400,12000,16000,20000),
 				new Refuge ("Parkering", "Parking", 0),
 				new Territory ("Trianglen",5,4400,3000,350,1800,5000,14000,17500,21000),
 				new Luck ("Prøv lykken"),

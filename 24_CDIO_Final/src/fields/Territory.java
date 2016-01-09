@@ -171,7 +171,6 @@ public class Territory extends Ownable {
 	}
 
 
-
 	public int getBaseRent() {
 		return fieldrent;
 	}
