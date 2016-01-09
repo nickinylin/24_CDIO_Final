@@ -21,7 +21,7 @@ public class PlayerController {
 		int nextposition = player.getPlayerPosition() + move;
 		int maxmove = (nextposition-1)%fields.length+1;
 
-		if (nextposition >= fields.length) {
+		if (nextposition > fields.length) {
 
 			for (int i = 1; i <= move; i++) {
 

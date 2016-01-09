@@ -122,7 +122,7 @@ public class Territory extends Ownable {
 		return fieldrenthotel;
 	}
 
-	public int getFieldPriceBuilding() {
+	public int getBuildingPrice() {
 		return fieldPriceBuilding;
 	}
 
