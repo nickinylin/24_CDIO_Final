@@ -6,6 +6,7 @@
 
 package fields;
 
+import desktop_resources.GUI;
 import game.Dice;
 import game.Player;
 
@@ -31,7 +32,7 @@ public class Labor extends Ownable {
             }
         }
         if (count == 2){
-        	int fieldrent = 200 * Dice.getSum();	
+        	int fieldrent = 200 * Dice.getSum();
         	return fieldrent;
         }
         else{
@@ -55,8 +56,38 @@ public class Labor extends Ownable {
 
 	@Override
 	public void updateFieldGroup(Player player, Field currentField, Field[] fields) {
-		// TODO Auto-generated method stub
-		
-	}
+			for (int i = 0; i < fields.length; i++) {
+				Field f = fields[i];
+				if (f instanceof Labor) {
+					Labor labor = (Labor) f;
 
+					if (player.equals(((Labor) currentField).fieldowner) && player.equals(labor.fieldowner)) {
+						GUI.setOwner(i+1, player.getName());
+						GUI.setSubText(i+1, "Leje: "+ labor.getOwnedLabors(player, fields) + " x Terning");
+						
+					}
+				}
+			}
+
+		}
+	
+	 public int getOwnedLabors(Player player, Field[] fields) {
+	    	int count=0;
+	    	for (Field f : fields) {
+	            if (f instanceof Labor) {
+	                Labor labor = (Labor) f;
+	                if (labor.fieldowned && labor.fieldowner.equals(fieldowner)) {
+	                    count++;
+	                }
+	            }
+	        }
+	        if (count == 2){
+	        	int ownedLabors = 200;
+	        	return ownedLabors;
+	        }
+	        else{
+	        	int ownedLabors = 100;
+	    	    return ownedLabors;
+	        }
+	}
 }

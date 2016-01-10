@@ -14,21 +14,37 @@ public class TerritoryController {
 
 			if (player.equals(territory.fieldowner)) {
 
-				checkBuyBuilding(player, territory, fields);
+				if (menuBuild(players, player, territory, fields) == false) {
+					menuBuild(players, player, territory, fields);
+				}
+				//TODO buy building menu
+			} else {
+				player.payMoney(territory.getRent(player, fields));
+				territory.getOwner().giveMoney(territory.getRent(player, fields));
+				GUI.setBalance(player.getName(), player.getMoney());
+				GUI.setBalance(territory.getOwner().getName(), territory.getOwner().getMoney());
+
+				if (menuBuild(players, player, territory, fields) == false) {
+					menuBuild(players, player, territory, fields);
+				}
 			}
+
 		} else {
 
-			checkBuyField(player, territory, fields);
-			menuBuild(players, player, territory, fields);
+			// TODO checkBuyField returns true or false.. do we need it here?
+			if (menuBuild(players, player, territory, fields) == false) {
+				menuBuild(players, player, territory, fields);
+			}
+
 		}
 	}
 
 
-	private void menuBuild(Player[] players, Player player, Territory currentfield, Field[] fields) {
+	private boolean menuBuild(Player[] players, Player player, Territory currentfield, Field[] fields) {
 
 		int count = 0;
 		String[] tempmenu = new String[7];
-		boolean ownsfields = false;
+		boolean nextTurn = false;
 
 		final String button1 = "Køb feltet";
 		final String button2 = "Sælg felt";
@@ -66,12 +82,14 @@ public class TerritoryController {
 		switch(button) {
 
 		case button1:
+			nextTurn = false;
 			currentfield.buyField(player, fields);
 			GUI.setBalance(player.getName(), player.getMoney());
 			currentfield.updateFieldGroup(player, currentfield, fields);
 			break;
 
 		case button2:
+			nextTurn = false;
 			String[] fieldlist = getPlayerOwnedFields(player, fields);
 
 			String buyfield = GUI.getUserSelection(player.getName(), fieldlist);
@@ -145,7 +163,7 @@ public class TerritoryController {
 			break;
 
 		case button3:
-
+			nextTurn = false;
 			String pantsæt;
 
 			if (checkPawnField(player, currentfield, fields)) {
@@ -221,8 +239,27 @@ public class TerritoryController {
 				GUI.setSubText(getfieldnumber, "Leje: "+thisfield[0].getRent(player, fields));
 			}
 			break;
-		default:
+		case button4: // køb bygning
+			nextTurn = false;
+			
+			if (checkBuyBuilding(player, currentfield, fields)) {
+				// get fields where group is owned
+				// buy house for selected field
+				// house can only be bought if other fields have houses
+			}
+			break;
+		case button5: // sælg bygning
+			nextTurn = false;
+
+			if (checkBuildingExists(player, currentfield, fields)) {
+				// Sælg bygning
+			}
+			break;
+		case button6:
+			nextTurn = true; break;
+		default: break;
 		}
+		return nextTurn;
 
 	}
 
@@ -264,7 +301,6 @@ public class TerritoryController {
 
 	private String[] getPlayerPawnedFields(Player player, Field[] fields) {
 
-		int numberofpawnedfields = 0;
 		int i = 0;
 
 		Territory[] temppawnedfields = new Territory[22];
@@ -274,7 +310,6 @@ public class TerritoryController {
 				Territory t = (Territory) f;
 
 				if (t.getPawned() && player.equals(t.getOwner())) {
-					numberofpawnedfields++;
 					temppawnedfields[i++] = t;
 				}
 			}
