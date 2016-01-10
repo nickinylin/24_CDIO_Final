@@ -17,7 +17,7 @@ private PlayerController playercontroller= new PlayerController();
 //		// Metode til at flytte spilleren
 //		
 			Cards card = deck.drawcard();
-			GUI.displayChanceCard(card.getText());
+			GUI.displayChanceCard("=======Prøv lykken=======<br> <br>"+card.getText());
 			GUI.getUserButtonPressed(player.getName() +" Du har trukket et prøv lykken kort", "Fortsæt");
 			if (card instanceof CardsMoveto) {
 	            CardsMoveto move=(CardsMoveto) card;
@@ -26,21 +26,13 @@ private PlayerController playercontroller= new PlayerController();
 
             	for (int i =0;i<fields.length;i++) {
                     if (fields[i].getName().equals(move.getDestination())){
-                    if (fields[i] instanceof Empty){
+//                    if (fields[i] instanceof Empty){
+
+//                    }
+                    if(fields[i] instanceof Refuge){
                     	int x;
 						if(player.getPlayerPosition()>i)
-                    x = fields.length-player.getPlayerPosition()+i+1;
-						else
-							x = i-player.getPlayerPosition();
-                    	playercontroller.movePlayer(player, ++x, fields);
-                    if(player.getPlayerPosition()>i)
-                    	player.payMoney(4000);
-                    player.setIsInJail(true);
-                    }
-                    else if(fields[i] instanceof Refuge){
-                    	int x;
-						if(player.getPlayerPosition()>i)
-				             x = fields.length-player.getPlayerPosition()+i+1;
+				             x = fields.length-player.getPlayerPosition()+i;
 						else
 							x = i-player.getPlayerPosition();
                     	playercontroller.movePlayer(player, ++x, fields);
@@ -48,7 +40,7 @@ private PlayerController playercontroller= new PlayerController();
                     else if (fields[i] instanceof Territory){
                     	int x;
 						if(player.getPlayerPosition()>i)
-				             x = fields.length-player.getPlayerPosition()+i+1;
+				             x = fields.length-player.getPlayerPosition()+i;
 						else
 							x = i-player.getPlayerPosition();
                     	playercontroller.movePlayer(player, ++x, fields);
@@ -72,73 +64,97 @@ private PlayerController playercontroller= new PlayerController();
             	}
                     if(move.getDestination().equals("fleet")){
                     	FleetController fleetcontroller= new FleetController();
-                    	if(player.getPlayerPosition()>35 && player.getPlayerPosition()<=5)
-                			{
-                        	int x;
-                        	if(player.getPlayerPosition()>=0)
-    							x = 5-player.getPlayerPosition();
-                        	else
-                        		x=5+fields.length-player.getPlayerPosition();
-                        	
-                        	playercontroller.movePlayer(player, ++x, fields);
-                			Fleet ships = (Fleet)fields[5];
-                				if(ships.fieldowned)
-                				{
-                					player.payMoney(ships.getRent(player, fields)*2);
-                					
-                				}
-                				else
-                					fleetcontroller.landOnFleet(player,ships,fields);
-                			}
-                			else if(player.getPlayerPosition()>5 && player.getPlayerPosition()<=15)
-                			{
-                            	int x;
-        						if(player.getPlayerPosition()>15)
-                            x = fields.length-player.getPlayerPosition();
-        						else
-        							x = 15-player.getPlayerPosition();
-                            	playercontroller.movePlayer(player, ++x, fields);
-                			Fleet ships = (Fleet)fields[15];
-                				if(ships.fieldowned)
-                				{
-                					player.payMoney(ships.getRent(player, fields)*2);
-                				}
-                				else
-                					fleetcontroller.landOnFleet(player,ships,fields);
-                			}
-                			else if(player.getPlayerPosition()>15 && player.getPlayerPosition()<=25)
-                			{
-                            	int x;
-        						if(player.getPlayerPosition()>25)
-                            x = fields.length-player.getPlayerPosition();
-        						else
-        							x = 25-player.getPlayerPosition();
-                            	playercontroller.movePlayer(player, ++x, fields);
-                			Fleet ships = (Fleet)fields[25];
-                				if(ships.fieldowned)
-                				{
-                					player.payMoney(ships.getRent(player, fields)*2);
-                				}
-                				else
-                					fleetcontroller.landOnFleet(player,ships,fields);
-                			}
-                			else if(player.getPlayerPosition()>25 && player.getPlayerPosition()<=35)
-                			{
-                            	int x;
-        						if(player.getPlayerPosition()>35)
-                            x = fields.length-player.getPlayerPosition();
-        						else
-        							x = 35-player.getPlayerPosition();
-                            	playercontroller.movePlayer(player, ++x, fields);
-                			Fleet ships = (Fleet)fields[35];
-                				if(ships.fieldowned)
-                				{
-                					player.payMoney(ships.getRent(player, fields)*2);
-                				}
-                				else
-                					fleetcontroller.landOnFleet(player,ships,fields);
-                			}
+      Fleet fleet=null;
+      int i;
+      for(i=player.getPlayerPosition()-1; i<fields.length;i++){
+    	  if (fields[i] instanceof Fleet){
+    		  fleet=(Fleet) fields[i];
+    	  break;
+    	  }
+    	  else if (i>=fields.length)
+    		  i=0;
+      }
+      if(player.getPlayerPosition()>i)
+      playercontroller.movePlayer(player, i-(fields.length-player.getPlayerPosition()), fields);
+      else
+      playercontroller.movePlayer(player, i-player.getPlayerPosition()+1, fields);
+      fleetcontroller.landOnFleet(player, fleet, fields);
+      
+                    	
+//                    	if(player.getPlayerPosition()>35 && player.getPlayerPosition()<=5)
+//                			{
+//                        	int x;
+//                        	if(player.getPlayerPosition()>=0)
+//    							x = 5-player.getPlayerPosition();
+//                        	else
+//                        		x=5+fields.length-player.getPlayerPosition();
+//                        	
+//                        	playercontroller.movePlayer(player, ++x, fields);
+//                			Fleet ships = (Fleet)fields[5];
+//                				if(ships.fieldowned)
+//                				{
+//                					player.payMoney(ships.getRent(player, fields)*2);
+//                					
+//                				}
+//                				else
+//                					fleetcontroller.landOnFleet(player,ships,fields);
+//                			}
+//                			else if(player.getPlayerPosition()>5 && player.getPlayerPosition()<=15)
+//                			{
+//                            	int x;
+//        						if(player.getPlayerPosition()>15)
+//                            x = fields.length-player.getPlayerPosition();
+//        						else
+//        							x = 15-player.getPlayerPosition();
+//                            	playercontroller.movePlayer(player, ++x, fields);
+//                			Fleet ships = (Fleet)fields[15];
+//                				if(ships.fieldowned)
+//                				{
+//                					player.payMoney(ships.getRent(player, fields)*2);
+//                				}
+//                				else
+//                					fleetcontroller.landOnFleet(player,ships,fields);
+//                			}
+//                			else if(player.getPlayerPosition()>15 && player.getPlayerPosition()<=25)
+//                			{
+//                            	int x;
+//        						if(player.getPlayerPosition()>25)
+//                            x = fields.length-player.getPlayerPosition();
+//        						else
+//        							x = 25-player.getPlayerPosition();
+//                            	playercontroller.movePlayer(player, ++x, fields);
+//                			Fleet ships = (Fleet)fields[25];
+//                				if(ships.fieldowned)
+//                				{
+//                					player.payMoney(ships.getRent(player, fields)*2);
+//                				}
+//                				else
+//                					fleetcontroller.landOnFleet(player,ships,fields);
+//                			}
+//                			else if(player.getPlayerPosition()>25 && player.getPlayerPosition()<=35)
+//                			{
+//                            	int x;
+//        						if(player.getPlayerPosition()>35)
+//                            x = fields.length-player.getPlayerPosition();
+//        						else
+//        							x = 35-player.getPlayerPosition();
+//                            	playercontroller.movePlayer(player, ++x, fields);
+//                			Fleet ships = (Fleet)fields[35];
+//                				if(ships.fieldowned)
+//                				{
+//                					player.payMoney(ships.getRent(player, fields)*2);
+//                				}
+//                				else
+//                					fleetcontroller.landOnFleet(player,ships,fields);
+//                			}
 	
+                    }
+                    if (move.getDestination().equals("De fænglses")){
+                    	JailController jailcontroller= new JailController();
+						if(player.getPlayerPosition()>i)
+                    jailcontroller.jail(player, fields);
+						else
+		                    jailcontroller.jail(player, fields);
                     }
             	
 	}

@@ -45,7 +45,7 @@ public class Setup {
 				new Territory ("Valby Langgade", 2, 2000, 1000,100,600,1800,5400,8000,11000),
 				new Territory ("Allegade", 2, 2400, 1000,150,800,2000,6000,9000,12000),
 				new Refuge ("På besøg i fængsel", "Visit", 0),
-				new Territory ("Frederiksberg Alle", 3, 2800,2000,200,1000,3000,9000,12500,15000),
+				new Territory ("Frederiksberg Allé", 3, 2800,2000,200,1000,3000,9000,12500,15000),
 				new Labor ("Tuborg"),
 				new Territory ("Bulowsvej", 3, 2800,2000,200,1000,3000,9000,12500,15000),
 				new Territory ("Gl. Kongevej", 3, 3200,2000,250,1250,3750,10000,14000,18000),
