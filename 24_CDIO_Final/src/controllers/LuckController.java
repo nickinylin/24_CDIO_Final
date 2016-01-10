@@ -151,10 +151,9 @@ private PlayerController playercontroller= new PlayerController();
                     }
                     if (move.getDestination().equals("De fænglses")){
                     	JailController jailcontroller= new JailController();
-						if(player.getPlayerPosition()>i)
-                    jailcontroller.jail(player, fields);
-						else
-		                    jailcontroller.jail(player, fields);
+                    	jailcontroller.jail(player, fields);
+							
+							
                     }
             	
 	}
