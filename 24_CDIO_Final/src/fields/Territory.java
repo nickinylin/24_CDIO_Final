@@ -25,7 +25,7 @@ public class Territory extends Ownable {
 
 	public Territory(String name, int fieldgroup, int fieldvalue, int fieldPriceBuilding, int fieldrent, int fieldrenthouse1, int fieldrenthouse2,int fieldrenthouse3, int fieldrenthouse4, int fieldrenthotel) {
 		super(name);
-		super.fieldowned=false;
+		super.fieldowned = false;
 		super.fieldprice = fieldvalue;
 		this.fieldPriceBuilding = fieldPriceBuilding;
 		this.fieldrent = fieldrent;
@@ -70,14 +70,17 @@ public class Territory extends Ownable {
 
 	}
 
+	@Override
 	public void setPawned(boolean pawn) {
 		this.pawned = pawn;
 	}
 
+	@Override
 	public boolean getPawned() {
 		return pawned;
 	}
 
+	@Override
 	public double getPawnPrice() {
 		double pawnprice = ((int) fieldprice * 0.5);
 		return pawnprice;

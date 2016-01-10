@@ -1,6 +1,6 @@
 package controllers;
 
-import desktop_fields.Ownable;
+import fields.Ownable;
 import desktop_resources.GUI;
 import fields.Field;
 import fields.Fleet;
@@ -11,20 +11,20 @@ import game.Player;
 
 public class MenuController {
 
-	public boolean menuBuild(Player[] players, Player player, Territory currentfield, Field[] fields) {
+	public boolean menuBuild(Player[] players, Player player, Field currentfield, Field[] fields) {
 
 		int count = 0;
 		String[] tempmenu = new String[7];
 		boolean nextTurn = false;
 
-		final String button1 = "Køb feltet";
+		final String button1 = "Køb felt";
 		final String button2 = "Sælg felt";
 		final String button3 = "Pantsæt";
 		final String button4 = "Køb Bygning";
 		final String button5 = "Sælg Bygning";
-		final String button6 = "Afslut";
+		final String button6 = "Afslut Tur";
 
-		if (checkBuyField(player, currentfield, fields)) {
+		if (checkYouCanBuyField(player, currentfield, fields)) {
 			tempmenu[count++] = button1;
 		}
 		if (checkOwnField(player, currentfield, fields)) {
@@ -54,9 +54,9 @@ public class MenuController {
 
 		case button1:
 			nextTurn = false;
-			currentfield.buyField(player, fields);
+			((Ownable) currentfield).buyField(player, fields);
 			GUI.setBalance(player.getName(), player.getMoney());
-			currentfield.updateFieldGroup(player, currentfield, fields);
+			((Ownable) currentfield).updateFieldGroup(player, currentfield, fields);
 			break;
 
 		case button2:
@@ -70,7 +70,7 @@ public class MenuController {
 			if (sellto == "Sælg felt til Spillere") {
 
 				String[] playernames = getAllPlayerNamesExceptPlayer(players, player);
-				
+
 				String spiller = GUI.getUserSelection("Sælg "+buyfield+" til", playernames);
 				int g = 0;
 				Player[] buyplayer = new Player[1];
@@ -79,12 +79,12 @@ public class MenuController {
 						buyplayer[g++] = players[z];
 					}
 				}
-				
+
 				int k = 0;
 				for (Field f : fields) {
 					if (f instanceof Territory) {
 						Territory territory = (Territory) f;
-						
+
 						if (buyfield == territory.getName()) {
 							// TODO lav metode
 							territory.buyField(buyplayer[0], fields);
@@ -211,7 +211,7 @@ public class MenuController {
 			break;
 		case button4: // køb bygning
 			nextTurn = false;
-			
+
 			if (checkBuyBuilding(player, currentfield, fields)) {
 				// get fields where group is owned
 				// buy house for selected field
@@ -234,7 +234,7 @@ public class MenuController {
 	}
 
 
-	private boolean checkPawnField(Player player, Territory currentfield, Field[] fields) {
+	private boolean checkPawnField(Player player, Field currentfield, Field[] fields) {
 		int i = 0;
 		for (Field f : fields) {
 			if (f instanceof Territory) {
@@ -251,21 +251,34 @@ public class MenuController {
 			return false;
 		}
 	}
-	
-	private boolean checkUnPawnField(Player player, Territory currentfield, Field[] fields) {
-		int i = 0;
-		
-		for (Field f : fields) {
-			if (f instanceof Territory) {
-				Territory t = (Territory) f;
 
-				if (t.getPawned() && player.equals(t.getOwner())) {
-					i++;
+	private boolean checkUnPawnField(Player player, Field currentfield, Field[] fields) {
+
+		for (int i = 0; i < fields.length; i++) {
+			Field f = fields[i];
+			if (f instanceof Territory) {
+				Territory territory = (Territory) f;
+
+				if (territory.getPawned() && player.equals(territory.getOwner())) {
+					return true;
+				}
+
+			} else if (f instanceof Fleet) {
+				Fleet fleet = (Fleet) f;
+
+				if (fleet.getPawned() && player.equals(fleet.getOwner())) {
+					return true;
+				}
+
+			} else if (f instanceof Labor) {
+				Labor labor = (Labor) f;
+
+				if (labor.getPawned() && player.equals(labor.getOwner())) {
+					return true;
 				}
 			}
 		}
-		
-		return true;
+		return false;
 	}
 
 
@@ -382,7 +395,7 @@ public class MenuController {
 	}
 
 
-	public boolean checkBuyBuilding(Player player, Territory currentfield, Field[] fields) {
+	public boolean checkBuyBuilding(Player player, Field currentfield, Field[] fields) {
 
 		int numberofgroupfields = 0;
 		int numberofownedfields = 0;
@@ -394,7 +407,7 @@ public class MenuController {
 			if (f instanceof Territory) {
 				Territory t = (Territory) f;
 
-				if (t.getFieldGroup() == currentfield.getFieldGroup()) {
+				if (t.getFieldGroup() == ((Territory) currentfield).getFieldGroup()) {
 					numberofgroupfields++;
 					if (player.equals(t.getOwner()) && t.getPawned() == false) {
 						ownedfields[i++] = t;
@@ -411,7 +424,7 @@ public class MenuController {
 		}
 	}
 
-	private boolean checkBuildingExists(Player player, Territory currentfield, Field[] fields) {
+	private boolean checkBuildingExists(Player player, Field currentfield, Field[] fields) {
 
 		for (Field f : fields) {
 			if (f instanceof Territory) {
@@ -426,14 +439,52 @@ public class MenuController {
 		return false;
 	}
 
-	private boolean checkBuyField(Player player, Territory currentfield, Field[] fields) {
 
-		if (currentfield.fieldowned == false && currentfield.getPawned()) {
-			return false;
-		} else {
-			return true;
+	private boolean checkYouCanBuyField(Player player, Field currentfield, Field[] fields) {
+
+		for (int i = 0; i < fields.length; i++) {
+			Field f = fields[i];
+			if (f instanceof Territory) {
+				Territory territory = (Territory) f;
+
+				if (territory.getName().equals(((Ownable) currentfield).getName())) {
+					if (((Ownable) currentfield).fieldowned) {
+						return false;
+					} else if (((Ownable) currentfield).fieldowned == false && ((Ownable) currentfield).getPawned() == false) {
+						return true;
+					} else {
+						return false;
+					}
+				}
+			} else if (f instanceof Fleet) {
+				Fleet fleet = (Fleet) f;
+
+				if (fleet.getName().equals(((Ownable) currentfield).getName())) {
+					if (((Ownable) currentfield).fieldowned) {
+						return false;
+					} else if (((Ownable) currentfield).fieldowned == false && ((Ownable) currentfield).getPawned() == false) {
+						return true;
+					} else {
+						return false;
+					}
+				}
+			} else if (f instanceof Labor) {
+				Labor labor = (Labor) f;
+
+				if (labor.getName().equals(((Ownable) currentfield).getName())) {
+					if (((Ownable) currentfield).fieldowned) {
+						return false;
+					} else if (((Ownable) currentfield).fieldowned == false && ((Ownable) currentfield).getPawned() == false) {
+						return true;
+					} else {
+						return false;
+					}
+				}
+			}
 		}
-
+		return false;
 	}
+
+
 
 }

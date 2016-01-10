@@ -17,8 +17,8 @@ public class Labor extends Ownable {
 	
 	public Labor(String name) {
 		super(name);
-		super.fieldprice=3000;
-		super.fieldowned=false;
+		super.fieldprice = 3000;
+		super.fieldowned = false;
 	}
 
 	@Override
