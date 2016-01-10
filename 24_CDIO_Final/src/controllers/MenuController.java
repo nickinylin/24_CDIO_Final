@@ -271,7 +271,7 @@ public class MenuController {
 
 		int i = 0;
 
-		Territory[] temppawnedfields = new Territory[22];
+		Field[] temppawnedfields = new Field[28];
 
 		for (Field f : fields) {
 			if (f instanceof Territory) {
@@ -285,6 +285,12 @@ public class MenuController {
 
 				if (fleet.getPawned() && player.equals(fleet.getOwner())) {
 					temppawnedfields[i++] = fleet;
+				}
+			} else if (f instanceof Labor) {
+				Labor labor = (Labor) f;
+
+				if (labor.getPawned() && player.equals(labor.getOwner())) {
+					temppawnedfields[i++] = labor;
 				}
 			}
 		}
