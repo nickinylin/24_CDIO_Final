@@ -213,9 +213,35 @@ public class MenuController {
 			nextTurn = false;
 
 			if (checkBuyBuilding(player, currentfield, fields)) {
-				// get fields where group is owned
+				// TODO get fields where group is owned
 				// buy house for selected field
 				// house can only be bought if other fields have houses
+				
+				String[] buyBuildingFieldlist = getBuyFieldsList(player, fields);
+
+				String buyBuildingField = GUI.getUserSelection(player.getName(), buyBuildingFieldlist);
+				
+				Territory[] thisfield = new Territory[1];
+				int i = 0;
+				int getfieldnumber = 0;
+
+				for (int x = 0; x < fields.length; x++) {
+					Field f = fields[x];
+
+					if (f instanceof Territory) {
+						Territory t = (Territory) f;
+
+						if (buyBuildingField == t.getName()) {
+							thisfield[i++] = t;
+							getfieldnumber = x+1;
+						}
+
+					}
+				}
+				
+				int houseCount = thisfield[0].getHouse();
+				thisfield[0].buyHouse();
+				GUI.setHouses(getfieldnumber, houseCount+1);
 			}
 			break;
 		case button5: // sælg bygning
@@ -231,6 +257,12 @@ public class MenuController {
 		}
 		return nextTurn;
 
+	}
+
+
+	private boolean checkWhereToBuyBuilding(Player player, Field currentfield, Field[] fields) {
+		// TODO Auto-generated method stub
+		return false;
 	}
 
 
@@ -330,6 +362,73 @@ public class MenuController {
 
 		for (int x = 0; x < fieldlist.length; x++) {
 			fieldlist[x] = temppawnedfields[x].getName();
+		}
+		return fieldlist;
+	}
+	
+	private String[] getBuyFieldsList(Player player, Field[] fields) {
+
+		int i = 0;
+		int[] houses = new int[12];
+		
+		Field[] tempfields = new Field[3];
+
+		for (Field f : fields) {
+			if (f instanceof Territory) {
+				Territory t = (Territory) f;
+
+				if (t.getPawned() == false && player.equals(t.getOwner())) {
+					tempfields[i] = t;
+					houses[i] = t.getHouse();
+					i++;
+				}
+			} 
+		}
+
+		String[] fieldlist = new String[i];
+		// TODO denne metode mangler at udregne hvor man kan bygge huse
+		
+		int count0 = 0;
+		int count1 = 0;
+		int count2 = 0;
+		int count3 = 0;
+		int count4 = 0;
+		
+		Field[] thisfield = new Field[3];
+		
+		for (int x = 0; x < fieldlist.length; x++) {
+			
+			if (((Territory) tempfields[x]).getHouse() == 0) {
+				count0++;
+				thisfield[x] = tempfields[x];
+			} else if (((Territory) tempfields[x]).getHouse() == 1) {
+				count1++;
+				thisfield[x] = tempfields[x];
+			} else if (((Territory) tempfields[x]).getHouse() == 2) {
+				count2++;
+				thisfield[x] = tempfields[x];
+			} else if (((Territory) tempfields[x]).getHouse() == 3) {
+				count3++;
+				thisfield[x] = tempfields[x];
+			} else if (((Territory) tempfields[x]).getHouse() == 4) {
+				count4++;
+				thisfield[x] = tempfields[x];
+			}
+		}
+		
+		for (int x = 0; x < fieldlist.length; x++) {
+			
+			if (count0 == 0) {
+				fieldlist[x] = thisfield[x].getName();
+			} else if (count1 == 1) {
+				fieldlist[x] = thisfield[x].getName();
+			} else if (count2 == 2) {
+				fieldlist[x] = thisfield[x].getName();
+			} else if (count3 == 3) {
+				fieldlist[x] = thisfield[x].getName();
+			} else if (count4 == 4) {
+				fieldlist[x] = thisfield[x].getName();
+			}
 		}
 		return fieldlist;
 	}
