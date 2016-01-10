@@ -69,7 +69,7 @@ public class Game {
 			
 			//TODO
 			for (int i = 0; i < players.length; i++) {
-				System.out.println(players.length);
+
 				int bankrupt = 0;
 				if (players[i].bankrupt()) {
 					bankrupt++;
@@ -106,8 +106,13 @@ public class Game {
 				Field currentfield = fields[player.getPlayerPosition()-1];
 
 				chooseAction(player, currentfield);
-
-				doNormalTurn(player);
+				
+				if (player.isInJail()) {
+					jailController.jail(player, fields);
+				} else {
+					doNormalTurn(player);
+				}
+				
 			} else {
 				jailController.jail(player, fields);
 
@@ -139,7 +144,7 @@ public class Game {
 		} else if (currentfield instanceof Refuge) {
 			refugeController.landOnRefuge(player, ((Refuge) currentfield), fields);
 		} else if (currentfield instanceof Luck) {
-			//			luckController.landOnLuck(player, fields, this.players);
+			luckController.landOnLuck(player, fields, this.players);
 		} else if (currentfield instanceof Jail) {
 			jailController.jail(player, fields);
 		} else if (currentfield instanceof Tax) {

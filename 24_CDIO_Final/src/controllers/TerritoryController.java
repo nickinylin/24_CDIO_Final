@@ -15,11 +15,20 @@ public class TerritoryController {
 			if (player.equals(territory.fieldowner)) {
 
 				checkBuyBuilding(player, territory, fields);
+				//TODO buy building menu
+			} else {
+				player.payMoney(territory.getRent(player, fields));
+				territory.getOwner().giveMoney(territory.getRent(player, fields));
+				GUI.setBalance(player.getName(), player.getMoney());
+				GUI.setBalance(territory.getOwner().getName(), territory.getOwner().getMoney());
 			}
+			
 		} else {
 
+			// TODO checkBuyField returns true or false.. do we need it here?
 			checkBuyField(player, territory, fields);
 			menuBuild(players, player, territory, fields);
+			
 		}
 	}
 
@@ -28,7 +37,6 @@ public class TerritoryController {
 
 		int count = 0;
 		String[] tempmenu = new String[7];
-		boolean ownsfields = false;
 
 		final String button1 = "Køb feltet";
 		final String button2 = "Sælg felt";
@@ -264,7 +272,6 @@ public class TerritoryController {
 
 	private String[] getPlayerPawnedFields(Player player, Field[] fields) {
 
-		int numberofpawnedfields = 0;
 		int i = 0;
 
 		Territory[] temppawnedfields = new Territory[22];
@@ -274,7 +281,6 @@ public class TerritoryController {
 				Territory t = (Territory) f;
 
 				if (t.getPawned() && player.equals(t.getOwner())) {
-					numberofpawnedfields++;
 					temppawnedfields[i++] = t;
 				}
 			}
