@@ -11,6 +11,8 @@ import game.Player;
 
 public class Fleet extends Ownable {
 
+	private boolean pawned = false;
+	
 	public Fleet(String name) {
 		super(name);
 		super.fieldprice = 4000;
@@ -79,5 +81,17 @@ public class Fleet extends Ownable {
 
 	}
 
+	public void setPawned(boolean pawn) {
+		this.pawned = pawn;
+	}
+
+	public boolean getPawned() {
+		return pawned;
+	}
+
+	public double getPawnPrice() {
+		double pawnprice = ((int) fieldprice * 0.5);
+		return pawnprice;
+	}
 
 }

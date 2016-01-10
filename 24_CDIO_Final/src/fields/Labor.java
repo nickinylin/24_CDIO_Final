@@ -13,7 +13,8 @@ import game.Player;
 public class Labor extends Ownable {
 
 	Dice dice = new Dice();
-
+	private boolean pawned = false;
+	
 	public Labor(String name) {
 		super(name);
 		super.fieldprice=3000;
@@ -100,5 +101,18 @@ public class Labor extends Ownable {
 			int fieldrent = 100;
 			return fieldrent;
 		}
+	}
+	
+	public void setPawned(boolean pawn) {
+		this.pawned = pawn;
+	}
+
+	public boolean getPawned() {
+		return pawned;
+	}
+
+	public double getPawnPrice() {
+		double pawnprice = ((int) fieldprice * 0.5);
+		return pawnprice;
 	}
 }
