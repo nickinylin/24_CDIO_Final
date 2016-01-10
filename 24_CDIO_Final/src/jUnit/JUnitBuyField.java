@@ -19,7 +19,6 @@ public class JUnitBuyField {
 	private Player spiller1;
 	private Player spiller2;
 
-	private Player[] players;
 	protected Field[] fields;
 	TerritoryController t = new TerritoryController();
 
