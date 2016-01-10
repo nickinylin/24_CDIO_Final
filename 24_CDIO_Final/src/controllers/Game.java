@@ -31,7 +31,7 @@ public class Game {
 	private TerritoryController territoryController = new TerritoryController();
 	private FleetController fleetController = new FleetController();
 	private LaborController laborController = new LaborController();
-	private JailController jailController = new JailController();
+	public JailController jailController = new JailController();
 	private RefugeController refugeController = new RefugeController();
 	private PlayerController playerController = new PlayerController();
 	private MenuController menuController = new MenuController();
