@@ -167,6 +167,7 @@ public class Game {
 			if (jailController.rollOutOfJail(player, fields)) {
 				PlayerController.movePlayer(player, Dice.getSum(), fields);
 				GUI.setCar(player.getPlayerPosition(), player.getName());
+				chooseAction(player,fields[player.getPlayerPosition()-1]);
 				doNormalTurn(player);
 			}
 
