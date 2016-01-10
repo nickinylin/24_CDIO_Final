@@ -222,5 +222,16 @@ private PlayerController playercontroller= new PlayerController();
 				GUI.setBalance(player.getName(), player.getMoney());
 				
 			}
+			if(card instanceof CardsLegat){
+				CardsLegat legat= (CardsLegat) card;
+				if(player.getAssets()<15000){
+					player.giveMoney(legat.getValue());
+				GUI.showMessage("De modtager matador legatet for værdigt trængende");
+				GUI.setBalance(player.getName(), player.getMoney());
+				}
+				else{
+					GUI.showMessage("De anses ikke for værdigt trængende og modtager derfor ikke matador legatet");
+				}
+			}
 	}
 }

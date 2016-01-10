@@ -53,11 +53,7 @@ public class CardsDeck {
 				
 				 new CardsShare("De har lagt penge ud til et sammenskudsgilde. Mærkværdigvis betaler alle straks. Modtag fra hver spiller kr. 500", 500),
 				
-				// new CardsTransaction("De modtager Matador-legatet for værdigt
-				// trængende på kr. 40.000. Ved værdigt trængende forstås, at
-				// Deres formue, dvs. Deres kontante penge + skøder + bygninger,
-				// ikke overstiger kr. 15.000", if(formue<15000){
-				// formue = formue+40000)}
+				 new CardsLegat("De modtager Matador-legatet for værdigt trængende på kr. 40.000. Ved værdigt trængende forstås, at Deres formue, dvs. Deres kontante penge + skøder + bygninger, ikke overstiger kr. 15.000", 40000),
 				
 				// new GetOutofJail(),
 				new CardsMoveto("Ryk 3 felter frem", 3), 
