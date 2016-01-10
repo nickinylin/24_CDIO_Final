@@ -27,7 +27,7 @@ public class CardsDeck {
 				new CardsTransaction("De modtager deres aktieudbytte. Modtag 1000kr af banken", 1000),
 
 				// Nedenfor er alle kort der medfører at man betaler penge.
-				new CardsTransaction("Betal deres bilforsikring", -1000),
+				new CardsTransaction("Betal deres bilforsikring på 1000kr", -1000),
 				new CardsTransaction("De har været en tur i udlandet og har haft for mange cigaretter med hjem. Betal told 200kr", -200),
 				new CardsTransaction("De har fået en parkeringsbøde. Betal 200kr", -200),
 				new CardsTransaction("Betal 200kr for levering af 2 kasser øl", -200),
@@ -69,9 +69,9 @@ public class CardsDeck {
 				new CardsMoveto("Ryk frem til START", "Start"),
 
 				new CardsMoveto("Gå i fængsel. Ryk direkte til fængslet. Selv om De passerer START, indkasserer De ikke kr. 4000",
-						"På besøg i fængsel"),
+						"Gå i fængsel"),
 				new CardsMoveto("Gå i fængsel. Ryk direkte til fængslet. Selv om De passerer START, indkasserer De ikke kr. 4000",
-						"På besøg i fængsel"),
+						"Gå i fængsel"),
 
 				new CardsMoveto("Ryk frem til Strandvejen. Hvis de passerer START indkassér da kr. 4000",
 						"Strandvejen"),
