@@ -84,8 +84,7 @@ public class Labor extends Ownable {
 	        if (count == 2){
 	        	int ownedLabors = 200;
 	        	return ownedLabors;
-	        }
-	        else{
+	        } else {
 	        	int ownedLabors = 100;
 	    	    return ownedLabors;
 	        }
