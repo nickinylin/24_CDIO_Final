@@ -21,7 +21,7 @@ public class Territory extends Ownable {
 	private int fieldrenthotel;
 	private final int fieldgroup;
 	private int buildingNumbers = 0;
-	private boolean pawned;
+	private boolean pawned = false;
 
 	public Territory(String name, int fieldgroup, int fieldvalue, int fieldPriceBuilding, int fieldrent, int fieldrenthouse1, int fieldrenthouse2,int fieldrenthouse3, int fieldrenthouse4, int fieldrenthotel) {
 		super(name);

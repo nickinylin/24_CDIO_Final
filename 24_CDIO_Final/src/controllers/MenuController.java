@@ -398,7 +398,7 @@ public class MenuController {
 
 	private boolean checkBuyField(Player player, Territory currentfield, Field[] fields) {
 
-		if (currentfield.fieldowned) {
+		if (currentfield.fieldowned == false && currentfield.getPawned()) {
 			return false;
 		} else {
 			return true;
