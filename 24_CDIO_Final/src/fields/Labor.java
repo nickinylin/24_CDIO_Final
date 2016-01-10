@@ -26,7 +26,7 @@ public class Labor extends Ownable {
     	for (Field f : fields) {
             if (f instanceof Labor) {
                 Labor labor = (Labor) f;
-                if (labor.fieldowned && labor.fieldowner.equals(fieldowner)) {
+                if (labor.fieldowned && player.equals(fieldowner)) {
                     count++;
                 }
             }
@@ -76,7 +76,7 @@ public class Labor extends Ownable {
 	    	for (Field f : fields) {
 	            if (f instanceof Labor) {
 	                Labor labor = (Labor) f;
-	                if (labor.fieldowned && labor.fieldowner.equals(fieldowner)) {
+	                if (labor.fieldowned && player.equals(fieldowner)) {
 	                    count++;
 	                }
 	            }

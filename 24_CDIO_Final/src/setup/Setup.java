@@ -193,7 +193,7 @@ public class Setup {
 			} else if (field instanceof Labor) {
 				list[i] = new Brewery.Builder()
 						.setTitle(fields[i].getName())
-						.setDescription(fields[i].getName()+"<br>Leje:<br> 1 bryggeri 100 x Terning<br>2 bryggerier 200 x Terning")
+						.setDescription(fields[i].getName()+"<br><br>Leje:<br> 1 bryggeri 100 x Terning<br>2 bryggerier 200 x Terning<br><br><br><br>")
 						.setSubText("")
 						.setBgColor(new Color(1, 76, 28))
 						.setFgColor(Color.WHITE)
@@ -212,7 +212,7 @@ public class Setup {
 			} else if (field instanceof Fleet) {
 				list[i] = new Shipping.Builder()
 						.setTitle(fields[i].getName())
-						.setDescription(fields[i].getName()+"<br><br> 1 Flåde: 500<br> 2 Flåder: 1000 <br> 3 Flåder: 2000 <br> 4 Flåder: 4000<br>")
+						.setDescription(fields[i].getName()+"<br><br> 1 Flåde: 500<br> 2 Flåder: 1000 <br> 3 Flåder: 2000 <br> 4 Flåder: 4000<br><br>")
 						.setSubText("")
 						.setBgColor(Color.WHITE)
 						.setFgColor(Color.BLACK)
