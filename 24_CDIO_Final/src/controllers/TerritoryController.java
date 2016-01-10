@@ -82,10 +82,10 @@ public class TerritoryController {
 		switch(button) {
 
 		case button1:
+			nextTurn = false;
 			currentfield.buyField(player, fields);
 			GUI.setBalance(player.getName(), player.getMoney());
 			currentfield.updateFieldGroup(player, currentfield, fields);
-			nextTurn = false;
 			break;
 
 		case button2:
@@ -130,7 +130,6 @@ public class TerritoryController {
 				GUI.setBalance(player.getName(), player.getMoney());
 
 				thisfield[0].updateFieldGroup(buyplayer[0], thisfield[0], fields);
-				nextTurn = false;
 
 			} else if (sellto == "Sælg felt til Bank"){
 
@@ -160,9 +159,7 @@ public class TerritoryController {
 
 				GUI.removeOwner(getfieldnumber);
 				GUI.setSubText(getfieldnumber, "Pris: "+thisfield[0].getPrice());
-				nextTurn = false;
 			}
-			nextTurn = false;
 			break;
 
 		case button3:
@@ -240,7 +237,22 @@ public class TerritoryController {
 
 				GUI.setTitleText(getfieldnumber, thisfield[0].getName());
 				GUI.setSubText(getfieldnumber, "Leje: "+thisfield[0].getRent(player, fields));
-				nextTurn = false;
+			}
+			break;
+		case button4: // køb bygning
+			nextTurn = false;
+			
+			if (checkBuyBuilding(player, currentfield, fields)) {
+				// get fields where group is owned
+				// buy house for selected field
+				// house can only be bought if other fields have houses
+			}
+			break;
+		case button5: // sælg bygning
+			nextTurn = false;
+
+			if (checkBuildingExists(player, currentfield, fields)) {
+				// Sælg bygning
 			}
 			break;
 		case button6:

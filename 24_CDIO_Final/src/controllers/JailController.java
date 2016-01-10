@@ -52,7 +52,6 @@ public class JailController {
 				player.resetJailTurn();
 				player.setNumberOfExtraTurns(1);
 				
-				
 				return true;
 			}
 			player.setJailTurn(1);
