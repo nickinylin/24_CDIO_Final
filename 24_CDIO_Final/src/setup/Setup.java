@@ -193,11 +193,10 @@ public class Setup {
 			} else if (field instanceof Labor) {
 				list[i] = new Brewery.Builder()
 						.setTitle(fields[i].getName())
-						.setDescription(fields[i].getName()+"<br><br>Leje: 100 x Terningens øjne")
+						.setDescription(fields[i].getName()+"<br>Leje:<br> 1 bryggeri 100 x Terning<br>2 bryggerier 200 x Terning")
 						.setSubText("")
 						.setBgColor(new Color(1, 76, 28))
 						.setFgColor(Color.WHITE)
-						.setRent("100xDices")
 						.setPicture("images/"+fields[i].getName()+".jpg")
 						.build(); 
 
