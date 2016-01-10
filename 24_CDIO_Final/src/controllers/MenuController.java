@@ -1,7 +1,10 @@
 package controllers;
 
+import desktop_fields.Ownable;
 import desktop_resources.GUI;
 import fields.Field;
+import fields.Fleet;
+import fields.Labor;
 import fields.Territory;
 import game.Dice;
 import game.Player;
@@ -62,24 +65,12 @@ public class MenuController {
 
 			String buyfield = GUI.getUserSelection(player.getName(), fieldlist);
 
-			String sellto = GUI.getUserButtonPressed(player.getName(), "Sælg felt til Spillere", "Sælg felt til Bank", "Fortryd");
+			String sellto = GUI.getUserButtonPressed(player.getName(), "Sælg felt til Spillere", "Fortryd");
 
 			if (sellto == "Sælg felt til Spillere") {
 
-				Territory[] thisfield = new Territory[1];
-				int k = 0;
-				for (Field f : fields) {
-					if (f instanceof Territory) {
-						Territory t = (Territory) f;
-
-						if (buyfield == t.getName()) {
-							thisfield[k++] = t;
-						}
-					}
-				}
-
 				String[] playernames = getAllPlayerNamesExceptPlayer(players, player);
-
+				
 				String spiller = GUI.getUserSelection("Sælg "+buyfield+" til", playernames);
 				int g = 0;
 				Player[] buyplayer = new Player[1];
@@ -88,45 +79,54 @@ public class MenuController {
 						buyplayer[g++] = players[z];
 					}
 				}
-
-				thisfield[0].buyField(buyplayer[0], fields);
-				int pris = GUI.getUserInteger("Pris");
-				player.giveMoney(pris);
-				buyplayer[0].giveMoney(thisfield[0].getPrice());
-				buyplayer[0].payMoney(pris);
-				GUI.setBalance(buyplayer[0].getName(), buyplayer[0].getMoney());
-				GUI.setBalance(player.getName(), player.getMoney());
-
-				thisfield[0].updateFieldGroup(buyplayer[0], thisfield[0], fields);
-
-			} else if (sellto == "Sælg felt til Bank"){
-
-				Territory[] thisfield = new Territory[1];
-				int x = 0;
-				int getfieldnumber = 0;
-
-				for (int w = 0; w < fields.length; w++) {
-					Field f = fields[w];
-
+				
+				int k = 0;
+				for (Field f : fields) {
 					if (f instanceof Territory) {
-						Territory t = (Territory) f;
-
-						if (buyfield == t.getName()) {
-							thisfield[x++] = t;
-							getfieldnumber = w+1;
+						Territory territory = (Territory) f;
+						
+						if (buyfield == territory.getName()) {
+							// TODO lav metode
+							territory.buyField(buyplayer[0], fields);
+							int pris = GUI.getUserInteger("Pris");
+							player.giveMoney(pris);
+							buyplayer[0].giveMoney(territory.getPrice());
+							buyplayer[0].payMoney(pris);
+							GUI.setBalance(buyplayer[0].getName(), buyplayer[0].getMoney());
+							GUI.setBalance(player.getName(), player.getMoney());
+							territory.updateFieldGroup(buyplayer[0], territory, fields);
 						}
+					} else if (f instanceof Fleet) {
+						Fleet fleet = (Fleet) f;
 
+						if (buyfield == fleet.getName()) {
+							// TODO lav metode
+							fleet.buyField(buyplayer[0], fields);
+							int pris = GUI.getUserInteger("Pris");
+							player.giveMoney(pris);
+							buyplayer[0].giveMoney(fleet.getPrice());
+							buyplayer[0].payMoney(pris);
+							GUI.setBalance(buyplayer[0].getName(), buyplayer[0].getMoney());
+							GUI.setBalance(player.getName(), player.getMoney());
+							fleet.updateFieldGroup(buyplayer[0], fleet, fields);
+						}
+					} else if (f instanceof Labor) {
+						Labor labor = (Labor) f;
+
+						if (buyfield == labor.getName()) {
+							// TODO lav metode
+							labor.buyField(buyplayer[0], fields);
+							int pris = GUI.getUserInteger("Pris");
+							player.giveMoney(pris);
+							buyplayer[0].giveMoney(labor.getPrice());
+							buyplayer[0].payMoney(pris);
+							GUI.setBalance(buyplayer[0].getName(), buyplayer[0].getMoney());
+							GUI.setBalance(player.getName(), player.getMoney());
+							labor.updateFieldGroup(buyplayer[0], labor, fields);
+						}
 					}
 				}
 
-				thisfield[0].setOwner(null);
-				thisfield[0].setOwnedToFalse();
-
-				player.giveMoney(thisfield[0].getPrice());
-				GUI.setBalance(player.getName(), player.getMoney());
-
-				GUI.removeOwner(getfieldnumber);
-				GUI.setSubText(getfieldnumber, "Pris: "+thisfield[0].getPrice());
 			}
 			break;
 
@@ -295,7 +295,7 @@ public class MenuController {
 
 		int i = 0;
 
-		Territory[] tempownedfields = new Territory[22];
+		Field[] tempownedfields = new Field[28];
 
 		for (Field f : fields) {
 			if (f instanceof Territory) {
@@ -303,6 +303,18 @@ public class MenuController {
 
 				if (player.equals(t.getOwner())) {
 					tempownedfields[i++] = t;
+				}
+			} else if (f instanceof Fleet) {
+				Fleet fleet = (Fleet) f;
+
+				if (player.equals(fleet.getOwner())) {
+					tempownedfields[i++] = fleet;
+				}
+			} else if (f instanceof Labor) {
+				Labor labor = (Labor) f;
+
+				if (player.equals(labor.getOwner())) {
+					tempownedfields[i++] = labor;
 				}
 			}
 		}
@@ -316,13 +328,22 @@ public class MenuController {
 	}
 
 
-	private boolean checkOwnField(Player player, Territory currentfield, Field[] fields) {
+	private boolean checkOwnField(Player player, Field currentfield, Field[] fields) {
 
 		for (Field f : fields) {
 			if (f instanceof Territory) {
 				Territory t = (Territory) f;
-
 				if (player.equals(t.getOwner())) {
+					return true;
+				}
+			} else if (f instanceof Fleet) {
+				Fleet fleet = (Fleet) f;
+				if (player.equals(fleet.getOwner())) {
+					return true;
+				}
+			} else  if (f instanceof Labor) {
+				Labor labor = (Labor) f;
+				if (player.equals(labor.getOwner())) {
 					return true;
 				}
 			}
