@@ -79,21 +79,26 @@ public class Labor extends Ownable {
 	}
 
 	public int getOwnedLabors(Player player, Field[] fields) {
-		int count = 0;
-		for (Field f : fields) {
+
+
+		int numberofowned = 0;
+
+		for (int i = 0; i < fields.length; i++) {
+			Field f = fields[i];
+
 			if (f instanceof Labor) {
 				Labor labor = (Labor) f;
-				if (labor.fieldowned && player.equals(fieldowner)) {
-					count++;
+				if (fieldowner.equals(labor.fieldowner)) {
+					numberofowned++;
 				}
 			}
 		}
-		if (count == 2){
-			int ownedLabors = 200;
-			return ownedLabors;
+		if (numberofowned == 2) {
+			int fieldrent = 200;
+			return fieldrent;
 		} else {
-			int ownedLabors = 100;
-			return ownedLabors;
+			int fieldrent = 100;
+			return fieldrent;
 		}
 	}
 }
