@@ -40,11 +40,11 @@ public class CardsDeck {
 
 				// Er slashed ud indtil vi har fundet en løsning
 				
-				// new CardsTransaction("Ejendomsskatterne er steget.
+				// new CardsEgendomsregning("Ejendomsskatterne er steget.
 				// Ekstraudgifterne er: 800kr pr. hus. 2300kr pr. hotel.",
 				// -800*amountOfHouses, 2300*amountOfHotels),
 				
-				// new CardsTransaction("Oliepriserne er steget og De skal
+				// new CardsEgendomsregning("Oliepriserne er steget og De skal
 				// betale: 500kr pr. hus. 2000kr pr. hotel.", -500, 2000),
 				
 				new CardsShare("De skal holde familiefest og får et tilskud fra hver medspiller på kr. 500", 500),
