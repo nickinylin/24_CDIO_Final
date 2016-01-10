@@ -280,6 +280,12 @@ public class MenuController {
 				if (t.getPawned() && player.equals(t.getOwner())) {
 					temppawnedfields[i++] = t;
 				}
+			} else if (f instanceof Fleet) {
+				Fleet fleet = (Fleet) f;
+
+				if (fleet.getPawned() && player.equals(fleet.getOwner())) {
+					temppawnedfields[i++] = fleet;
+				}
 			}
 		}
 
