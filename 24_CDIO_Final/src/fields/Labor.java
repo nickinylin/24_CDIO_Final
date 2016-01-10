@@ -79,7 +79,7 @@ public class Labor extends Ownable {
 	}
 
 	public int getOwnedLabors(Player player, Field[] fields) {
-		int count=0;
+		int count = 0;
 		for (Field f : fields) {
 			if (f instanceof Labor) {
 				Labor labor = (Labor) f;
