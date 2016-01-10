@@ -11,11 +11,9 @@ private CardsDeck deck=new CardsDeck();
 private PlayerController playercontroller= new PlayerController();
 
 	public void landOnLuck(Player player, Field[] fields,Player[] group) {
-//		
-//		// Draw a luck card
-//		
-//		// Metode til at flytte spilleren
-//		
+		
+		// Draw a luck card
+		
 			Cards card = deck.drawcard();
 			GUI.displayChanceCard("=======Prøv lykken=======<br> <br>"+card.getText());
 			GUI.getUserButtonPressed(player.getName() +" Du har trukket et prøv lykken kort", "Fortsæt");
@@ -26,9 +24,6 @@ private PlayerController playercontroller= new PlayerController();
 
             	for (int i =0;i<fields.length;i++) {
                     if (fields[i].getName().equals(move.getDestination())){
-//                    if (fields[i] instanceof Empty){
-
-//                    }
                     if(fields[i] instanceof Refuge){
                     	int x;
 						if(player.getPlayerPosition()>i)
@@ -157,7 +152,7 @@ private PlayerController playercontroller= new PlayerController();
                     }
             	
 	}
-	            //kort der ikke bevæger en til en fast destination
+	            //kort der bevæger en et predefineret antal skridt.
 	            else{
 	            	// om kort rykker en bagud
 	            	if(move.getExtraMoves()<0){
@@ -177,10 +172,11 @@ private PlayerController playercontroller= new PlayerController();
 	            		}
 	            		
 	            	}
+	            	//kort der rykker en fremad
 	            	else
 	            	playercontroller.movePlayer(player,move.getExtraMoves(),fields);
 	            	int destination=player.getPlayerPosition()-1;
-	            	
+	            	//felt aktivering.
 	            	if(fields[destination] instanceof Territory){
                     	TerritoryController territorycontroller= new TerritoryController();
                     	Territory territory= (Territory)fields[destination];
@@ -207,11 +203,13 @@ private PlayerController playercontroller= new PlayerController();
 	            	
 	            }
 }
+			//hvis det er et simpelt penge overførelses kort
 			if(card instanceof CardsTransaction){
 				CardsTransaction transaction= (CardsTransaction) card;
 				player.giveMoney(transaction.getvalue());
 				GUI.setBalance(player.getName(), player.getMoney());
 			}
+			//hvis samtlige spillere er involverede.
 			if (card instanceof CardsShare){
 				CardsShare transaction= (CardsShare) card;
 				int moneyPool;
