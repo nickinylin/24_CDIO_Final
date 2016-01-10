@@ -134,10 +134,12 @@ public class MenuController {
 			nextTurn = false;
 			String pantsæt;
 
-			if (checkPawnField(player, currentfield, fields)) {
+			if (checkPawnField(player, currentfield, fields) && checkUnPawnField(player, currentfield, fields)) {
 				pantsæt = GUI.getUserButtonPressed(player.getName(), "Pantsæt Felt", "Tilbagekøb af Felt", "Fortryd");
-			} else {
+			} else if (checkPawnField(player, currentfield, fields)){
 				pantsæt = GUI.getUserButtonPressed(player.getName(), "Pantsæt Felt", "Fortryd");
+			} else {
+				pantsæt = GUI.getUserButtonPressed(player.getName(), "Tilbagekøb af Felt", "Fortryd");
 			}
 
 			if (pantsæt == "Pantsæt Felt") {
@@ -238,7 +240,7 @@ public class MenuController {
 			if (f instanceof Territory) {
 				Territory t = (Territory) f;
 
-				if (t.getPawned() && player.equals(t.getOwner())) {
+				if (t.getPawned() == false && player.equals(t.getOwner())) {
 					i++;
 				}
 			}
@@ -248,6 +250,22 @@ public class MenuController {
 		} else {
 			return false;
 		}
+	}
+	
+	private boolean checkUnPawnField(Player player, Territory currentfield, Field[] fields) {
+		int i = 0;
+		
+		for (Field f : fields) {
+			if (f instanceof Territory) {
+				Territory t = (Territory) f;
+
+				if (t.getPawned() && player.equals(t.getOwner())) {
+					i++;
+				}
+			}
+		}
+		
+		return true;
 	}
 
 
@@ -313,19 +331,19 @@ public class MenuController {
 			if (f instanceof Territory) {
 				Territory t = (Territory) f;
 
-				if (player.equals(t.getOwner())) {
+				if (player.equals(t.getOwner()) && t.getPawned() == false) {
 					tempownedfields[i++] = t;
 				}
 			} else if (f instanceof Fleet) {
 				Fleet fleet = (Fleet) f;
 
-				if (player.equals(fleet.getOwner())) {
+				if (player.equals(fleet.getOwner()) && fleet.getPawned() == false) {
 					tempownedfields[i++] = fleet;
 				}
 			} else if (f instanceof Labor) {
 				Labor labor = (Labor) f;
 
-				if (player.equals(labor.getOwner())) {
+				if (player.equals(labor.getOwner()) && labor.getPawned() == false) {
 					tempownedfields[i++] = labor;
 				}
 			}
