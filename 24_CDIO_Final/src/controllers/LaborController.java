@@ -25,7 +25,6 @@ public class LaborController {
 			if (buylabor) {
 				labor.buyField(player, fields);
 		        GUI.setBalance(player.getName(), player.getMoney());
-		        // TODO upgrade fields
 		        labor.updateFieldGroup(player, labor, fields);
 			}
 

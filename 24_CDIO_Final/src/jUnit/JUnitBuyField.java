@@ -65,11 +65,17 @@ public class JUnitBuyField {
 	}
 	
 	@Test
-	public void test3OfTheSameDices() {
+	public void testThreeOfTheSameDices() {
 		Field currentfield = fields[spiller1.getPlayerPosition()-1];
 		((Territory) currentfield).buyField(spiller1, fields);
 
 		assertEquals(spiller1, ((Territory) currentfield).fieldowner);
 	}
+	
+	@Test
+	public void payLaborRent() {
+		
+
+		assertEquals(spiller1, ((Territory) currentfield).fieldowner);
 
 }
