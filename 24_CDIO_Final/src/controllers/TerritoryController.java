@@ -15,10 +15,12 @@ public class TerritoryController {
 		if (territory.fieldowned) {
 
 			if (player.equals(territory.fieldowner)) {
+				
+				showMenu(players, player, territory, fields);
 
-				while (menuController.menuBuild(players, player, territory, fields) == false) {
-					menuController.menuBuild(players, player, territory, fields);
-				}
+//				while (menuController.menuBuild(players, player, territory, fields) == false) {
+//					menuController.menuBuild(players, player, territory, fields);
+//				}
 				
 			} else {
 				player.payMoney(territory.getRent(player, fields));
@@ -26,19 +28,22 @@ public class TerritoryController {
 				GUI.setBalance(player.getName(), player.getMoney());
 				GUI.setBalance(territory.getOwner().getName(), territory.getOwner().getMoney());
 
-				while(menuController.menuBuild(players, player, territory, fields) == false) {
-					menuController.menuBuild(players, player, territory, fields);
-				}
+				showMenu(players, player, territory, fields);
 			}
 
 		} else {
 
 			
-			while (menuController.menuBuild(players, player, territory, fields) == false) {
-				menuController.menuBuild(players, player, territory, fields);
-			}
+			showMenu(players, player, territory, fields);
 
 		}
+	}
+
+	private void showMenu(Player[] players, Player player, Territory territory, Field[] fields) {
+		boolean res;
+		do{
+			res = menuController.menuBuild(players, player, territory, fields);
+		}while(!res);
 	}
 
 }
