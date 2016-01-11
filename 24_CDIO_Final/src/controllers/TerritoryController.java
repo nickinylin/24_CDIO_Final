@@ -15,13 +15,8 @@ public class TerritoryController {
 		if (territory.fieldowned) {
 
 			if (player.equals(territory.fieldowner)) {
-				
 				showMenu(players, player, territory, fields);
-
-//				while (menuController.menuBuild(players, player, territory, fields) == false) {
-//					menuController.menuBuild(players, player, territory, fields);
-//				}
-				
+	
 			} else {
 				player.payMoney(territory.getRent(player, fields));
 				territory.getOwner().giveMoney(territory.getRent(player, fields));
@@ -30,12 +25,8 @@ public class TerritoryController {
 
 				showMenu(players, player, territory, fields);
 			}
-
 		} else {
-
-			
 			showMenu(players, player, territory, fields);
-
 		}
 	}
 
