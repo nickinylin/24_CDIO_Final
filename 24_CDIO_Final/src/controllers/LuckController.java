@@ -46,7 +46,7 @@ private PlayerController playercontroller= new PlayerController();
                     else if(fields[i] instanceof Fleet){
                     	int x;
 						if(player.getPlayerPosition()>i)
-				             x = fields.length-player.getPlayerPosition()+i+1;
+				             x = fields.length-player.getPlayerPosition()+i;
 						else
 							x = i-player.getPlayerPosition();
                     	playercontroller.movePlayer(player, ++x, fields);

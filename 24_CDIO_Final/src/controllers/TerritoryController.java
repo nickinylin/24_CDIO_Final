@@ -16,25 +16,25 @@ public class TerritoryController {
 
 			if (player.equals(territory.fieldowner)) {
 
-				if (menuController.menuBuild(players, player, territory, fields) == false) {
+				while (menuController.menuBuild(players, player, territory, fields) == false) {
 					menuController.menuBuild(players, player, territory, fields);
 				}
-				//TODO buy building menu
+				
 			} else {
 				player.payMoney(territory.getRent(player, fields));
 				territory.getOwner().giveMoney(territory.getRent(player, fields));
 				GUI.setBalance(player.getName(), player.getMoney());
 				GUI.setBalance(territory.getOwner().getName(), territory.getOwner().getMoney());
 
-				if (menuController.menuBuild(players, player, territory, fields) == false) {
+				while(menuController.menuBuild(players, player, territory, fields) == false) {
 					menuController.menuBuild(players, player, territory, fields);
 				}
 			}
 
 		} else {
 
-			// TODO checkBuyField returns true or false.. do we need it here?
-			if (menuController.menuBuild(players, player, territory, fields) == false) {
+			
+			while (menuController.menuBuild(players, player, territory, fields) == false) {
 				menuController.menuBuild(players, player, territory, fields);
 			}
 

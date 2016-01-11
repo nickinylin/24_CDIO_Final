@@ -47,6 +47,12 @@ public abstract class Ownable extends Field {
     
     public abstract void updateFieldGroup(Player player, Field currentField, Field[] fields);
     
+    public abstract boolean getPawned();
+    
+    public abstract void setPawned(boolean pawn);
+    
+    public abstract double getPawnPrice();
+    
     public void setOwned() {
         fieldowned = true;
     }
