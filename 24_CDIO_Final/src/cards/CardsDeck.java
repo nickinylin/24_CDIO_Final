@@ -61,13 +61,8 @@ public class CardsDeck {
 				new CardsMoveto("Ryk frem til START", "Start"), 
 				new CardsMoveto("Ryk frem til START", "Start"),
 
-
-
-				new CardsMoveto("Gå i fængsel. Ryk direkte til fængslet. Selv om De passerer START, indkasserer De ikke kr. 4000",
-						"De fænglses"),
-				new CardsMoveto("Gå i fængsel. Ryk direkte til fængslet. Selv om De passerer START, indkasserer De ikke kr. 4000",
-						"De fænglses"),
-
+				new CardsMoveto("Gå i fængsel. Ryk direkte til fængslet. Selv om De passerer START, indkasserer De ikke kr. 4000", "De fængsles"),
+				new CardsMoveto("Gå i fængsel. Ryk direkte til fængslet. Selv om De passerer START, indkasserer De ikke kr. 4000", "De fængsles"),
 
 				new CardsMoveto("Ryk frem til Strandvejen. Hvis de passerer START indkassér da kr. 4000", "Strandvejen"),
 				new CardsMoveto("Ryk frem til Grønningen. Hvis De passerer START, indkassér da kr. 4000", "Grønningen"),
