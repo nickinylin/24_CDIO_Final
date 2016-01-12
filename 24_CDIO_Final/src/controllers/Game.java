@@ -58,12 +58,7 @@ public class Game {
 
 				if (players[i].bankrupt()) {
 					checkWinner();
-<<<<<<< HEAD
 				} else if (players[i].isInJail()) {
-=======
-				} 
-				else if (players[i].isInJail()) {
->>>>>>> branch 'master' of https://github.com/nickinylin/24_CDIO_Final
 					doJailTurn(players[i]);
 				} else {
 					doNormalTurn(players[i]);
@@ -134,12 +129,7 @@ public class Game {
 		} else if (currentfield instanceof Refuge) {
 			refugeController.landOnRefuge(players, player, ((Refuge) currentfield), fields);
 		} else if (currentfield instanceof Luck) {
-<<<<<<< HEAD
 			luckController.landOnLuck(players, player, ((Luck) currentfield), fields);
-=======
-			
-			luckController.landOnLuck(player, fields, this.players);
->>>>>>> branch 'master' of https://github.com/nickinylin/24_CDIO_Final
 		} else if (currentfield instanceof Jail) {
 			jailController.jail(player, fields);
 		} else if (currentfield instanceof Tax) {
@@ -183,10 +173,6 @@ public class Game {
 				count++;
 			}
 			
-			if (numberofplayers == count) 
-			{
-
-<<<<<<< HEAD
 			if (numberofplayers == count) {
 				
 				for (int x = 1; x < players.length; x++) {
@@ -195,7 +181,7 @@ public class Game {
 					if (players[i].bankrupt()) {
 				}
 				GUI.displayChanceCard("<center>"+ players[i].getName() +" have won the game with a total of <br><br> "+players[i].getAssets()+"<br>assets.");
-=======
+
                 for (int x = 0; x < players.length; x++) 
                 {
                     
@@ -207,7 +193,6 @@ public class Game {
                     }
                 }
                         				
->>>>>>> branch 'master' of https://github.com/nickinylin/24_CDIO_Final
 			}
 
 
