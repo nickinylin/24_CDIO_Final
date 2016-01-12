@@ -5,9 +5,8 @@ import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
 
-import controllers.Game;
-import controllers.PlayerController;
-import controllers.TerritoryController;
+
+import controllers.*;
 import desktop_resources.GUI;
 import fields.Field;
 import fields.Territory;
@@ -21,9 +20,11 @@ public class JUnitBuyField {
 
 	protected Field[] fields;
 	TerritoryController t = new TerritoryController();
+	Game game = new Game();
 
 	@Before
 	public void setUp(){
+		JailController jailC = new JailController();
 		Setup setup = new Setup();
 		// Create Fields players and card deck
 		fields = setup.createFields();
@@ -34,7 +35,7 @@ public class JUnitBuyField {
 	}
 
 	@Test
-	public void testSetFieldOwned() {
+	public void testSetFieldOwned() { //Tester at man kan sætte en ejer på feltet
 		Field currentfield = fields[spiller1.getPlayerPosition()-1];
 		((Territory) currentfield).buyField(spiller1, fields);
 		//		t.landOnTerritory(players, spiller1,(Territory) currentfield,fields);
@@ -43,7 +44,7 @@ public class JUnitBuyField {
 	} 
 
 	@Test
-	public void testSetFieldOwner() {
+	public void testSetFieldOwner() { //Tester at vi kan sætte en spiller som ejer af et felt
 		Field currentfield = fields[spiller1.getPlayerPosition()-1];
 		((Territory) currentfield).buyField(spiller1, fields);
 
@@ -63,18 +64,21 @@ public class JUnitBuyField {
 		assertEquals(100, ((Territory) currentfield).getRent(spiller1, fields) );
 	}
 	
-	@Test
-	public void testThreeOfTheSameDices() {
-		Field currentfield = fields[spiller1.getPlayerPosition()-1];
-		((Territory) currentfield).buyField(spiller1, fields);
-
-		assertEquals(spiller1, ((Territory) currentfield).fieldowner);
-	}
-	
-	@Test
-	public void payLaborRent() {
-		
-
-		assertEquals(spiller1, ((Territory) currentfield).fieldowner);
-
+//	@Test
+//	public void testThreeOfTheSameDices() {
+//		spiller2.setNumberOfExtraTurns(3);
+//		
+//
+//		game.doNormalTurn(spiller2);
+//
+//		assertEquals(true, spiller2.isInJail());
+//	}
 }
+	
+//	@Test
+//	public void payLaborRent() {
+//		
+//
+//		assertEquals(spiller1, ((Territory) currentfield).fieldowner);
+//
+//}
