@@ -428,21 +428,21 @@ public class MenuController {
 //		
 
 		
-		for (int z = 0; z < tempfields.length ; z++) {
-			Territory f = null;
-			Territory territory = (Territory) f;
-			
-
-			}
+//		for (int z = 0; z < tempfields.length ; z++) {
+//			Territory f = null;
+//			Territory territory = (Territory) f;
+//			
+//
+//			}
 		
 		
-		int count0 = 0;
-		int count1 = 0;
-		int count2 = 0;
-		int count3 = 0;
-		int count4 = 0;
-		
-		Field[] thisfield = new Field[3];
+//		int count0 = 0;
+//		int count1 = 0;
+//		int count2 = 0;
+//		int count3 = 0;
+//		int count4 = 0;
+//		
+//		Field[] thisfield = new Field[3];
 
 		for (int x = 0; x < fieldlist.length; x++) {
 			fieldlist[x] = tempfields[x].getName();
