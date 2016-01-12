@@ -90,6 +90,7 @@ public class MenuController {
 							territory.buyField(buyplayer[0], fields);
 							int pris = GUI.getUserInteger("Pris");
 							player.giveMoney(pris);
+							player.setAssets(-territory.getPrice());
 							buyplayer[0].giveMoney(territory.getPrice());
 							buyplayer[0].payMoney(pris);
 							GUI.setBalance(buyplayer[0].getName(), buyplayer[0].getMoney());
@@ -104,6 +105,7 @@ public class MenuController {
 							fleet.buyField(buyplayer[0], fields);
 							int pris = GUI.getUserInteger("Pris");
 							player.giveMoney(pris);
+							player.setAssets(-fleet.getPrice());
 							buyplayer[0].giveMoney(fleet.getPrice());
 							buyplayer[0].payMoney(pris);
 							GUI.setBalance(buyplayer[0].getName(), buyplayer[0].getMoney());
@@ -118,6 +120,7 @@ public class MenuController {
 							labor.buyField(buyplayer[0], fields);
 							int pris = GUI.getUserInteger("Pris");
 							player.giveMoney(pris);
+							player.setAssets(-labor.getPrice());
 							buyplayer[0].giveMoney(labor.getPrice());
 							buyplayer[0].payMoney(pris);
 							GUI.setBalance(buyplayer[0].getName(), buyplayer[0].getMoney());
