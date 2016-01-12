@@ -29,7 +29,7 @@ public class JUnitJailDices {
 		protected Field[] fields;
 		TerritoryController t = new TerritoryController();
 		Dice dice = new Dice();
-		Game game = new Game();
+//		Game game = new Game();
 		JailController jail = new JailController();
 
 		@Before
