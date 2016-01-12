@@ -262,8 +262,8 @@ public class MenuController {
 				// buy house for selected field
 				// house can only be bought if other fields have houses
 
-				 String[] buyBuildingFieldlist = getBuyBuildingFieldList(player, fields);
-//				String[] buyBuildingFieldlist = getWhereToBuyBuilding(player, fields);
+				//				 String[] buyBuildingFieldlist = getBuyBuildingFieldList(player, fields);
+				String[] buyBuildingFieldlist = getWhereToBuyBuilding(player, fields);
 
 				String buyBuildingField = GUI.getUserSelection(player.getName(), buyBuildingFieldlist);
 
@@ -288,13 +288,14 @@ public class MenuController {
 				int houseCount = thisfield[0].getHouse();
 				thisfield[0].buyHouse();
 				thisfield[0].updateFieldGroup(player, thisfield[0], fields);
-				
+				player.payMoney(thisfield[0].getBuildingPrice());
+				GUI.setBalance(player.getName(), player.getMoney());
 				if (thisfield[0].getHouse() > 4) {
 					GUI.setHotel(getfieldnumber, true);
 				} else {
 					GUI.setHouses(getfieldnumber, houseCount+1);
 				}
-				
+
 			}
 			break;
 		case button5: // sælg bygning
@@ -309,14 +310,14 @@ public class MenuController {
 			{
 				return false;
 			} else {
-			nextTurn = true; break;
+				nextTurn = true; break;
 			}
-		
+
 		case button7: // Gå bankerot
 			nextTurn = true;
 			player.bankrupt(); // Spilleren fjernes
 			break;
-			
+
 		default: break;
 		}
 		return nextTurn;
@@ -443,30 +444,30 @@ public class MenuController {
 
 		String[] fieldlist = new String[i];
 		// TODO denne metode mangler at udregne hvor man kan bygge huse
-		
-//		mangler bare at finde det felt/felter hvor der står mindst huse på
-//		og lave dem til en string
-//		så vi kan få dem vist i en liste
-		
-//		Templiste skal vi se hvilke der har mindst huse
-//		
 
-		
-//		for (int z = 0; z < tempfields.length ; z++) {
-//			Territory f = null;
-//			Territory territory = (Territory) f;
-//			
-//
-//			}
-		
-		
-//		int count0 = 0;
-//		int count1 = 0;
-//		int count2 = 0;
-//		int count3 = 0;
-//		int count4 = 0;
-//		
-//		Field[] thisfield = new Field[3];
+		//		mangler bare at finde det felt/felter hvor der står mindst huse på
+		//		og lave dem til en string
+		//		så vi kan få dem vist i en liste
+
+		//		Templiste skal vi se hvilke der har mindst huse
+		//		
+
+
+		//		for (int z = 0; z < tempfields.length ; z++) {
+		//			Territory f = null;
+		//			Territory territory = (Territory) f;
+		//			
+		//
+		//			}
+
+
+		//		int count0 = 0;
+		//		int count1 = 0;
+		//		int count2 = 0;
+		//		int count3 = 0;
+		//		int count4 = 0;
+		//		
+		//		Field[] thisfield = new Field[3];
 
 		for (int x = 0; x < fieldlist.length; x++) {
 			fieldlist[x] = tempfields[x].getName();
@@ -475,13 +476,12 @@ public class MenuController {
 	}
 
 	private String[] getWhereToBuyBuilding(Player player, Field[] fields) {
-//TODO
+		//TODO
 		int i = 0;
 
-		Territory[] tempfields = new Territory[3];
+		Territory[] tempfields = new Territory[8];
 
 		for (Field f : fields) {
-			if (f.getFieldType() == "Territory") {
 			if (f instanceof Territory) {
 				Territory t = (Territory) f;
 
@@ -490,77 +490,228 @@ public class MenuController {
 				}
 			} 
 		}
-		}
 
 		String[] fieldlist = new String[i];
-
-		if (tempfields.length > 2) {
-			// Der er flere end 2 grunde
-			if (tempfields[0].buyHouse() == 0) {
-				// Hvis den første grund ikke har huse
-				fieldlist[0] = tempfields[0].getName();
-
-				if (tempfields[1].buyHouse() == 0) {
-					// Hvis den anden grund ikke har huse
-					fieldlist[1] = tempfields[1].getName();
-
-				} else if (tempfields[2].buyHouse() == 0) {
-					// Hvis den 3 grund ikke har huse
-					fieldlist[2] = tempfields[2].getName();
-				}
-
-			} else if (tempfields[0].buyHouse() == 1) {
-				fieldlist[0] = tempfields[0].getName();
-
-				if (tempfields[1].buyHouse() == 1) {
-					fieldlist[1] = tempfields[1].getName();
-
-				} else if (tempfields[2].buyHouse() == 1) {
-					fieldlist[2] = tempfields[2].getName();
-				}
-
-			} else if (tempfields[0].buyHouse() == 2) {
-				// Hvis den første grund ikke har huse
-				fieldlist[0] = tempfields[0].getName();
-
-				if (tempfields[1].buyHouse() == 2) {
-					// Hvis den anden grund ikke har huse
-					fieldlist[1] = tempfields[1].getName();
-
-				} else if (tempfields[2].buyHouse() == 2) {
-					// Hvis den 3 grund ikke har huse
-					fieldlist[2] = tempfields[2].getName();
-				}
-			} else if (tempfields[0].buyHouse() == 3) {
-				// Hvis den første grund ikke har huse
-				fieldlist[0] = tempfields[0].getName();
-
-				if (tempfields[1].buyHouse() == 3) {
-					// Hvis den anden grund ikke har huse
-					fieldlist[1] = tempfields[1].getName();
-
-				} else if (tempfields[2].buyHouse() == 3) {
-					// Hvis den 3 grund ikke har huse
-					fieldlist[2] = tempfields[2].getName();
-				}
-
-			} else if (tempfields[0].buyHouse() == 4) {
-				// Hvis den første grund ikke har huse
-				fieldlist[0] = tempfields[0].getName();
-
-				if (tempfields[1].buyHouse() == 4) {
-					// Hvis den anden grund ikke har huse
-					fieldlist[1] = tempfields[1].getName();
-
-				} else if (tempfields[2].buyHouse() == 4) {
-					// Hvis den 3 grund ikke har huse
-					fieldlist[2] = tempfields[2].getName();
-				}
+		int x = 0;
+		if (i == 2) {
+			if (tempfields[0].getHouse() == 5 && tempfields[1].getHouse() == 5 && tempfields[2].getHouse() == 5) {
+				
+			} else if (tempfields[0].getHouse() == tempfields[1].getHouse()) {
+				fieldlist[x] = tempfields[0].getName();
+				fieldlist[x+1] = tempfields[1].getName();
+			} else if (tempfields[0].getHouse() < tempfields[1].getHouse()) {
+				fieldlist[x] = tempfields[0].getName();
+			} else if (tempfields[0].getHouse() > tempfields[1].getHouse()) {
+				fieldlist[x+1] = tempfields[1].getName();
+			}
+		} else {
+			if (tempfields[0].getHouse() == tempfields[1].getHouse() && tempfields[0].getHouse() == tempfields[2].getHouse()) {
+				fieldlist[x] = tempfields[0].getName();
+				fieldlist[x+1] = tempfields[1].getName();
+				fieldlist[x+2] = tempfields[2].getName();
+			} else if (tempfields[0].getHouse() == tempfields[1].getHouse()) {
+				fieldlist[x] = tempfields[0].getName();
+				fieldlist[x+1] = tempfields[1].getName();
+			} else if (tempfields[0].getHouse() == tempfields[2].getHouse()) {
+				fieldlist[x] = tempfields[0].getName();
+				fieldlist[x+1] = tempfields[2].getName();
+			} else if (tempfields[1].getHouse() == tempfields[2].getHouse()) {
+				fieldlist[x] = tempfields[1].getName();
+				fieldlist[x+1] = tempfields[2].getName();
+			} else if (tempfields[2].getHouse() == tempfields[3].getHouse()) {
+				fieldlist[x] = tempfields[2].getName();
+				fieldlist[x+1] = tempfields[3].getName();
 			}
 		}
-
 		return fieldlist;
+
 	}
+	//		int house0 = 0;
+	//		int house1 = 0;
+	//		int house2 = 0;
+	//		int house3 = 0;
+	//		int house4 = 0;
+	//		int house5 = 0;
+	//		
+	//		for (int x = 0; x < i; x++) {
+	//			if (tempfields[x].getHouse() == 0) {
+	//				house0++;
+	//			} else if (tempfields[x].getHouse() == 1) {
+	//				house1++;
+	//			} else if (tempfields[x].getHouse() == 2) {
+	//				house2++;
+	//			} else if (tempfields[x].getHouse() == 3) {
+	//				house3++;
+	//			} else if (tempfields[x].getHouse() == 4) {
+	//				house4++;
+	//			} else if (tempfields[x].getHouse() == 5) {
+	//				house5++;
+	//			}
+	//		}
+	//		int fieldwithlow = Math.min(tempfields[x].getHouse(), Math.min(tempfields[x].getHouse(), tempfields[x].getHouse()));
+	//		
+	//		if (Math.min(house0, house1) == 0) {
+	//			
+	//		} else {
+	//			for (int x = 0; x < i; x++) {
+	//				if (tempfields[x].getHouse() == 0) {
+	//					
+	//				}
+	//			}
+	//		}
+	//		
+	//		int houses = Math.min(house0, Math.min(house1, Math.min(house2, Math.min(house3, Math.min(house4, house5)))));
+	//		
+	//		if (houses == house0) {
+	//			
+	//		}
+	//		String[] fieldlist = new String[i];
+	//		
+	//		for (int x = 0; x < fieldlist.length; x++) {
+	//			if (house0 > 0) {
+	//				fieldlist[z++] = tempfields[x].getName();
+	//			}
+	//		}
+	//
+	//		String[] fieldlist = new String[i];
+	//
+	//		for (int x = 0; x < fieldlist.length; x++) {
+	//
+	//			if (tempfields[x].getHouse() == 0) {
+	//				fieldlist[x] = tempfields[x].getName();
+	//			}
+	//		}
+	//		return fieldlist;
+
+
+	//		String[] fieldlist = new String[i];
+	//
+	//		System.out.println(fieldlist);
+	//		int z = 0;
+	//		for (int x = 0; x < tempfields.length ; x++) {
+	//
+	//			if (tempfields[x].buyHouse() == 0) {
+	//				fieldlist[z++] = tempfields[x].getName();
+	//			}
+	//			System.out.println("1");
+	//
+	//			if (i > 2) {
+	//				// Der er flere end 2 grunde
+	//				if (tempfields[x].buyHouse() == 0) {
+	//					// Hvis den første grund ikke har huse
+	//					fieldlist[z++] = tempfields[x].getName();
+	//
+	//					if (tempfields[x].buyHouse() == 0) {
+	//						// Hvis den anden grund ikke har huse
+	//						fieldlist[x] = tempfields[x].getName();
+	//
+	//					} else if (tempfields[x].buyHouse() == 0) {
+	//						// Hvis den 3 grund ikke har huse
+	//						fieldlist[x] = tempfields[x].getName();
+	//					}
+	//
+	//				} else if (tempfields[x].buyHouse() == 1) {
+	//					fieldlist[x] = tempfields[x].getName();
+	//
+	//					if (tempfields[x].buyHouse() == 1) {
+	//						fieldlist[x] = tempfields[x].getName();
+	//
+	//					} else if (tempfields[x].buyHouse() == 1) {
+	//						fieldlist[x] = tempfields[x].getName();
+	//					}
+	//
+	//				} else if (tempfields[x].buyHouse() == 2) {
+	//					// Hvis den første grund ikke har huse
+	//					fieldlist[x] = tempfields[x].getName();
+	//
+	//					if (tempfields[x].buyHouse() == 2) {
+	//						// Hvis den anden grund ikke har huse
+	//						fieldlist[x] = tempfields[x].getName();
+	//
+	//					} else if (tempfields[x].buyHouse() == 2) {
+	//						// Hvis den 3 grund ikke har huse
+	//						fieldlist[x] = tempfields[x].getName();
+	//					}
+	//				} else if (tempfields[x].buyHouse() == 3) {
+	//					// Hvis den første grund ikke har huse
+	//					fieldlist[x] = tempfields[x].getName();
+	//
+	//					if (tempfields[x].buyHouse() == 3) {
+	//						// Hvis den anden grund ikke har huse
+	//						fieldlist[x] = tempfields[x].getName();
+	//
+	//					} else if (tempfields[x].buyHouse() == 3) {
+	//						// Hvis den 3 grund ikke har huse
+	//						fieldlist[x] = tempfields[x].getName();
+	//					}
+	//
+	//				} else if (tempfields[x].buyHouse() == 4) {
+	//					// Hvis den første grund ikke har huse
+	//					fieldlist[x] = tempfields[x].getName();
+	//
+	//					if (tempfields[x].buyHouse() == 4) {
+	//						// Hvis den anden grund ikke har huse
+	//						fieldlist[x] = tempfields[x].getName();
+	//
+	//					} else if (tempfields[x].buyHouse() == 4) {
+	//						// Hvis den 3 grund ikke har huse
+	//						fieldlist[x] = tempfields[x].getName();
+	//					}
+	//				}
+	//			} else {
+	//				System.out.println("Good");
+	//				if (tempfields[x].buyHouse() == 0) {
+	//					// Hvis den første grund ikke har huse
+	//					fieldlist[x] = tempfields[x].getName();
+	//
+	//					if (tempfields[x].buyHouse() == 0) {
+	//						// Hvis den anden grund ikke har huse
+	//						fieldlist[x] = tempfields[x].getName();
+	//
+	//					}
+	//
+	//				} else if (tempfields[x].buyHouse() == 1) {
+	//					fieldlist[x] = tempfields[0].getName();
+	//
+	//					if (tempfields[x].buyHouse() == 1) {
+	//						fieldlist[x] = tempfields[x].getName();
+	//
+	//					}
+	//
+	//				} else if (tempfields[x].buyHouse() == 2) {
+	//					// Hvis den første grund ikke har huse
+	//					fieldlist[x] = tempfields[x].getName();
+	//
+	//					if (tempfields[x].buyHouse() == 2) {
+	//						// Hvis den anden grund ikke har huse
+	//						fieldlist[x] = tempfields[x].getName();
+	//
+	//					}
+	//
+	//				} else if (tempfields[x].buyHouse() == 3) {
+	//					// Hvis den første grund ikke har huse
+	//					fieldlist[x] = tempfields[x].getName();
+	//
+	//					if (tempfields[x].buyHouse() == 3) {
+	//						// Hvis den anden grund ikke har huse
+	//						fieldlist[x] = tempfields[x].getName();
+	//
+	//					}
+	//
+	//				} else if (tempfields[x].buyHouse() == 4) {
+	//					// Hvis den første grund ikke har huse
+	//					fieldlist[x] = tempfields[x].getName();
+	//
+	//					if (tempfields[x].buyHouse() == 4) {
+	//						// Hvis den anden grund ikke har huse
+	//						fieldlist[x] = tempfields[x].getName();
+	//
+	//					}
+	//				}
+	//			}
+	//		}
+	//		return fieldlist;
+	//	}
 
 	private String[] getPlayerOwnedFields(Player player, Field[] fields) {
 
@@ -654,7 +805,7 @@ public class MenuController {
 			} else {
 				return false;
 			}
-	}
+		}
 		return false;
 	}
 
@@ -675,7 +826,7 @@ public class MenuController {
 
 
 	private boolean checkYouCanBuyField(Player player, Field currentfield, Field[] fields) {
-		
+
 		if (currentfield instanceof Tax){
 			return false;
 		}
@@ -685,8 +836,8 @@ public class MenuController {
 		if(currentfield instanceof Luck){
 			return false;
 		}
-		
-		
+
+
 
 		for (Field f : fields) {
 
