@@ -65,28 +65,28 @@ public class CardsDeck {
 				new CardsMoveto("Ryk frem til START", "Start"),
 
 				new CardsMoveto("Gå i fængsel. Ryk direkte til fængslet. Selv om De passerer START, indkasserer De ikke kr. 4000",
-						"Gå i fængsel"),
+						"De fænglses"),
 				new CardsMoveto("Gå i fængsel. Ryk direkte til fængslet. Selv om De passerer START, indkasserer De ikke kr. 4000",
-						"Gå i fængsel"),
-
-				new CardsMoveto("Ryk frem til Strandvejen. Hvis de passerer START indkassér da kr. 4000",
-						"Strandvejen"),
-				new CardsMoveto("Ryk frem til Grønningen. Hvis De passerer START, indkassér da kr. 4000", "Grønningen"),
-				new CardsMoveto("Ryk frem til Vimmelskaftet. Hvis De passerer START, indkassér da kr. 4000",
-						"Vimmelskaftet"),
-				new CardsMoveto("Ryk frem til Frederiksberg Allé. Hvis De passerer START, indkassér da kr. 4000",
-						"Frederiksberg Allé"),
-				new CardsMoveto("Tag ind på rådhuspladsen", "Rådhuspladsen"),
-
-				new CardsMoveto("Tag med Mols-linien. Flyt brikken frem, og hvis de passerer START, indkassér da kr. 4000",	"Mols-linien"),
-
-				 new CardsMoveto("Ryk brikken frem til det nærmeste rederi og betal ejeren to gange den leje, han ellers er berretiget til. Hvis selskabet ikke ejes af nogen, kan De købe det af banken", "fleet"),
-				 new CardsMoveto("Ryk brikken frem til det nærmeste rederi og betal ejeren to gange den leje, han ellers er berretiget til. Hvis selskabet ikke ejes af nogen, kan De købe det af banken", "fleet"),
+						"De fænglses"),
+//
+//				new CardsMoveto("Ryk frem til Strandvejen. Hvis de passerer START indkassér da kr. 4000",
+//						"Strandvejen"),
+//				new CardsMoveto("Ryk frem til Grønningen. Hvis De passerer START, indkassér da kr. 4000", "Grønningen"),
+//				new CardsMoveto("Ryk frem til Vimmelskaftet. Hvis De passerer START, indkassér da kr. 4000",
+//						"Vimmelskaftet"),
+//				new CardsMoveto("Ryk frem til Frederiksberg Allé. Hvis De passerer START, indkassér da kr. 4000",
+//						"Frederiksberg Allé"),
+//				new CardsMoveto("Tag ind på rådhuspladsen", "Rådhuspladsen"),
+//
+//				new CardsMoveto("Tag med Mols-linien. Flyt brikken frem, og hvis de passerer START, indkassér da kr. 4000",	"Mols-linien"),
+//
+//				 new CardsMoveto("Ryk brikken frem til det nærmeste rederi og betal ejeren to gange den leje, han ellers er berretiget til. Hvis selskabet ikke ejes af nogen, kan De købe det af banken", "fleet"),
+//				 new CardsMoveto("Ryk brikken frem til det nærmeste rederi og betal ejeren to gange den leje, han ellers er berretiget til. Hvis selskabet ikke ejes af nogen, kan De købe det af banken", "fleet"),
 //				 new CardsMoveto("Tag med den nærmeste færge. Flyt brikken frem, og hvis De passerer START indkassér da kr. 4000", "tour"),
 				// new GetOutofJail()
 		};
 		
-shuffledeck();
+//shuffledeck();
 		discard = new Cards[deck.length];
 		currentdecksize = deck.length-1;
 		discardsize = 0;
