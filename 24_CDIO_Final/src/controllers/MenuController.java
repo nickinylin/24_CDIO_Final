@@ -603,10 +603,6 @@ public class MenuController {
 
 
 		if (currentfield.getFieldType() == "Territory") {
-		
-
-
-		}
 
 			int numberofgroupfields = 0;
 			int numberofownedfields = 0;
@@ -634,6 +630,8 @@ public class MenuController {
 			} else {
 				return false;
 			}
+	}
+		return false;
 	}
 
 	private boolean checkBuildingExists(Player player, Field currentfield, Field[] fields) {
