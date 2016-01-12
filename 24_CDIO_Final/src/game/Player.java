@@ -78,7 +78,7 @@ public class Player {
         return true;
     }
     
-    public boolean bankrupt() {
+    public boolean bankruptCheck() {
         
         boolean bankrupt = false;
         
@@ -90,6 +90,12 @@ public class Player {
         }
         return bankrupt;
     }
+    	public void bankrupt()
+    	{
+    		bank.payMoney(bank.getMoney());
+    		bank.setAssets(-bank.getAssets()-1);
+
+    	}
     
     public int getMoney(){
         return bank.getMoney();
