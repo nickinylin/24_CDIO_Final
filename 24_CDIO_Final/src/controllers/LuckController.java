@@ -82,30 +82,33 @@ public class LuckController {
 							x = fields.length-player.getPlayerPosition()+i;
 						} else {
 							x = i-player.getPlayerPosition();
+							}
 							PlayerController.movePlayer(player, ++x, fields);
-						}
+						
 					} else if (fields[i] instanceof Territory) {
 						int x;
 						if(player.getPlayerPosition() > i) {
 							x = fields.length-player.getPlayerPosition()+i;
 						} else {
 							x = i-player.getPlayerPosition();
+							}
 							PlayerController.movePlayer(player, ++x, fields);
 							TerritoryController territorycontroller = new TerritoryController();
 							Territory territory = (Territory)fields[i];
 							territorycontroller.landOnTerritory(group, player, territory, fields);
-						}
+						
 					} else if(fields[i] instanceof Fleet) {
 						int x;
 						if(player.getPlayerPosition() > i) {
 							x = fields.length-player.getPlayerPosition()+i;
 						} else {
 							x = i-player.getPlayerPosition();
+							}
 							PlayerController.movePlayer(player, ++x, fields);
 							FleetController fleetcontroller = new FleetController();
 							Fleet fleet = (Fleet)fields[i];
 							fleetcontroller.landOnFleet(group, player, fleet, fields);
-						}
+						
 					}
 
 				}
