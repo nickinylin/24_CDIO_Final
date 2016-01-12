@@ -17,7 +17,6 @@ public class JailJunit {
 		private JailController myJail;
 		private Dice d;
 		protected Field[] fields;
-		private Game game;
 		
 		@Before
 	    public void setUp(){
@@ -37,7 +36,7 @@ public class JailJunit {
 	public void rolloutofjail() {
 		player1.setIsInJail(true);
 		
-		d.roll();
+		d.testRollDiceSame();
 		if (Dice.issame()){
 			player1.setIsInJail(false);
 		}
