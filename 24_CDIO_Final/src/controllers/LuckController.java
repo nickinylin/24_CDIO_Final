@@ -45,7 +45,7 @@ public class LuckController {
 
 			player.giveMoney(moneyPool);
 			GUI.setBalance(player.getName(), player.getMoney());
-			showMenu(group, player, currentfield, fields);
+//			showMenu(group, player, currentfield, fields);
 
 		} else if(card instanceof CardsLegat) {
 			CardsLegat legat = (CardsLegat) card;
@@ -193,10 +193,10 @@ public class LuckController {
 	}
 	
 	
-	private void showMenu(Player[] players, Player player, Field luck, Field[] fields) {
-		boolean res;
-		do{
-			res = menuController.menuBuild(players, player, luck, fields);
-		}while(!res);
-	}
+//	private void showMenu(Player[] players, Player player, Field luck, Field[] fields) {
+//		boolean res;
+//		do{
+//			res = menuController.menuBuild(players, player, luck, fields);
+//		}while(!res);
+//	}
 }
