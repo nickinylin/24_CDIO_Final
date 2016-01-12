@@ -90,6 +90,8 @@ public class Game {
 				Field currentfield = fields[player.getPlayerPosition()-1];
 
 				chooseAction(player, currentfield);
+				currentfield = fields[player.getPlayerPosition()-1];
+				menuController.showMenu(players, player, currentfield, fields);
 				
 				if (player.isInJail()) {
 					jailController.jail(player, fields);
@@ -113,6 +115,7 @@ public class Game {
 			Field currentfield = fields[player.getPlayerPosition()-1];
 
 			chooseAction(player, currentfield);
+			currentfield = fields[player.getPlayerPosition()-1];
 			menuController.showMenu(players, player, currentfield, fields);
 			
 		}
