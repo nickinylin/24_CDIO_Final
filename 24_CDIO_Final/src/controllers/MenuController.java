@@ -3,7 +3,7 @@ package controllers;
 import fields.Ownable;
 import fields.Refuge;
 import desktop_resources.GUI;
-import fields.Field;
+import fields.*;
 import fields.Fleet;
 import fields.Labor;
 import fields.Luck;
@@ -417,7 +417,46 @@ public class MenuController {
 		}
 
 		String[] fieldlist = new String[i];
+<<<<<<< HEAD
 
+=======
+		// TODO denne metode mangler at udregne hvor man kan bygge huse
+		
+//		mangler bare at finde det felt/felter hvor der står mindst huse på
+//		og lave dem til en string
+//		så vi kan få dem vist i en liste
+		
+//		Templiste skal vi se hvilke der har mindst huse
+//		
+		
+		for (int z = 0; z < tempfields.length ; z++) {
+			Territory f = null;
+			Territory territory = (Territory) f;
+			if (f.getHouse() == 1) {
+				
+			}if (f.getHouse() == 2) {
+				
+			}if (f.getHouse() == 3) {
+				
+			}if (f.getHouse() == 4) {
+				
+			}if (f.getHouse() == 5) {
+				
+			}
+			
+
+			}
+		
+		
+		int count0 = 0;
+		int count1 = 0;
+		int count2 = 0;
+		int count3 = 0;
+		int count4 = 0;
+		
+		Field[] thisfield = new Field[3];
+		
+>>>>>>> branch 'master' of https://github.com/nickinylin/24_CDIO_Final
 		for (int x = 0; x < fieldlist.length; x++) {
 			fieldlist[x] = tempfields[x].getName();
 		}
@@ -575,7 +614,32 @@ public class MenuController {
 
 	public boolean checkBuyBuilding(Player player, Field currentfield, Field[] fields) {
 
+<<<<<<< HEAD
 		if (currentfield.getFieldType() == "Territory") {
+=======
+		int numberofgroupfields = 0;
+		int numberofownedfields = 0;
+		int i = 0;
+		
+		if(currentfield instanceof Labor){
+			return false;
+		}
+		if(currentfield instanceof Tax){
+			return false;
+		}
+		if(currentfield instanceof Refuge){
+			return false;
+		}
+		if(currentfield instanceof Luck){
+			return false;
+		}
+		if(currentfield instanceof Fleet){
+			return false;
+		}
+		if(currentfield instanceof Jail){
+			return false;
+		}
+>>>>>>> branch 'master' of https://github.com/nickinylin/24_CDIO_Final
 
 			int numberofgroupfields = 0;
 			int numberofownedfields = 0;
@@ -624,6 +688,18 @@ public class MenuController {
 
 
 	private boolean checkYouCanBuyField(Player player, Field currentfield, Field[] fields) {
+		
+		if (currentfield instanceof Tax){
+			return false;
+		}
+		if (currentfield instanceof Refuge){
+			return false;
+		}
+		if(currentfield instanceof Luck){
+			return false;
+		}
+		
+		
 
 		for (Field f : fields) {
 
@@ -663,5 +739,16 @@ public class MenuController {
 
 	}
 	
+<<<<<<< HEAD
+=======
+	public void showMenu(Player[] players, Player player, Field currentfield, Field[] fields) {
+		boolean res;
+		do{
+			res = menuBuild(players, player, currentfield, fields);
+		}while(!res);
+	}
+
+
+>>>>>>> branch 'master' of https://github.com/nickinylin/24_CDIO_Final
 
 }
