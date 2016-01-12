@@ -20,7 +20,7 @@ public class JUnitBuyField {
 
 	protected Field[] fields;
 	TerritoryController t = new TerritoryController();
-	Game game = new Game();
+//	Game game = new Game();
 
 	@Before
 	public void setUp(){
