@@ -9,7 +9,7 @@ import game.Player;
 
 public class RefugeController {
 
-	public void landOnRefuge(Player player, Refuge refuge, Field[] fields) {
+	public void landOnRefuge(Player[] players, Player player, Refuge refuge, Field[] fields) {
 		
 	}
 }

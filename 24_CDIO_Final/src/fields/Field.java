@@ -26,8 +26,9 @@ public abstract class Field {
 	 * Method returns the name of the field.
 	 * @return fieldName
 	 */
-
-	public final String getName() {
+	public abstract String getFieldType();
+	
+	public String getName() {
 		return fieldname;
 	}
 

@@ -93,5 +93,10 @@ public class Fleet extends Ownable {
 		double pawnprice = ((int) fieldprice * 0.5);
 		return pawnprice;
 	}
+	
+	@Override
+	public String getFieldType() {
+		return "Fleet";
+	}
 
 }
