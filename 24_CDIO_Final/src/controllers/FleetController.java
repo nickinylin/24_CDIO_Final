@@ -22,9 +22,9 @@ public class FleetController {
 				
 			}
 
-		} else {
+//		} else {
 
-			showMenu(players, player, fleet, fields);
+//			showMenu(players, player, fleet, fields);
 			
 //			boolean buyfleet = GUI.getUserLeftButtonPressed(""+player.getName()+" du er landet på "+fleet.getName()+", vil du købe flåden?", "Ja", "Nej");
 //
@@ -39,11 +39,11 @@ public class FleetController {
 
 	}
 	
-	private void showMenu(Player[] players, Player player, Fleet fleet, Field[] fields) {
-		boolean res;
-		do{
-			res = menuController.menuBuild(players, player, fleet, fields);
-		}while(!res);
-	}
+//	private void showMenu(Player[] players, Player player, Fleet fleet, Field[] fields) {
+//		boolean res;
+//		do{
+//			res = menuController.menuBuild(players, player, fleet, fields);
+//		}while(!res);
+//	}
 	
 }
