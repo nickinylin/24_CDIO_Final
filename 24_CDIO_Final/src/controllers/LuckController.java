@@ -30,7 +30,7 @@ public class LuckController {
 			CardsTransaction transaction = (CardsTransaction) card;
 			player.giveMoney(transaction.getvalue());
 			GUI.setBalance(player.getName(), player.getMoney());
-			showMenu(group, player, currentfield, fields);
+//			showMenu(group, player, currentfield, fields);
 			
 			//hvis samtlige spillere er involverede.		
 		} else if (card instanceof CardsShare) {
@@ -57,10 +57,10 @@ public class LuckController {
 				GUI.showMessage("De modtager matador legatet for værdigt trængende");
 				player.giveMoney(legat.getValue());
 				GUI.setBalance(player.getName(), player.getMoney());
-				showMenu(group, player, currentfield, fields);
+//				showMenu(group, player, currentfield, fields);
 			} else {
 				GUI.showMessage("De anses ikke for værdigt trængende og modtager derfor ikke matador legatet");
-				showMenu(group, player, currentfield, fields);
+//				showMenu(group, player, currentfield, fields);
 			}
 		}
 
@@ -152,13 +152,13 @@ public class LuckController {
 
 						GUI.removeAllCars(player.getName());
 						GUI.setCar(player.getPlayerPosition()+1, player.getName());
-						showMenu(group, player, ((Field) fields[player.getPlayerPosition()]), fields);
+//						showMenu(group, player, ((Field) fields[player.getPlayerPosition()]), fields);
 					} else {
 						player.setPlayerPosition(move.getExtraMoves()-1);
 
 						GUI.removeAllCars(player.getName());
 						GUI.setCar(player.getPlayerPosition(), player.getName());
-						showMenu(group, player, ((Field) fields[player.getPlayerPosition()]), fields);
+//						showMenu(group, player, ((Field) fields[player.getPlayerPosition()]), fields);
 					}
 				}
 				//kort der rykker en fremad
