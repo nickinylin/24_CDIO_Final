@@ -19,15 +19,15 @@ public class JUnitFleetTest {
 	private Player player2;
 	protected Field[] fields;
 	
-	protected 
-	Field currentfield = fields[player1.getPlayerPosition()+40];
+	
 	
 	@Before
 	public void setUp(){
 		player1 = new Player("Børge");
         player2 = new Player("Henning");
-        
-        Field currentfield = fields[player1.getPlayerPosition()+10];
+        Setup setup = new Setup();
+        fields = setup.createFields();
+ 
 
 	}
 
@@ -40,7 +40,7 @@ public class JUnitFleetTest {
 			for (Field f : fields){
 				if (f instanceof Fleet){
 					Fleet fleet = (Fleet) f;
-					if (fleet.getStatus() == false){
+					if (fleet.getStatus()){
 						fleet.buyField(player2, fields);
 						count++;
 						break;
@@ -51,7 +51,7 @@ public class JUnitFleetTest {
 		for (Field f : fields){
 			if (f instanceof Fleet){
 				Fleet fleet = (Fleet) f;
-				if (fleet.getOwner() == player2){
+				if (fleet.getOwner().equals(player2)){
 					fleet.payRent(player1, fields);
 					break;
 					
