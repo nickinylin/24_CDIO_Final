@@ -36,11 +36,44 @@ public class JUnitFleetTest {
 		int expected = player1.getMoney()-500;
 		int count = 0;
 		
+//		for (int i = 0; i < fields.length; i++) {
+		
 		while(count < 1){
 			for (Field f : fields){
 				if (f instanceof Fleet){
 					Fleet fleet = (Fleet) f;
-					if (fleet.getStatus()){
+					if (!fleet.getStatus()){
+						fleet.buyField(player2, fields);
+						count++;
+						break;
+					}
+				}
+			}
+		}
+		
+		for (Field f : fields){
+			if (f instanceof Fleet){
+				Fleet fleet = (Fleet) f;
+				if (fleet.getOwner().equals(player2)){
+					fleet.payRent(player1, fields);
+					break;
+//				}
+				}
+			}
+		}
+		assertEquals(expected, player1.getMoney());
+	}
+
+	@Test
+	public void test4owned() {
+		int expected = player1.getMoney()-4000;
+		int count = 0;
+		
+		while(count < 4){
+			for (Field f : fields){
+				if (f instanceof Fleet){
+					Fleet fleet = (Fleet) f;
+					if (!fleet.getStatus()){
 						fleet.buyField(player2, fields);
 						count++;
 						break;
@@ -60,5 +93,4 @@ public class JUnitFleetTest {
 		}
 		assertEquals(expected, player1.getMoney());
 	}
-
 }
