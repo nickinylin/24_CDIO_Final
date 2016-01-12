@@ -31,7 +31,7 @@ public class Game {
 	private TerritoryController territoryController = new TerritoryController();
 	private FleetController fleetController = new FleetController();
 	private LaborController laborController = new LaborController();
-	public JailController jailController = new JailController();
+	private JailController jailController = new JailController();
 	private RefugeController refugeController = new RefugeController();
 	private PlayerController playerController = new PlayerController();
 	private MenuController menuController = new MenuController();
@@ -59,8 +59,7 @@ public class Game {
 				if (players[i].bankrupt()) {
 					checkWinner();
 				} 
-
-				if (players[i].isInJail()) {
+				else if (players[i].isInJail()) {
 					doJailTurn(players[i]);
 				} else {
 					doNormalTurn(players[i]);
@@ -180,17 +179,30 @@ public class Game {
 	public void checkWinner() {
 
 		int numberofplayers = players.length;
-		int count = 0;
+		int count = 1;
 
-		for (int i = 0; i < players.length; i++) {
+		for (int i = 1; i < players.length; i++) {
 
 			if (players[i].bankrupt()) {
 				count++;
 			}
+			
+			if (numberofplayers == count) 
+			{
 
-			if (numberofplayers == count) {
-				GUI.displayChanceCard("<center>"+ players[i].getName() +" have won the game with a total of <br><br> "+players[i].getAssets()+"<br>assets.");
+                for (int x = 0; x < players.length; x++) 
+                {
+                    
+                    if (players[x].bankrupt() == false) 
+                    {
+                        GUI.displayChanceCard("<center>"+players[x].getName()+" have won the game with a total of <br><br> "+players[x].getAssets()+"<br>assets.");
+                        GUI.showMessage("");
+                        return;
+                    }
+                }
+                        				
 			}
+
 
 		}
 
