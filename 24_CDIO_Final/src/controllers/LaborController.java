@@ -19,7 +19,7 @@ public class LaborController {
 
 				labor.payRent(player, fields);
 
-				showMenu(players, player, labor, fields);
+//				showMenu(players, player, labor, fields);
 
 			}
 
@@ -27,7 +27,7 @@ public class LaborController {
 
 			//			menuController.showMenu(players, player, labor, fields);
 
-			showMenu(players, player, labor, fields);
+//			showMenu(players, player, labor, fields);
 			//			boolean buylabor = GUI.getUserLeftButtonPressed(""+player.getName()+" du er landet på "+labor.getName()+", vil du købe denne fabrik?", "Ja", "Nej");
 			//
 			//			if (buylabor) {
@@ -47,10 +47,10 @@ public class LaborController {
 
 
 
-	private void showMenu(Player[] players, Player player, Labor labor, Field[] fields) {
-		boolean res;
-		do{
-			res = menuController.menuBuild(players, player, labor, fields);
-		}while(!res);
-	}
+//	private void showMenu(Player[] players, Player player, Labor labor, Field[] fields) {
+//		boolean res;
+//		do{
+//			res = menuController.menuBuild(players, player, labor, fields);
+//		}while(!res);
+//	}
 }
