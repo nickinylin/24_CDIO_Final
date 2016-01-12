@@ -7,8 +7,6 @@ import fields.Territory;
 import game.Player;
 
 public class TerritoryController {
-
-	private MenuController menuController = new MenuController();
 	
 	public void landOnTerritory(Player[] players, Player player, Territory territory, Field[] fields) {
 
