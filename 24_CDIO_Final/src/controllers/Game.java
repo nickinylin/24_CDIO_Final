@@ -56,7 +56,7 @@ public class Game {
 
 			for (int i = 0; i < players.length; i++) {
 
-				if (players[i].bankrupt()) {
+				if (players[i].bankruptCheck()) {
 					checkWinner();
 				} else if (players[i].isInJail()) {
 					doJailTurn(players[i]);
@@ -172,7 +172,7 @@ public class Game {
 
 		for (int i = 1; i < players.length; i++) {
 
-			if (players[i].bankrupt()) {
+			if (players[i].bankruptCheck()) {
 				count++;
 			}
 			
@@ -181,14 +181,14 @@ public class Game {
 				for (int x = 1; x < players.length; x++) {
 					
 				}
-					if (players[i].bankrupt()) {
+					if (players[i].bankruptCheck()) {
 				}
 				GUI.displayChanceCard("<center>"+ players[i].getName() +" have won the game with a total of <br><br> "+players[i].getAssets()+"<br>assets.");
 
                 for (int x = 0; x < players.length; x++) 
                 {
                     
-                    if (players[x].bankrupt() == false) 
+                    if (players[x].bankruptCheck() == false) 
                     {
                         GUI.displayChanceCard("<center>"+players[x].getName()+" have won the game with a total of <br><br> "+players[x].getAssets()+"<br>assets.");
                         GUI.showMessage("");
