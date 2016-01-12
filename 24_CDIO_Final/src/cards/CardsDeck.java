@@ -60,18 +60,14 @@ public class CardsDeck {
 
 				new CardsMoveto("Ryk frem til START", "Start"), 
 				new CardsMoveto("Ryk frem til START", "Start"),
-<<<<<<< HEAD
 
-				new CardsMoveto("Gå i fængsel. Ryk direkte til fængslet. Selv om De passerer START, indkasserer De ikke kr. 4000", "De fængsles"),
-				new CardsMoveto("Gå i fængsel. Ryk direkte til fængslet. Selv om De passerer START, indkasserer De ikke kr. 4000", "De fængsles"),
-=======
 
 
 				new CardsMoveto("Gå i fængsel. Ryk direkte til fængslet. Selv om De passerer START, indkasserer De ikke kr. 4000",
 						"De fænglses"),
 				new CardsMoveto("Gå i fængsel. Ryk direkte til fængslet. Selv om De passerer START, indkasserer De ikke kr. 4000",
 						"De fænglses"),
->>>>>>> branch 'master' of https://github.com/nickinylin/24_CDIO_Final
+
 
 				new CardsMoveto("Ryk frem til Strandvejen. Hvis de passerer START indkassér da kr. 4000", "Strandvejen"),
 				new CardsMoveto("Ryk frem til Grønningen. Hvis De passerer START, indkassér da kr. 4000", "Grønningen"),
@@ -83,15 +79,11 @@ public class CardsDeck {
 
 				new CardsMoveto("Ryk brikken frem til det nærmeste rederi og betal ejeren to gange den leje, han ellers er berretiget til. Hvis selskabet ikke ejes af nogen, kan De købe det af banken", "fleet"),
 				new CardsMoveto("Ryk brikken frem til det nærmeste rederi og betal ejeren to gange den leje, han ellers er berretiget til. Hvis selskabet ikke ejes af nogen, kan De købe det af banken", "fleet"),
-<<<<<<< HEAD
-				new CardsMoveto("Tag med den nærmeste færge. Flyt brikken frem, og hvis De passerer START indkassér da kr. 4000", "tour"),
-//				new GetOutofJail()
-=======
+
 
 				//				 new CardsMoveto("Tag med den nærmeste færge. Flyt brikken frem, og hvis De passerer START indkassér da kr. 4000", "tour"),
 				// new GetOutofJail()
 
->>>>>>> branch 'master' of https://github.com/nickinylin/24_CDIO_Final
 		};
 
 		shuffledeck();
