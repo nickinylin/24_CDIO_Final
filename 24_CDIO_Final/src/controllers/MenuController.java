@@ -26,6 +26,7 @@ public class MenuController {
 		final String button4 = "Køb Bygning";
 		final String button5 = "Sælg Bygning";
 		final String button6 = "Afslut Tur";
+		final String button7 = "Gå Bankerot";
 
 		if (checkYouCanBuyField(player, currentfield, fields)) {
 			tempmenu[count++] = button1;
@@ -42,8 +43,14 @@ public class MenuController {
 		if (checkBuildingExists(player, currentfield, fields)){
 			tempmenu[count++] = button5;
 		}
-
-		tempmenu[count++] = button6;
+		if(player.getMoney()>=0)
+		{
+			tempmenu[count++] = button6;
+		}
+		else
+		{
+			tempmenu[count++] = button7;
+		}
 
 		String[] menu = new String[count];
 
@@ -291,8 +298,19 @@ public class MenuController {
 				// Sælg bygning
 			}
 			break;
-		case button6:
+		case button6: // Afslut tur
+			if(player.getMoney()<0)
+			{
+				return false;
+			} else {
 			nextTurn = true; break;
+			}
+		
+		case button7: // Gå bankerot
+			nextTurn = true;
+			player.bankrupt(); // Spilleren fjernes
+			break;
+			
 		default: break;
 		}
 		return nextTurn;
