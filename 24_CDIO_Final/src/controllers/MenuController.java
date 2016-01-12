@@ -417,9 +417,6 @@ public class MenuController {
 		}
 
 		String[] fieldlist = new String[i];
-<<<<<<< HEAD
-
-=======
 		// TODO denne metode mangler at udregne hvor man kan bygge huse
 		
 //		mangler bare at finde det felt/felter hvor der står mindst huse på
@@ -455,8 +452,7 @@ public class MenuController {
 		int count4 = 0;
 		
 		Field[] thisfield = new Field[3];
-		
->>>>>>> branch 'master' of https://github.com/nickinylin/24_CDIO_Final
+
 		for (int x = 0; x < fieldlist.length; x++) {
 			fieldlist[x] = tempfields[x].getName();
 		}
@@ -614,9 +610,8 @@ public class MenuController {
 
 	public boolean checkBuyBuilding(Player player, Field currentfield, Field[] fields) {
 
-<<<<<<< HEAD
 		if (currentfield.getFieldType() == "Territory") {
-=======
+
 		int numberofgroupfields = 0;
 		int numberofownedfields = 0;
 		int i = 0;
@@ -639,11 +634,6 @@ public class MenuController {
 		if(currentfield instanceof Jail){
 			return false;
 		}
->>>>>>> branch 'master' of https://github.com/nickinylin/24_CDIO_Final
-
-			int numberofgroupfields = 0;
-			int numberofownedfields = 0;
-			int i = 0;
 
 			Territory[] ownedfields = new Territory[3];
 
@@ -738,17 +728,12 @@ public class MenuController {
 		return false;
 
 	}
-	
-<<<<<<< HEAD
-=======
+
 	public void showMenu(Player[] players, Player player, Field currentfield, Field[] fields) {
 		boolean res;
 		do{
 			res = menuBuild(players, player, currentfield, fields);
 		}while(!res);
 	}
-
-
->>>>>>> branch 'master' of https://github.com/nickinylin/24_CDIO_Final
 
 }
