@@ -115,4 +115,9 @@ public class Labor extends Ownable {
 		double pawnprice = ((int) fieldprice * 0.5);
 		return pawnprice;
 	}
+	
+	@Override
+	public String getFieldType() {
+		return "Labor";
+	}
 }

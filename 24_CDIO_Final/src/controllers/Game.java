@@ -31,7 +31,7 @@ public class Game {
 	private TerritoryController territoryController = new TerritoryController();
 	private FleetController fleetController = new FleetController();
 	private LaborController laborController = new LaborController();
-	public JailController jailController = new JailController();
+	private JailController jailController = new JailController();
 	private RefugeController refugeController = new RefugeController();
 	private PlayerController playerController = new PlayerController();
 	private MenuController menuController = new MenuController();
@@ -58,9 +58,7 @@ public class Game {
 
 				if (players[i].bankrupt()) {
 					checkWinner();
-				} 
-
-				if (players[i].isInJail()) {
+				} else if (players[i].isInJail()) {
 					doJailTurn(players[i]);
 				} else {
 					doNormalTurn(players[i]);
@@ -68,22 +66,7 @@ public class Game {
 
 			}
 			
-			//TODO
-			for (int i = 0; i < players.length; i++) {
-
-				int bankrupt = 0;
-				if (players[i].bankrupt()) {
-					bankrupt++;
-				}
-						
-				if (bankrupt == players.length-1) {
-					noWinner = false;
-				}
-			}
-
 		}
-
-
 
 	}
 
@@ -107,6 +90,8 @@ public class Game {
 				Field currentfield = fields[player.getPlayerPosition()-1];
 
 				chooseAction(player, currentfield);
+				currentfield = fields[player.getPlayerPosition()-1];
+				menuController.showMenu(players, player, currentfield, fields);
 				
 				if (player.isInJail()) {
 					jailController.jail(player, fields);
@@ -130,6 +115,8 @@ public class Game {
 			Field currentfield = fields[player.getPlayerPosition()-1];
 
 			chooseAction(player, currentfield);
+			currentfield = fields[player.getPlayerPosition()-1];
+			menuController.showMenu(players, player, currentfield, fields);
 			
 		}
 	}
@@ -139,18 +126,19 @@ public class Game {
 		if (currentfield instanceof Territory) {
 			territoryController.landOnTerritory(players, player, ((Territory) currentfield), fields);
 		} else if (currentfield instanceof Fleet) {
-			fleetController.landOnFleet(player, ((Fleet) currentfield), fields);
+			fleetController.landOnFleet(players, player, ((Fleet) currentfield), fields);
 		} else if (currentfield instanceof Labor) {
-			laborController.landOnLabor(player, ((Labor) currentfield), fields);
+			laborController.landOnLabor(players, player, ((Labor) currentfield), fields);
 		} else if (currentfield instanceof Refuge) {
-			refugeController.landOnRefuge(player, ((Refuge) currentfield), fields);
+			refugeController.landOnRefuge(players, player, ((Refuge) currentfield), fields);
 		} else if (currentfield instanceof Luck) {
-			luckController.landOnLuck(player, fields, this.players);
+			luckController.landOnLuck(players, player, ((Luck) currentfield), fields);
 		} else if (currentfield instanceof Jail) {
 			jailController.jail(player, fields);
 		} else if (currentfield instanceof Tax) {
 			taxController.payTax(player, ((Tax) currentfield));
 		}
+		
 	}
 
 
@@ -180,17 +168,36 @@ public class Game {
 	public void checkWinner() {
 
 		int numberofplayers = players.length;
-		int count = 0;
+		int count = 1;
 
-		for (int i = 0; i < players.length; i++) {
+		for (int i = 1; i < players.length; i++) {
 
 			if (players[i].bankrupt()) {
 				count++;
 			}
-
+			
 			if (numberofplayers == count) {
+				
+				for (int x = 1; x < players.length; x++) {
+					
+				}
+					if (players[i].bankrupt()) {
+				}
 				GUI.displayChanceCard("<center>"+ players[i].getName() +" have won the game with a total of <br><br> "+players[i].getAssets()+"<br>assets.");
+
+                for (int x = 0; x < players.length; x++) 
+                {
+                    
+                    if (players[x].bankrupt() == false) 
+                    {
+                        GUI.displayChanceCard("<center>"+players[x].getName()+" have won the game with a total of <br><br> "+players[x].getAssets()+"<br>assets.");
+                        GUI.showMessage("");
+                        return;
+                    }
+                }
+                        				
 			}
+
 
 		}
 

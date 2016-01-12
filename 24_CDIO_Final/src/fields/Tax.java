@@ -27,5 +27,9 @@ public class Tax extends Field {
     	return this.special;
     }
     
+	@Override
+	public String getFieldType() {
+		return "Tax";
+	}
     
 }

@@ -37,6 +37,10 @@ public class Refuge extends Field {
     public int getPrice() {
         return 0;
     }
-
+    
+	@Override
+	public String getFieldType() {
+		return "Refuge";
+	}
     
 }

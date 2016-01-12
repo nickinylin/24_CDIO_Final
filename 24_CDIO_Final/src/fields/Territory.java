@@ -20,7 +20,6 @@ public class Territory extends Ownable {
 	private int fieldrenthouse4;
 	private int fieldrenthotel;
 	private final int fieldgroup;
-	private int buildingNumbers = 0;
 	private boolean pawned = false;
 
 	public Territory(String name, int fieldgroup, int fieldvalue, int fieldPriceBuilding, int fieldrent, int fieldrenthouse1, int fieldrenthouse2,int fieldrenthouse3, int fieldrenthouse4, int fieldrenthotel) {
@@ -61,13 +60,30 @@ public class Territory extends Ownable {
 
 			}
 		}
-
+		
+		int rent = 0;
 		if (numberingroup == numberofowned) {
-			return fieldrent * 2;
+			
+			if (houses > 0) {
+				if (houses == 1) {
+					rent = fieldrenthouse1;
+				} else if (houses == 2) {
+					rent = fieldrenthouse2;
+				} else if (houses == 3) {
+					rent = fieldrenthouse3;
+				} else if (houses == 4) {
+					rent = fieldrenthouse4;
+				} else if (houses == 5) {
+					rent = fieldrenthotel;
+				}
+			} else {
+				rent = fieldrent * 2;
+			}
+			
 		} else {
-			return fieldrent;
+			rent =  fieldrent;
 		}
-
+		return rent;
 	}
 
 	@Override
@@ -136,13 +152,13 @@ public class Territory extends Ownable {
 
 
 	public int getBuildingNumbers() {
-		return buildingNumbers;
+		return houses;
 	}
 
 
 
 	public void setBuildingNumbers(int buildingNumbers) {
-		this.buildingNumbers = buildingNumbers;
+		this.houses = buildingNumbers;
 	}
 
 
@@ -227,5 +243,10 @@ public class Territory extends Ownable {
 				}
 			} 
 		}
+	}
+	
+	@Override
+	public String getFieldType() {
+		return "Territory";
 	}
 }
