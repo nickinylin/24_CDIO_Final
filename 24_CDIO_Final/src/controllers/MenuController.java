@@ -2,7 +2,7 @@ package controllers;
 
 import fields.Ownable;
 import desktop_resources.GUI;
-import fields.Field;
+import fields.*;
 import fields.Fleet;
 import fields.Labor;
 import fields.Territory;
@@ -391,6 +391,32 @@ public class MenuController {
 		String[] fieldlist = new String[i];
 		// TODO denne metode mangler at udregne hvor man kan bygge huse
 		
+//		mangler bare at finde det felt/felter hvor der står mindst huse på
+//		og lave dem til en string
+//		så vi kan få dem vist i en liste
+		
+//		Templiste skal vi se hvilke der har mindst huse
+//		
+		
+		for (int z = 0; z < tempfields.length ; z++) {
+			Territory f = null;
+			Territory territory = (Territory) f;
+			if (f.getHouse() == 1) {
+				
+			}if (f.getHouse() == 2) {
+				
+			}if (f.getHouse() == 3) {
+				
+			}if (f.getHouse() == 4) {
+				
+			}if (f.getHouse() == 5) {
+				
+			}
+			
+
+			}
+		
+		
 		int count0 = 0;
 		int count1 = 0;
 		int count2 = 0;
@@ -502,6 +528,25 @@ public class MenuController {
 		int numberofgroupfields = 0;
 		int numberofownedfields = 0;
 		int i = 0;
+		
+		if(currentfield instanceof Labor){
+			return false;
+		}
+		if(currentfield instanceof Tax){
+			return false;
+		}
+		if(currentfield instanceof Refuge){
+			return false;
+		}
+		if(currentfield instanceof Luck){
+			return false;
+		}
+		if(currentfield instanceof Fleet){
+			return false;
+		}
+		if(currentfield instanceof Jail){
+			return false;
+		}
 
 		Territory[] ownedfields = new Territory[3];
 
@@ -543,6 +588,18 @@ public class MenuController {
 
 
 	private boolean checkYouCanBuyField(Player player, Field currentfield, Field[] fields) {
+		
+		if (currentfield instanceof Tax){
+			return false;
+		}
+		if (currentfield instanceof Refuge){
+			return false;
+		}
+		if(currentfield instanceof Luck){
+			return false;
+		}
+		
+		
 
 		for (int i = 0; i < fields.length; i++) {
 			Field f = fields[i];
@@ -585,6 +642,13 @@ public class MenuController {
 			}
 		}
 		return false;
+	}
+	
+	public void showMenu(Player[] players, Player player, Field currentfield, Field[] fields) {
+		boolean res;
+		do{
+			res = menuBuild(players, player, currentfield, fields);
+		}while(!res);
 	}
 
 
