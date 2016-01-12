@@ -287,8 +287,14 @@ public class MenuController {
 
 				int houseCount = thisfield[0].getHouse();
 				thisfield[0].buyHouse();
-				GUI.setHouses(getfieldnumber, houseCount+1);
-				GUI.setDescriptionText(getfieldnumber, "Leje: "+thisfield[0].getRent(player, fields));
+				thisfield[0].updateFieldGroup(player, thisfield[0], fields);
+				
+				if (thisfield[0].getHouse() > 4) {
+					GUI.setHotel(getfieldnumber, true);
+				} else {
+					GUI.setHouses(getfieldnumber, houseCount+1);
+				}
+				
 			}
 			break;
 		case button5: // sælg bygning

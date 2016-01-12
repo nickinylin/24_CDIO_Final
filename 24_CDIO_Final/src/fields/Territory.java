@@ -66,15 +66,15 @@ public class Territory extends Ownable {
 			
 			if (houses > 0) {
 				if (houses == 1) {
-					rent = fieldrenthouse1;
+					rent = this.fieldrenthouse1;
 				} else if (houses == 2) {
-					rent = fieldrenthouse2;
+					rent = this.fieldrenthouse2;
 				} else if (houses == 3) {
-					rent = fieldrenthouse3;
+					rent = this.fieldrenthouse3;
 				} else if (houses == 4) {
-					rent = fieldrenthouse4;
+					rent = this.fieldrenthouse4;
 				} else if (houses == 5) {
-					rent = fieldrenthotel;
+					rent = this.fieldrenthotel;
 				}
 			} else {
 				rent = fieldrent * 2;
