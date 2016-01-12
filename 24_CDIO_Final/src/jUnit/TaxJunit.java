@@ -18,6 +18,7 @@ public class TaxJunit {
 	private Bank b;
 	private TaxController t;
 	private Field f;
+	private int payamount = player1.getAssets()*10/100;
 	
 	@Before
 	public void setUp(){
@@ -28,9 +29,15 @@ public class TaxJunit {
 	@Test
 	public void pay10percent() {
 		player1.setAssets(30000);
-//		t.payTax(player1, payamount);
-		
-			
+		player1.payMoney(payamount);
+		assertEquals(27000, player1.getAssets());
+	}
+	
+	@Test
+	public void pay4000() {
+		player1.setAssets(50000);
+		player1.payMoney(4000);
+		assertEquals(46000, player1.getAssets());
 	}
 
 }

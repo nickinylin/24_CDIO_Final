@@ -15,6 +15,9 @@ public class JailJunit {
 	
 		private Player player1;
 		private JailController myJail;
+		private Dice d;
+		protected Field[] fields;
+		private Game game;
 		
 		@Before
 	    public void setUp(){
@@ -29,6 +32,16 @@ public class JailJunit {
 		myJail.payJail(player1);
 		assertEquals(false,player1.isInJail());
 		assertEquals(expected, player1.getMoney());
+	}
+	@Test
+	public void rolloutofjail() {
+		player1.setIsInJail(true);
+		
+		d.roll();
+		if (Dice.issame()){
+			player1.setIsInJail(false);
+		}
+		assertEquals(false, player1.isInJail());
 	}
 
 }
