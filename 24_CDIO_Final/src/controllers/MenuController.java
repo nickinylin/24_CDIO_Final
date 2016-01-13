@@ -527,8 +527,6 @@ public class MenuController {
 	private String[] getWhereToBuyBuilding(Player player,Territory currentfield, Field[] fields) {
 
 		int i = 0;
-		String[] string;
-		int k=0;
 
 		Territory[] tempfields = new Territory[8];
 
@@ -575,38 +573,22 @@ public class MenuController {
 				fieldlist[x] = tempfields[0].getName();
 			} else if (tempfields[0].getHouse() == tempfields[2].getHouse() && tempfields[1].getHouse() < tempfields[0].getHouse()) {
 				fieldlist[x] = tempfields[1].getName();
-				//			} else if (tempfields[1].getHouse() > tempfields[3].getHouse()) {
-				//				fieldlist[x] = tempfields[1].getName();
-				//			} else if (tempfields[3].getHouse() > tempfields[1].getHouse()) {
-				//				fieldlist[x] = tempfields[3].getName();
-				//			} else if (tempfields[1].getHouse() > tempfields[2].getHouse()) {
-				//				fieldlist[x] = tempfields[1].getName();
-				//			} else if (tempfields[2].getHouse() > tempfields[1].getHouse()) {
-				//				fieldlist[x] = tempfields[2].getName();
-				//			}
 			}
 
 
 
 		}
-		for (int j = 0; j < fieldlist.length; j++) {
-			if (fieldlist[j] != null) {
-				k++;
-			}
-		}
-		string=new String[k];
-
-		for (int j = 0; j < fieldlist.length; j++) {
-			if (fieldlist[j] != null) {
-				string[j] = fieldlist[j];
-
-
-			}
-
-		}
-		return string;
-
-	}
+		
+ 		String string = new String();
+ 		 
+ 		for (int j = 0; j < fieldlist.length; j++) {
+ 			if (fieldlist[j] != null) {
+ 				string+=fieldlist[j]+"Q";
+ 			}
+ 		}
+ 
+ 		return string.substring(0,string.length()-1).split("Q");
+ 	}
 
 	private String[] getPlayerOwnedActiveFields(Player player, Field[] fields) {
 
@@ -779,7 +761,12 @@ public class MenuController {
 
 			if (currentfield.getName() == "Prøv lykken") {
 
+			}  else if (currentfield.getName() == "De fængsles") {
+				JailController jailcontroller = new JailController();
+				jailcontroller.jail(player, fields);
+				
 			} else if (f instanceof Territory) {
+
 				Territory territory = (Territory) f;
 
 				if (territory.getName().equals(((Ownable) currentfield).getName())) {

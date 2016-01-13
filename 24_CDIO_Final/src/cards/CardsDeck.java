@@ -53,9 +53,9 @@ public class CardsDeck {
 				new CardsLegat("De modtager Matador-legatet for værdigt trængende på kr. 40.000. Ved værdigt trængende forstås, at Deres formue, dvs. Deres kontante penge + skøder + bygninger, ikke overstiger kr. 15.000", 40000),
 
 				// new GetOutofJail(),
-				new CardsMoveto("Ryk 3 felter frem", 3), 
 				new CardsMoveto("Ryk 3 felter frem", 3),
-				new CardsMoveto("Ryk 3 felter tilbage", -3), 
+				new CardsMoveto("Ryk 3 felter frem", 3),
+				new CardsMoveto("Ryk 3 felter tilbage", -3),
 				new CardsMoveto("Ryk 3 felter tilbage", -3),
 
 				new CardsMoveto("Ryk frem til START", "Start"), 
