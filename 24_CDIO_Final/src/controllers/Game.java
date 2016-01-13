@@ -6,17 +6,12 @@
 
 package controllers;
 
-import cards.Cards;
-import cards.CardsDeck;
-import cards.CardsMoveto;
 import desktop_resources.GUI;
-import fields.Empty;
 import fields.Field;
 import fields.Fleet;
 import fields.Jail;
 import fields.Labor;
 import fields.Luck;
-import fields.Ownable;
 import fields.Refuge;
 import fields.Tax;
 import fields.Territory;
@@ -33,7 +28,6 @@ public class Game {
 	private LaborController laborController = new LaborController();
 	private JailController jailController = new JailController();
 	private RefugeController refugeController = new RefugeController();
-	private PlayerController playerController = new PlayerController();
 	private MenuController menuController = new MenuController();
 	private Player[] players;
 	protected Field[] fields;
