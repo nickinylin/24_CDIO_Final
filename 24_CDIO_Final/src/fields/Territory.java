@@ -20,7 +20,6 @@ public class Territory extends Ownable {
 	private int fieldrenthouse4;
 	private int fieldrenthotel;
 	private final int fieldgroup;
-	private boolean pawned = false;
 
 	public Territory(String name, int fieldgroup, int fieldvalue, int fieldPriceBuilding, int fieldrent, int fieldrenthouse1, int fieldrenthouse2,int fieldrenthouse3, int fieldrenthouse4, int fieldrenthotel) {
 		super(name);
@@ -163,13 +162,13 @@ public class Territory extends Ownable {
 
 
 
-	@Override
-	public void buyField(Player player, Field[] fields) {
-		player.payMoney(fieldprice);
-		player.setAssets(fieldprice);
-		fieldowned = true;
-		fieldowner = player;
-	}
+//	@Override
+//	public void buyField(Player player, Field[] fields) {
+//		player.payMoney(fieldprice);
+//		player.setAssets(fieldprice);
+//		fieldowned = true;
+//		fieldowner = player;
+//	}
 
 
 

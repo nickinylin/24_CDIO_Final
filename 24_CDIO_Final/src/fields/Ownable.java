@@ -19,6 +19,7 @@ public abstract class Ownable extends Field {
     public Player fieldowner;
     protected int fieldprice;
     public boolean fieldowned;
+	protected boolean pawned = false;
     
     public abstract int getRent(Player player, Field[] fields);
     
@@ -43,7 +44,21 @@ public abstract class Ownable extends Field {
      * N�r spilleren �nsker at k�be et ledigt felt. Tager den aktuelle Player.
      * @param player
      */
-    public abstract void buyField(Player player, Field[] fields);
+    public void buyField(Player player, Field[] fields) {
+    	if (!pawned){
+    		player.payMoney(fieldprice);
+    		player.setAssets(fieldprice);
+    		fieldowned = true;
+    		fieldowner = player;
+    	} else {
+    		player.payMoney(fieldprice);
+    		player.setAssets(fieldprice);
+    		fieldowned = true;
+    		fieldowner = player;
+    		pawned = true;
+    	}
+    	
+    }
     
     public abstract void updateFieldGroup(Player player, Field currentField, Field[] fields);
     
