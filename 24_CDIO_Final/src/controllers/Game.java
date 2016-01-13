@@ -51,7 +51,7 @@ public class Game {
 			for (int i = 0; i < players.length; i++) {
 
 				if (players[i].bankruptCheck()) {
-					checkWinner();
+					noWinner=checkWinner();
 				} else if (players[i].isInJail()) {
 					doJailTurn(players[i]);
 				} else {
@@ -159,8 +159,8 @@ public class Game {
 	}
 
 
-	public void checkWinner() {
-
+	public boolean checkWinner() {
+boolean goOn=true;
 		int numberofplayers = players.length;
 		int count = 1;
 
@@ -187,15 +187,15 @@ public class Game {
 					{
 						GUI.displayChanceCard("<center>"+players[x].getName()+" have won the game with a total of <br><br> "+players[x].getAssets()+"<br>assets.");
 						GUI.showMessage("");
-						return;
+						goOn=false;
 					}
+							}
 				}
-
+	
 			}
 
-
+return goOn;
 		}
 
 	}
 
-}
