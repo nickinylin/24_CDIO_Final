@@ -96,7 +96,7 @@ public class Setup {
 					list[i] = new Street.Builder()
 							.setTitle(field.getName())
 							.setSubText("Pris: "+territory.getPrice()+"")
-							.setDescription("Basis Leje: "+territory.getBaseRent()+"<br>Huspris: "+territory.getBuildingPrice()+"<br>Pantsætningsværdi: "+territory.getPawnPrice()+"<br>Leje med 1 hus: "+territory.getFieldrenthouse1()+"<br> Leje med 2 huse: "+territory.getFieldrenthouse2()+"<br> Leje med 3 huse: "+territory.getFieldrenthouse3()+"<br> Leje med 4 hus: "+territory.getFieldrenthouse4()+"<br> Leje med hotel: "+territory.getFieldrenthotel()+"")
+							.setDescription("Basis Leje: "+territory.getBaseRent()+"<br>Huspris: "+territory.getBuildingPrice()+"<br>Pantsætningsværdi: "+territory.getPawnPrice()+"<br>Leje med 1 hus: "+territory.getFieldrenthouse1()+"<br> Leje med 2 huse: "+territory.getFieldrenthouse2()+"<br> Leje med 3 huse: "+territory.getFieldrenthouse3()+"<br> Leje med 4 husee: "+territory.getFieldrenthouse4()+"<br> Leje med hotel: "+territory.getFieldrenthotel()+"")
 							.setBgColor(new Color(56, 132, 218))
 							.setFgColor(Color.BLACK)
 							.build();
@@ -104,7 +104,7 @@ public class Setup {
 					list[i] = new Street.Builder()
 							.setTitle(fields[i].getName() )
 							.setSubText("Pris: "+territory.getPrice() +"")
-							.setDescription("Basis Leje: "+territory.getBaseRent()+"<br>Huspris: "+territory.getBuildingPrice()+"<br>Pantsætningsværdi: "+territory.getPawnPrice()+"<br>Leje med 1 hus: "+territory.getFieldrenthouse1()+"<br> Leje med 2 huse: "+territory.getFieldrenthouse2()+"<br> Leje med 3 huse: "+territory.getFieldrenthouse3()+"<br> Leje med 4 hus: "+territory.getFieldrenthouse4()+"<br> Leje med hotel: "+territory.getFieldrenthotel()+"")
+							.setDescription("Basis Leje: "+territory.getBaseRent()+"<br>Huspris: "+territory.getBuildingPrice()+"<br>Pantsætningsværdi: "+territory.getPawnPrice()+"<br>Leje med 1 hus: "+territory.getFieldrenthouse1()+"<br> Leje med 2 huse: "+territory.getFieldrenthouse2()+"<br> Leje med 3 huse: "+territory.getFieldrenthouse3()+"<br> Leje med 4 husee: "+territory.getFieldrenthouse4()+"<br> Leje med hotel: "+territory.getFieldrenthotel()+"")
 							.setBgColor(new Color(224, 71, 52))
 							.setFgColor(Color.BLACK)
 							.build();
@@ -112,7 +112,7 @@ public class Setup {
 					list[i] = new Street.Builder()
 							.setTitle(fields[i].getName() )
 							.setSubText("Pris: "+territory.getPrice() +"")
-							.setDescription("Basis Leje: "+territory.getBaseRent()+"<br>Huspris: "+territory.getBuildingPrice()+"<br>Pantsætningsværdi: "+territory.getPawnPrice()+"<br>Leje med 1 hus: "+territory.getFieldrenthouse1()+"<br> Leje med 2 huse: "+territory.getFieldrenthouse2()+"<br> Leje med 3 huse: "+territory.getFieldrenthouse3()+"<br> Leje med 4 hus: "+territory.getFieldrenthouse4()+"<br> Leje med hotel: "+territory.getFieldrenthotel()+"")
+							.setDescription("Basis Leje: "+territory.getBaseRent()+"<br>Huspris: "+territory.getBuildingPrice()+"<br>Pantsætningsværdi: "+territory.getPawnPrice()+"<br>Leje med 1 hus: "+territory.getFieldrenthouse1()+"<br> Leje med 2 huse: "+territory.getFieldrenthouse2()+"<br> Leje med 3 huse: "+territory.getFieldrenthouse3()+"<br> Leje med 4 husee: "+territory.getFieldrenthouse4()+"<br> Leje med hotel: "+territory.getFieldrenthotel()+"")
 							.setBgColor(new Color(225, 231, 0))
 							.setFgColor(Color.BLACK)
 							.build();
@@ -120,7 +120,7 @@ public class Setup {
 					list[i] = new Street.Builder()
 							.setTitle(fields[i].getName())
 							.setSubText("Pris: "+territory.getPrice()+"")
-							.setDescription("Basis Leje: "+territory.getBaseRent()+"<br>Huspris: "+territory.getBuildingPrice()+"<br>Pantsætningsværdi: "+territory.getPawnPrice()+"<br>Leje med 1 hus: "+territory.getFieldrenthouse1()+"<br> Leje med 2 huse: "+territory.getFieldrenthouse2()+"<br> Leje med 3 huse: "+territory.getFieldrenthouse3()+"<br> Leje med 4 hus: "+territory.getFieldrenthouse4()+"<br> Leje med hotel: "+territory.getFieldrenthotel()+"")
+							.setDescription("Basis Leje: "+territory.getBaseRent()+"<br>Huspris: "+territory.getBuildingPrice()+"<br>Pantsætningsværdi: "+territory.getPawnPrice()+"<br>Leje med 1 hus: "+territory.getFieldrenthouse1()+"<br> Leje med 2 huse: "+territory.getFieldrenthouse2()+"<br> Leje med 3 huse: "+territory.getFieldrenthouse3()+"<br> Leje med 4 huse: "+territory.getFieldrenthouse4()+"<br> Leje med hotel: "+territory.getFieldrenthotel()+"")
 							.setBgColor(new Color(140, 121, 121))
 							.setFgColor(Color.WHITE)
 							.build();
@@ -128,7 +128,7 @@ public class Setup {
 					list[i] = new Street.Builder()
 							.setTitle(fields[i].getName())
 							.setSubText("Pris: "+territory.getPrice()+"")
-							.setDescription("Basis Leje: "+territory.getBaseRent()+"<br>Huspris: "+territory.getBuildingPrice()+"<br>Pantsætningsværdi: "+territory.getPawnPrice()+"<br>Leje med 1 hus: "+territory.getFieldrenthouse1()+"<br> Leje med 2 huse: "+territory.getFieldrenthouse2()+"<br> Leje med 3 huse: "+territory.getFieldrenthouse3()+"<br> Leje med 4 hus: "+territory.getFieldrenthouse4()+"<br> Leje med hotel: "+territory.getFieldrenthotel()+"")
+							.setDescription("Basis Leje: "+territory.getBaseRent()+"<br>Huspris: "+territory.getBuildingPrice()+"<br>Pantsætningsværdi: "+territory.getPawnPrice()+"<br>Leje med 1 hus: "+territory.getFieldrenthouse1()+"<br> Leje med 2 huse: "+territory.getFieldrenthouse2()+"<br> Leje med 3 huse: "+territory.getFieldrenthouse3()+"<br> Leje med 4 huse: "+territory.getFieldrenthouse4()+"<br> Leje med hotel: "+territory.getFieldrenthotel()+"")
 							.setBgColor(new Color(255, 18, 31))
 							.setFgColor(Color.BLACK)
 							.build();
@@ -136,7 +136,7 @@ public class Setup {
 					list[i] = new Street.Builder()
 							.setTitle(fields[i].getName())
 							.setSubText("Pris: "+territory.getPrice()+"")
-							.setDescription("Basis Leje: "+territory.getBaseRent()+"<br>Huspris: "+territory.getBuildingPrice()+"<br>Pantsætningsværdi: "+territory.getPawnPrice()+"<br>Leje med 1 hus: "+territory.getFieldrenthouse1()+"<br> Leje med 2 huse: "+territory.getFieldrenthouse2()+"<br> Leje med 3 huse: "+territory.getFieldrenthouse3()+"<br> Leje med 4 hus: "+territory.getFieldrenthouse4()+"<br> Leje med hotel: "+territory.getFieldrenthotel()+"")
+							.setDescription("Basis Leje: "+territory.getBaseRent()+"<br>Huspris: "+territory.getBuildingPrice()+"<br>Pantsætningsværdi: "+territory.getPawnPrice()+"<br>Leje med 1 hus: "+territory.getFieldrenthouse1()+"<br> Leje med 2 huse: "+territory.getFieldrenthouse2()+"<br> Leje med 3 huse: "+territory.getFieldrenthouse3()+"<br> Leje med 4 huse: "+territory.getFieldrenthouse4()+"<br> Leje med hotel: "+territory.getFieldrenthotel()+"")
 							.setBgColor(new Color(250, 250, 250))
 							.setFgColor(Color.BLACK)
 							.build();
@@ -144,7 +144,7 @@ public class Setup {
 					list[i] = new Street.Builder()
 							.setTitle(fields[i].getName())
 							.setSubText("Pris: "+territory.getPrice()+"")
-							.setDescription("Basis Leje: "+territory.getBaseRent()+"<br>Huspris: "+territory.getBuildingPrice()+"<br>Pantsætningsværdi: "+territory.getPawnPrice()+"<br>Leje med 1 hus: "+territory.getFieldrenthouse1()+"<br> Leje med 2 huse: "+territory.getFieldrenthouse2()+"<br> Leje med 3 huse: "+territory.getFieldrenthouse3()+"<br> Leje med 4 hus: "+territory.getFieldrenthouse4()+"<br> Leje med hotel: "+territory.getFieldrenthotel()+"")
+							.setDescription("Basis Leje: "+territory.getBaseRent()+"<br>Huspris: "+territory.getBuildingPrice()+"<br>Pantsætningsværdi: "+territory.getPawnPrice()+"<br>Leje med 1 hus: "+territory.getFieldrenthouse1()+"<br> Leje med 2 huse: "+territory.getFieldrenthouse2()+"<br> Leje med 3 huse: "+territory.getFieldrenthouse3()+"<br> Leje med 4 huse: "+territory.getFieldrenthouse4()+"<br> Leje med hotel: "+territory.getFieldrenthotel()+"")
 							.setBgColor(new Color(255, 202, 70))
 							.setFgColor(Color.BLACK)
 							.build();
@@ -152,7 +152,7 @@ public class Setup {
 					list[i] = new Street.Builder()
 							.setTitle(fields[i].getName())
 							.setSubText("Pris: "+territory.getPrice()+"")
-							.setDescription("Basis Leje: "+territory.getBaseRent()+"<br>Huspris: "+territory.getBuildingPrice()+"<br>Pantsætningsværdi: "+territory.getPawnPrice()+"<br>Leje med 1 hus: "+territory.getFieldrenthouse1()+"<br> Leje med 2 huse: "+territory.getFieldrenthouse2()+"<br> Leje med 3 huse: "+territory.getFieldrenthouse3()+"<br> Leje med 4 hus: "+territory.getFieldrenthouse4()+"<br> Leje med hotel: "+territory.getFieldrenthotel()+"")
+							.setDescription("Basis Leje: "+territory.getBaseRent()+"<br>Huspris: "+territory.getBuildingPrice()+"<br>Pantsætningsværdi: "+territory.getPawnPrice()+"<br>Leje med 1 hus: "+territory.getFieldrenthouse1()+"<br> Leje med 2 huse: "+territory.getFieldrenthouse2()+"<br> Leje med 3 huse: "+territory.getFieldrenthouse3()+"<br> Leje med 4 huse: "+territory.getFieldrenthouse4()+"<br> Leje med hotel: "+territory.getFieldrenthotel()+"")
 							.setBgColor(new Color(112, 21, 97))
 							.setFgColor(Color.WHITE)
 							.build();

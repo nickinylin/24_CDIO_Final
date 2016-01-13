@@ -76,10 +76,10 @@ public class MenuController {
 
 				String spiller = GUI.getUserSelection("Sælg "+buyfield+" til", playernames);
 				int g = 0;
-				Player[] buyplayer = new Player[1];
+				Player[] buyingplayer = new Player[1];
 				for (int z = 0; z < players.length ; z++) {
 					if (players[z].getName() == spiller) {
-						buyplayer[g++] = players[z];
+						buyingplayer[g++] = players[z];
 					}
 				}
 
@@ -88,44 +88,44 @@ public class MenuController {
 						Territory territory = (Territory) f;
 
 						if (buyfield == territory.getName()) {
-							territory.buyField(buyplayer[0], fields);
+							territory.buyField(buyingplayer[0], fields);
 							int pris = GUI.getUserInteger("Pris");
 							player.giveMoney(pris);
 							player.setAssets(-territory.getPrice());
-							buyplayer[0].giveMoney(territory.getPrice());
-							buyplayer[0].payMoney(pris);
-							buyplayer[0].setAssets(buyplayer[0].getAssets()+territory.getPrice());
-							GUI.setBalance(buyplayer[0].getName(), buyplayer[0].getMoney());
+							buyingplayer[0].giveMoney(territory.getPrice());
+							buyingplayer[0].payMoney(pris);
+							buyingplayer[0].setAssets(buyingplayer[0].getAssets()+territory.getPrice());
+							GUI.setBalance(buyingplayer[0].getName(), buyingplayer[0].getMoney());
 							GUI.setBalance(player.getName(), player.getMoney());
-							territory.updateFieldGroup(buyplayer[0], territory, fields);
+							territory.updateFieldGroup(buyingplayer[0], territory, fields);
 						}
 					} else if (f instanceof Fleet) {
 						Fleet fleet = (Fleet) f;
 
 						if (buyfield == fleet.getName()) {
-							fleet.buyField(buyplayer[0], fields);
+							fleet.buyField(buyingplayer[0], fields);
 							int pris = GUI.getUserInteger("Pris");
 							player.giveMoney(pris);
 							player.setAssets(-fleet.getPrice());
-							buyplayer[0].giveMoney(fleet.getPrice());
-							buyplayer[0].payMoney(pris);
-							GUI.setBalance(buyplayer[0].getName(), buyplayer[0].getMoney());
+							buyingplayer[0].giveMoney(fleet.getPrice());
+							buyingplayer[0].payMoney(pris);
+							GUI.setBalance(buyingplayer[0].getName(), buyingplayer[0].getMoney());
 							GUI.setBalance(player.getName(), player.getMoney());
-							fleet.updateFieldGroup(buyplayer[0], fleet, fields);
+							fleet.updateFieldGroup(buyingplayer[0], fleet, fields);
 						}
 					} else if (f instanceof Labor) {
 						Labor labor = (Labor) f;
 
 						if (buyfield == labor.getName()) {
-							labor.buyField(buyplayer[0], fields);
+							labor.buyField(buyingplayer[0], fields);
 							int pris = GUI.getUserInteger("Pris");
 							player.giveMoney(pris);
 							player.setAssets(-labor.getPrice());
-							buyplayer[0].giveMoney(labor.getPrice());
-							buyplayer[0].payMoney(pris);
-							GUI.setBalance(buyplayer[0].getName(), buyplayer[0].getMoney());
+							buyingplayer[0].giveMoney(labor.getPrice());
+							buyingplayer[0].payMoney(pris);
+							GUI.setBalance(buyingplayer[0].getName(), buyingplayer[0].getMoney());
 							GUI.setBalance(player.getName(), player.getMoney());
-							labor.updateFieldGroup(buyplayer[0], labor, fields);
+							labor.updateFieldGroup(buyingplayer[0], labor, fields);
 						}
 					}
 				}
@@ -335,6 +335,7 @@ public class MenuController {
 		case button7: // Gå bankerot
 			nextTurn = true;
 			player.bankrupt(); // Spilleren fjernes
+			sellAllFields(player, currentfield, fields);
 			break;
 
 		case button8:
@@ -747,36 +748,27 @@ public class MenuController {
 			if (fields[i] instanceof Territory) {
 				Territory territory = (Territory) fields[i];
 				if (territory.fieldowned && territory.fieldowner.equals(player)) {
-					player.giveMoney(territory.getPrice());
 					territory.fieldowned = false;
 					territory.fieldowner = null;
-					player.setAssets(-territory.getPrice());
 					GUI.removeOwner(i+1);
-					GUI.setBalance(player.getName(), player.getMoney());
 				}
 			}
 
 			if (fields[i] instanceof Labor) {
 				Labor labor = (Labor) fields[i];
 				if (labor.fieldowned && labor.fieldowner.equals(player)) {
-					player.giveMoney(labor.getPrice());
 					labor.fieldowned = false;
 					labor.fieldowner = null;
-					player.setAssets(-labor.getPrice());
 					GUI.removeOwner(i+1);
-					GUI.setBalance(player.getName(), player.getMoney());
 				}
 			}
 
 			if (fields[i] instanceof Fleet) {
 				Fleet fleet = (Fleet) fields[i];
 				if (fleet.fieldowned && fleet.fieldowner.equals(player)) {
-					player.giveMoney(fleet.getPrice());
 					fleet.fieldowned = false;
 					fleet.fieldowner = null;
-					player.setAssets(-fleet.getPrice());
 					GUI.removeOwner(i+1);
-					GUI.setBalance(player.getName(), player.getMoney());
 				}
 			}
 

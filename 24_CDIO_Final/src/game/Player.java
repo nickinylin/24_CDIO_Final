@@ -94,7 +94,8 @@ public class Player {
     	{
     		bank.payMoney(bank.getMoney());
     		bank.setAssets(-bank.getAssets()-1);
-
+    		
+    			
     	}
     
     public int getMoney(){
