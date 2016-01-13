@@ -283,6 +283,7 @@ public class MenuController {
 				thisfield[0].buyHouse();
 				thisfield[0].updateFieldGroup(player, thisfield[0], fields);
 				player.payMoney(thisfield[0].getBuildingPrice());
+				player.setAssets(thisfield[0].getBuildingPrice());
 				GUI.setBalance(player.getName(), player.getMoney());
 				if (thisfield[0].getHouse() > 4) {
 					GUI.setHotel(getfieldnumber, true);
