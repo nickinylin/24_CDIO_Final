@@ -47,7 +47,8 @@ public class Game {
 		boolean noWinner = true;
 
 		while (noWinner) {
-
+			noWinner=checkWinner();
+			
 			for (int i = 0; i < players.length; i++) {
 
 				if (players[i].bankruptCheck()) {
