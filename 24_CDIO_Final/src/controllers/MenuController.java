@@ -27,7 +27,7 @@ public class MenuController {
 		if (checkOwnField(player, currentfield, fields)) {
 			tempmenu[count++] = button2;
 		}
-		if (checkPawnField(player, currentfield, fields)) {
+		if (checkPawnField(player, currentfield, fields)|| checkUnPawnField(player, currentfield, fields)) {
 			tempmenu[count++] = button3;
 		}
 		if (checkBuyBuilding(player, currentfield, fields)) {
@@ -380,7 +380,7 @@ public class MenuController {
 			if (f instanceof Territory) {
 				Territory t = (Territory) f;
 
-				if (t.getPawned() == false && player.equals(t.getOwner()) && t.getHouse() < 1) {
+				if (t.getPawned()==false && player.equals(t.getOwner()) && t.getHouse() < 1) {
 					i++;
 				}
 			}
