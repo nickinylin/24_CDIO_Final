@@ -285,9 +285,6 @@ public class MenuController {
 					}
 				}
 
-				System.out.println(buyBuildingField);
-				System.out.println(thisfield);
-
 				int houseCount = thisfield[0].getHouse();
 				thisfield[0].buyHouse();
 				thisfield[0].updateFieldGroup(player, thisfield[0], fields);
@@ -810,7 +807,7 @@ public class MenuController {
 					}
 				}
 			}
-// Brugeren ejer ikke alle felter
+			// Brugeren ejer ikke alle felter
 			if (!(numberofgroupfields == numberofownedfields && numberofgroupfields != 0)) {
 				return false;
 			}
