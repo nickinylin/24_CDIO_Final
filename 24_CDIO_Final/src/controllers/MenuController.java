@@ -267,7 +267,7 @@ for (int i = 0; i < fields.length; i++){
 				// house can only be bought if other fields have houses
 
 				//				 String[] buyBuildingFieldlist = getBuyBuildingFieldList(player, fields);
-				String[] buyBuildingFieldlist = getWhereToBuyBuilding(player, fields);
+				String[] buyBuildingFieldlist = getWhereToBuyBuilding(player,(Territory) currentfield ,fields);
 
 				String buyBuildingField = GUI.getUserSelection(player.getName(), buyBuildingFieldlist);
 				
@@ -520,7 +520,7 @@ for (int i = 0; i < fields.length; i++){
 		return fieldlist;
 	}
 
-	private String[] getWhereToBuyBuilding(Player player, Field[] fields) {
+	private String[] getWhereToBuyBuilding(Player player,Territory currentfield, Field[] fields) {
 		
 		int i = 0;
 
@@ -528,9 +528,8 @@ for (int i = 0; i < fields.length; i++){
 
 		for (Field f : fields) {
 			if (f instanceof Territory) {
-				Territory t = (Territory) f;
-
-				if (t.getPawned() == false && player.equals(t.getOwner())) {
+				Territory t = (Territory) f; 
+				if (t.getPawned() == false && player.equals(t.getOwner()) && currentfield.getFieldGroup()==t.getFieldGroup()) {
 					tempfields[i++] = t;
 				}
 			} 
