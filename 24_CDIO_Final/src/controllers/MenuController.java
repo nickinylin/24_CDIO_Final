@@ -27,7 +27,7 @@ public class MenuController {
 		if (checkOwnField(player, currentfield, fields)) {
 			tempmenu[count++] = button2;
 		}
-		if (checkPawnField(player, currentfield, fields)|| checkUnPawnField(player, currentfield, fields)) {
+		if (checkPawnField(player, currentfield, fields) || checkUnPawnField(player, currentfield, fields)) {
 			tempmenu[count++] = button3;
 		}
 		if (checkBuyBuilding(player, currentfield, fields)) {
@@ -54,13 +54,10 @@ public class MenuController {
 
 		case button1:
 
-			//			if (player.getMoney() < ((Ownable) currentfield).getPrice()) {
-			//				getRaiseMoney(player, currentfield, fields);
-			//			} else {
 			((Ownable) currentfield).buyField(player, fields);
 			GUI.setBalance(player.getName(), player.getMoney());
 			((Ownable) currentfield).updateFieldGroup(player, currentfield, fields);
-			//			}
+
 			break;
 
 		case button2:
@@ -295,7 +292,7 @@ public class MenuController {
 				}
 
 				int houseCount = thisfield[0].getHouse();
-				thisfield[0].buyHouse();
+				thisfield[0].buyHouse(thisfield[0], fields);
 				thisfield[0].updateFieldGroup(player, thisfield[0], fields);
 				player.payMoney(thisfield[0].getBuildingPrice());
 

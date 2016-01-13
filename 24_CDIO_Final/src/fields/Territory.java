@@ -61,10 +61,10 @@ public class Territory extends Ownable {
 
 			}
 		}
-		
+
 		int rent = 0;
 		if (numberingroup == numberofowned) {
-			
+
 			if (houses > 0) {
 				if (houses == 1) {
 					rent = this.fieldrenthouse1;
@@ -80,7 +80,7 @@ public class Territory extends Ownable {
 			} else {
 				rent = fieldrent * 2;
 			}
-			
+
 		} else {
 			rent =  fieldrent;
 		}
@@ -108,16 +108,31 @@ public class Territory extends Ownable {
 		return fieldprice;
 	}
 
-	public int buyHouse() {
+	public int buyHouse(Field currentfield, Field[] fields) {
 		houses = houses + 1;
-		setSellAble(false);
+		int fieldgroup = ((Territory) currentfield).getFieldGroup();
+		
+		for (Field f : fields) {
+			if (f instanceof Territory) {
+				Territory t = (Territory) f;
+
+				if (t.getFieldGroup() == fieldgroup) {
+					t.setSellAble(false);
+				}
+				
+			}
+		}
+
+
 		return houses;
 	}
 
 	public int sellHouse() {
+
 		if (getHouse() == 1){
 			setSellAble(true);
 		}
+
 		houses = houses - 1;
 		return houses;
 	}
@@ -156,9 +171,9 @@ public class Territory extends Ownable {
 
 
 
-//	public int getBuildingNumbers() {
-//		return houses;
-//	}
+	//	public int getBuildingNumbers() {
+	//		return houses;
+	//	}
 
 
 
@@ -168,13 +183,13 @@ public class Territory extends Ownable {
 
 
 
-//	@Override
-//	public void buyField(Player player, Field[] fields) {
-//		player.payMoney(fieldprice);
-//		player.setAssets(fieldprice);
-//		fieldowned = true;
-//		fieldowner = player;
-//	}
+	//	@Override
+	//	public void buyField(Player player, Field[] fields) {
+	//		player.payMoney(fieldprice);
+	//		player.setAssets(fieldprice);
+	//		fieldowned = true;
+	//		fieldowner = player;
+	//	}
 
 
 
@@ -224,32 +239,32 @@ public class Territory extends Ownable {
 		return currentplayer;
 	}
 
-		//		currentplayer.giveMoney(pris);
-		//		
-		//		for (int i = 0; i < players.length ; i++) {
-		//			if (players[i].getName() == spiller) {
-		//				players[i].payMoney(pris);
-		//				GUI.setBalance(players[i].getName(), players[i].getMoney());
-		//			}
-		//		}
+	//		currentplayer.giveMoney(pris);
+	//		
+	//		for (int i = 0; i < players.length ; i++) {
+	//			if (players[i].getName() == spiller) {
+	//				players[i].payMoney(pris);
+	//				GUI.setBalance(players[i].getName(), players[i].getMoney());
+	//			}
+	//		}
 
 
-//	public void sellFieldToBank(Player player, Territory currentfield, Field[] fields) {
-//
-//		for (int i = 0; i < fields.length; i++) {
-//			Field f = fields[i];
-//			if (f instanceof Territory) {
-//				Territory territory = (Territory) f;
-//
-//				if (territory.getFieldGroup() == currentfield.getFieldGroup() && player.equals(territory.fieldowner)) {
-//					int price = (int) (currentfield.fieldprice);
-//					player.giveMoney(price);
-//					GUI.removeOwner(i);
-//				}
-//			} 
-//		}
-//	}
-	
+	//	public void sellFieldToBank(Player player, Territory currentfield, Field[] fields) {
+	//
+	//		for (int i = 0; i < fields.length; i++) {
+	//			Field f = fields[i];
+	//			if (f instanceof Territory) {
+	//				Territory territory = (Territory) f;
+	//
+	//				if (territory.getFieldGroup() == currentfield.getFieldGroup() && player.equals(territory.fieldowner)) {
+	//					int price = (int) (currentfield.fieldprice);
+	//					player.giveMoney(price);
+	//					GUI.removeOwner(i);
+	//				}
+	//			} 
+	//		}
+	//	}
+
 	@Override
 	public String getFieldType() {
 		return "Territory";
@@ -266,5 +281,5 @@ public class Territory extends Ownable {
 	public void setSellAble(boolean sellAble) {
 		this.sellAble = sellAble;
 	}
-	
+
 }
