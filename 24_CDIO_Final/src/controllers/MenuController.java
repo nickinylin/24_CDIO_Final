@@ -70,6 +70,7 @@ public class MenuController {
 
 			String sellto = GUI.getUserButtonPressed(player.getName(), "Sælg felt til Spillere", "Fortryd");
 
+
 			if (sellto == "Sælg felt til Spillere") {
 
 				String[] playernames = getAllPlayerNamesExceptPlayer(players, player);
@@ -256,6 +257,7 @@ public class MenuController {
 				String[] buyBuildingFieldlist = getWhereToBuyBuilding(player, fields);
 
 				String buyBuildingField = GUI.getUserSelection(player.getName(), buyBuildingFieldlist);
+				
 
 				Territory[] thisfield = new Territory[3];
 				int i = 0;
@@ -296,9 +298,13 @@ public class MenuController {
 
 			if (checkBuildingExists(player, currentfield, fields)) {
 				String[] sellBuildingFieldlist = getBuildingFieldList(player, fields);
-
-				String sellBuildingField = GUI.getUserSelection(player.getName(), sellBuildingFieldlist);
-
+				
+				String regretBuildingSale = GUI.getUserButtonPressed(player.getName(), "Sælg bygning", "Fortryd");
+				if(regretBuildingSale == "Sælg bygning"){
+					String sellBuildingField = GUI.getUserSelection(player.getName(), sellBuildingFieldlist);
+				
+				
+				
 				Territory[] thisfield = new Territory[3];
 				int i = 0;
 				int getfieldnumber = 0;
@@ -323,6 +329,7 @@ public class MenuController {
 				player.giveMoney(thisfield[0].getBuildingPrice());
 				player.setAssets(player.getAssets()-thisfield[0].getBuildingPrice());
 				GUI.setBalance(player.getName(), player.getMoney());
+				}
 			}
 			break;
 		case button6: // Afslut tur
