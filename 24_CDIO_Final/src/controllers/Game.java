@@ -65,7 +65,7 @@ public class Game {
 				}
 
 			}
-			
+
 		}
 
 	}
@@ -92,22 +92,22 @@ public class Game {
 				chooseAction(player, currentfield);
 				currentfield = fields[player.getPlayerPosition()-1];
 				menuController.showMenu(players, player, currentfield, fields);
-				
+
 				if (player.isInJail()) {
 					jailController.jail(player, fields);
 				} else {
 					doNormalTurn(player);
 				}
-				
+
 			} else {
 				jailController.jail(player, fields);
 
 			}
 		} else {
-			
+
 			// Reset players extra turn
 			player.resetExtraTurns();
-			
+
 			// Move the Player
 			PlayerController.movePlayer(player, Dice.getSum(), fields);
 
@@ -117,7 +117,7 @@ public class Game {
 			chooseAction(player, currentfield);
 			currentfield = fields[player.getPlayerPosition()-1];
 			menuController.showMenu(players, player, currentfield, fields);
-			
+
 		}
 	}
 
@@ -138,7 +138,7 @@ public class Game {
 		} else if (currentfield instanceof Tax) {
 			taxController.payTax(player, ((Tax) currentfield));
 		}
-		
+
 	}
 
 
@@ -175,27 +175,27 @@ public class Game {
 			if (players[i].bankruptCheck()) {
 				count++;
 			}
-			
+
 			if (numberofplayers == count) {
-				
+
 				for (int x = 1; x < players.length; x++) {
-					
+
 				}
-					if (players[i].bankruptCheck()) {
+				if (players[i].bankruptCheck()) {
 				}
 				GUI.displayChanceCard("<center>"+ players[i].getName() +" have won the game with a total of <br><br> "+players[i].getAssets()+"<br>assets.");
 
-                for (int x = 0; x < players.length; x++) 
-                {
-                    
-                    if (players[x].bankruptCheck() == false) 
-                    {
-                        GUI.displayChanceCard("<center>"+players[x].getName()+" have won the game with a total of <br><br> "+players[x].getAssets()+"<br>assets.");
-                        GUI.showMessage("");
-                        return;
-                    }
-                }
-                        				
+				for (int x = 0; x < players.length; x++) 
+				{
+
+					if (players[x].bankruptCheck() == false) 
+					{
+						GUI.displayChanceCard("<center>"+players[x].getName()+" have won the game with a total of <br><br> "+players[x].getAssets()+"<br>assets.");
+						GUI.showMessage("");
+						return;
+					}
+				}
+
 			}
 
 
