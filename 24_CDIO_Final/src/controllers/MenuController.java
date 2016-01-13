@@ -102,9 +102,10 @@ public class MenuController {
 							GUI.setBalance(buyingplayer[0].getName(), buyingplayer[0].getMoney());
 							GUI.setBalance(player.getName(), player.getMoney());
 							territory.updateFieldGroup(buyingplayer[0], territory, fields);
-							if (((Territory) f).getPawned())
+							if (((Territory) f).getPawned()) {
 								GUI.setTitleText(i++, f.getName());
-							GUI.setSubText(i++, "Pantsat");
+								GUI.setSubText(i++, "Pantsat");
+							}
 						}
 					} else if (f instanceof Fleet) {
 						Fleet fleet = (Fleet) f;
@@ -119,9 +120,10 @@ public class MenuController {
 							GUI.setBalance(buyingplayer[0].getName(), buyingplayer[0].getMoney());
 							GUI.setBalance(player.getName(), player.getMoney());
 							fleet.updateFieldGroup(buyingplayer[0], fleet, fields);
-							if (((Fleet) f).getPawned())
+							if (((Fleet) f).getPawned()) {
 								GUI.setTitleText(i++, f.getName());
-							GUI.setSubText(i++, "Pantsat");
+								GUI.setSubText(i++, "Pantsat");
+							}
 						}
 					} else if (f instanceof Labor) {
 						Labor labor = (Labor) f;
@@ -136,14 +138,16 @@ public class MenuController {
 							GUI.setBalance(buyingplayer[0].getName(), buyingplayer[0].getMoney());
 							GUI.setBalance(player.getName(), player.getMoney());
 							labor.updateFieldGroup(buyingplayer[0], labor, fields);
-							if (((Labor) f).getPawned())
+							if (((Labor) f).getPawned()) {
 								GUI.setTitleText(i++, f.getName());
-							GUI.setSubText(i++, "Pantsat");
-						}
+								GUI.setSubText(i++, "Pantsat");
+							}
 
+						}
 					}
 				}
 			}
+
 
 			break;
 
