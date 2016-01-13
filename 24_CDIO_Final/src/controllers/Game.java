@@ -167,6 +167,7 @@ public class Game {
 		for (int i = 1; i < players.length; i++) {
 
 			if (players[i].bankruptCheck()) {
+				menuController.sellAllFields(players[i], fields);
 				count++;
 			}
 
