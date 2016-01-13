@@ -147,7 +147,7 @@ public class MenuController {
 
 			if (pantsæt == "Pantsæt Felt") {
 
-				String[] pawnfieldlist = getPlayerOwnedFields(player, fields);
+				String[] pawnfieldlist = getPlayerOwnedActiveFields(player, fields);
 
 				String pawnfield = GUI.getUserSelection(player.getName(), pawnfieldlist);
 
@@ -335,11 +335,11 @@ public class MenuController {
 		case button7: // Gå bankerot
 			nextTurn = true;
 			player.bankrupt(); // Spilleren fjernes
-			sellAllFields(player, currentfield, fields);
+			sellAllFields(player, fields);
 			break;
 
 		case button8:
-			sellAllFields(player, currentfield, fields);
+			sellAllFields(player, fields);
 
 		default: break;
 		}
@@ -572,7 +572,7 @@ public class MenuController {
 		return string.substring(0,string.length()-1).split("Q");
 	}
 
-	private String[] getPlayerOwnedFields(Player player, Field[] fields) {
+	private String[] getPlayerOwnedActiveFields(Player player, Field[] fields) {
 
 		int i = 0;
 
@@ -595,6 +595,42 @@ public class MenuController {
 				Labor labor = (Labor) f;
 
 				if (player.equals(labor.getOwner()) && labor.getPawned() == false) {
+					tempownedfields[i++] = labor;
+				}
+			}
+		}
+
+		String[] fieldlist = new String[i];
+
+		for (int x = 0; x < fieldlist.length; x++) {
+			fieldlist[x] = tempownedfields[x].getName();
+		}
+		return fieldlist;
+	}
+	
+	private String[] getPlayerOwnedFields(Player player, Field[] fields) {
+
+		int i = 0;
+
+		Field[] tempownedfields = new Field[28];
+
+		for (Field f : fields) {
+			if (f instanceof Territory) {
+				Territory t = (Territory) f;
+
+				if (player.equals(t.getOwner()) && t.getHouse() < 1) {
+					tempownedfields[i++] = t;
+				}
+			} else if (f instanceof Fleet) {
+				Fleet fleet = (Fleet) f;
+
+				if (player.equals(fleet.getOwner())) {
+					tempownedfields[i++] = fleet;
+				}
+			} else if (f instanceof Labor) {
+				Labor labor = (Labor) f;
+
+				if (player.equals(labor.getOwner())) {
 					tempownedfields[i++] = labor;
 				}
 			}
@@ -741,7 +777,7 @@ public class MenuController {
 
 	}
 
-	public void sellAllFields(Player player, Field currentfield, Field[] fields) {
+	public void sellAllFields(Player player, Field[] fields) {
 
 		for (int i = 0; i < fields.length; i++) {
 
