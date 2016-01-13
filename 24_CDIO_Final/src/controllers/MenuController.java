@@ -828,7 +828,21 @@ for (int i = 0; i < fields.length; i++){
 			}
 
 		}
-
+		
+//		boolean checkFieldGroupWithBuildings (Field currentfield, Field[] fields){
+//			Territory actualField = (Territory) currentfield;
+//			for (int i = 0; i < fields.length; i++ ) {
+//				if (fields[i] instanceof Territory) {
+//					Territory territory = (Territory) fields[i];
+//					if (territory.getBuildingNumbers()>0 && territory.getFieldGroup() == actualField.getFieldGroup()) {
+//						return true;
+//					}
+//				}
+//			}
+//
+//			return false;
+//		}
+		
 	}
 
 	public void showMenu(Player[] players, Player player, Field currentfield, Field[] fields) {
