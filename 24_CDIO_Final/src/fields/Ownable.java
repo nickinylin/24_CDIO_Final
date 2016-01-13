@@ -53,6 +53,8 @@ public abstract class Ownable extends Field {
     
     public abstract double getPawnPrice();
     
+    public abstract int getPrice();
+    
     public void setOwned() {
         fieldowned = true;
     }
