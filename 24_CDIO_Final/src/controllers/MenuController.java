@@ -314,8 +314,7 @@ public class MenuController {
 			nextTurn = false;
 
 			if (checkBuildingExists(player, currentfield, fields)) {
-				String[] sellBuildingFieldlist = getBuildingFieldList(player, fields);
-
+				String[] sellBuildingFieldlist = getWhereToSellBuilding(player, fields);
 				String regretBuildingSale = GUI.getUserButtonPressed(player.getName(), "Sælg bygning", "Fortryd");
 				if(regretBuildingSale == "Sælg bygning"){
 					String sellBuildingField = GUI.getUserSelection(player.getName(), sellBuildingFieldlist);
@@ -578,17 +577,82 @@ public class MenuController {
 
 
 		}
-		
- 		String string = new String();
- 		 
- 		for (int j = 0; j < fieldlist.length; j++) {
- 			if (fieldlist[j] != null) {
- 				string+=fieldlist[j]+"Q";
- 			}
- 		}
- 
- 		return string.substring(0,string.length()-1).split("Q");
- 	}
+
+		String string = new String();
+
+		for (int j = 0; j < fieldlist.length; j++) {
+			if (fieldlist[j] != null) {
+				string+=fieldlist[j]+"Q";
+			}
+		}
+
+		return string.substring(0,string.length()-1).split("Q");
+	}
+
+	private String[] getWhereToSellBuilding(Player player, Field[] fields) {
+
+		int i = 0;
+
+		Territory[] tempfields = new Territory[22];
+
+		for (Field f : fields) {
+			if (f instanceof Territory) {
+				Territory t = (Territory) f; 
+				if (t.getPawned() == false && player.equals(t.getOwner()) && t.getHouse()>0) {
+					tempfields[i] = t;
+					++i;
+				}
+			} 
+		}
+
+		String[] fieldlist = new String[i];
+		int x = 0;
+		if (i == 1) {
+			fieldlist[x] = tempfields[0].getName();
+		} else if (i == 2) {
+			if (tempfields[0].getHouse() == tempfields[1].getHouse()) {
+				fieldlist[x] = tempfields[0].getName();
+				fieldlist[x+1] = tempfields[1].getName();
+			} else if (tempfields[0].getHouse() > tempfields[1].getHouse()) {
+				fieldlist[x] = tempfields[0].getName();
+			} else if (tempfields[0].getHouse() < tempfields[1].getHouse()) {
+				fieldlist[x] = tempfields[1].getName();
+			}
+		} else if (i == 3){
+			if (tempfields[0].getHouse() == tempfields[1].getHouse() && tempfields[0].getHouse() == tempfields[2].getHouse()) {
+				fieldlist[x] = tempfields[0].getName();
+				fieldlist[x+1] = tempfields[1].getName();
+				fieldlist[x+2] = tempfields[2].getName();
+			} else if (tempfields[0].getHouse() == tempfields[1].getHouse() && tempfields[2].getHouse() > tempfields[0].getHouse()) {
+				fieldlist[x] = tempfields[2].getName();
+			} else if (tempfields[0].getHouse() == tempfields[2].getHouse() && tempfields[1].getHouse() > tempfields[0].getHouse()) {
+				fieldlist[x] = tempfields[1].getName();
+			} else if (tempfields[1].getHouse() == tempfields[2].getHouse() && tempfields[0].getHouse() > tempfields[2].getHouse()) {
+				fieldlist[x] = tempfields[0].getName();
+			} else if (tempfields[0].getHouse() == tempfields[1].getHouse() && tempfields[2].getHouse() < tempfields[0].getHouse()) {
+				fieldlist[x] = tempfields[0].getName();
+				fieldlist[x+1] = tempfields[1].getName();
+			} else if (tempfields[1].getHouse() == tempfields[2].getHouse() && tempfields[0].getHouse() < tempfields[1].getHouse()) {
+				fieldlist[x] = tempfields[1].getName();
+				fieldlist[x+1] = tempfields[2].getName();
+			} else if (tempfields[0].getHouse() == tempfields[2].getHouse() && tempfields[1].getHouse() < tempfields[0].getHouse()) {
+				fieldlist[x] = tempfields[0].getName();
+				fieldlist[x] = tempfields[2].getName();
+			}
+		}
+
+		String string = new String();
+
+		for (int j = 0; j < fieldlist.length; j++) {
+			if (fieldlist[j] != null) {
+				string+=fieldlist[j]+"Q";
+			}
+		}
+
+		return string.substring(0,string.length()-1).split("Q");
+	}
+
+
 
 	private String[] getPlayerOwnedActiveFields(Player player, Field[] fields) {
 
@@ -636,7 +700,7 @@ public class MenuController {
 			if (f instanceof Territory) {
 				Territory t = (Territory) f;
 
-				if (player.equals(t.getOwner()) && t.getHouse() < 1) {
+				if (player.equals(t.getOwner()) && t.getHouse() < 1 && t.isSellAble()) {
 					tempownedfields[i++] = t;
 				}
 			} else if (f instanceof Fleet) {
@@ -668,7 +732,7 @@ public class MenuController {
 		for (Field f : fields) {
 			if (f instanceof Territory) {
 				Territory t = (Territory) f;
-				if (player.equals(t.getOwner())&& t.getHouse() < 1) {
+				if (player.equals(t.getOwner())&& t.getHouse() < 1 && t.isSellAble()) {
 					return true;
 				}
 			} else if (f instanceof Fleet) {
@@ -764,7 +828,7 @@ public class MenuController {
 			}  else if (currentfield.getName() == "De fængsles") {
 				JailController jailcontroller = new JailController();
 				jailcontroller.jail(player, fields);
-				
+
 			} else if (f instanceof Territory) {
 
 				Territory territory = (Territory) f;
@@ -832,22 +896,8 @@ public class MenuController {
 			}
 
 		}
-
-		//		boolean checkFieldGroupWithBuildings (Field currentfield, Field[] fields){
-		//			Territory actualField = (Territory) currentfield;
-		//			for (int i = 0; i < fields.length; i++ ) {
-		//				if (fields[i] instanceof Territory) {
-		//					Territory territory = (Territory) fields[i];
-		//					if (territory.getBuildingNumbers()>0 && territory.getFieldGroup() == actualField.getFieldGroup()) {
-		//						return true;
-		//					}
-		//				}
-		//			}
-		//
-		//			return false;
-		//		}
-
 	}
+
 
 	public void showMenu(Player[] players, Player player, Field currentfield, Field[] fields) {
 		boolean res;

@@ -20,6 +20,7 @@ public class Territory extends Ownable {
 	private int fieldrenthouse4;
 	private int fieldrenthotel;
 	private final int fieldgroup;
+	private boolean sellAble = true;
 
 	public Territory(String name, int fieldgroup, int fieldvalue, int fieldPriceBuilding, int fieldrent, int fieldrenthouse1, int fieldrenthouse2,int fieldrenthouse3, int fieldrenthouse4, int fieldrenthotel) {
 		super(name);
@@ -33,6 +34,7 @@ public class Territory extends Ownable {
 		this.fieldrenthouse4 = fieldrenthouse4;
 		this.fieldrenthotel = fieldrenthotel;
 		this.fieldgroup = fieldgroup;
+		this.sellAble = true;
 	}
 
 
@@ -108,10 +110,14 @@ public class Territory extends Ownable {
 
 	public int buyHouse() {
 		houses = houses + 1;
+		setSellAble(false);
 		return houses;
 	}
 
 	public int sellHouse() {
+		if (getHouse() == 1){
+			setSellAble(true);
+		}
 		houses = houses - 1;
 		return houses;
 	}
@@ -248,4 +254,17 @@ public class Territory extends Ownable {
 	public String getFieldType() {
 		return "Territory";
 	}
+
+
+
+	public boolean isSellAble() {
+		return sellAble;
+	}
+
+
+
+	public void setSellAble(boolean sellAble) {
+		this.sellAble = sellAble;
+	}
+	
 }
