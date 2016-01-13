@@ -54,13 +54,13 @@ public class MenuController {
 
 		case button1:
 
-			if (player.getMoney() < ((Ownable) currentfield).getPrice()) {
-				getRaiseMoney(player, currentfield, fields);
-			} else {
+//			if (player.getMoney() < ((Ownable) currentfield).getPrice()) {
+//				getRaiseMoney(player, currentfield, fields);
+//			} else {
 				((Ownable) currentfield).buyField(player, fields);
 				GUI.setBalance(player.getName(), player.getMoney());
 				((Ownable) currentfield).updateFieldGroup(player, currentfield, fields);
-			}
+//			}
 			break;
 
 		case button2:
@@ -368,31 +368,31 @@ for (int i = 0; i < fields.length; i++){
 	}
 
 
-	private void getRaiseMoney(Player player, Field currentfield, Field[] fields) {
-		//TODO
-		int count = 0;
-		
-		final String button1 = "Sælg Alle Felter";
-		final String button2 = "Sælg et felt";
-		final String button3 = "Pantsæt et felt";
-		final String button4 = "Sælg Bygning";
-		final String button5 = "Gå Bankerot";
-		final String button6 = "Afslut Tur";
-
-		String[] tempmenu = new String[9];
-		
-		if (checkOwnField(player, currentfield, fields)) {
-			tempmenu[count++] = button1;
-			tempmenu[count++] = button2;
-		}
-		if (checkPawnField(player, currentfield, fields)) {
-			tempmenu[count++] = button3;
-		}
-		if (checkBuildingExists(player, currentfield, fields)){
-			tempmenu[count++] = button4;
-		}
-		
-	}
+//	private void getRaiseMoney(Player player, Field currentfield, Field[] fields) {
+//		//TODO
+//		int count = 0;
+//		
+//		final String button1 = "Sælg Alle Felter";
+//		final String button2 = "Sælg et felt";
+//		final String button3 = "Pantsæt et felt";
+//		final String button4 = "Sælg Bygning";
+//		final String button5 = "Gå Bankerot";
+//		final String button6 = "Afslut Tur";
+//
+//		String[] tempmenu = new String[9];
+//		
+//		if (checkOwnField(player, currentfield, fields)) {
+//			tempmenu[count++] = button1;
+//			tempmenu[count++] = button2;
+//		}
+//		if (checkPawnField(player, currentfield, fields)) {
+//			tempmenu[count++] = button3;
+//		}
+//		if (checkBuildingExists(player, currentfield, fields)){
+//			tempmenu[count++] = button4;
+//		}
+//		
+//	}
 
 
 	private boolean checkPawnField(Player player, Field currentfield, Field[] fields) {
