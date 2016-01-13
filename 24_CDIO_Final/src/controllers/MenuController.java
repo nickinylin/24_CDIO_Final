@@ -2,7 +2,6 @@ package controllers;
 
 import desktop_resources.GUI;
 import fields.*;
-import game.Dice;
 import game.Player;
 
 public class MenuController {
@@ -27,8 +26,8 @@ public class MenuController {
 		}
 		if (checkOwnField(player, currentfield, fields)) {
 			tempmenu[count++] = button2;
-			tempmenu[count++] = button3;
-		} else if (checkPawnField(player, currentfield, fields)) {
+		}
+		if (checkPawnField(player, currentfield, fields)) {
 			tempmenu[count++] = button3;
 		}
 		if (checkBuyBuilding(player, currentfield, fields)) {
@@ -37,12 +36,9 @@ public class MenuController {
 		if (checkBuildingExists(player, currentfield, fields)){
 			tempmenu[count++] = button5;
 		}
-		if(player.getMoney()>=0)
-		{
+		if(player.getMoney()>=0) {
 			tempmenu[count++] = button6;
-		}
-		else
-		{
+		} else {
 			tempmenu[count++] = button7;
 		}
 
@@ -57,14 +53,17 @@ public class MenuController {
 		switch(button) {
 
 		case button1:
-			nextTurn = false;
-			((Ownable) currentfield).buyField(player, fields);
-			GUI.setBalance(player.getName(), player.getMoney());
-			((Ownable) currentfield).updateFieldGroup(player, currentfield, fields);
+
+			if (player.getMoney() < ((Ownable) currentfield).getPrice()) {
+				getRaiseMoney(player, currentfield, fields);
+			} else {
+				((Ownable) currentfield).buyField(player, fields);
+				GUI.setBalance(player.getName(), player.getMoney());
+				((Ownable) currentfield).updateFieldGroup(player, currentfield, fields);
+			}
 			break;
 
 		case button2:
-			nextTurn = false;
 			String[] fieldlist = getPlayerOwnedFields(player, fields);
 
 			String buyfield = GUI.getUserSelection(player.getName(), fieldlist);
@@ -84,19 +83,18 @@ public class MenuController {
 					}
 				}
 
-				int k = 0;
 				for (Field f : fields) {
 					if (f instanceof Territory) {
 						Territory territory = (Territory) f;
 
 						if (buyfield == territory.getName()) {
-							// TODO lav metode
 							territory.buyField(buyplayer[0], fields);
 							int pris = GUI.getUserInteger("Pris");
 							player.giveMoney(pris);
 							player.setAssets(-territory.getPrice());
 							buyplayer[0].giveMoney(territory.getPrice());
 							buyplayer[0].payMoney(pris);
+							buyplayer[0].setAssets(buyplayer[0].getAssets()+territory.getPrice());
 							GUI.setBalance(buyplayer[0].getName(), buyplayer[0].getMoney());
 							GUI.setBalance(player.getName(), player.getMoney());
 							territory.updateFieldGroup(buyplayer[0], territory, fields);
@@ -105,7 +103,6 @@ public class MenuController {
 						Fleet fleet = (Fleet) f;
 
 						if (buyfield == fleet.getName()) {
-							// TODO lav metode
 							fleet.buyField(buyplayer[0], fields);
 							int pris = GUI.getUserInteger("Pris");
 							player.giveMoney(pris);
@@ -120,7 +117,6 @@ public class MenuController {
 						Labor labor = (Labor) f;
 
 						if (buyfield == labor.getName()) {
-							// TODO lav metode
 							labor.buyField(buyplayer[0], fields);
 							int pris = GUI.getUserInteger("Pris");
 							player.giveMoney(pris);
@@ -283,7 +279,9 @@ public class MenuController {
 				thisfield[0].buyHouse();
 				thisfield[0].updateFieldGroup(player, thisfield[0], fields);
 				player.payMoney(thisfield[0].getBuildingPrice());
+
 				player.setAssets(thisfield[0].getBuildingPrice());
+
 				GUI.setBalance(player.getName(), player.getMoney());
 				if (thisfield[0].getHouse() > 4) {
 					GUI.setHotel(getfieldnumber, true);
@@ -297,12 +295,38 @@ public class MenuController {
 			nextTurn = false;
 
 			if (checkBuildingExists(player, currentfield, fields)) {
-				// Sælg bygning
+				String[] sellBuildingFieldlist = getBuildingFieldList(player, fields);
+
+				String sellBuildingField = GUI.getUserSelection(player.getName(), sellBuildingFieldlist);
+
+				Territory[] thisfield = new Territory[3];
+				int i = 0;
+				int getfieldnumber = 0;
+
+				for (int x = 0; x < fields.length; x++) {
+					Field f = fields[x];
+
+					if (f instanceof Territory) {
+						Territory t = (Territory) f;
+
+						if (sellBuildingField.equals(t.getName())) {
+							thisfield[i++] = t;
+							getfieldnumber = x+1;
+						}
+
+					}
+				}
+
+				thisfield[0].sellHouse();
+				GUI.setHouses(getfieldnumber, thisfield[0].getHouse());
+				thisfield[0].updateFieldGroup(player, thisfield[0], fields);
+				player.giveMoney(thisfield[0].getBuildingPrice());
+				player.setAssets(player.getAssets()-thisfield[0].getBuildingPrice());
+				GUI.setBalance(player.getName(), player.getMoney());
 			}
 			break;
 		case button6: // Afslut tur
-			if(player.getMoney()<0)
-			{
+			if(player.getMoney() < 0) {
 				return false;
 			} else {
 				nextTurn = true; break;
@@ -323,13 +347,40 @@ public class MenuController {
 	}
 
 
+	private void getRaiseMoney(Player player, Field currentfield, Field[] fields) {
+		//TODO
+		int count = 0;
+		
+		final String button1 = "Sælg Alle Felter";
+		final String button2 = "Sælg et felt";
+		final String button3 = "Pantsæt et felt";
+		final String button4 = "Sælg Bygning";
+		final String button5 = "Gå Bankerot";
+		final String button6 = "Afslut Tur";
+
+		String[] tempmenu = new String[9];
+		
+		if (checkOwnField(player, currentfield, fields)) {
+			tempmenu[count++] = button1;
+			tempmenu[count++] = button2;
+		}
+		if (checkPawnField(player, currentfield, fields)) {
+			tempmenu[count++] = button3;
+		}
+		if (checkBuildingExists(player, currentfield, fields)){
+			tempmenu[count++] = button4;
+		}
+		
+	}
+
+
 	private boolean checkPawnField(Player player, Field currentfield, Field[] fields) {
 		int i = 0;
 		for (Field f : fields) {
 			if (f instanceof Territory) {
 				Territory t = (Territory) f;
 
-				if (t.getPawned() == false && player.equals(t.getOwner())) {
+				if (t.getPawned() == false && player.equals(t.getOwner()) && t.getHouse() < 1) {
 					i++;
 				}
 			}
@@ -423,17 +474,17 @@ public class MenuController {
 		return fieldlist;
 	}
 
-	private String[] getBuyBuildingFieldList(Player player, Field[] fields) {
+	private String[] getBuildingFieldList(Player player, Field[] fields) {
 
 		int i = 0;
 
-		Territory[] tempfields = new Territory[3];
+		Territory[] tempfields = new Territory[28];
 
 		for (Field f : fields) {
 			if (f instanceof Territory) {
 				Territory t = (Territory) f;
 
-				if (t.getPawned() == false && player.equals(t.getOwner())) {
+				if (t.getPawned() == false && player.equals(t.getOwner()) && t.getHouse() > 0) {
 					tempfields[i++] = t;
 				}
 			} 
@@ -449,7 +500,7 @@ public class MenuController {
 	}
 
 	private String[] getWhereToBuyBuilding(Player player, Field[] fields) {
-		//TODO
+		
 		int i = 0;
 
 		Territory[] tempfields = new Territory[8];
@@ -494,6 +545,18 @@ public class MenuController {
 			} else if (tempfields[2].getHouse() == tempfields[3].getHouse()) {
 				fieldlist[x] = tempfields[2].getName();
 				fieldlist[x+1] = tempfields[3].getName();
+			} else if (tempfields[2].getHouse() < tempfields[3].getHouse()) {
+				fieldlist[x] = tempfields[2].getName();
+			} else if (tempfields[2].getHouse() > tempfields[3].getHouse()) {
+				fieldlist[x] = tempfields[3].getName();
+			} else if (tempfields[1].getHouse() > tempfields[3].getHouse()) {
+				fieldlist[x] = tempfields[1].getName();
+			} else if (tempfields[3].getHouse() > tempfields[1].getHouse()) {
+				fieldlist[x] = tempfields[3].getName();
+			} else if (tempfields[1].getHouse() > tempfields[2].getHouse()) {
+				fieldlist[x] = tempfields[1].getName();
+			} else if (tempfields[2].getHouse() > tempfields[1].getHouse()) {
+				fieldlist[x] = tempfields[2].getName();
 			}
 		}
 
@@ -518,7 +581,7 @@ public class MenuController {
 			if (f instanceof Territory) {
 				Territory t = (Territory) f;
 
-				if (player.equals(t.getOwner()) && t.getPawned() == false) {
+				if (player.equals(t.getOwner()) && t.getPawned() == false && t.getHouse() < 1) {
 					tempownedfields[i++] = t;
 				}
 			} else if (f instanceof Fleet) {

@@ -9,7 +9,6 @@ import desktop_fields.Shipping;
 import desktop_fields.Street;
 import desktop_resources.GUI;
 import game.Player;
-import fields.Empty;
 import fields.Field;
 import fields.Fleet;
 import fields.Jail;
@@ -230,11 +229,6 @@ public class Setup {
 						.setBgColor(new Color(127, 127, 125))
 						.setFgColor(Color.WHITE)
 						.setDescription("Du rykker direkte i fængsel, passerer du start modtager du ikke 4000")
-						.build();
-			} else if (field instanceof Empty) {
-				list[i] = new desktop_fields.Empty.Builder()
-						.setBgColor(new Color(85, 81, 139))
-						.setFgColor(Color.WHITE)
 						.build();
 			}
 		}
