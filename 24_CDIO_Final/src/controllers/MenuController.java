@@ -277,13 +277,16 @@ public class MenuController {
 					if (f instanceof Territory) {
 						Territory t = (Territory) f;
 
-						if (buyBuildingField == t.getName()) {
+						if (buyBuildingField.equals(t.getName())) {
 							thisfield[i++] = t;
 							getfieldnumber = x+1;
 						}
 
 					}
 				}
+
+				System.out.println(buyBuildingField);
+				System.out.println(thisfield);
 
 				int houseCount = thisfield[0].getHouse();
 				thisfield[0].buyHouse();
@@ -495,7 +498,7 @@ public class MenuController {
 		int x = 0;
 		if (i == 2) {
 			if (tempfields[0].getHouse() == 5 && tempfields[1].getHouse() == 5 && tempfields[2].getHouse() == 5) {
-				
+
 			} else if (tempfields[0].getHouse() == tempfields[1].getHouse()) {
 				fieldlist[x] = tempfields[0].getName();
 				fieldlist[x+1] = tempfields[1].getName();
@@ -523,8 +526,16 @@ public class MenuController {
 				fieldlist[x+1] = tempfields[3].getName();
 			}
 		}
-		return fieldlist;
 
+		String string = new String();
+
+		for (int j = 0; j < fieldlist.length; j++) {
+			if (fieldlist[j] != null) {
+				string+=fieldlist[j]+"Q";
+			}
+		}
+
+		return string.substring(0,string.length()-1).split("Q");
 	}
 	//		int house0 = 0;
 	//		int house1 = 0;
@@ -799,13 +810,18 @@ public class MenuController {
 					}
 				}
 			}
-
-			if (numberofgroupfields == numberofownedfields && numberofgroupfields != 0) {
-				return true;
-			} else {
+// Brugeren ejer ikke alle felter
+			if (!(numberofgroupfields == numberofownedfields && numberofgroupfields != 0)) {
 				return false;
 			}
+
+			for (int x = 0; x < ownedfields.length; x++) {
+				if (ownedfields[x] != null && ownedfields[x].getHouse() < 5) {
+					return true;
+				}
+			}
 		}
+
 		return false;
 	}
 

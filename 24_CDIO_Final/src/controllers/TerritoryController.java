@@ -17,7 +17,7 @@ public class TerritoryController {
 //				showMenu(players, player, territory, fields);
 	
 			} else {
-				player.payMoney(territory.getRent(player, fields));
+				player.payMoney(territory.getRent(territory.getOwner(), fields));
 				territory.getOwner().giveMoney(territory.getRent(player, fields));
 				GUI.setBalance(player.getName(), player.getMoney());
 				GUI.setBalance(territory.getOwner().getName(), territory.getOwner().getMoney());

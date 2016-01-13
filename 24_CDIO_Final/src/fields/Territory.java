@@ -39,7 +39,7 @@ public class Territory extends Ownable {
 
 
 	@Override
-	public int getRent(Player player, Field[] fields) {
+	public int getRent(Player playerOwner, Field[] fields) {
 		// TODO her mangler vi at den udregner hvad lejen er med antal huse
 		// Send field med?
 		int numberingroup = 0;
@@ -53,7 +53,7 @@ public class Territory extends Ownable {
 
 				if (fieldgroup == territory.getFieldGroup()) {
 					numberingroup++;
-					if (player.equals(territory.fieldowner)) {
+					if (playerOwner.equals(territory.fieldowner)) {
 						numberofowned++;
 					}
 				}
