@@ -670,7 +670,7 @@ for (int i = 0; i < fields.length; i++){
 		for (Field f : fields) {
 			if (f instanceof Territory) {
 				Territory t = (Territory) f;
-				if (player.equals(t.getOwner())) {
+				if (player.equals(t.getOwner())&& t.getBuildingNumbers()<1) {
 					return true;
 				}
 			} else if (f instanceof Fleet) {
