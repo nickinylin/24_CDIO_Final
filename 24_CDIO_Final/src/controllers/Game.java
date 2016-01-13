@@ -53,8 +53,10 @@ public class Game {
 				if (players[i].bankruptCheck()) {
 					noWinner=checkWinner();
 				} else if (players[i].isInJail()) {
+					noWinner=checkWinner();
 					doJailTurn(players[i]);
 				} else {
+					noWinner=checkWinner();
 					doNormalTurn(players[i]);
 				}
 
