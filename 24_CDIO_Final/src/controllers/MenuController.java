@@ -12,14 +12,14 @@ public class MenuController {
 		String[] tempmenu = new String[9];
 		boolean nextTurn = false;
 
-		final String button1 = "Køb felt";
-		final String button2 = "Sælg et felt";
-		final String button3 = "Pantsæt";
-		final String button4 = "Køb Bygning";
-		final String button5 = "Sælg Bygning";
-		final String button6 = "Afslut Tur";
-		final String button7 = "Gå Bankerot";
-		final String button8 = "Sælg Alle Felter";
+		final String button1 = Language.buyfield;
+		final String button2 = Language.sellfield;
+		final String button3 = Language.pawn;
+		final String button4 = Language.buybuilding;
+		final String button5 = Language.sellbuilding;
+		final String button6 = Language.endTurn;
+		final String button7 = Language.bankrupt;
+		final String button8 = Language.sellallfields;
 
 		if (checkYouCanBuyField(player, currentfield, fields)) {
 			tempmenu[count++] = button1;
@@ -33,7 +33,7 @@ public class MenuController {
 		if (checkBuyBuilding(player, currentfield, fields)) {
 			tempmenu[count++] = button4;
 		}
-		if (checkBuildingExists(player, currentfield, fields)){
+		if (checkBuildingExists(player, currentfield, fields)) {
 			tempmenu[count++] = button5;
 		}
 		if(player.getMoney()>=0) {
@@ -65,14 +65,14 @@ public class MenuController {
 
 			String buyfield = GUI.getUserSelection(player.getName(), fieldlist);
 
-			String sellto = GUI.getUserButtonPressed(player.getName(), "Sælg felt til Spillere", "Fortryd");
+			String sellto = GUI.getUserButtonPressed(player.getName(), Language.sellfieldtoplayer, Language.undo);
 
 
-			if (sellto == "Sælg felt til Spillere") {
+			if (sellto == Language.sellfieldtoplayer) {
 
 				String[] playernames = getAllPlayerNamesExceptPlayer(players, player);
 
-				String spiller = GUI.getUserSelection("Sælg "+buyfield+" til", playernames);
+				String spiller = GUI.getUserSelection(Language.sell+" "+buyfield+" "+Language.to, playernames);
 				int g = 0;
 				Player[] buyingplayer = new Player[1];
 				for (int z = 0; z < players.length ; z++) {
@@ -90,7 +90,7 @@ public class MenuController {
 
 						if (buyfield == territory.getName()) {
 							territory.buyField(buyingplayer[0], fields);
-							int pris = GUI.getUserInteger("Pris");
+							int pris = GUI.getUserInteger(Language.price);
 							player.giveMoney(pris);
 							player.setAssets(-territory.getPrice());
 							buyingplayer[0].giveMoney(territory.getPrice());
@@ -101,7 +101,7 @@ public class MenuController {
 							territory.updateFieldGroup(buyingplayer[0], territory, fields);
 							if (((Territory) f).getPawned()) {
 								GUI.setTitleText(i++, f.getName());
-								GUI.setSubText(i++, "Pantsat");
+								GUI.setSubText(i++, Language.pawned);
 							}
 						}
 					} else if (f instanceof Fleet) {
@@ -109,7 +109,7 @@ public class MenuController {
 
 						if (buyfield == fleet.getName()) {
 							fleet.buyField(buyingplayer[0], fields);
-							int pris = GUI.getUserInteger("Pris");
+							int pris = GUI.getUserInteger(Language.price);
 							player.giveMoney(pris);
 							player.setAssets(-fleet.getPrice());
 							buyingplayer[0].giveMoney(fleet.getPrice());
@@ -119,7 +119,7 @@ public class MenuController {
 							fleet.updateFieldGroup(buyingplayer[0], fleet, fields);
 							if (((Fleet) f).getPawned()) {
 								GUI.setTitleText(i++, f.getName());
-								GUI.setSubText(i++, "Pantsat");
+								GUI.setSubText(i++, Language.pawned);
 							}
 						}
 					} else if (f instanceof Labor) {
@@ -127,7 +127,7 @@ public class MenuController {
 
 						if (buyfield == labor.getName()) {
 							labor.buyField(buyingplayer[0], fields);
-							int pris = GUI.getUserInteger("Pris");
+							int pris = GUI.getUserInteger(Language.price);
 							player.giveMoney(pris);
 							player.setAssets(-labor.getPrice());
 							buyingplayer[0].giveMoney(labor.getPrice());
@@ -137,7 +137,7 @@ public class MenuController {
 							labor.updateFieldGroup(buyingplayer[0], labor, fields);
 							if (((Labor) f).getPawned()) {
 								GUI.setTitleText(i++, f.getName());
-								GUI.setSubText(i++, "Pantsat");
+								GUI.setSubText(i++, Language.pawned);
 							}
 
 						}
@@ -153,14 +153,14 @@ public class MenuController {
 			String pantsæt = null;
 
 			if (checkPawnField(player, currentfield, fields) && checkUnPawnField(player, currentfield, fields)) {
-				pantsæt = GUI.getUserButtonPressed(player.getName(), "Pantsæt Felt", "Tilbagekøb af Felt", "Fortryd");
+				pantsæt = GUI.getUserButtonPressed(player.getName(), Language.pawn, Language.unpawn, Language.undo);
 			} else if (checkPawnField(player, currentfield, fields)){
-				pantsæt = GUI.getUserButtonPressed(player.getName(), "Pantsæt Felt", "Fortryd");
+				pantsæt = GUI.getUserButtonPressed(player.getName(), Language.pawnfield, Language.undo);
 			} else if (checkUnPawnField(player, currentfield, fields)) {
-				pantsæt = GUI.getUserButtonPressed(player.getName(), "Tilbagekøb af Felt", "Fortryd");
+				pantsæt = GUI.getUserButtonPressed(player.getName(), Language.unpawn, Language.undo);
 			}
 
-			if (pantsæt == "Pantsæt Felt") {
+			if (pantsæt == Language.pawnfield) {
 
 				String[] pawnfieldlist = getPlayerOwnedActiveFields(player, fields);
 
@@ -207,9 +207,9 @@ public class MenuController {
 				GUI.setBalance(player.getName(), player.getMoney());
 
 				GUI.setTitleText(getfieldnumber, thisfield[0].getName());
-				GUI.setSubText(getfieldnumber, "Pantsat");
+				GUI.setSubText(getfieldnumber, Language.pawned);
 
-			} else if (pantsæt == "Tilbagekøb af Felt") {
+			} else if (pantsæt == Language.unpawn) {
 
 				String[] pawnfieldlist = getPlayerPawnedFields(player, fields);
 
@@ -256,18 +256,13 @@ public class MenuController {
 				GUI.setBalance(player.getName(), player.getMoney());
 
 				GUI.setTitleText(getfieldnumber, thisfield[0].getName());
-				GUI.setSubText(getfieldnumber, "Leje: "+thisfield[0].getRent(player, fields));
+				GUI.setSubText(getfieldnumber, Language.rent + thisfield[0].getRent(player, fields));
 			}
 			break;
 		case button4: // køb bygning
 			nextTurn = false;
 
 			if (checkBuyBuilding(player, currentfield, fields)) {
-				// TODO get fields where group is owned
-				// buy house for selected field
-				// house can only be bought if other fields have houses
-
-				//				 String[] buyBuildingFieldlist = getBuyBuildingFieldList(player, fields);
 				String[] buyBuildingFieldlist = getWhereToBuyBuilding(player,(Territory) currentfield ,fields);
 
 				String buyBuildingField = GUI.getUserSelection(player.getName(), buyBuildingFieldlist);
@@ -312,8 +307,8 @@ public class MenuController {
 
 			if (checkBuildingExists(player, currentfield, fields)) {
 				String[] sellBuildingFieldlist = getWhereToSellBuildings(player, fields);
-				String regretBuildingSale = GUI.getUserButtonPressed(player.getName(), "Sælg bygning", "Fortryd");
-				if(regretBuildingSale == "Sælg bygning"){
+				String regretBuildingSale = GUI.getUserButtonPressed(player.getName(), Language.sellbuilding, Language.undo);
+				if(regretBuildingSale == Language.sellbuilding){
 					String sellBuildingField = GUI.getUserSelection(player.getName(), sellBuildingFieldlist);
 
 
@@ -366,33 +361,6 @@ public class MenuController {
 		return nextTurn;
 
 	}
-
-
-	//	private void getRaiseMoney(Player player, Field currentfield, Field[] fields) {
-	//		//TODO
-	//		int count = 0;
-	//		
-	//		final String button1 = "Sælg Alle Felter";
-	//		final String button2 = "Sælg et felt";
-	//		final String button3 = "Pantsæt et felt";
-	//		final String button4 = "Sælg Bygning";
-	//		final String button5 = "Gå Bankerot";
-	//		final String button6 = "Afslut Tur";
-	//
-	//		String[] tempmenu = new String[9];
-	//		
-	//		if (checkOwnField(player, currentfield, fields)) {
-	//			tempmenu[count++] = button1;
-	//			tempmenu[count++] = button2;
-	//		}
-	//		if (checkPawnField(player, currentfield, fields)) {
-	//			tempmenu[count++] = button3;
-	//		}
-	//		if (checkBuildingExists(player, currentfield, fields)){
-	//			tempmenu[count++] = button4;
-	//		}
-	//		
-	//	}
 
 
 	private boolean checkPawnField(Player player, Field currentfield, Field[] fields) {
@@ -495,30 +463,30 @@ public class MenuController {
 		return fieldlist;
 	}
 
-	private String[] getBuildingFieldList(Player player, Field[] fields) {
-
-		int i = 0;
-
-		Territory[] tempfields = new Territory[28];
-
-		for (Field f : fields) {
-			if (f instanceof Territory) {
-				Territory t = (Territory) f;
-
-				if (t.getPawned() == false && player.equals(t.getOwner()) && t.getHouse() > 0) {
-					tempfields[i++] = t;
-				}
-			} 
-		}
-
-
-		String[] fieldlist = new String[i];
-
-		for (int x = 0; x < fieldlist.length; x++) {
-			fieldlist[x] = tempfields[x].getName();
-		}
-		return fieldlist;
-	}
+//	private String[] getBuildingFieldList(Player player, Field[] fields) {
+//
+//		int i = 0;
+//
+//		Territory[] tempfields = new Territory[28];
+//
+//		for (Field f : fields) {
+//			if (f instanceof Territory) {
+//				Territory t = (Territory) f;
+//
+//				if (t.getPawned() == false && player.equals(t.getOwner()) && t.getHouse() > 0) {
+//					tempfields[i++] = t;
+//				}
+//			} 
+//		}
+//
+//
+//		String[] fieldlist = new String[i];
+//
+//		for (int x = 0; x < fieldlist.length; x++) {
+//			fieldlist[x] = tempfields[x].getName();
+//		}
+//		return fieldlist;
+//	}
 
 	private String[] getWhereToBuyBuilding(Player player, Territory currentfield, Field[] fields) {
 
@@ -588,7 +556,7 @@ public class MenuController {
 
 
 	public String[] getWhereToSellBuildings(Player player, Field[] fields) {
-		String[] fieldlist = new String[50];
+//		String[] fieldlist = new String[50];
 		Territory[] tempfields1 = new Territory[22];
 		int i = 0;
 		int y  = 0;
@@ -633,72 +601,6 @@ public class MenuController {
 
 		return string.substring(0,string.length()).split("Q");
 	}
-
-	//	private String[] getWhereToSellBuilding(Player player, Field[] fields) {
-	//
-	//		int i = 0;
-	//
-	//		Territory[] tempfields = new Territory[28];
-	//
-	//		for (Field f : fields) {
-	//			if (f instanceof Territory) {
-	//				Territory t = (Territory) f;
-	//				if (t.getPawned() == false && player.equals(t.getOwner()) && t.getHouse() > 0) {
-	//					tempfields[i++] = t;
-	//				}
-	//			} 
-	//		}
-	//
-	//		String[] fieldlist = new String[i+1];
-	//
-	//		for (int x = 0; x < tempfields.length; x++) {
-	//
-	//			if (tempfields[x].getHouse() == 1) {
-	//				fieldlist[x] = tempfields[x].getName();
-	//			} else if (i == 2) {
-	//				if (tempfields[0].getHouse() == tempfields[1].getHouse()) {
-	//					fieldlist[x++] = tempfields[0].getName();
-	//					fieldlist[x++] = tempfields[1].getName();
-	//				} else if (tempfields[0].getHouse() > tempfields[1].getHouse()) {
-	//					fieldlist[x++] = tempfields[0].getName();
-	//				} else if (tempfields[0].getHouse() < tempfields[1].getHouse()) {
-	//					fieldlist[x++] = tempfields[1].getName();
-	//				}
-	//			} else if (i == 3){
-	//				if (tempfields[0].getHouse() == tempfields[1].getHouse() && tempfields[0].getHouse() == tempfields[2].getHouse()) {
-	//					fieldlist[x++] = tempfields[0].getName();
-	//					fieldlist[x++] = tempfields[1].getName();
-	//					fieldlist[x++] = tempfields[2].getName();
-	//				} else if (tempfields[0].getHouse() == tempfields[1].getHouse() && tempfields[2].getHouse() > tempfields[0].getHouse()) {
-	//					fieldlist[x++] = tempfields[2].getName();
-	//				} else if (tempfields[0].getHouse() == tempfields[2].getHouse() && tempfields[1].getHouse() > tempfields[0].getHouse()) {
-	//					fieldlist[x++] = tempfields[1].getName();
-	//				} else if (tempfields[1].getHouse() == tempfields[2].getHouse() && tempfields[0].getHouse() > tempfields[2].getHouse()) {
-	//					fieldlist[x++] = tempfields[0].getName();
-	//				} else if (tempfields[0].getHouse() == tempfields[1].getHouse() && tempfields[2].getHouse() < tempfields[0].getHouse()) {
-	//					fieldlist[x++] = tempfields[0].getName();
-	//					fieldlist[x++] = tempfields[1].getName();
-	//				} else if (tempfields[1].getHouse() == tempfields[2].getHouse() && tempfields[0].getHouse() < tempfields[1].getHouse()) {
-	//					fieldlist[x++] = tempfields[1].getName();
-	//					fieldlist[x++] = tempfields[2].getName();
-	//				} else if (tempfields[0].getHouse() == tempfields[2].getHouse() && tempfields[1].getHouse() < tempfields[0].getHouse()) {
-	//					fieldlist[x++] = tempfields[0].getName();
-	//					fieldlist[x++] = tempfields[2].getName();
-	//				}
-	//			}
-	//		}
-	//
-	//		String string = new String();
-	//
-	//		for (int j = 0; j < fieldlist.length; j++) {
-	//			if (fieldlist[j] != null) {
-	//				string+=fieldlist[j]+"Q";
-	//			}
-	//		}
-	//
-	//		return string.substring(0,string.length()).split("Q");
-	//	}
-
 
 
 	private String[] getPlayerOwnedActiveFields(Player player, Field[] fields) {
@@ -870,9 +772,9 @@ public class MenuController {
 
 		for (Field f : fields) {
 
-			if (currentfield.getName() == "Prøv lykken") {
+			if (currentfield.getName() == Language.luck) {
 
-			}  else if (currentfield.getName() == "De fængsles") {
+			}  else if (currentfield.getName() == Language.field_Jail) {
 				JailController jailcontroller = new JailController();
 				jailcontroller.jail(player, fields);
 

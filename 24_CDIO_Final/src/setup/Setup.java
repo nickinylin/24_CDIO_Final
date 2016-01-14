@@ -1,7 +1,7 @@
 package setup;
 
 import java.awt.Color;
-
+import controllers.Language;
 import desktop_codebehind.Car;
 import desktop_fields.Brewery;
 import desktop_fields.Chance;
@@ -14,7 +14,6 @@ import fields.Fleet;
 import fields.Jail;
 import fields.Labor;
 import fields.Luck;
-
 import fields.Refuge;
 import fields.Tax;
 import fields.Territory;
@@ -32,46 +31,46 @@ public class Setup {
 	public Field[] createFields() {
 
 		Field[] fields = new Field[] { 
-				new Refuge ("Start", "Start", 4000),
-				new Territory ("Rødovrevej",1,1200,1000,50,250,750,2250,4000,6000),
-				new Luck ("Prøv lykken"),
-				new Territory ("Hvidovrevej",1,1200,1000,50,250,750,2250,4000,6000),
-				new Tax ("Betal indkomst skat på 4000 eller 10%",4000, "special"),
-				new Fleet ("Helsingør - Helsingborg"),
-				new Territory ("Roskildevej",2, 2000, 1000,100,600,1800,5400,8000,11000),
-				new Luck ("Prøv lykken"),
-				new Territory ("Valby Langgade", 2, 2000, 1000,100,600,1800,5400,8000,11000),
-				new Territory ("Allegade", 2, 2400, 1000,150,800,2000,6000,9000,12000),
-				new Refuge ("På besøg i fængsel", "Visit", 0),
-				new Territory ("Frederiksberg Allé", 3, 2800,2000,200,1000,3000,9000,12500,15000),
-				new Labor ("Tuborg"),
-				new Territory ("Bulowsvej", 3, 2800,2000,200,1000,3000,9000,12500,15000),
-				new Territory ("Gl. Kongevej", 3, 3200,2000,250,1250,3750,10000,14000,18000),
-				new Fleet ("Mols-linien"),
-				new Territory ("Bernstorffsvej", 4, 3600,2000,300,1400,4000,11000,15000,19000),
-				new Luck ("Prøv lykken"),
-				new Territory ("Hellerupvej", 4, 3600,2000,300,1400,4000,11000,15000,19000),
-				new Territory ("Strandvejen",4, 4000,2000,350,1600,4400,12000,16000,20000),
-				new Refuge ("Parkering", "Parking", 0),
-				new Territory ("Trianglen",5,4400,3000,350,1800,5000,14000,17500,21000),
-				new Luck ("Prøv lykken"),
-				new Territory ("Østerbrogade",5,4400,3000,350,1800,5000,14000,17500,21000),
-				new Territory ("Grønningen",5,4800,3000,400,2000,6000,15000,18500,22000),
-				new Fleet ("Gedser - Rostock"),
-				new Territory ("Bredgade",6,5200,3000,450,2200,6600,16000,19500,23000),
-				new Territory ("Kgs. Nytorv",6,5200,3000,450,2200,6600,16000,19500,23000),
-				new Labor ("Carlsberg"),
-				new Territory ("Østergade",6,5600,3000,500,2400,7200,17000,20500,24000),
-				new Jail ("De fængsles"),
-				new Territory ("Amagertorv",7,6000,4000,550,2600,7800,18000,22000,25000),
-				new Territory ("Vimmelskaftet",7,6000,4000,550,2600,7800,18000,22000,25000),
-				new Luck ("Prøv lykken"),
-				new Territory ("Nygade",7,6400,4000,600,3000,9000,20000,24000,28000),
-				new Fleet ("Rødby - Puttgarden"),
-				new Luck ("Prøv lykken"),
-				new Territory ("Frederiksberggade",8,7000,4000,700,3500,10000,22000,26000,30000),
-				new Tax ("Ekstraordinær statsskat - Betal 2000",2000,"false"),
-				new Territory ("Rådhuspladsen",8,8000,4000,1000,4000,12000,28000,34000,40000),
+				new Refuge (Language.field_Start, "Start", 4000),
+				new Territory (Language.field_Roedovrevej,1,1200,1000,50,250,750,2250,4000,6000),
+				new Luck (Language.luck),
+				new Territory (Language.field_Hvidovrevej,1,1200,1000,50,250,750,2250,4000,6000),
+				new Tax (Language.field_TaxSpecial,4000, "special"),
+				new Fleet (Language.field_Fleet1),
+				new Territory (Language.field_Roskildevej,2, 2000, 1000,100,600,1800,5400,8000,11000),
+				new Luck (Language.luck),
+				new Territory (Language.field_ValbyLanggade, 2, 2000, 1000,100,600,1800,5400,8000,11000),
+				new Territory (Language.field_Allegade, 2, 2400, 1000,150,800,2000,6000,9000,12000),
+				new Refuge (Language.field_VisitJail, "Visit", 0),
+				new Territory (Language.field_FrederiksbergAlle, 3, 2800,2000,200,1000,3000,9000,12500,15000),
+				new Labor (Language.field_Labor1),
+				new Territory (Language.field_Bulowsvej, 3, 2800,2000,200,1000,3000,9000,12500,15000),
+				new Territory (Language.field_GlKongevej, 3, 3200,2000,250,1250,3750,10000,14000,18000),
+				new Fleet (Language.field_Fleet2),
+				new Territory (Language.field_Bernstorffsvej, 4, 3600,2000,300,1400,4000,11000,15000,19000),
+				new Luck (Language.luck),
+				new Territory (Language.field_Hellerupvej, 4, 3600,2000,300,1400,4000,11000,15000,19000),
+				new Territory (Language.field_Strandvejen,4, 4000,2000,350,1600,4400,12000,16000,20000),
+				new Refuge (Language.field_Parking, "Parking", 0),
+				new Territory (Language.field_Trianglen,5,4400,3000,350,1800,5000,14000,17500,21000),
+				new Luck (Language.luck),
+				new Territory (Language.field_Oesterbrogade,5,4400,3000,350,1800,5000,14000,17500,21000),
+				new Territory (Language.field_Groenningen,5,4800,3000,400,2000,6000,15000,18500,22000),
+				new Fleet (Language.field_Fleet3),
+				new Territory (Language.field_Bredgade,6,5200,3000,450,2200,6600,16000,19500,23000),
+				new Territory (Language.field_KgsNytorv,6,5200,3000,450,2200,6600,16000,19500,23000),
+				new Labor (Language.field_Labor2),
+				new Territory (Language.field_Oestergade,6,5600,3000,500,2400,7200,17000,20500,24000),
+				new Jail (Language.field_Jail),
+				new Territory (Language.field_Amagertorv,7,6000,4000,550,2600,7800,18000,22000,25000),
+				new Territory (Language.field_Vimmelskaftet,7,6000,4000,550,2600,7800,18000,22000,25000),
+				new Luck (Language.luck),
+				new Territory (Language.field_Nygade,7,6400,4000,600,3000,9000,20000,24000,28000),
+				new Fleet (Language.field_Fleet4),
+				new Luck (Language.luck),
+				new Territory (Language.field_Frederiksberggade,8,7000,4000,700,3500,10000,22000,26000,30000),
+				new Tax (Language.field_Tax,2000,"false"),
+				new Territory (Language.field_Raadhuspladsen,8,8000,4000,1000,4000,12000,28000,34000,40000),
 		};
 
 
@@ -94,64 +93,64 @@ public class Setup {
 				if (territory.getFieldGroup() == 1) {
 					list[i] = new Street.Builder()
 							.setTitle(field.getName())
-							.setSubText("Pris: "+territory.getPrice()+"")
-							.setDescription("Basis Leje: "+territory.getBaseRent()+"<br>Huspris: "+territory.getBuildingPrice()+"<br>Pantsætningsværdi: "+territory.getPawnPrice()+"<br>Leje med 1 hus: "+territory.getFieldrenthouse1()+"<br> Leje med 2 huse: "+territory.getFieldrenthouse2()+"<br> Leje med 3 huse: "+territory.getFieldrenthouse3()+"<br> Leje med 4 husee: "+territory.getFieldrenthouse4()+"<br> Leje med hotel: "+territory.getFieldrenthotel()+"")
+							.setSubText(Language.price +": "+ territory.getPrice())
+							.setDescription(Language.basicrent + territory.getBaseRent() +"<br>"+ Language.houseprice +": "+ territory.getBuildingPrice() +"<br>"+ Language.pawnprice +": "+territory.getPawnPrice()+"<br>"+ Language.rent1house +": "+territory.getFieldrenthouse1()+"<br>"+ Language.rent2house +": "+territory.getFieldrenthouse2()+"<br>"+ Language.rent3house +": "+territory.getFieldrenthouse3()+"<br>"+ Language.rent4house +": "+territory.getFieldrenthouse4()+"<br>"+ Language.renthotel +": "+territory.getFieldrenthotel() +"<br>")
 							.setBgColor(new Color(56, 132, 218))
 							.setFgColor(Color.BLACK)
 							.build();
 				} else if (territory.getFieldGroup() == 2) {
 					list[i] = new Street.Builder()
 							.setTitle(fields[i].getName() )
-							.setSubText("Pris: "+territory.getPrice() +"")
-							.setDescription("Basis Leje: "+territory.getBaseRent()+"<br>Huspris: "+territory.getBuildingPrice()+"<br>Pantsætningsværdi: "+territory.getPawnPrice()+"<br>Leje med 1 hus: "+territory.getFieldrenthouse1()+"<br> Leje med 2 huse: "+territory.getFieldrenthouse2()+"<br> Leje med 3 huse: "+territory.getFieldrenthouse3()+"<br> Leje med 4 husee: "+territory.getFieldrenthouse4()+"<br> Leje med hotel: "+territory.getFieldrenthotel()+"")
+							.setSubText(Language.price +": "+ territory.getPrice())
+							.setDescription(Language.basicrent + territory.getBaseRent() +"<br>"+ Language.houseprice +": "+ territory.getBuildingPrice() +"<br>"+ Language.pawnprice +": "+territory.getPawnPrice()+"<br>"+ Language.rent1house +": "+territory.getFieldrenthouse1()+"<br>"+ Language.rent2house +": "+territory.getFieldrenthouse2()+"<br>"+ Language.rent3house +": "+territory.getFieldrenthouse3()+"<br>"+ Language.rent4house +": "+territory.getFieldrenthouse4()+"<br>"+ Language.renthotel +": "+territory.getFieldrenthotel() +"<br>")
 							.setBgColor(new Color(224, 71, 52))
 							.setFgColor(Color.BLACK)
 							.build();
 				} else if (territory.getFieldGroup() == 3) {
 					list[i] = new Street.Builder()
 							.setTitle(fields[i].getName() )
-							.setSubText("Pris: "+territory.getPrice() +"")
-							.setDescription("Basis Leje: "+territory.getBaseRent()+"<br>Huspris: "+territory.getBuildingPrice()+"<br>Pantsætningsværdi: "+territory.getPawnPrice()+"<br>Leje med 1 hus: "+territory.getFieldrenthouse1()+"<br> Leje med 2 huse: "+territory.getFieldrenthouse2()+"<br> Leje med 3 huse: "+territory.getFieldrenthouse3()+"<br> Leje med 4 husee: "+territory.getFieldrenthouse4()+"<br> Leje med hotel: "+territory.getFieldrenthotel()+"")
+							.setSubText(Language.price +": "+ territory.getPrice())
+							.setDescription(Language.basicrent + territory.getBaseRent() +"<br>"+ Language.houseprice +": "+ territory.getBuildingPrice() +"<br>"+ Language.pawnprice +": "+territory.getPawnPrice()+"<br>"+ Language.rent1house +": "+territory.getFieldrenthouse1()+"<br>"+ Language.rent2house +": "+territory.getFieldrenthouse2()+"<br>"+ Language.rent3house +": "+territory.getFieldrenthouse3()+"<br>"+ Language.rent4house +": "+territory.getFieldrenthouse4()+"<br>"+ Language.renthotel +": "+territory.getFieldrenthotel() +"<br>")
 							.setBgColor(new Color(225, 231, 0))
 							.setFgColor(Color.BLACK)
 							.build();
 				} else if (territory.getFieldGroup() == 4) {
 					list[i] = new Street.Builder()
 							.setTitle(fields[i].getName())
-							.setSubText("Pris: "+territory.getPrice()+"")
-							.setDescription("Basis Leje: "+territory.getBaseRent()+"<br>Huspris: "+territory.getBuildingPrice()+"<br>Pantsætningsværdi: "+territory.getPawnPrice()+"<br>Leje med 1 hus: "+territory.getFieldrenthouse1()+"<br> Leje med 2 huse: "+territory.getFieldrenthouse2()+"<br> Leje med 3 huse: "+territory.getFieldrenthouse3()+"<br> Leje med 4 huse: "+territory.getFieldrenthouse4()+"<br> Leje med hotel: "+territory.getFieldrenthotel()+"")
+							.setSubText(Language.price +": "+ territory.getPrice())
+							.setDescription(Language.basicrent + territory.getBaseRent() +"<br>"+ Language.houseprice +": "+ territory.getBuildingPrice() +"<br>"+ Language.pawnprice +": "+territory.getPawnPrice()+"<br>"+ Language.rent1house +": "+territory.getFieldrenthouse1()+"<br>"+ Language.rent2house +": "+territory.getFieldrenthouse2()+"<br>"+ Language.rent3house +": "+territory.getFieldrenthouse3()+"<br>"+ Language.rent4house +": "+territory.getFieldrenthouse4()+"<br>"+ Language.renthotel +": "+territory.getFieldrenthotel() +"<br>")
 							.setBgColor(new Color(140, 121, 121))
 							.setFgColor(Color.WHITE)
 							.build();
 				}else if (territory.getFieldGroup() == 5) {
 					list[i] = new Street.Builder()
 							.setTitle(fields[i].getName())
-							.setSubText("Pris: "+territory.getPrice()+"")
-							.setDescription("Basis Leje: "+territory.getBaseRent()+"<br>Huspris: "+territory.getBuildingPrice()+"<br>Pantsætningsværdi: "+territory.getPawnPrice()+"<br>Leje med 1 hus: "+territory.getFieldrenthouse1()+"<br> Leje med 2 huse: "+territory.getFieldrenthouse2()+"<br> Leje med 3 huse: "+territory.getFieldrenthouse3()+"<br> Leje med 4 huse: "+territory.getFieldrenthouse4()+"<br> Leje med hotel: "+territory.getFieldrenthotel()+"")
+							.setSubText(Language.price +": "+ territory.getPrice())
+							.setDescription(Language.basicrent + territory.getBaseRent() +"<br>"+ Language.houseprice +": "+ territory.getBuildingPrice() +"<br>"+ Language.pawnprice +": "+territory.getPawnPrice()+"<br>"+ Language.rent1house +": "+territory.getFieldrenthouse1()+"<br>"+ Language.rent2house +": "+territory.getFieldrenthouse2()+"<br>"+ Language.rent3house +": "+territory.getFieldrenthouse3()+"<br>"+ Language.rent4house +": "+territory.getFieldrenthouse4()+"<br>"+ Language.renthotel +": "+territory.getFieldrenthotel() +"<br>")
 							.setBgColor(new Color(255, 18, 31))
 							.setFgColor(Color.BLACK)
 							.build();
 				} else if (territory.getFieldGroup() == 6) {
 					list[i] = new Street.Builder()
 							.setTitle(fields[i].getName())
-							.setSubText("Pris: "+territory.getPrice()+"")
-							.setDescription("Basis Leje: "+territory.getBaseRent()+"<br>Huspris: "+territory.getBuildingPrice()+"<br>Pantsætningsværdi: "+territory.getPawnPrice()+"<br>Leje med 1 hus: "+territory.getFieldrenthouse1()+"<br> Leje med 2 huse: "+territory.getFieldrenthouse2()+"<br> Leje med 3 huse: "+territory.getFieldrenthouse3()+"<br> Leje med 4 huse: "+territory.getFieldrenthouse4()+"<br> Leje med hotel: "+territory.getFieldrenthotel()+"")
+							.setSubText(Language.price +": "+ territory.getPrice())
+							.setDescription(Language.basicrent + territory.getBaseRent() +"<br>"+ Language.houseprice +": "+ territory.getBuildingPrice() +"<br>"+ Language.pawnprice +": "+territory.getPawnPrice()+"<br>"+ Language.rent1house +": "+territory.getFieldrenthouse1()+"<br>"+ Language.rent2house +": "+territory.getFieldrenthouse2()+"<br>"+ Language.rent3house +": "+territory.getFieldrenthouse3()+"<br>"+ Language.rent4house +": "+territory.getFieldrenthouse4()+"<br>"+ Language.renthotel +": "+territory.getFieldrenthotel() +"<br>")
 							.setBgColor(new Color(250, 250, 250))
 							.setFgColor(Color.BLACK)
 							.build();
 				} else if (territory.getFieldGroup() == 7) {
 					list[i] = new Street.Builder()
 							.setTitle(fields[i].getName())
-							.setSubText("Pris: "+territory.getPrice()+"")
-							.setDescription("Basis Leje: "+territory.getBaseRent()+"<br>Huspris: "+territory.getBuildingPrice()+"<br>Pantsætningsværdi: "+territory.getPawnPrice()+"<br>Leje med 1 hus: "+territory.getFieldrenthouse1()+"<br> Leje med 2 huse: "+territory.getFieldrenthouse2()+"<br> Leje med 3 huse: "+territory.getFieldrenthouse3()+"<br> Leje med 4 huse: "+territory.getFieldrenthouse4()+"<br> Leje med hotel: "+territory.getFieldrenthotel()+"")
+							.setSubText(Language.price +": "+ territory.getPrice())
+							.setDescription(Language.basicrent + territory.getBaseRent() +"<br>"+ Language.houseprice +": "+ territory.getBuildingPrice() +"<br>"+ Language.pawnprice +": "+territory.getPawnPrice()+"<br>"+ Language.rent1house +": "+territory.getFieldrenthouse1()+"<br>"+ Language.rent2house +": "+territory.getFieldrenthouse2()+"<br>"+ Language.rent3house +": "+territory.getFieldrenthouse3()+"<br>"+ Language.rent4house +": "+territory.getFieldrenthouse4()+"<br>"+ Language.renthotel +": "+territory.getFieldrenthotel() +"<br>")
 							.setBgColor(new Color(255, 202, 70))
 							.setFgColor(Color.BLACK)
 							.build();
 				} else if (territory.getFieldGroup() == 8) {
 					list[i] = new Street.Builder()
 							.setTitle(fields[i].getName())
-							.setSubText("Pris: "+territory.getPrice()+"")
-							.setDescription("Basis Leje: "+territory.getBaseRent()+"<br>Huspris: "+territory.getBuildingPrice()+"<br>Pantsætningsværdi: "+territory.getPawnPrice()+"<br>Leje med 1 hus: "+territory.getFieldrenthouse1()+"<br> Leje med 2 huse: "+territory.getFieldrenthouse2()+"<br> Leje med 3 huse: "+territory.getFieldrenthouse3()+"<br> Leje med 4 huse: "+territory.getFieldrenthouse4()+"<br> Leje med hotel: "+territory.getFieldrenthotel()+"")
+							.setSubText(Language.price +": "+ territory.getPrice())
+							.setDescription(Language.basicrent + territory.getBaseRent() +"<br>"+ Language.houseprice +": "+ territory.getBuildingPrice() +"<br>"+ Language.pawnprice +": "+territory.getPawnPrice()+"<br>"+ Language.rent1house +": "+territory.getFieldrenthouse1()+"<br>"+ Language.rent2house +": "+territory.getFieldrenthouse2()+"<br>"+ Language.rent3house +": "+territory.getFieldrenthouse3()+"<br>"+ Language.rent4house +": "+territory.getFieldrenthouse4()+"<br>"+ Language.renthotel +": "+territory.getFieldrenthotel() +"<br>")
 							.setBgColor(new Color(112, 21, 97))
 							.setFgColor(Color.WHITE)
 							.build();
@@ -162,8 +161,8 @@ public class Setup {
 				if (refuge.type() == "Start") {
 					list[i] = new desktop_fields.Refuge.Builder()
 							.setTitle(field.getName())
-							.setSubText("START")
-							.setDescription("Passer start og modtag 4000")
+							.setSubText(Language.field_Start)
+							.setDescription(Language.field_StartDescription)
 							.setPicture("images/money.png")
 							.setBgColor(Color.RED)
 							.setFgColor(Color.BLACK)
@@ -171,7 +170,7 @@ public class Setup {
 				} else if (refuge.type() == "Visit") {
 					list[i] = new desktop_fields.Refuge.Builder()
 							.setTitle(fields[i].getName())
-							.setSubText("På besøg")
+							.setSubText(Language.field_VisitJail)
 							.setPicture("images/Jail.jpg")
 							.setDescription("")
 							.setBgColor(new Color(127, 127, 127))
@@ -180,9 +179,9 @@ public class Setup {
 				} else if (refuge.type() == "Parking") {
 					list[i] = new desktop_fields.Refuge.Builder()
 							.setTitle(fields[i].getName())
-							.setSubText("Parkering")
+							.setSubText(Language.field_Parking)
 							.setPicture("images/Cones.jpg")
-							.setDescription("Du tager en pause på parkeringspladsen")
+							.setDescription(Language.field_ParkingDescription)
 							.setBgColor(Color.WHITE)
 							.setFgColor(Color.BLACK)
 							.build();
@@ -191,8 +190,8 @@ public class Setup {
 			} else if (field instanceof Labor) {
 				list[i] = new Brewery.Builder()
 						.setTitle(fields[i].getName())
-						.setDescription(fields[i].getName()+"<br><br>Leje:<br> 1 bryggeri 100 x Terning<br>2 bryggerier 200 x Terning<br><br><br><br>")
-						.setSubText("Pris: 3000")
+						.setDescription(fields[i].getName()+"<br><br>"+ Language.rent +"<br>"+ Language.field_Labor1Rent +"<br>"+ Language.field_Labor2Rent +"<br><br><br><br>")
+						.setSubText(Language.price+": 3000")
 						.setBgColor(new Color(1, 76, 28))
 						.setFgColor(Color.WHITE)
 						.setPicture("images/"+fields[i].getName()+".jpg")
@@ -203,15 +202,15 @@ public class Setup {
 				list[i] = new desktop_fields.Tax.Builder()
 						.setTitle("")
 						.setDescription(fields[i].getName())
-						.setSubText("Betal "+tax.getRent()+" til Skat")
+						.setSubText(Language.pay + tax.getRent() + Language.paytax)
 						.setBgColor(Color.GRAY)
 						.build(); 
 
 			} else if (field instanceof Fleet) {
 				list[i] = new Shipping.Builder()
 						.setTitle(fields[i].getName())
-						.setDescription(fields[i].getName()+"<br><br> 1 Flåde: 500<br> 2 Flåder: 1000 <br> 3 Flåder: 2000 <br> 4 Flåder: 4000<br><br>")
-						.setSubText("Pris: 4000")
+						.setDescription(fields[i].getName()+"<br><br>"+ Language.field_Fleet1Rent + "<br>"+ Language.field_Fleet2Rent +"<br>" +Language.field_Fleet3Rent +"<br>"+ Language.field_Fleet4Rent +"<br><br>")
+						.setSubText(Language.price +": 4000")
 						.setBgColor(Color.WHITE)
 						.setFgColor(Color.BLACK)
 						.build();
@@ -224,10 +223,10 @@ public class Setup {
 			} else if (field instanceof Jail) {
 				list[i] = new desktop_fields.Jail.Builder()
 						.setPicture("images/GoToJail.jpg")
-						.setSubText("Gå i fængsel")
+						.setSubText(Language.field_JailMove)
 						.setBgColor(new Color(127, 127, 125))
 						.setFgColor(Color.WHITE)
-						.setDescription("Du rykker direkte i fængsel, passerer du start modtager du ikke 4000")
+						.setDescription(Language.field_JailDescription)
 						.build();
 			}
 		}
@@ -236,95 +235,24 @@ public class Setup {
 	}
 
 
-
-//	public Player[] createPlayers() {
-//		// How many Players?
-//		Player[] players = null;
-//		String NumberofPlayers = GUI.getUserSelection("", "2 Spillere", "3 Spillere", "4 Spillere", "5 Spillere", "6 Spillere");
-//
-//		// Create Player 1,2,3,4,5,6
-//		switch (NumberofPlayers) {
-//		case "6 Spillere": players = addPlayer(6); break;
-//		case "5 Spillere": players = addPlayer(5); break;
-//		case "4 Spillere": players = addPlayer(4); break;
-//		case "3 Spillere": players = addPlayer(3); break;
-//		case "2 Spillere": players = addPlayer(2); break;
-//		default:
-//
-//		}
-//		return players;
-//
-//	}
-//
-//
-//
-//
-//	public static Player[] addPlayer(int antal) {
-//
-//		id = new Player[antal];
-//
-//		for (int i = 0; i < antal; i++) {
-//
-//
-//			GUI.displayChanceCard("Hvad er dit navn?");
-//			String name = GUI.getUserString("");
-//
-//			if (name.equals("")) {
-//				name = "Player "+(i+1);
-//			}
-//
-//			GUI.displayChanceCard(name + " Vælg din bil");
-//			String cartype = GUI.getUserSelection("", "Bil", "Racerbil", "Traktor", "Ufo");
-//
-//			Car.Builder builder = new Car.Builder();
-//
-//			switch (cartype) {
-//			default:
-//			case "Bil": builder.typeCar(); break;
-//			case "Racerbil": builder.typeRacecar(); break;
-//			case "Traktor": builder.typeTractor(); break;
-//			case "Ufo": builder.typeUfo(); break;
-//			}
-//
-//			GUI.displayChanceCard(name + " vælg din "+cartype+" farve");
-//			String color = GUI.getUserSelection("", "Rød", "Blå", "Grøn", "Gul", "Hvid", "Sort", "Pink", "Magenta", "Grå", "Orange", "Turkis");
-//
-//			switch (color) {
-//			default:
-//			case "Rød": builder.primaryColor(Color.RED); break;
-//			case "Blå": builder.primaryColor(Color.BLUE); break;
-//			case "Grøn": builder.primaryColor(Color.GREEN); break;
-//			case "Gul": builder.primaryColor(Color.YELLOW); break;
-//			case "Hvid": builder.primaryColor(Color.WHITE); break;
-//			case "Sort": builder.primaryColor(Color.BLACK); break;
-//			case "Pink": builder.primaryColor(Color.PINK); break;
-//			case "Magenta": builder.primaryColor(Color.MAGENTA); break;
-//			case "Grå": builder.primaryColor(Color.LIGHT_GRAY); break;
-//			case "Orange": builder.primaryColor(Color.ORANGE); break;
-//			case "Turkis": builder.primaryColor(Color.CYAN); break;
-//			}
-//
-//			Car car = builder.build();
-//
-//			Player player = new Player(name);
-//			id[i] = player;
-//
-//			GUI.addPlayer(name, player.getMoney(), car);
-//			GUI.setCar(1, name);
-//		}		
-//
-//
-//		return id;
-//	}
-
 	public Player[] createPlayers() {
 		// How many Players?
 		Player[] players = null;
-		
-		players = addPlayer(2);
-		
+		String NumberofPlayers = GUI.getUserSelection("", Language.players_2players, Language.players_3players, Language.players_4players, Language.players_5players, Language.players_6players);
+
+		// Create Player 1,2,3,4,5,6
+		switch (NumberofPlayers) {
+		case Language.players_2players: players = addPlayer(2); break;
+		case Language.players_3players: players = addPlayer(3); break;
+		case Language.players_4players: players = addPlayer(4); break;
+		case Language.players_5players: players = addPlayer(5); break;
+		case Language.players_6players: players = addPlayer(6); break;
+		default:
+
+		}
 		return players;
-}
+
+	}
 
 
 
@@ -335,24 +263,43 @@ public class Setup {
 
 		for (int i = 0; i < antal; i++) {
 
-
-			
-			String name = "";
+			GUI.displayChanceCard(Language.players_name);
+			String name = GUI.getUserString("");
 
 			if (name.equals("")) {
-				name = "Player "+(i+1);
+				name = Language.players_empty + (i+1);
 			}
+
+			GUI.displayChanceCard(name +"<br><br>"+ Language.players_choosecar);
+			String cartype = GUI.getUserSelection("", Language.players_car, Language.players_racecar, Language.players_tractor, Language.players_ufo);
 
 			Car.Builder builder = new Car.Builder();
 
-			builder.typeCar();
-			
-			if (i==1) {
-				builder.primaryColor(Color.RED);
-			} else {
-				builder.primaryColor(Color.BLUE);
+			switch (cartype) {
+			default:
+			case Language.players_car: builder.typeCar(); break;
+			case Language.players_racecar: builder.typeRacecar(); break;
+			case Language.players_tractor: builder.typeTractor(); break;
+			case Language.players_ufo: builder.typeUfo(); break;
 			}
-			
+
+			GUI.displayChanceCard(name +"<br><br>"+ Language.players_choose +cartype+ Language.players_color);
+			String color = GUI.getUserSelection("", Language.color_red, Language.color_blue, Language.color_green, Language.color_yellow, Language.color_white, Language.color_black, Language.color_pink, Language.color_magenta, Language.color_gray, Language.color_orange, Language.color_turquoise);
+
+			switch (color) {
+			default:
+			case Language.color_red: builder.primaryColor(Color.RED); break;
+			case Language.color_blue: builder.primaryColor(Color.BLUE); break;
+			case Language.color_green: builder.primaryColor(Color.GREEN); break;
+			case Language.color_yellow: builder.primaryColor(Color.YELLOW); break;
+			case Language.color_white: builder.primaryColor(Color.WHITE); break;
+			case Language.color_black: builder.primaryColor(Color.BLACK); break;
+			case Language.color_pink: builder.primaryColor(Color.PINK); break;
+			case Language.color_magenta: builder.primaryColor(Color.MAGENTA); break;
+			case Language.color_gray: builder.primaryColor(Color.LIGHT_GRAY); break;
+			case Language.color_orange: builder.primaryColor(Color.ORANGE); break;
+			case Language.color_turquoise: builder.primaryColor(Color.CYAN); break;
+			}
 
 			Car car = builder.build();
 
@@ -361,12 +308,60 @@ public class Setup {
 
 			GUI.addPlayer(name, player.getMoney(), car);
 			GUI.setCar(1, name);
-			
 		}		
 
 
 		return id;
 	}
-	
-	
+
+	//	public Player[] createPlayers() {
+	//		// How many Players?
+	//		Player[] players = null;
+	//		
+	//		players = addPlayer(2);
+	//		
+	//		return players;
+	//	}
+
+
+	//	public static Player[] addPlayer(int antal) {
+	//
+	//		id = new Player[antal];
+	//
+	//		for (int i = 0; i < antal; i++) {
+	//
+	//
+	//
+	//			String name = "";
+	//
+	//			if (name.equals("")) {
+	//				name = "Player "+(i+1);
+	//			}
+	//
+	//			Car.Builder builder = new Car.Builder();
+	//
+	//			builder.typeCar();
+	//
+	//			if (i==1) {
+	//				builder.primaryColor(Color.RED);
+	//			} else {
+	//				builder.primaryColor(Color.BLUE);
+	//			}
+	//
+	//
+	//			Car car = builder.build();
+	//
+	//			Player player = new Player(name);
+	//			id[i] = player;
+	//
+	//			GUI.addPlayer(name, player.getMoney(), car);
+	//			GUI.setCar(1, name);
+	//
+	//		}		
+	//
+	//
+	//		return id;
+	//	}
+
+
 }

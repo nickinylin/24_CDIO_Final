@@ -98,8 +98,8 @@ public class Territory extends Ownable {
 	}
 
 	@Override
-	public double getPawnPrice() {
-		double pawnprice = ((int) fieldprice * 0.5);
+	public int getPawnPrice() {
+		int pawnprice = (int) (fieldprice * 0.5);
 		return pawnprice;
 	}
 

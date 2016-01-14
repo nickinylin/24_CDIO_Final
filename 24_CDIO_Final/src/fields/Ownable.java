@@ -66,7 +66,7 @@ public abstract class Ownable extends Field {
     
     public abstract void setPawned(boolean pawn);
     
-    public abstract double getPawnPrice();
+    public abstract int getPawnPrice();
     
     public abstract int getPrice();
     
