@@ -48,11 +48,13 @@ public class Game {
 
 		while (noWinner) {
 			noWinner=checkWinner();
-			
+			if (!noWinner){
+				break;
+			}
 			for (int i = 0; i < players.length; i++) {
 
 				if (players[i].bankruptCheck()) {
-					noWinner=checkWinner();
+					//					noWinner=checkWinner();
 				} else if (players[i].isInJail()) {
 					doJailTurn(players[i]);
 				} else {
@@ -60,7 +62,7 @@ public class Game {
 				}
 
 			}
-			
+
 		}
 
 	}
@@ -127,9 +129,9 @@ public class Game {
 		} else if (currentfield instanceof Refuge) {
 			refugeController.landOnRefuge(players, player, ((Refuge) currentfield), fields);
 		} else if (currentfield instanceof Luck) {
-			luckController.landOnLuck(players, player, ((Luck) currentfield), fields);
+			//			luckController.landOnLuck(players, player, ((Luck) currentfield), fields);
 		} else if (currentfield instanceof Jail) {
-			jailController.jail(player, fields);
+			//			jailController.jail(player, fields);
 		} else if (currentfield instanceof Tax) {
 			taxController.payTax(player, ((Tax) currentfield));
 		}
@@ -161,42 +163,43 @@ public class Game {
 
 
 	public boolean checkWinner() {
-boolean goOn=true;
+		boolean goOn=true;
 		int numberofplayers = players.length;
 		int count = 1;
 
-		for (int i = 1; i < players.length; i++) {
+		for (int i = 0; i < players.length; i++) {
 
 			if (players[i].bankruptCheck()) {
 				menuController.sellAllFields(players[i], fields);
 				count++;
 			}
-
-			if (numberofplayers == count) {
-
-				for (int x = 1; x < players.length; x++) {
-
-				}
-				if (players[i].bankruptCheck()) {
-				}
-				GUI.displayChanceCard("<center>"+ players[i].getName() +" har vundet spillet med et total af <br><br> "+players[i].getAssets()+"<br>aktiver.");
-
-				for (int x = 0; x < players.length; x++) 
-				{
-
-					if (players[x].bankruptCheck() == false) 
-					{
-						GUI.displayChanceCard("<center>"+players[x].getName()+" har vundet spillet med et total af <br><br> "+players[x].getAssets()+"<br>aktiver.");
-						GUI.showMessage("");									
-						goOn=false;
-					}
-							}
-				}
-	
-			}
-
-return goOn;
 		}
 
+		if (numberofplayers == count) {
+
+			//				for (int x = 1; x < players.length; x++) {
+			//
+			//				}
+			//				if (players[i].bankruptCheck()) {
+			//				}
+			//				GUI.displayChanceCard("<center>"+ players[i].getName() +" har vundet spillet med et total af <br><br> "+players[i].getAssets()+"<br>aktiver.");
+
+			for (int x = 0; x < players.length; x++) 
+			{
+
+				if (!players[x].bankruptCheck()) 
+				{
+					GUI.displayChanceCard("<center>"+players[x].getName()+" har vundet spillet med et total af <br><br> "+players[x].getAssets()+"<br>aktiver.");
+					GUI.showMessage("");									
+					goOn=false;
+				}
+			}
+
+
+		}
+
+		return goOn;
 	}
+
+}
 

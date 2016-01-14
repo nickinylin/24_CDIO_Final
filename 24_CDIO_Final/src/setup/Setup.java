@@ -237,94 +237,24 @@ public class Setup {
 
 
 
-	public Player[] createPlayers() {
-		// How many Players?
-		Player[] players = null;
-		String NumberofPlayers = GUI.getUserSelection("", "2 Spillere", "3 Spillere", "4 Spillere", "5 Spillere", "6 Spillere");
-
-		// Create Player 1,2,3,4,5,6
-		switch (NumberofPlayers) {
-		case "6 Spillere": players = addPlayer(6); break;
-		case "5 Spillere": players = addPlayer(5); break;
-		case "4 Spillere": players = addPlayer(4); break;
-		case "3 Spillere": players = addPlayer(3); break;
-		case "2 Spillere": players = addPlayer(2); break;
-		default:
-
-		}
-		return players;
-
-	}
-
-
-
-
-	public static Player[] addPlayer(int antal) {
-
-		id = new Player[antal];
-
-		for (int i = 0; i < antal; i++) {
-
-
-			GUI.displayChanceCard("Hvad er dit navn?");
-			String name = GUI.getUserString("");
-
-			if (name.equals("")) {
-				name = "Player "+(i+1);
-			}
-
-			GUI.displayChanceCard(name + " Vælg din bil");
-			String cartype = GUI.getUserSelection("", "Bil", "Racerbil", "Traktor", "Ufo");
-
-			Car.Builder builder = new Car.Builder();
-
-			switch (cartype) {
-			default:
-			case "Bil": builder.typeCar(); break;
-			case "Racerbil": builder.typeRacecar(); break;
-			case "Traktor": builder.typeTractor(); break;
-			case "Ufo": builder.typeUfo(); break;
-			}
-
-			GUI.displayChanceCard(name + " vælg din "+cartype+" farve");
-			String color = GUI.getUserSelection("", "Rød", "Blå", "Grøn", "Gul", "Hvid", "Sort", "Pink", "Magenta", "Grå", "Orange", "Turkis");
-
-			switch (color) {
-			default:
-			case "Rød": builder.primaryColor(Color.RED); break;
-			case "Blå": builder.primaryColor(Color.BLUE); break;
-			case "Grøn": builder.primaryColor(Color.GREEN); break;
-			case "Gul": builder.primaryColor(Color.YELLOW); break;
-			case "Hvid": builder.primaryColor(Color.WHITE); break;
-			case "Sort": builder.primaryColor(Color.BLACK); break;
-			case "Pink": builder.primaryColor(Color.PINK); break;
-			case "Magenta": builder.primaryColor(Color.MAGENTA); break;
-			case "Grå": builder.primaryColor(Color.LIGHT_GRAY); break;
-			case "Orange": builder.primaryColor(Color.ORANGE); break;
-			case "Turkis": builder.primaryColor(Color.CYAN); break;
-			}
-
-			Car car = builder.build();
-
-			Player player = new Player(name);
-			id[i] = player;
-
-			GUI.addPlayer(name, player.getMoney(), car);
-			GUI.setCar(1, name);
-		}		
-
-
-		return id;
-	}
-
 //	public Player[] createPlayers() {
 //		// How many Players?
 //		Player[] players = null;
-//		
-//		players = addPlayer(2);
-//		
+//		String NumberofPlayers = GUI.getUserSelection("", "2 Spillere", "3 Spillere", "4 Spillere", "5 Spillere", "6 Spillere");
+//
+//		// Create Player 1,2,3,4,5,6
+//		switch (NumberofPlayers) {
+//		case "6 Spillere": players = addPlayer(6); break;
+//		case "5 Spillere": players = addPlayer(5); break;
+//		case "4 Spillere": players = addPlayer(4); break;
+//		case "3 Spillere": players = addPlayer(3); break;
+//		case "2 Spillere": players = addPlayer(2); break;
+//		default:
+//
+//		}
 //		return players;
-//}
+//
+//	}
 //
 //
 //
@@ -336,23 +266,43 @@ public class Setup {
 //		for (int i = 0; i < antal; i++) {
 //
 //
-//			
-//			String name = "";
+//			GUI.displayChanceCard("Hvad er dit navn?");
+//			String name = GUI.getUserString("");
 //
 //			if (name.equals("")) {
 //				name = "Player "+(i+1);
 //			}
 //
+//			GUI.displayChanceCard(name + " Vælg din bil");
+//			String cartype = GUI.getUserSelection("", "Bil", "Racerbil", "Traktor", "Ufo");
+//
 //			Car.Builder builder = new Car.Builder();
 //
-//			builder.typeCar();
-//			
-//			if (i==1) {
-//				builder.primaryColor(Color.RED);
-//			} else {
-//				builder.primaryColor(Color.BLUE);
+//			switch (cartype) {
+//			default:
+//			case "Bil": builder.typeCar(); break;
+//			case "Racerbil": builder.typeRacecar(); break;
+//			case "Traktor": builder.typeTractor(); break;
+//			case "Ufo": builder.typeUfo(); break;
 //			}
-//			
+//
+//			GUI.displayChanceCard(name + " vælg din "+cartype+" farve");
+//			String color = GUI.getUserSelection("", "Rød", "Blå", "Grøn", "Gul", "Hvid", "Sort", "Pink", "Magenta", "Grå", "Orange", "Turkis");
+//
+//			switch (color) {
+//			default:
+//			case "Rød": builder.primaryColor(Color.RED); break;
+//			case "Blå": builder.primaryColor(Color.BLUE); break;
+//			case "Grøn": builder.primaryColor(Color.GREEN); break;
+//			case "Gul": builder.primaryColor(Color.YELLOW); break;
+//			case "Hvid": builder.primaryColor(Color.WHITE); break;
+//			case "Sort": builder.primaryColor(Color.BLACK); break;
+//			case "Pink": builder.primaryColor(Color.PINK); break;
+//			case "Magenta": builder.primaryColor(Color.MAGENTA); break;
+//			case "Grå": builder.primaryColor(Color.LIGHT_GRAY); break;
+//			case "Orange": builder.primaryColor(Color.ORANGE); break;
+//			case "Turkis": builder.primaryColor(Color.CYAN); break;
+//			}
 //
 //			Car car = builder.build();
 //
@@ -361,12 +311,62 @@ public class Setup {
 //
 //			GUI.addPlayer(name, player.getMoney(), car);
 //			GUI.setCar(1, name);
-//			
 //		}		
 //
 //
 //		return id;
 //	}
+
+	public Player[] createPlayers() {
+		// How many Players?
+		Player[] players = null;
+		
+		players = addPlayer(2);
+		
+		return players;
+}
+
+
+
+
+	public static Player[] addPlayer(int antal) {
+
+		id = new Player[antal];
+
+		for (int i = 0; i < antal; i++) {
+
+
+			
+			String name = "";
+
+			if (name.equals("")) {
+				name = "Player "+(i+1);
+			}
+
+			Car.Builder builder = new Car.Builder();
+
+			builder.typeCar();
+			
+			if (i==1) {
+				builder.primaryColor(Color.RED);
+			} else {
+				builder.primaryColor(Color.BLUE);
+			}
+			
+
+			Car car = builder.build();
+
+			Player player = new Player(name);
+			id[i] = player;
+
+			GUI.addPlayer(name, player.getMoney(), car);
+			GUI.setCar(1, name);
+			
+		}		
+
+
+		return id;
+	}
 	
 	
 }
