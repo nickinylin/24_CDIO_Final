@@ -151,7 +151,7 @@ public class LuckController {
 			if (move.getExtraMoves() < 0) {
 				if(player.getPlayerPosition()+move.getExtraMoves() < player.getPlayerPosition()) {
 					if(player.getPlayerPosition()+move.getExtraMoves() < 1) {
-						player.setPlayerPosition(move.getExtraMoves()+fields.length-1);
+						player.setPlayerPosition(move.getExtraMoves()+fields.length);
 
 						GUI.removeAllCars(player.getName());
 						GUI.setCar(player.getPlayerPosition()+1, player.getName());
