@@ -10,9 +10,9 @@ public class TaxController {
 		
 		if (field.getSpecial().equals("special")) {
 
-            GUI.displayChanceCard("<center>"+player.getName()+" have landed on a TAX field");
+            GUI.displayChanceCard("<center>"+player.getName()+" har landet på et TAX felt");
             
-            boolean boo = GUI.getUserLeftButtonPressed(""+player.getName()+"", "Pay 10%", "Pay "+ field.getRent() +"");
+            boolean boo = GUI.getUserLeftButtonPressed(""+player.getName()+"", "Betal 10%", "Betal "+ field.getRent() +"");
             
             if (boo) {
                 int payamount = player.getAssets()*10/100;
@@ -35,7 +35,7 @@ public class TaxController {
                     
                 }
                 
-                GUI.displayChanceCard("<center>"+player.getName()+" have landed on a TAX field<br><br>You paid "+payamount+".");
+                GUI.displayChanceCard("<center>"+player.getName()+" har landet på et TAX felt<br><br>Du betalte "+payamount+".");
                 
             } else {
             	
@@ -57,7 +57,7 @@ public class TaxController {
             		}
             		
                 }
-                GUI.displayChanceCard("<center>"+player.getName()+" have landed on a TAX field<br><br>You paid "+field.getRent()+".");
+                GUI.displayChanceCard("<center>"+player.getName()+" har landet på et TAX felt<br><br>Du betalte "+field.getRent()+".");
             }
             GUI.setBalance(player.getName(), player.getMoney());
         
@@ -79,7 +79,7 @@ public class TaxController {
             	
                 player.payMoney(field.getRent());
                 GUI.setBalance(player.getName(), player.getMoney());
-                GUI.displayChanceCard("<center>"+player.getName()+" have landed on a TAX field<br><br>You paid "+field.getRent()+".");
+                GUI.displayChanceCard("<center>"+player.getName()+" har landet på et TAX felt<br><br>Du betalte "+field.getRent()+".");
                 
             }
             
