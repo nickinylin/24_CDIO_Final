@@ -154,7 +154,7 @@ public class LuckController {
 						player.setPlayerPosition(move.getExtraMoves()+fields.length);
 
 						GUI.removeAllCars(player.getName());
-						GUI.setCar(player.getPlayerPosition()+1, player.getName());
+						GUI.setCar(player.getPlayerPosition(), player.getName());
 //						showMenu(group, player, ((Field) fields[player.getPlayerPosition()]), fields);
 					} else {
 						player.setPlayerPosition(move.getExtraMoves());

@@ -588,7 +588,6 @@ public class MenuController {
 
 
 	public String[] getWhereToSellBuildings(Player player, Field[] fields) {
-		String[] fieldlist = new String[50];
 		Territory[] tempfields1 = new Territory[22];
 		int i = 0;
 		int y  = 0;
@@ -776,10 +775,15 @@ public class MenuController {
 
 	private boolean checkOwnField(Player player, Field currentfield, Field[] fields) {
 
+		int i=0;
 		for (Field f : fields) {
 			if (f instanceof Territory) {
 				Territory t = (Territory) f;
-				if (player.equals(t.getOwner())&& t.getHouse() < 1 && t.isSellAble()) {
+				Territory[] tempfields= new Territory[22];
+					tempfields[i++]=t;
+				
+				
+				if (player.equals(t.getOwner())&& t.getHouse() < 1 && t.isSellAble() && t.groupissellable(tempfields, t.getFieldGroup())) {
 					return true;
 				}
 			} else if (f instanceof Fleet) {
