@@ -285,12 +285,13 @@ public class Territory extends Ownable {
 	public int getMaxHousesGroup (Territory[] fields) {
 		int max = 0;
 		for (int i = 0; i < fields.length; i++){
+			if(fields[i] != null){
 			if (fields[i].getHouse() >= max && fields[i].getFieldGroup() == fieldgroup){
 					max = fields[i].getHouse();	
 			} else {
 				System.out.println("NFEJL....");
 			}
-			
+			}
 		}
 		return max;
 	}
