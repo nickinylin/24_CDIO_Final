@@ -463,31 +463,6 @@ public class MenuController {
 		return fieldlist;
 	}
 
-	//	private String[] getBuildingFieldList(Player player, Field[] fields) {
-	//
-	//		int i = 0;
-	//
-	//		Territory[] tempfields = new Territory[28];
-	//
-	//		for (Field f : fields) {
-	//			if (f instanceof Territory) {
-	//				Territory t = (Territory) f;
-	//
-	//				if (t.getPawned() == false && player.equals(t.getOwner()) && t.getHouse() > 0) {
-	//					tempfields[i++] = t;
-	//				}
-	//			} 
-	//		}
-	//
-	//
-	//		String[] fieldlist = new String[i];
-	//
-	//		for (int x = 0; x < fieldlist.length; x++) {
-	//			fieldlist[x] = tempfields[x].getName();
-	//		}
-	//		return fieldlist;
-	//	}
-
 	private String[] getWhereToBuyBuilding(Player player, Territory currentfield, Field[] fields) {
 
 		int i = 0;
@@ -579,15 +554,6 @@ public class MenuController {
 			}
 
 		}
-		//		for (int x = 0; x < tempfields2.length; x++){
-		//			//					if (tempfields1[x].getFieldGroup() == ){
-		//			tempfields2[x] = tempfields1[x];
-		//			if(tempfields2[x] != null)
-		//				if (tempfields2[x].getMaxHousesGroup(tempfields2) == tempfields2[x].getHouse()){
-		//					fieldlist[y++] = tempfields2[x].getName();
-		//				}
-		//			
-		//		}
 
 		String string = new String();
 
