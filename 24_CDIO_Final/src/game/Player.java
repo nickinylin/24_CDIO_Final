@@ -84,9 +84,6 @@ public class Player {
         
         if (getAssets() < 0) {
             bankrupt = true;
-        } else if (getAssets() > 0) {
-        	//TODO
-        	// menu med sælg assets for at gå videre
         }
         return bankrupt;
     }

@@ -132,7 +132,6 @@ public class Territory extends Ownable {
 		if (getHouse() == 1){
 			setSellAble(true);
 		}
-
 		houses = houses - 1;
 		return houses;
 	}
