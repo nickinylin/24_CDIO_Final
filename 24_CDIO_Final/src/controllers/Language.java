@@ -22,6 +22,8 @@ public class Language {
 	public static final String buybuilding = "Køb Bygning";
 	public static final String sellbuilding = "Sælg Bygning";
 	
+	public static final String continues = "Fortsæt";
+	
 	public static final String endTurn = "Afslut Tur";
 	public static final String bankrupt = "Gå Bankerot";
 	public static final String sellallfields = "Sælg Alle Felter";
@@ -40,8 +42,14 @@ public class Language {
 	public static final String rent4house = "Leje med 4 huse";
 	public static final String renthotel = "Leje med hotel";
 	
-	
+	// Luck
 	public static final String luck = "Prøv lykken";
+	public static final String luck_titel = "====== Prøv lykken ======<br><br>";
+	public static final String luck_draw = " du har trukket et prøv lykken kort";
+	
+	public static final String luck_matadorlegat_draw = "De modtager matador legatet for værdigt trængende";
+	public static final String luck_matadorlegat_fail = "De anses ikke for værdigt trængende og modtager derfor ikke matador legatet";
+	
 	
 	public static final String prisonpay = "Betal 1000 kr";
 	public static final String prisonroll = "Slå med terningerne";

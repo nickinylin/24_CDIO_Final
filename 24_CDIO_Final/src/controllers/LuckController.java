@@ -12,10 +12,9 @@ public class LuckController {
 	public void landOnLuck(Player[] group, Player player, Luck currentfield, Field[] fields) {
 
 		// Draw a luck card
-
 		Cards card = deck.drawcard();
-		GUI.displayChanceCard("====== Prøv lykken ======<br> <br>"+card.getText());
-		GUI.getUserButtonPressed(player.getName() +" Du har trukket et prøv lykken kort", "Fortsæt");
+		GUI.displayChanceCard(Language.luck_titel+card.getText());
+		GUI.getUserButtonPressed(player.getName() + Language.luck_draw, Language.continues);
 
 		if (card instanceof CardsMoveto) {
 			doMoveTo(player, fields, group, card);
@@ -25,7 +24,6 @@ public class LuckController {
 			CardsTransaction transaction = (CardsTransaction) card;
 			player.giveMoney(transaction.getvalue());
 			GUI.setBalance(player.getName(), player.getMoney());
-//			showMenu(group, player, currentfield, fields);
 			
 			//hvis samtlige spillere er involverede.		
 		} else if (card instanceof CardsShare) {
@@ -40,7 +38,6 @@ public class LuckController {
 
 			player.giveMoney(moneyPool);
 			GUI.setBalance(player.getName(), player.getMoney());
-//			showMenu(group, player, currentfield, fields);
 
 		} else if(card instanceof CardsLegat) {
 			CardsLegat legat = (CardsLegat) card;
@@ -49,13 +46,12 @@ public class LuckController {
 				
 				player.giveMoney(legat.getValue());
 
-				GUI.showMessage("De modtager matador legatet for værdigt trængende");
+				GUI.showMessage(Language.luck_matadorlegat_draw);
 				player.giveMoney(legat.getValue());
 				GUI.setBalance(player.getName(), player.getMoney());
-//				showMenu(group, player, currentfield, fields);
+				
 			} else {
-				GUI.showMessage("De anses ikke for værdigt trængende og modtager derfor ikke matador legatet");
-//				showMenu(group, player, currentfield, fields);
+				GUI.showMessage(Language.luck_matadorlegat_fail);
 			}
 		}
 
@@ -134,7 +130,7 @@ public class LuckController {
 
 			}
 
-			if (move.getDestination().equals("De fængsles")){
+			if (move.getDestination().equals(Language.field_Jail)){
 				JailController jailcontroller= new JailController();
 				jailcontroller.jail(player, fields);
 			}
@@ -150,13 +146,12 @@ public class LuckController {
 
 						GUI.removeAllCars(player.getName());
 						GUI.setCar(player.getPlayerPosition(), player.getName());
-//						showMenu(group, player, ((Field) fields[player.getPlayerPosition()]), fields);
+
 					} else {
 						player.setPlayerPosition(move.getExtraMoves());
 
 						GUI.removeAllCars(player.getName());
 						GUI.setCar(player.getPlayerPosition(), player.getName());
-//						showMenu(group, player, ((Field) fields[player.getPlayerPosition()]), fields);
 					}
 				}
 				//kort der rykker en fremad
@@ -189,13 +184,7 @@ public class LuckController {
 				}
 		
 		}
+		
 	}
 	
-	
-//	private void showMenu(Player[] players, Player player, Field luck, Field[] fields) {
-//		boolean res;
-//		do{
-//			res = menuController.menuBuild(players, player, luck, fields);
-//		}while(!res);
-//	}
 }
