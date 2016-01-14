@@ -168,27 +168,9 @@ public class Territory extends Ownable {
 		return fieldgroup;
 	}
 
-
-
-	//	public int getBuildingNumbers() {
-	//		return houses;
-	//	}
-
-
-
 	public void setBuildingNumbers(int buildingNumbers) {
 		this.houses = buildingNumbers;
 	}
-
-
-
-	//	@Override
-	//	public void buyField(Player player, Field[] fields) {
-	//		player.payMoney(fieldprice);
-	//		player.setAssets(fieldprice);
-	//		fieldowned = true;
-	//		fieldowner = player;
-	//	}
 
 
 
@@ -237,16 +219,6 @@ public class Territory extends Ownable {
 		}
 		return currentplayer;
 	}
-
-	//		currentplayer.giveMoney(pris);
-	//		
-	//		for (int i = 0; i < players.length ; i++) {
-	//			if (players[i].getName() == spiller) {
-	//				players[i].payMoney(pris);
-	//				GUI.setBalance(players[i].getName(), players[i].getMoney());
-	//			}
-	//		}
-
 
 	//	public void sellFieldToBank(Player player, Territory currentfield, Field[] fields) {
 	//
@@ -333,10 +305,6 @@ public class Territory extends Ownable {
 						System.out.println("Uejet");
 				
 				}
-
-
-	
-
 		
 		return sellable;
 	}
