@@ -7,10 +7,6 @@
 package game;
 
 
-
-import desktop_resources.GUI;
-import fields.Field;
-
 public class Player {
     
     private Bank bank;

@@ -1,7 +1,5 @@
 package controllers;
 
-import java.awt.Menu;
-
 import cards.*;
 import desktop_resources.GUI;
 import fields.*;
@@ -10,9 +8,6 @@ import game.Player;
 public class LuckController {
 
 	private CardsDeck deck=new CardsDeck();
-	private PlayerController playercontroller= new PlayerController();
-	private MenuController menuController = new MenuController();
-
 
 	public void landOnLuck(Player[] group, Player player, Luck currentfield, Field[] fields) {
 

@@ -6,11 +6,6 @@
 
 package fields;
 
-import desktop_resources.GUI;
-import game.Player;
-import setup.Setup;
-
-
 public abstract class Field {
 
 	protected String fieldname;
@@ -19,8 +14,6 @@ public abstract class Field {
 		fieldname = name;
 	}
 	
-	
-	
 
 	/**
 	 * Method returns the name of the field.
@@ -28,10 +21,12 @@ public abstract class Field {
 	 */
 	public abstract String getFieldType();
 	
+	
 	public String getName() {
 		return fieldname;
 	}
 
+	
 	public void setName(String name) {
 		this.fieldname = name;
 	}

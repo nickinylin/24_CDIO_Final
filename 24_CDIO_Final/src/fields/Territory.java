@@ -38,11 +38,9 @@ public class Territory extends Ownable {
 	}
 
 
-
 	@Override
 	public int getRent(Player playerOwner, Field[] fields) {
-		// TODO her mangler vi at den udregner hvad lejen er med antal huse
-		// Send field med?
+
 		int numberingroup = 0;
 		int numberofowned = 0;
 
@@ -86,17 +84,20 @@ public class Territory extends Ownable {
 		}
 		return rent;
 	}
+	
 
 	@Override
 	public void setPawned(boolean pawn) {
 		this.pawned = pawn;
 	}
 
+	
 	@Override
 	public boolean getPawned() {
 		return pawned;
 	}
 
+	
 	@Override
 	public int getPawnPrice() {
 		int pawnprice = (int) (fieldprice * 0.5);
@@ -108,6 +109,7 @@ public class Territory extends Ownable {
 		return fieldprice;
 	}
 
+	
 	public int buyHouse(Field currentfield, Field[] fields) {
 		houses = houses + 1;
 		int fieldgroup = ((Territory) currentfield).getFieldGroup();
@@ -127,6 +129,7 @@ public class Territory extends Ownable {
 		return houses;
 	}
 
+	
 	public int sellHouse() {
 
 		if (getHouse() == 1){
@@ -136,42 +139,50 @@ public class Territory extends Ownable {
 		return houses;
 	}
 
+	
 	public int getHouse() {
 		return houses;
 	}
 
+	
 	public int getFieldrenthouse1() {
 		return fieldrenthouse1;
 	}
 
+	
 	public int getFieldrenthouse2() {
 		return fieldrenthouse2;
 	}
 
+	
 	public int getFieldrenthouse3() {
 		return fieldrenthouse3;
 	}
 
+	
 	public int getFieldrenthouse4() {
 		return fieldrenthouse4;
 	}
 
+	
 	public int getFieldrenthotel() {
 		return fieldrenthotel;
 	}
 
+	
 	public int getBuildingPrice() {
 		return fieldPriceBuilding;
 	}
 
+	
 	public int getFieldGroup() {
 		return fieldgroup;
 	}
 
+	
 	public void setBuildingNumbers(int buildingNumbers) {
 		this.houses = buildingNumbers;
 	}
-
 
 
 	@Override
@@ -241,17 +252,16 @@ public class Territory extends Ownable {
 		return "Territory";
 	}
 
-
-
+	
 	public boolean isSellAble() {
 		return sellAble;
 	}
 
-
-
+	
 	public void setSellAble(boolean sellAble) {
 		this.sellAble = sellAble;
 	}
+	
 	
 	public int getMaxHousesGroup (Territory[] fields, int group) {
 		int max = 0;

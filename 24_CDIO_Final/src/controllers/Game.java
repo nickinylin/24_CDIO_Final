@@ -22,7 +22,6 @@ import setup.Setup;
 
 public class Game {
 	private TaxController taxController = new TaxController();
-	private LuckController luckController = new LuckController();
 	private TerritoryController territoryController = new TerritoryController();
 	private FleetController fleetController = new FleetController();
 	private LaborController laborController = new LaborController();

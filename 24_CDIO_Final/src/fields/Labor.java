@@ -20,6 +20,7 @@ public class Labor extends Ownable {
 		super.fieldowned = false;
 	}
 
+	
 	@Override
 	public int getRent(Player player, Field[] fields) {
 
@@ -53,13 +54,6 @@ public class Labor extends Ownable {
 		return super.fieldprice;
 	}
 
-//	@Override
-//	public void buyField(Player player, Field[] fields) {
-//		player.payMoney(fieldprice);
-//		player.setAssets(fieldprice);
-//		fieldowned = true;
-//		fieldowner = player;
-//	}
 
 	@Override
 	public void updateFieldGroup(Player player, Field currentField, Field[] fields) {

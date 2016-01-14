@@ -6,7 +6,6 @@
 
 package fields;
 
-import controllers.PlayerController;
 import desktop_resources.GUI;
 import game.Player;
 
