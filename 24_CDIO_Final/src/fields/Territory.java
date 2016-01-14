@@ -294,6 +294,50 @@ public class Territory extends Ownable {
 		}
 		return max;
 	}
+
+
+	public boolean groupissellable(Territory[] fields, int group) {
+		boolean sellable=false;
+		int fieldsingroup=0;
+		int y=0;
+		for (int i = 0; i < fields.length; i++){
+			if(fields[i] != null){
+			if (fields[i].getFieldGroup() == group){
+				fieldsingroup++;
+			}
+			}
+		}
+			Territory[] tempfields =new Territory[fieldsingroup];
+			for (int x = 0; x < fields.length; x++){
+				if(fields[x] != null){
+				if (fields[x].getFieldGroup() == group){
+					tempfields[y++]=fields[x];
+				}
+				}
+			}
+				switch(fieldsingroup){
+				case 3:
+					if(tempfields[0].fieldowned && tempfields[1].fieldowned && tempfields[2].fieldowned)
+					if(tempfields[0].isSellAble() && tempfields[1].isSellAble() &&tempfields[2].isSellAble()){
+					sellable=true;
+					break;					
+					}
+				case 2:
+					if(tempfields[0].fieldowned && tempfields[1].fieldowned)
+					if(tempfields[0].isSellAble() && tempfields[1].isSellAble()){
+					sellable=true;
+					break;
+					}
+					default:
+						sellable=true;
+						System.out.println("Uejet");
+				
+				}
+
+
 	
 
+		
+		return sellable;
+	}
 }

@@ -681,7 +681,11 @@ public class MenuController {
 		for (Field f : fields) {
 			if (f instanceof Territory) {
 				Territory t = (Territory) f;
-				if (player.equals(t.getOwner())&& t.getHouse() < 1 && t.isSellAble()) {
+				Territory[] tempfields= new Territory[22];
+					tempfields[i++]=t;
+				
+				
+				if (player.equals(t.getOwner())&& t.getHouse() < 1 && t.isSellAble() && t.groupissellable(tempfields, t.getFieldGroup())) { t.isSellAble()) {
 					return true;
 				}
 			} else if (f instanceof Fleet) {
