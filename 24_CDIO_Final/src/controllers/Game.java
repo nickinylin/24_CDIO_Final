@@ -71,7 +71,7 @@ public class Game {
 
 
 		// Roll Dices
-		GUI.getUserButtonPressed("", player.getName()+": Roll Dices");
+		GUI.getUserButtonPressed("", player.getName()+": Slå med terningerne");
 		Dice.roll();
 		GUI.setDice(Dice.getDice1(), Dice.getDice2());
 
@@ -179,15 +179,15 @@ boolean goOn=true;
 				}
 				if (players[i].bankruptCheck()) {
 				}
-				GUI.displayChanceCard("<center>"+ players[i].getName() +" have won the game with a total of <br><br> "+players[i].getAssets()+"<br>assets.");
+				GUI.displayChanceCard("<center>"+ players[i].getName() +" har vundet spillet med et total af <br><br> "+players[i].getAssets()+"<br>aktiver.");
 
 				for (int x = 0; x < players.length; x++) 
 				{
 
 					if (players[x].bankruptCheck() == false) 
 					{
-						GUI.displayChanceCard("<center>"+players[x].getName()+" have won the game with a total of <br><br> "+players[x].getAssets()+"<br>assets.");
-						GUI.showMessage("");
+						GUI.displayChanceCard("<center>"+players[x].getName()+" har vundet spillet med et total af <br><br> "+players[x].getAssets()+"<br>aktiver.");
+						GUI.showMessage("");									
 						goOn=false;
 					}
 							}
