@@ -520,11 +520,11 @@ public class MenuController {
 		return fieldlist;
 	}
 
-	private String[] getWhereToBuyBuilding(Player player,Territory currentfield, Field[] fields) {
+	private String[] getWhereToBuyBuilding(Player player, Territory currentfield, Field[] fields) {
 
 		int i = 0;
 
-		Territory[] tempfields = new Territory[8];
+		Territory[] tempfields = new Territory[22];
 
 		for (Field f : fields) {
 			if (f instanceof Territory) {
@@ -590,51 +590,53 @@ public class MenuController {
 
 		int i = 0;
 
-		Territory[] tempfields = new Territory[22];
+		Territory[] tempfields = new Territory[28];
 
 		for (Field f : fields) {
 			if (f instanceof Territory) {
-				Territory t = (Territory) f; 
-				if (t.getPawned() == false && player.equals(t.getOwner()) && t.getHouse()>0) {
-					tempfields[i] = t;
-					++i;
+				Territory t = (Territory) f;
+				if (t.getPawned() == false && player.equals(t.getOwner()) && t.getHouse() > 0) {
+					tempfields[i++] = t;
 				}
 			} 
 		}
 
-		String[] fieldlist = new String[i];
-		int x = 0;
-		if (i == 1) {
-			fieldlist[x] = tempfields[0].getName();
-		} else if (i == 2) {
-			if (tempfields[0].getHouse() == tempfields[1].getHouse()) {
-				fieldlist[x] = tempfields[0].getName();
-				fieldlist[x+1] = tempfields[1].getName();
-			} else if (tempfields[0].getHouse() > tempfields[1].getHouse()) {
-				fieldlist[x] = tempfields[0].getName();
-			} else if (tempfields[0].getHouse() < tempfields[1].getHouse()) {
-				fieldlist[x] = tempfields[1].getName();
-			}
-		} else if (i == 3){
-			if (tempfields[0].getHouse() == tempfields[1].getHouse() && tempfields[0].getHouse() == tempfields[2].getHouse()) {
-				fieldlist[x] = tempfields[0].getName();
-				fieldlist[x+1] = tempfields[1].getName();
-				fieldlist[x+2] = tempfields[2].getName();
-			} else if (tempfields[0].getHouse() == tempfields[1].getHouse() && tempfields[2].getHouse() > tempfields[0].getHouse()) {
-				fieldlist[x] = tempfields[2].getName();
-			} else if (tempfields[0].getHouse() == tempfields[2].getHouse() && tempfields[1].getHouse() > tempfields[0].getHouse()) {
-				fieldlist[x] = tempfields[1].getName();
-			} else if (tempfields[1].getHouse() == tempfields[2].getHouse() && tempfields[0].getHouse() > tempfields[2].getHouse()) {
-				fieldlist[x] = tempfields[0].getName();
-			} else if (tempfields[0].getHouse() == tempfields[1].getHouse() && tempfields[2].getHouse() < tempfields[0].getHouse()) {
-				fieldlist[x] = tempfields[0].getName();
-				fieldlist[x+1] = tempfields[1].getName();
-			} else if (tempfields[1].getHouse() == tempfields[2].getHouse() && tempfields[0].getHouse() < tempfields[1].getHouse()) {
-				fieldlist[x] = tempfields[1].getName();
-				fieldlist[x+1] = tempfields[2].getName();
-			} else if (tempfields[0].getHouse() == tempfields[2].getHouse() && tempfields[1].getHouse() < tempfields[0].getHouse()) {
-				fieldlist[x] = tempfields[0].getName();
-				fieldlist[x] = tempfields[2].getName();
+		String[] fieldlist = new String[i+1];
+
+		for (int x = 0; x < tempfields.length; x++) {
+
+			if (tempfields[x].getHouse() == 1) {
+				fieldlist[x] = tempfields[x].getName();
+			} else if (i == 2) {
+				if (tempfields[0].getHouse() == tempfields[1].getHouse()) {
+					fieldlist[x++] = tempfields[0].getName();
+					fieldlist[x++] = tempfields[1].getName();
+				} else if (tempfields[0].getHouse() > tempfields[1].getHouse()) {
+					fieldlist[x++] = tempfields[0].getName();
+				} else if (tempfields[0].getHouse() < tempfields[1].getHouse()) {
+					fieldlist[x++] = tempfields[1].getName();
+				}
+			} else if (i == 3){
+				if (tempfields[0].getHouse() == tempfields[1].getHouse() && tempfields[0].getHouse() == tempfields[2].getHouse()) {
+					fieldlist[x++] = tempfields[0].getName();
+					fieldlist[x++] = tempfields[1].getName();
+					fieldlist[x++] = tempfields[2].getName();
+				} else if (tempfields[0].getHouse() == tempfields[1].getHouse() && tempfields[2].getHouse() > tempfields[0].getHouse()) {
+					fieldlist[x++] = tempfields[2].getName();
+				} else if (tempfields[0].getHouse() == tempfields[2].getHouse() && tempfields[1].getHouse() > tempfields[0].getHouse()) {
+					fieldlist[x++] = tempfields[1].getName();
+				} else if (tempfields[1].getHouse() == tempfields[2].getHouse() && tempfields[0].getHouse() > tempfields[2].getHouse()) {
+					fieldlist[x++] = tempfields[0].getName();
+				} else if (tempfields[0].getHouse() == tempfields[1].getHouse() && tempfields[2].getHouse() < tempfields[0].getHouse()) {
+					fieldlist[x++] = tempfields[0].getName();
+					fieldlist[x++] = tempfields[1].getName();
+				} else if (tempfields[1].getHouse() == tempfields[2].getHouse() && tempfields[0].getHouse() < tempfields[1].getHouse()) {
+					fieldlist[x++] = tempfields[1].getName();
+					fieldlist[x++] = tempfields[2].getName();
+				} else if (tempfields[0].getHouse() == tempfields[2].getHouse() && tempfields[1].getHouse() < tempfields[0].getHouse()) {
+					fieldlist[x++] = tempfields[0].getName();
+					fieldlist[x++] = tempfields[2].getName();
+				}
 			}
 		}
 
@@ -646,7 +648,7 @@ public class MenuController {
 			}
 		}
 
-		return string.substring(0,string.length()-1).split("Q");
+		return string.substring(0,string.length()).split("Q");
 	}
 
 
