@@ -282,11 +282,11 @@ public class Territory extends Ownable {
 		this.sellAble = sellAble;
 	}
 	
-	public int getMaxHousesGroup (Territory[] fields) {
+	public int getMaxHousesGroup (Territory[] fields, int group) {
 		int max = 0;
 		for (int i = 0; i < fields.length; i++){
 			if(fields[i] != null){
-			if (fields[i].getHouse() >= max && fields[i].getFieldGroup() == fieldgroup){
+			if (fields[i].getHouse() >= max && fields[i].getFieldGroup() == group){
 					max = fields[i].getHouse();	
 			} else {
 				System.out.println("NFEJL....");
