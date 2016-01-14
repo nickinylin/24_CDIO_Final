@@ -26,8 +26,7 @@ public class Language {
 	public static final String bankrupt = "Gå Bankerot";
 	public static final String sellallfields = "Sælg Alle Felter";
 	
-	// Sell Menu
-
+	public static final String roll = ": Slå med terningerne";
 	public static final String undo = "Fortryd";
 	
 	public static final String price = "Pris";
@@ -44,9 +43,15 @@ public class Language {
 	
 	public static final String luck = "Prøv lykken";
 	
+	public static final String prisonpay = "Betal 1000 kr";
+	public static final String prisonroll = "Slå med terningerne";
+	public static final String prison_stillinjail = " du er stadig i fængslet.";
+	public static final String prisonround2 = "Dette er din tur nummer ";
+	public static final String prisonround3 = " i fængslet.";
+	public static final String prisonmaxturns = "Du har været i fængsel i 3 omgange og betaler automatisk 1000 kr for at komme ud";
 	
-	
-	
+	public static final String win_message1 = " har vundet spillet med et total af";
+	public static final String win_message2 = "aktiver.";
 	// Fields
 	public static final String field_Start = "START";
 	public static final String field_Roedovrevej = "Rødovrevej";

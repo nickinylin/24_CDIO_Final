@@ -42,7 +42,7 @@ public class JailController {
 	public boolean rollOutOfJail(Player player, Field[] fields) {
 
 		if (player.getJailTurn() < 2){
-			GUI.getUserButtonPressed("", player.getName()+": Slå med terningerne");
+			GUI.getUserButtonPressed("", player.getName() + Language.roll);
 			Dice.roll();
 			GUI.setDice(Dice.getDice1(), Dice.getDice2());
 
@@ -55,16 +55,16 @@ public class JailController {
 				return true;
 			}
 			player.setJailTurn(1);
-			GUI.showMessage("Du er stadig i fængsel");
+			GUI.showMessage(player.getName() + Language.prison_stillinjail);
 			return false;
 		} else {
 			player.setIsInJail(false);
 			player.resetJailTurn();
 			player.payMoney(1000);
 			GUI.setBalance(player.getName(), player.getMoney());
-			GUI.displayChanceCard("Du har været i fængsel i 3 omgange og betaler automatisk 1000 kr for at komme ud");
+			GUI.displayChanceCard(Language.prisonmaxturns);
 			
-			GUI.getUserButtonPressed("", player.getName()+": Slå med terningerne");
+			GUI.getUserButtonPressed("", player.getName() + Language.roll);
 			Dice.roll();
 			GUI.setDice(Dice.getDice1(), Dice.getDice2());
 			

@@ -72,7 +72,7 @@ public class Game {
 
 
 		// Roll Dices
-		GUI.getUserButtonPressed("", player.getName()+": Slå med terningerne");
+		GUI.getUserButtonPressed("", player.getName() + Language.roll);
 		Dice.roll();
 		GUI.setDice(Dice.getDice1(), Dice.getDice2());
 
@@ -140,7 +140,8 @@ public class Game {
 
 	public void doJailTurn(Player player) {
 
-		boolean payFine = GUI.getUserLeftButtonPressed(""+player.getName()+"", "Betal 1000 kr", "Slå med terningerne");
+		GUI.displayChanceCard(player.getName() + Language.prison_stillinjail +"<br><br>"+ Language.prisonround2 + player.getJailTurn() + Language.prisonround3);
+		boolean payFine = GUI.getUserLeftButtonPressed(""+player.getName()+"", Language.prisonpay, Language.prisonroll);
 
 		if (payFine) {
 
@@ -176,24 +177,15 @@ public class Game {
 
 		if (numberofplayers == count) {
 
-			//				for (int x = 1; x < players.length; x++) {
-			//
-			//				}
-			//				if (players[i].bankruptCheck()) {
-			//				}
-			//				GUI.displayChanceCard("<center>"+ players[i].getName() +" har vundet spillet med et total af <br><br> "+players[i].getAssets()+"<br>aktiver.");
+			for (int x = 0; x < players.length; x++) {
 
-			for (int x = 0; x < players.length; x++) 
-			{
-
-				if (!players[x].bankruptCheck()) 
-				{
-					GUI.displayChanceCard("<center>"+players[x].getName()+" har vundet spillet med et total af <br><br> "+players[x].getAssets()+"<br>aktiver.");
+				if (!players[x].bankruptCheck()) {
+					GUI.displayChanceCard("<center>"+players[x].getName()+ Language.win_message1 +"<br><br>"+players[x].getAssets()+"<br>"+Language.win_message2);
+// TODO quit eller newgame
 					GUI.showMessage("");									
 					goOn=false;
 				}
 			}
-
 
 		}
 
