@@ -586,59 +586,33 @@ public class MenuController {
 		return string.substring(0,string.length()-1).split("Q");
 	}
 
-	private String[] getWhereToSellBuilding(Player player, Field[] fields) {
-
+	
+	public String[] getWhereToSellBuildings(Player player, Field[] fields) {
+		String[] fieldlist = new String[22];
+		Territory[] tempfields1 = new Territory[22];
 		int i = 0;
-
-		Territory[] tempfields = new Territory[28];
-
+		int y  = 0;
 		for (Field f : fields) {
 			if (f instanceof Territory) {
 				Territory t = (Territory) f;
-				if (t.getPawned() == false && player.equals(t.getOwner()) && t.getHouse() > 0) {
-					tempfields[i++] = t;
+				if (!t.getPawned() && player.equals(t.getOwner()) && t.getHouse()>0) {
+					tempfields1[i++] = t;
 				}
-			} 
-		}
+				
+				Territory[] tempfields2 = new Territory[i];
+				for (int x = 0; x < tempfields2.length; x++){
+//					if (tempfields1[x].getFieldGroup() == ){
+						tempfields2[x] = tempfields1[x];
 
-		String[] fieldlist = new String[i+1];
+						if (tempfields2[x].getMaxHousesGroup(tempfields2) == tempfields2[x].getHouse()){
+							fieldlist[y++] = tempfields2[x].getName();
+						}
 
-		for (int x = 0; x < tempfields.length; x++) {
-
-			if (tempfields[x].getHouse() == 1) {
-				fieldlist[x] = tempfields[x].getName();
-			} else if (i == 2) {
-				if (tempfields[0].getHouse() == tempfields[1].getHouse()) {
-					fieldlist[x++] = tempfields[0].getName();
-					fieldlist[x++] = tempfields[1].getName();
-				} else if (tempfields[0].getHouse() > tempfields[1].getHouse()) {
-					fieldlist[x++] = tempfields[0].getName();
-				} else if (tempfields[0].getHouse() < tempfields[1].getHouse()) {
-					fieldlist[x++] = tempfields[1].getName();
+					}
 				}
-			} else if (i == 3){
-				if (tempfields[0].getHouse() == tempfields[1].getHouse() && tempfields[0].getHouse() == tempfields[2].getHouse()) {
-					fieldlist[x++] = tempfields[0].getName();
-					fieldlist[x++] = tempfields[1].getName();
-					fieldlist[x++] = tempfields[2].getName();
-				} else if (tempfields[0].getHouse() == tempfields[1].getHouse() && tempfields[2].getHouse() > tempfields[0].getHouse()) {
-					fieldlist[x++] = tempfields[2].getName();
-				} else if (tempfields[0].getHouse() == tempfields[2].getHouse() && tempfields[1].getHouse() > tempfields[0].getHouse()) {
-					fieldlist[x++] = tempfields[1].getName();
-				} else if (tempfields[1].getHouse() == tempfields[2].getHouse() && tempfields[0].getHouse() > tempfields[2].getHouse()) {
-					fieldlist[x++] = tempfields[0].getName();
-				} else if (tempfields[0].getHouse() == tempfields[1].getHouse() && tempfields[2].getHouse() < tempfields[0].getHouse()) {
-					fieldlist[x++] = tempfields[0].getName();
-					fieldlist[x++] = tempfields[1].getName();
-				} else if (tempfields[1].getHouse() == tempfields[2].getHouse() && tempfields[0].getHouse() < tempfields[1].getHouse()) {
-					fieldlist[x++] = tempfields[1].getName();
-					fieldlist[x++] = tempfields[2].getName();
-				} else if (tempfields[0].getHouse() == tempfields[2].getHouse() && tempfields[1].getHouse() < tempfields[0].getHouse()) {
-					fieldlist[x++] = tempfields[0].getName();
-					fieldlist[x++] = tempfields[2].getName();
+
+				
 				}
-			}
-		}
 
 		String string = new String();
 
@@ -647,9 +621,75 @@ public class MenuController {
 				string+=fieldlist[j]+"Q";
 			}
 		}
+		
 
 		return string.substring(0,string.length()).split("Q");
-	}
+			}
+	
+//	private String[] getWhereToSellBuilding(Player player, Field[] fields) {
+//
+//		int i = 0;
+//
+//		Territory[] tempfields = new Territory[28];
+//
+//		for (Field f : fields) {
+//			if (f instanceof Territory) {
+//				Territory t = (Territory) f;
+//				if (t.getPawned() == false && player.equals(t.getOwner()) && t.getHouse() > 0) {
+//					tempfields[i++] = t;
+//				}
+//			} 
+//		}
+//
+//		String[] fieldlist = new String[i+1];
+//
+//		for (int x = 0; x < tempfields.length; x++) {
+//
+//			if (tempfields[x].getHouse() == 1) {
+//				fieldlist[x] = tempfields[x].getName();
+//			} else if (i == 2) {
+//				if (tempfields[0].getHouse() == tempfields[1].getHouse()) {
+//					fieldlist[x++] = tempfields[0].getName();
+//					fieldlist[x++] = tempfields[1].getName();
+//				} else if (tempfields[0].getHouse() > tempfields[1].getHouse()) {
+//					fieldlist[x++] = tempfields[0].getName();
+//				} else if (tempfields[0].getHouse() < tempfields[1].getHouse()) {
+//					fieldlist[x++] = tempfields[1].getName();
+//				}
+//			} else if (i == 3){
+//				if (tempfields[0].getHouse() == tempfields[1].getHouse() && tempfields[0].getHouse() == tempfields[2].getHouse()) {
+//					fieldlist[x++] = tempfields[0].getName();
+//					fieldlist[x++] = tempfields[1].getName();
+//					fieldlist[x++] = tempfields[2].getName();
+//				} else if (tempfields[0].getHouse() == tempfields[1].getHouse() && tempfields[2].getHouse() > tempfields[0].getHouse()) {
+//					fieldlist[x++] = tempfields[2].getName();
+//				} else if (tempfields[0].getHouse() == tempfields[2].getHouse() && tempfields[1].getHouse() > tempfields[0].getHouse()) {
+//					fieldlist[x++] = tempfields[1].getName();
+//				} else if (tempfields[1].getHouse() == tempfields[2].getHouse() && tempfields[0].getHouse() > tempfields[2].getHouse()) {
+//					fieldlist[x++] = tempfields[0].getName();
+//				} else if (tempfields[0].getHouse() == tempfields[1].getHouse() && tempfields[2].getHouse() < tempfields[0].getHouse()) {
+//					fieldlist[x++] = tempfields[0].getName();
+//					fieldlist[x++] = tempfields[1].getName();
+//				} else if (tempfields[1].getHouse() == tempfields[2].getHouse() && tempfields[0].getHouse() < tempfields[1].getHouse()) {
+//					fieldlist[x++] = tempfields[1].getName();
+//					fieldlist[x++] = tempfields[2].getName();
+//				} else if (tempfields[0].getHouse() == tempfields[2].getHouse() && tempfields[1].getHouse() < tempfields[0].getHouse()) {
+//					fieldlist[x++] = tempfields[0].getName();
+//					fieldlist[x++] = tempfields[2].getName();
+//				}
+//			}
+//		}
+//
+//		String string = new String();
+//
+//		for (int j = 0; j < fieldlist.length; j++) {
+//			if (fieldlist[j] != null) {
+//				string+=fieldlist[j]+"Q";
+//			}
+//		}
+//
+//		return string.substring(0,string.length()).split("Q");
+//	}
 
 
 
