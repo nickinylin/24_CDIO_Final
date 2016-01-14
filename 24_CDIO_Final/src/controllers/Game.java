@@ -26,6 +26,7 @@ public class Game {
 	private FleetController fleetController = new FleetController();
 	private LaborController laborController = new LaborController();
 	private JailController jailController = new JailController();
+	private LuckController luckController = new LuckController();
 	private RefugeController refugeController = new RefugeController();
 	private MenuController menuController = new MenuController();
 	private Player[] players;
@@ -128,9 +129,9 @@ public class Game {
 		} else if (currentfield instanceof Refuge) {
 			refugeController.landOnRefuge(players, player, ((Refuge) currentfield), fields);
 		} else if (currentfield instanceof Luck) {
-			//			luckController.landOnLuck(players, player, ((Luck) currentfield), fields);
+			luckController.landOnLuck(players, player, ((Luck) currentfield), fields);
 		} else if (currentfield instanceof Jail) {
-			//			jailController.jail(player, fields);
+			jailController.jail(player, fields);
 		} else if (currentfield instanceof Tax) {
 			taxController.payTax(player, ((Tax) currentfield));
 		}
