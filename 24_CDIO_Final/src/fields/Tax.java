@@ -6,9 +6,6 @@
 
 package fields;
 
-import desktop_resources.GUI;
-import game.Player;
-
 public class Tax extends Field {
     private int taxAmount;
     private String special;
