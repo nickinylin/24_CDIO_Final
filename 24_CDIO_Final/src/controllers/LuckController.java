@@ -167,6 +167,7 @@ public class LuckController {
 				//kort der rykker en fremad
 			} else {
 				PlayerController.movePlayer(player,move.getExtraMoves(),fields);
+			}
 				int destination = player.getPlayerPosition()-1;
 				//felt aktivering.
 				if(fields[destination] instanceof Territory) {
@@ -191,7 +192,7 @@ public class LuckController {
 					JailController jailcontroller = new JailController();
 					jailcontroller.jail(player, fields);
 				}
-			}
+		
 		}
 	}
 	
