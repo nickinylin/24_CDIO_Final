@@ -50,7 +50,7 @@ public class Game {
 			for (int i = 0; i < players.length; i++) {
 
 				if (players[i].getBankrupt()) {
-					//					noWinner=checkWinner();
+					noWinner=checkWinner();
 				} else if (players[i].isInJail()) {
 					doJailTurn(players[i]);
 				} else {
