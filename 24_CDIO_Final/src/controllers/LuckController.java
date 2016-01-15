@@ -187,6 +187,10 @@ public class LuckController {
 					JailController jailcontroller = new JailController();
 					jailcontroller.jail(player, fields);
 				}
+				else if(fields[destination] instanceof Refuge){
+					RefugeController refugecontroller=new RefugeController();
+					refugecontroller.landOnRefuge(group, player, (Refuge) fields[destination], fields);
+				}
 		
 		}
 		
