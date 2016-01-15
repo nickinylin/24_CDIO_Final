@@ -21,19 +21,19 @@ public class MenuController {
 		final String button7 = Language.bankrupt;
 		final String button8 = Language.sellallfields;
 
-		if (checkYouCanBuyField(player, currentfield, fields)) {
+		if (checkYouCanBuyField(player, fields[player.getPlayerPosition()-1], fields)) {
 			tempmenu[count++] = button1;
 		}
-		if (checkOwnField(player, currentfield, fields)) {
+		if (checkOwnField(player, fields)) {
 			tempmenu[count++] = button2;
 		}
-		if (checkPawnField(player, currentfield, fields) || checkUnPawnField(player, currentfield, fields)) {
+		if (checkPawnField(player, fields) || checkUnPawnField(player, fields)) {
 			tempmenu[count++] = button3;
 		}
-		if (checkBuyBuilding(player, currentfield, fields)) {
+		if (checkBuyBuilding(player, fields[player.getPlayerPosition()-1], fields)) {
 			tempmenu[count++] = button4;
 		}
-		if (checkBuildingExists(player, currentfield, fields)) {
+		if (checkBuildingExists(player, fields)) {
 			tempmenu[count++] = button5;
 		}
 		if(player.getMoney()>=0) {
@@ -153,11 +153,11 @@ public class MenuController {
 			nextTurn = false;
 			String pantsæt = null;
 
-			if (checkPawnField(player, currentfield, fields) && checkUnPawnField(player, currentfield, fields)) {
+			if (checkPawnField(player, fields) && checkUnPawnField(player, fields)) {
 				pantsæt = GUI.getUserButtonPressed(player.getName(), Language.pawn, Language.unpawn, Language.undo);
-			} else if (checkPawnField(player, currentfield, fields)){
+			} else if (checkPawnField(player, fields)){
 				pantsæt = GUI.getUserButtonPressed(player.getName(), Language.pawnfield, Language.undo);
-			} else if (checkUnPawnField(player, currentfield, fields)) {
+			} else if (checkUnPawnField(player, fields)) {
 				pantsæt = GUI.getUserButtonPressed(player.getName(), Language.unpawn, Language.undo);
 			}
 
@@ -306,7 +306,7 @@ public class MenuController {
 		case button5: // sælg bygning
 			nextTurn = false;
 
-			if (checkBuildingExists(player, currentfield, fields)) {
+			if (checkBuildingExists(player, fields)) {
 				String[] sellBuildingFieldlist = getWhereToSellBuildings(player, fields);
 				String regretBuildingSale = GUI.getUserButtonPressed(player.getName(), Language.sellbuilding, Language.undo);
 				if(regretBuildingSale == Language.sellbuilding){
@@ -367,7 +367,7 @@ public class MenuController {
 	}
 
 
-	private boolean checkPawnField(Player player, Field currentfield, Field[] fields) {
+	private boolean checkPawnField(Player player, Field[] fields) {
 		int i = 0;
 		for (Field f : fields) {
 			if (f instanceof Territory) {
@@ -385,7 +385,7 @@ public class MenuController {
 		}
 	}
 
-	private boolean checkUnPawnField(Player player, Field currentfield, Field[] fields) {
+	private boolean checkUnPawnField(Player player, Field[] fields) {
 
 		for (int i = 0; i < fields.length; i++) {
 			Field f = fields[i];
@@ -646,7 +646,7 @@ public class MenuController {
 	}
 
 
-	private boolean checkOwnField(Player player, Field currentfield, Field[] fields) {
+	private boolean checkOwnField(Player player, Field[] fields) {
 
 		int i = 0;
 
@@ -718,7 +718,7 @@ public class MenuController {
 		return false;
 	}
 
-	private boolean checkBuildingExists(Player player, Field currentfield, Field[] fields) {
+	private boolean checkBuildingExists(Player player, Field[] fields) {
 
 		for (Field f : fields) {
 			if (f instanceof Territory) {
