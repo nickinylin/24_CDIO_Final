@@ -810,7 +810,7 @@ public class MenuController {
 					territory.fieldowned = false;
 					territory.fieldowner = null;
 					GUI.removeOwner(i+1);
-					GUI.setDescriptionText(i+1, Language.price +": "+ territory.getPrice());
+					GUI.setSubText(i+1, Language.price +": "+ territory.getPrice());
 
 					if (territory.getHouse() > 0) {
 						GUI.setHouses(i+1, 0);
@@ -824,7 +824,7 @@ public class MenuController {
 					labor.fieldowned = false;
 					labor.fieldowner = null;
 					GUI.removeOwner(i+1);
-					GUI.setDescriptionText(i+1, Language.price +": "+ labor.getPrice());
+					GUI.setSubText(i+1, Language.price +": "+ labor.getPrice());
 				}
 			}
 
@@ -834,7 +834,7 @@ public class MenuController {
 					fleet.fieldowned = false;
 					fleet.fieldowner = null;
 					GUI.removeOwner(i+1);
-					GUI.setDescriptionText(i+1, Language.price +": "+ fleet.getPrice());
+					GUI.setSubText(i+1, Language.price +": "+ fleet.getPrice());
 				}
 			}
 
