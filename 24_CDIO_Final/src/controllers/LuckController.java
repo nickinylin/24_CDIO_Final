@@ -119,15 +119,20 @@ public class LuckController {
 					} else if (i >= fields.length) {
 						i=0;
 					}
+					
 				}
 
 				if(player.getPlayerPosition() > i) {
-					PlayerController.movePlayer(player, i-(fields.length-player.getPlayerPosition()), fields);
+					PlayerController.movePlayer(player, i+fields.length-player.getPlayerPosition(), fields);
 				} else {
 					PlayerController.movePlayer(player, i-player.getPlayerPosition()+1, fields);
-					fleetcontroller.landOnFleet(group, player, fleet, fields);
 				}
-
+				if (!player.getName().equals(fleet.getOwner().getName())){
+					player.payMoney(fleet.getRent(fleet.getOwner(), fields)*2);
+					fleet.getOwner().giveMoney(fleet.getRent(fleet.getOwner(), fields)*2);
+				}else{
+				fleetcontroller.landOnFleet(group, player, fleet, fields);
+				}
 			}
 
 			if (move.getDestination().equals(Language.field_Jail)){
