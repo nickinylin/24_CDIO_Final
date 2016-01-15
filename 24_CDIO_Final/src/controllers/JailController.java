@@ -39,7 +39,7 @@ public class JailController {
 		
 	}
 
-	public boolean rollOutOfJail(Player player, Field[] fields) {
+	public boolean rollOutOfJail(Player[] players,Player player, Field[] fields) {
 
 		if (player.getJailTurn() < 2){
 			GUI.getUserButtonPressed("", player.getName() + Language.roll);
@@ -51,18 +51,20 @@ public class JailController {
 				player.setIsInJail(false);
 				player.resetJailTurn();
 				player.setNumberOfExtraTurns(1);
-				
 				return true;
-			}
+			}else{
 			player.setJailTurn(1);
 			GUI.showMessage(player.getName() + Language.prison_stillinjail);
 			return false;
+			}
 		} else {
+			GUI.getUserButtonPressed("", player.getName() + Language.roll);
+			Dice.roll();
+			GUI.setDice(Dice.getDice1(), Dice.getDice2());
 			if (Dice.issame()){
 				player.setIsInJail(false);
 				player.resetJailTurn();
 				player.setNumberOfExtraTurns(1);
-				
 				return true;
 			}else{
 			player.setIsInJail(false);
@@ -70,16 +72,10 @@ public class JailController {
 			player.payMoney(1000);
 			GUI.setBalance(player.getName(), player.getMoney());
 			GUI.displayChanceCard(Language.prisonmaxturns);
-			
-			GUI.getUserButtonPressed("", player.getName() + Language.roll);
-			Dice.roll();
-			GUI.setDice(Dice.getDice1(), Dice.getDice2());
-			
 			return true;
 		}
 
 	}
 
 	}
-
 }
