@@ -24,10 +24,10 @@ public class Dice {
      * and setting a new value for dice1 and dice2
      */
     public static void roll(){
-//        value1 = (int)(Math.random()*6)+1;
-//        value2 = (int)(Math.random()*6)+1;
-    	value1 = 1;
-    	value2 = 1;
+        value1 = (int)(Math.random()*6)+1;
+        value2 = (int)(Math.random()*6)+1;
+//    	value1 = 3;
+//    	value2 = 1;
     }
     
     /**
