@@ -434,7 +434,7 @@ public class MenuController {
 		String[] names = new String[i];
 
 		for (int count = 0; count < i; count++) {
-			names[i++] = tempnames[count];
+			names[count] = tempnames[count];
 		}
 
 		return names;
