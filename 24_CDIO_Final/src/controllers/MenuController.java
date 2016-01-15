@@ -646,7 +646,7 @@ public class MenuController {
 	}
 
 
-	private boolean checkOwnField(Player player, Field[] fields) {
+	protected boolean checkOwnField(Player player, Field[] fields) {
 
 		int i = 0;
 
