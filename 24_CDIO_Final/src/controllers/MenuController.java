@@ -53,12 +53,12 @@ public class MenuController {
 		switch(button) {
 
 		case button1: // Køb felt
-			String regretBuyField = GUI.getUserButtonPressed(player.getName(), Language.buyfield, Language.undo);
-			if(regretBuyField == Language.buyfield){
+//			String regretBuyField = GUI.getUserButtonPressed(player.getName(), Language.buyfield, Language.undo);
+//			if(regretBuyField == Language.buyfield){
 			((Ownable) currentfield).buyField(player, fields);
 			GUI.setBalance(player.getName(), player.getMoney());
 			((Ownable) currentfield).updateFieldGroup(player, currentfield, fields);
-			}
+//			}
 			break;
 
 		case button2: // Sælg felt
