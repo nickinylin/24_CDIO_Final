@@ -28,11 +28,12 @@ public class LuckController {
 			//hvis samtlige spillere er involverede.		
 		} else if (card instanceof CardsShare) {
 			CardsShare transaction = (CardsShare) card;
-			int moneyPool;
-			moneyPool = transaction.getvalue()*group.length;
+			int moneyPool=0;
 
 			for(int i=0; i<group.length;i++){
+				if(!group[i].getBankrupt())
 				group[i].payMoney(transaction.getvalue());
+				moneyPool=moneyPool+transaction.getvalue();
 				GUI.setBalance(group[i].getName(), group[i].getMoney());
 			}
 
