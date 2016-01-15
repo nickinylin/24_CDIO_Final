@@ -11,15 +11,15 @@ public class FleetController {
 
 		if (fleet.fieldowned) {
 
-			if (fleet.fieldowner.equals(player) == false) {
-
-				fleet.payRent(player, fields);
+			if (player.equals(fleet.fieldowner)) {
+				GUI.displayChanceCard(player.getName() +"<br><br>"+ Language.ownable_landon3 + fleet.getName() + Language.ownable_landon4);
+			} else {
+				GUI.displayChanceCard(player.getName() +"<br><br>"+ Language.ownable_landon1 + fleet.getName() + Language.ownable_landon2 + fleet.getOwner().getName() +"<br><br>"+ Language.ownable_rent1 + fleet.getRent(fleet.getOwner(), fields) + Language.ownable_rent2);				fleet.payRent(player, fields);
 				GUI.setBalance(player.getName(), player.getMoney());
-				
 			}
 
 		} else {
-
+			GUI.displayChanceCard(player.getName() +"<br><br>"+ Language.ownable_landon1 + fleet.getName() + Language.ownable_buy1 +"<br><br>"+ Language.ownable_buy2 + fleet.getPrice());
 			fleet.updateFieldGroup(player, fleet, fields);
 			
 		}

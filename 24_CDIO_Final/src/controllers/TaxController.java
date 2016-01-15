@@ -10,9 +10,9 @@ public class TaxController {
 		
 		if (field.getSpecial().equals("special")) {
 
-            GUI.displayChanceCard("<center>"+player.getName()+" har landet på et TAX felt");
+            GUI.displayChanceCard("<center>"+player.getName() + Language.tax_landon1);
             
-            boolean boo = GUI.getUserLeftButtonPressed(""+player.getName()+"", "Betal 10%", "Betal "+ field.getRent() +"");
+            boolean boo = GUI.getUserLeftButtonPressed(""+player.getName()+"", Language.tax_10pct, Language.tax_pay + field.getRent());
             
             if (boo) {
                 int payamount = player.getAssets()*10/100;
@@ -23,7 +23,7 @@ public class TaxController {
                     
                 } else {
                     
-            		String paymethod = GUI.getUserButtonPressed("Hvordan vil du betale?", "Sælg felt", "Sælg bygning", "Bankrupt");
+            		String paymethod = GUI.getUserButtonPressed(Language.tax_missing$, "Sælg felt", "Sælg bygning", "Bankrupt");
             		
             		if (paymethod == "Sælg felt") {
             			//Sælg felt metode

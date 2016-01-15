@@ -150,11 +150,16 @@ public class Language {
 	public static final String ownable_buy2 = "Du har mulighed for at købe feltet for ";
 	
 	// Territory
-	public static final String territory_landon1 = "Du er landet på ";
-	public static final String territory_landon2 = ", som er ejet af ";
-	public static final String territory_landon3 = "Du er landet på ";
-	public static final String territory_landon4 = ", som du selv ejer.";
+	public static final String ownable_landon1 = "Du er landet på ";
+	public static final String ownable_landon2 = ", som er ejet af ";
+	public static final String ownable_landon3 = "Du er landet på ";
+	public static final String ownable_landon4 = ", som du selv ejer.";
 	
+	// TAX
+	public static final String tax_landon1 = " er landet på et TAX felt.";
+	public static final String tax_10pct = "Betal 10%";
+	public static final String tax_pay = "Betal ";
+	public static final String tax_missing$ = "Hvordan vil du betale?";
 	
 	
 	}
