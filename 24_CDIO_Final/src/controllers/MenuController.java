@@ -52,15 +52,16 @@ public class MenuController {
 
 		switch(button) {
 
-		case button1:
-
+		case button1: // Køb felt
+			String regretBuyField = GUI.getUserButtonPressed(player.getName(), Language.buyfield, Language.undo);
+			if(regretBuyField == Language.buyfield){
 			((Ownable) currentfield).buyField(player, fields);
 			GUI.setBalance(player.getName(), player.getMoney());
 			((Ownable) currentfield).updateFieldGroup(player, currentfield, fields);
-
+			}
 			break;
 
-		case button2:
+		case button2: // Sælg felt
 			String[] fieldlist = getPlayerOwnedFields(player, fields);
 
 			String buyfield = GUI.getUserSelection(player.getName(), fieldlist);
@@ -148,7 +149,7 @@ public class MenuController {
 
 			break;
 
-		case button3:
+		case button3: // Pantsæt felt
 			nextTurn = false;
 			String pantsæt = null;
 
@@ -348,11 +349,14 @@ public class MenuController {
 			}
 
 		case button7: // Gå bankerot
+			String regretBankrupt = GUI.getUserButtonPressed(player.getName(), Language.bankrupt, Language.undo);
+			if(regretBankrupt == Language.bankrupt){
 			nextTurn = true;
 			player.bankrupt(); // Spilleren fjernes
 			sellAllAssets(player, fields);
+			}
 			break;
-
+			
 		case button8:
 			sellAllAssets(player, fields);
 
