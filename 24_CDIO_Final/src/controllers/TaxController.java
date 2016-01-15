@@ -20,71 +20,20 @@ public class TaxController {
 			if (boo) {
 				int payamount = player.getAssets()*10/100;
 
-				if (player.getMoney() > payamount) {
-					player.payMoney(payamount);
-					GUI.setBalance(player.getName(), player.getMoney());
-
-				} else {
-
-					String paymethod = GUI.getUserButtonPressed(Language.tax_missing$, Language.sellfield, Language.sellbuilding, Language.bankrupt);
-
-					if (paymethod == Language.sellfield) {
-						menuController.checkOwnField(player, fields);
-					} else if (paymethod == Language.sellbuilding) {
-						menuController.getWhereToSellBuildings(player, fields);
-					} else if (paymethod == Language.bankrupt) {
-						player.bankrupt();
-					}
-
-				}
-
-				GUI.displayChanceCard("<center>"+player.getName()+ Language.tax_landon1 + "<br><br>" + Language.ownable_rent1 + payamount);
-
-			} else {
-
-				if (player.getMoney() > field.getRent()) {
-
-					player.payMoney(field.getRent());
-					GUI.setBalance(player.getName(), player.getMoney());
-
-				} else {
-
-					String paymethod = GUI.getUserButtonPressed(Language.tax_missing$, Language.sellfield, Language.sellbuilding, Language.bankrupt);
-
-					if (paymethod == Language.sellfield) {
-						menuController.checkOwnField(player, fields);
-					} else if (paymethod == Language.sellbuilding) {
-						menuController.getWhereToSellBuildings(player, fields);
-					} else if (paymethod == Language.bankrupt) {
-						player.bankrupt();
-					}
-
-				}
-				GUI.displayChanceCard("<center>"+player.getName()+ Language.tax_landon1 + "<br><br>" + Language.ownable_rent1 + field.getRent());
-			}
-			GUI.setBalance(player.getName(), player.getMoney());
-
-		} else { // There was no special tax option
-
-			if (player.getMoney() < field.getRent()) {
-
-				String paymethod = GUI.getUserButtonPressed(Language.tax_missing$, Language.sellfield, Language.sellbuilding, Language.bankrupt);
-
-				if (paymethod == Language.sellfield) {
-					menuController.checkOwnField(player, fields);
-				} else if (paymethod == Language.sellbuilding) {
-					menuController.getWhereToSellBuildings(player, fields);
-				} else if (paymethod == Language.bankrupt) {
-					player.bankrupt();
-				}
+				player.payMoney(payamount);
+				GUI.setBalance(player.getName(), player.getMoney());
 
 			} else {
 
 				player.payMoney(field.getRent());
 				GUI.setBalance(player.getName(), player.getMoney());
-				GUI.displayChanceCard("<center>"+player.getName()+ Language.tax_landon1 + "<br><br>" + Language.ownable_rent1 + field.getRent());
 
 			}
+
+		} else { // There was no special tax option
+
+			player.payMoney(field.getRent());
+			GUI.setBalance(player.getName(), player.getMoney());
 
 		}
 	}
