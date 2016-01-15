@@ -47,13 +47,13 @@ public class Game {
 		boolean noWinner = true;
 
 		while (noWinner) {
-			noWinner=checkWinner();
+			noWinner = checkWinner();
 			if (!noWinner){
 				break;
 			}
 			for (int i = 0; i < players.length; i++) {
 
-				if (players[i].bankruptCheck()) {
+				if (!players[i].getBankrupt()) {
 					//					noWinner=checkWinner();
 				} else if (players[i].isInJail()) {
 					doJailTurn(players[i]);
@@ -162,25 +162,25 @@ public class Game {
 
 
 	public boolean checkWinner() {
-		boolean goOn=true;
-		int numberofplayers = players.length;
+		boolean goOn = true;
 		int count = 1;
 
 		for (int i = 0; i < players.length; i++) {
 
-			if (players[i].bankruptCheck()) {
+			if (!players[i].getBankrupt()) {
 				menuController.sellAllAssets(players[i], fields);
-				GUI.setBalance(players[i].getName(), -1);
-				players[i].bankrupt();
+				players[i].payMoney(players[i].getMoney());
+				players[i].setAssets(players[i].getAssets()-1);
+				GUI.setBalance(players[i].getName(), players[i].getMoney());
 				count++;
 			}
 		}
 
-		if (numberofplayers == count) {
+		if (players.length == count) {
 
 			for (int x = 0; x < players.length; x++) {
 
-				if (!players[x].bankruptCheck()) {
+				if (players[x].getBankrupt()) {
 					GUI.displayChanceCard("<center>"+players[x].getName()+ Language.win_message1 +"<br><br>"+players[x].getAssets()+"<br>"+Language.win_message2);
 // TODO quit eller newgame
 					GUI.showMessage("");									

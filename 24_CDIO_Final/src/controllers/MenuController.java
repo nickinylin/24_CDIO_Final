@@ -352,8 +352,10 @@ public class MenuController {
 			String regretBankrupt = GUI.getUserButtonPressed(player.getName(), Language.bankrupt, Language.undo);
 			if(regretBankrupt == Language.bankrupt){
 			nextTurn = true;
-			player.bankrupt(); // Spilleren fjernes
+			player.setBankrupt();
 			sellAllAssets(player, fields);
+			player.payMoney(player.getMoney());
+			GUI.setBalance(player.getName(), player.getMoney());
 			}
 			break;
 			
@@ -422,7 +424,7 @@ public class MenuController {
 		for (int s = 0; s < players.length ; s++) {
 			if (player.getName().equals(players[s].getName())) {
 
-			} else if (player.bankruptCheck() == false){
+			} else if (player.getBankrupt()){
 				playernames[j] = players[s].getName();
 				j++;
 			}

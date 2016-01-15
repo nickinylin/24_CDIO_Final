@@ -75,22 +75,33 @@ public class Player {
 		return true;
 	}
 
-	public boolean bankruptCheck() {
-
-		boolean bankrupt = false;
-
-		if (getAssets() < 0) {
-			bankrupt = true;
-			this.bankrupt = true;
-		}
-		return bankrupt;
+	public boolean getBankrupt() {
+		return this.bankrupt;
 	}
 	
-	public void bankrupt() {
+	public boolean setBankrupt() {
 		bank.payMoney(bank.getMoney());
 		bank.setAssets(bank.getAssets()-1);
 		this.bankrupt = true;
+		return this.bankrupt;
 	}
+//	
+//	public boolean bankruptCheck() {
+//
+//		boolean bankrupt = false;
+//
+//		if (getAssets() < 0) {
+//			bankrupt = true;
+//			this.bankrupt = true;
+//		}
+//		return bankrupt;
+//	}
+	
+//	public void bankrupt() {
+//		bank.payMoney(bank.getMoney());
+//		bank.setAssets(bank.getAssets()-1);
+//		this.bankrupt = true;
+//	}
 
 	public int getMoney(){
 		return bank.getMoney();
