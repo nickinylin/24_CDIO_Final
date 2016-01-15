@@ -829,7 +829,7 @@ public class MenuController {
 	}
 
 
-	public void showMenu(Player[] players, Player player, Field currentfield, Field[] fields) {
+	public void showMenu(Player[] players, Player player, Field[] fields) {
 		boolean res;
 		do{
 			res = menuBuild(players, player, fields);
