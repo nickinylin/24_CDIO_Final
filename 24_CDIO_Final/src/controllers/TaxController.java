@@ -16,10 +16,7 @@ public class TaxController {
 			boolean boo = GUI.getUserLeftButtonPressed(player.getName(), Language.tax_10pct, Language.tax_pay + field.getRent());
 
 			if (boo) {
-				System.out.println("Assets: "+player.getAssets());
-				System.out.println("Money: "+player.getMoney());
-				System.out.println((player.getAssets()+player.getMoney())/10);
-				int payamount = (player.getAssets()+player.getMoney())/10;
+				int payamount = player.getAssets()/10;
 
 				player.payMoney(payamount);
 				GUI.setBalance(player.getName(), player.getMoney());
