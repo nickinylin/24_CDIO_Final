@@ -418,17 +418,17 @@ public class MenuController {
 	}
 
 
-	private String[] getAllPlayerNamesExceptPlayer(Player[] players, Player player) {
+	private String[] getAllPlayerNamesExceptPlayer(Player[] players, Player currentplayer) {
 
 		String[] tempnames = new String[players.length-1];
 
 		int i = 0;
 
-		for (Player spillere : players) {
-			if (player.getBankrupt() || player.equals(spillere)) {
+		for (Player p : players) {
+			if (p.getBankrupt() || currentplayer.equals(p)) {
 				continue;
 			}
-			tempnames[i++] = spillere.getName();
+			tempnames[i++] = p.getName();
 		}
 
 		String[] names = new String[i];
