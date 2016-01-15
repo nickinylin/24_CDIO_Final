@@ -422,7 +422,7 @@ public class MenuController {
 		for (int s = 0; s < players.length ; s++) {
 			if (player.getName().equals(players[s].getName())) {
 
-			} else {
+			} else if (player.bankruptCheck() == false){
 				playernames[j] = players[s].getName();
 				j++;
 			}
