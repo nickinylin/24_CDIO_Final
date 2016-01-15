@@ -7,8 +7,6 @@ import game.Player;
 
 public class TaxController {
 
-	private MenuController menuController = new MenuController();
-
 	public void payTax(Player[] players, Player player, Tax field, Field[] fields) {
 
 		if (field.getSpecial().equals("special")) {
