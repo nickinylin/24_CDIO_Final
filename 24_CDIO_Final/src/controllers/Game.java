@@ -53,7 +53,7 @@ public class Game {
 			}
 			for (int i = 0; i < players.length; i++) {
 
-				if (!players[i].getBankrupt()) {
+				if (players[i].getBankrupt()) {
 					//					noWinner=checkWinner();
 				} else if (players[i].isInJail()) {
 					doJailTurn(players[i]);
@@ -167,7 +167,7 @@ public class Game {
 
 		for (int i = 0; i < players.length; i++) {
 
-			if (!players[i].getBankrupt()) {
+			if (players[i].getBankrupt()) {
 				menuController.sellAllAssets(players[i], fields);
 				players[i].payMoney(players[i].getMoney());
 				players[i].setAssets(players[i].getAssets()-1);
