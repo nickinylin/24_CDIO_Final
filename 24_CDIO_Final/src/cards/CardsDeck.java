@@ -3,6 +3,8 @@ package cards;
 import java.util.Arrays;
 import java.util.Collections;
 
+import controllers.Language;
+
 public class CardsDeck {
 	private Cards[] deck;
 	private Cards[] discard;
@@ -58,19 +60,19 @@ public class CardsDeck {
 				new CardsMoveto("Ryk 3 felter tilbage", -3),
 				new CardsMoveto("Ryk 3 felter tilbage", -3),
 
-				new CardsMoveto("Ryk frem til START", "Start"), 
-				new CardsMoveto("Ryk frem til START", "Start"),
+				new CardsMoveto("Ryk frem til START", Language.field_Start), 
+				new CardsMoveto("Ryk frem til START", Language.field_Start),
 
 				new CardsMoveto("Gå i fængsel. Ryk direkte til fængslet. Selv om De passerer START, indkasserer De ikke kr. 4000", "De fængsles"),
 				new CardsMoveto("Gå i fængsel. Ryk direkte til fængslet. Selv om De passerer START, indkasserer De ikke kr. 4000", "De fængsles"),
 
-				new CardsMoveto("Ryk frem til Strandvejen. Hvis de passerer START indkassér da kr. 4000", "Strandvejen"),
-				new CardsMoveto("Ryk frem til Grønningen. Hvis De passerer START, indkassér da kr. 4000", "Grønningen"),
-				new CardsMoveto("Ryk frem til Vimmelskaftet. Hvis De passerer START, indkassér da kr. 4000", "Vimmelskaftet"),
-				new CardsMoveto("Ryk frem til Frederiksberg Allé. Hvis De passerer START, indkassér da kr. 4000", "Frederiksberg Allé"),
-				new CardsMoveto("Tag ind på rådhuspladsen", "Rådhuspladsen"),
+				new CardsMoveto("Ryk frem til Strandvejen. Hvis de passerer START indkassér da kr. 4000", Language.field_Strandvejen),
+				new CardsMoveto("Ryk frem til Grønningen. Hvis De passerer START, indkassér da kr. 4000", Language.field_Groenningen),
+				new CardsMoveto("Ryk frem til Vimmelskaftet. Hvis De passerer START, indkassér da kr. 4000", Language.field_Vimmelskaftet),
+				new CardsMoveto("Ryk frem til Frederiksberg Allé. Hvis De passerer START, indkassér da kr. 4000", Language.field_FrederiksbergAlle),
+				new CardsMoveto("Tag ind på rådhuspladsen", Language.field_Raadhuspladsen),
 
-				new CardsMoveto("Tag med Mols-linien. Flyt brikken frem, og hvis de passerer START, indkassér da kr. 4000",	"Mols-linien"),
+				new CardsMoveto("Tag med Mols-linien. Flyt brikken frem, og hvis de passerer START, indkassér da kr. 4000",	Language.field_Fleet2),
 
 				new CardsMoveto("Ryk brikken frem til det nærmeste rederi og betal ejeren to gange den leje, han ellers er berretiget til. Hvis selskabet ikke ejes af nogen, kan De købe det af banken", "fleet"),
 				new CardsMoveto("Ryk brikken frem til det nærmeste rederi og betal ejeren to gange den leje, han ellers er berretiget til. Hvis selskabet ikke ejes af nogen, kan De købe det af banken", "fleet"),
