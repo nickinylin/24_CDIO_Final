@@ -161,7 +161,7 @@ public class MenuController {
 				pantsæt = GUI.getUserButtonPressed(player.getName(), Language.unpawn, Language.undo);
 			}
 
-			if (pantsæt == Language.pawnfield) {
+			if (pantsæt == Language.pawnfield || pantsæt == Language.pawn) {
 
 				String[] pawnfieldlist = getPlayerOwnedActiveFields(player, fields);
 
