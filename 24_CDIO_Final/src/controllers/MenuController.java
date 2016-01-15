@@ -6,7 +6,7 @@ import game.Player;
 
 public class MenuController {
 
-	public boolean menuBuild(Player[] players, Player player, Field currentfield, Field[] fields) {
+	public boolean menuBuild(Player[] players, Player player, Field[] fields) {
 
 		int count = 0;
 		String[] tempmenu = new String[9];
@@ -55,9 +55,9 @@ public class MenuController {
 		case button1: // Køb felt
 //			String regretBuyField = GUI.getUserButtonPressed(player.getName(), Language.buyfield, Language.undo);
 //			if(regretBuyField == Language.buyfield){
-			((Ownable) currentfield).buyField(player, fields);
+			((Ownable) fields[player.getPlayerPosition()-1]).buyField(player, fields);
 			GUI.setBalance(player.getName(), player.getMoney());
-			((Ownable) currentfield).updateFieldGroup(player, currentfield, fields);
+			((Ownable) fields[player.getPlayerPosition()-1]).updateFieldGroup(player, fields[player.getPlayerPosition()-1], fields);
 //			}
 			break;
 
@@ -263,8 +263,8 @@ public class MenuController {
 		case button4: // køb bygning
 			nextTurn = false;
 
-			if (checkBuyBuilding(player, currentfield, fields)) {
-				String[] buyBuildingFieldlist = getWhereToBuyBuilding(player,(Territory) currentfield ,fields);
+			if (checkBuyBuilding(player, fields[player.getPlayerPosition()-1], fields)) {
+				String[] buyBuildingFieldlist = getWhereToBuyBuilding(player,(Territory) fields[player.getPlayerPosition()-1] ,fields);
 
 				String buyBuildingField = GUI.getUserSelection(player.getName(), buyBuildingFieldlist);
 
@@ -832,7 +832,7 @@ public class MenuController {
 	public void showMenu(Player[] players, Player player, Field currentfield, Field[] fields) {
 		boolean res;
 		do{
-			res = menuBuild(players, player, currentfield, fields);
+			res = menuBuild(players, player, fields);
 		}while(!res);
 	}
 
