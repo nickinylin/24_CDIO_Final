@@ -172,6 +172,7 @@ public class Game {
 
 			if (players[i].bankruptCheck()) {
 				menuController.sellAllAssets(players[i], fields);
+				GUI.setBalance(players[i].getName(), -1);
 				count++;
 			}
 		}
