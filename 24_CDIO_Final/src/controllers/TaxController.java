@@ -20,7 +20,7 @@ public class TaxController {
 
 				player.payMoney(payamount);
 				GUI.setBalance(player.getName(), player.getMoney());
-				GUI.displayChanceCard(player.getName() +"<br><br>"+ Language.tax_landon2 + Language.tax_10 + Language.tax_landon3 +"<br><br>"+ payamount);
+				GUI.displayChanceCard(player.getName() +"<br><br>"+ Language.tax_landon2 + Language.tax_10 + Language.tax_landon3 +"<br><br><center>"+ payamount);
 
 			} else {
 
