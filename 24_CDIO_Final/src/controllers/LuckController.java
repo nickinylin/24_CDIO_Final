@@ -131,6 +131,8 @@ public class LuckController {
 				if (!player.getName().equals(fleet.getOwner().getName())){
 					player.payMoney(fleet.getRent(fleet.getOwner(), fields)*2);
 					fleet.getOwner().giveMoney(fleet.getRent(fleet.getOwner(), fields)*2);
+					GUI.setBalance(player.getName(), player.getMoney());
+					GUI.setBalance(fleet.fieldowner.getName(), fleet.fieldowner.getMoney());
 				}else{
 				fleetcontroller.landOnFleet(group, player, fleet, fields);
 				}

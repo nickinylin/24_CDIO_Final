@@ -24,6 +24,8 @@ public class Game {
 	private MenuController menuController = new MenuController();
 	private Player[] players;
 	protected Field[] fields;
+	
+	public static final boolean DemoMode = true;
 
 	public static void main(String[] args) {
 		new Game();
@@ -185,6 +187,8 @@ public class Game {
 
 		return goOn;
 	}
+	
+
 
 }
 

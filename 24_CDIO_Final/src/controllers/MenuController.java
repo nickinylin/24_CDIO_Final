@@ -807,6 +807,7 @@ public class MenuController {
 			if (fields[i] instanceof Territory) {
 				Territory territory = (Territory) fields[i];
 				if (territory.fieldowned && territory.fieldowner.equals(player)) {
+					territory.setPawned(false);
 					territory.fieldowned = false;
 					territory.fieldowner = null;
 					GUI.removeOwner(i+1);
@@ -821,6 +822,7 @@ public class MenuController {
 			if (fields[i] instanceof Labor) {
 				Labor labor = (Labor) fields[i];
 				if (labor.fieldowned && labor.fieldowner.equals(player)) {
+					labor.setPawned(false);
 					labor.fieldowned = false;
 					labor.fieldowner = null;
 					GUI.removeOwner(i+1);
@@ -831,6 +833,7 @@ public class MenuController {
 			if (fields[i] instanceof Fleet) {
 				Fleet fleet = (Fleet) fields[i];
 				if (fleet.fieldowned && fleet.fieldowner.equals(player)) {
+					fleet.setPawned(false);
 					fleet.fieldowned = false;
 					fleet.fieldowner = null;
 					GUI.removeOwner(i+1);

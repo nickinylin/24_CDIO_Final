@@ -6,10 +6,14 @@
 
 package game;
 
+import controllers.Game;
+
 public class Dice {
     private static int value1;
     private static int value2;
-
+    private static int turnCounter = 0;
+    private static final int[] testDice1 = new int[]{2,2,2,2,2,2,2,2,2};
+    private static final int[] testDice2 = new int[]{2,2,2,2,2,2,2,2,2};
     
     /**
      * Creating the dices and calling the roll() method, to set dices value to a random,
@@ -24,8 +28,14 @@ public class Dice {
      * and setting a new value for dice1 and dice2
      */
     public static void roll(){
+    	if (!Game.DemoMode){
         value1 = (int)(Math.random()*6)+1;
-        value2 = (int)(Math.random()*6)+1;
+        value2 = (int)(Math.random()*6)+1;}
+    	else {
+    		if (turnCounter>= testDice2.length) turnCounter =0;
+    		value1 = testDice1[turnCounter];
+    		value2 = testDice2[turnCounter];
+    	}
 //    	value1 = 3;
 //    	value2 = 1;
     }
