@@ -425,9 +425,10 @@ public class MenuController {
 		int i = 0;
 
 		for (Player spillere : players) {
-			if (!player.getBankrupt() || !player.equals(spillere)) {
-				tempnames[i++] = spillere.getName();
+			if (player.getBankrupt() || player.equals(spillere)) {
+				continue;
 			}
+			tempnames[i++] = spillere.getName();
 		}
 
 		String[] names = new String[i];
