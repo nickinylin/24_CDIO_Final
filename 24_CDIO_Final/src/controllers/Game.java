@@ -48,16 +48,13 @@ public class Game {
 				break;
 			}
 			for (int i = 0; i < players.length; i++) {
-				System.out.println(players[i].getName() +": "+ players[i].getAssets());
+
 				if (players[i].getBankrupt()) {
-					System.out.println(players[i].getName() +": "+ players[i].getAssets());
 					//					noWinner=checkWinner();
 				} else if (players[i].isInJail()) {
 					doJailTurn(players[i]);
-					System.out.println(players[i].getName() +": "+ players[i].getAssets());
 				} else {
 					doNormalTurn(players[i]);
-					System.out.println(players[i].getName() +": "+ players[i].getAssets());
 				}
 
 			}
