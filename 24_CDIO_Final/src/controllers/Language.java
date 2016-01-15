@@ -128,7 +128,7 @@ public class Language {
 	public static final String players_tractor = "Traktor";
 	public static final String players_ufo = "Ufo";
 	
-	public static final String players_choose = "vælg din";
+	public static final String players_choose = "Vælg din ";
 	public static final String players_color = "´s farve";
 	
 	public static final String color_red = "Rød";

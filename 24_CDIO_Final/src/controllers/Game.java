@@ -139,7 +139,7 @@ public class Game {
 
 	public void doJailTurn(Player player) {
 
-		GUI.displayChanceCard(player.getName() + Language.prison_stillinjail +"<br><br>"+ Language.prisonround2 + player.getJailTurn() + Language.prisonround3);
+		GUI.displayChanceCard(player.getName() + Language.prison_stillinjail +"<br><br>"+ Language.prisonround2 + (player.getJailTurn()+1) + Language.prisonround3);
 		boolean payFine = GUI.getUserLeftButtonPressed(""+player.getName()+"", Language.prisonpay, Language.prisonroll);
 
 		if (payFine) {
