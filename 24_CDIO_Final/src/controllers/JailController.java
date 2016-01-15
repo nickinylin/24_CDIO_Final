@@ -58,6 +58,13 @@ public class JailController {
 			GUI.showMessage(player.getName() + Language.prison_stillinjail);
 			return false;
 		} else {
+			if (Dice.issame()){
+				player.setIsInJail(false);
+				player.resetJailTurn();
+				player.setNumberOfExtraTurns(1);
+				
+				return true;
+			}else{
 			player.setIsInJail(false);
 			player.resetJailTurn();
 			player.payMoney(1000);
@@ -70,6 +77,8 @@ public class JailController {
 			
 			return true;
 		}
+
+	}
 
 	}
 
