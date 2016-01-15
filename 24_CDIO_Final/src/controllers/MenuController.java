@@ -350,11 +350,11 @@ public class MenuController {
 		case button7: // Gå bankerot
 			nextTurn = true;
 			player.bankrupt(); // Spilleren fjernes
-			sellAllFields(player, fields);
+			sellAllAssets(player, fields);
 			break;
 
 		case button8:
-			sellAllFields(player, fields);
+			sellAllAssets(player, fields);
 
 		default: break;
 		}
@@ -778,8 +778,6 @@ public class MenuController {
 					}
 				}
 
-			} else {
-				// The field cannot be owned
 			}
 
 		}
@@ -787,7 +785,7 @@ public class MenuController {
 
 	}
 
-	public void sellAllFields(Player player, Field[] fields) {
+	public void sellAllAssets(Player player, Field[] fields) {
 
 		for (int i = 0; i < fields.length; i++) {
 
@@ -797,6 +795,10 @@ public class MenuController {
 					territory.fieldowned = false;
 					territory.fieldowner = null;
 					GUI.removeOwner(i+1);
+					
+					if (territory.getHouse() > 0) {
+						GUI.setHouses(i+1, 0);
+					}
 				}
 			}
 

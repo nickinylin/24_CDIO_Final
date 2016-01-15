@@ -23,12 +23,4 @@ public class LaborController {
 
 	}
 
-
-
-//	private void showMenu(Player[] players, Player player, Labor labor, Field[] fields) {
-//		boolean res;
-//		do{
-//			res = menuController.menuBuild(players, player, labor, fields);
-//		}while(!res);
-//	}
 }
