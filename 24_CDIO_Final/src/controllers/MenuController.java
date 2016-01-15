@@ -53,12 +53,12 @@ public class MenuController {
 		switch(button) {
 
 		case button1: // Køb felt
-//			String regretBuyField = GUI.getUserButtonPressed(player.getName(), Language.buyfield, Language.undo);
-//			if(regretBuyField == Language.buyfield){
+			//			String regretBuyField = GUI.getUserButtonPressed(player.getName(), Language.buyfield, Language.undo);
+			//			if(regretBuyField == Language.buyfield){
 			((Ownable) fields[player.getPlayerPosition()-1]).buyField(player, fields);
 			GUI.setBalance(player.getName(), player.getMoney());
 			((Ownable) fields[player.getPlayerPosition()-1]).updateFieldGroup(player, fields[player.getPlayerPosition()-1], fields);
-//			}
+			//			}
 			break;
 
 		case button2: // Sælg felt
@@ -351,15 +351,15 @@ public class MenuController {
 		case button7: // Gå bankerot
 			String regretBankrupt = GUI.getUserButtonPressed(player.getName(), Language.bankrupt, Language.undo);
 			if(regretBankrupt == Language.bankrupt){
-			nextTurn = true;
-			player.setBankrupt();
-			sellAllAssets(player, fields);
-			player.payMoney(player.getMoney());
-			GUI.setBalance(player.getName(), player.getMoney());
-			GUI.removeAllCars(player.getName());
+				nextTurn = true;
+				player.setBankrupt();
+				sellAllAssets(player, fields);
+				player.payMoney(player.getMoney());
+				GUI.setBalance(player.getName(), player.getMoney());
+				GUI.removeAllCars(player.getName());
 			}
 			break;
-			
+
 		case button8:
 			sellAllAssets(player, fields);
 
@@ -419,18 +419,24 @@ public class MenuController {
 
 
 	private String[] getAllPlayerNamesExceptPlayer(Player[] players, Player player) {
-		String[] playernames = new String[players.length-1];
-		int j = 0;
 
-		for (int s = 0; s < players.length ; s++) {
-			if (player.getName().equals(players[s].getName())) {
+		String[] tempnames = new String[players.length-1];
 
-			} else if (!player.getBankrupt()) {
-				playernames[j] = players[s].getName();
-				j++;
+		int i = 0;
+
+		for (Player spillere : players) {
+			if (!player.getBankrupt() || !player.equals(spillere)) {
+				tempnames[i++] = spillere.getName();
 			}
 		}
-		return playernames;
+
+		String[] names = new String[i];
+
+		for (int count = 0; count < i; count++) {
+			names[i++] = tempnames[count];
+		}
+
+		return names;
 	}
 
 
@@ -803,7 +809,7 @@ public class MenuController {
 					territory.fieldowner = null;
 					GUI.removeOwner(i+1);
 					GUI.setDescriptionText(i+1, Language.price +": "+ territory.getPrice());
-					
+
 					if (territory.getHouse() > 0) {
 						GUI.setHouses(i+1, 0);
 					}
