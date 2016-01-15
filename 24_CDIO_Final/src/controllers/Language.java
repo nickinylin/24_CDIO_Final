@@ -98,8 +98,10 @@ public class Language {
 
 	// Field Descriptions
 	public static final String field_StartDescription = "Passer start og modtag 4000";
+	public static final String field_StartText = ", og du modtager 4000";
 	public static final String field_ParkingDescription = "Du tager en pause på parkeringspladsen, så du er klar til næste omgang.";
-
+	public static final String field_VisitText = "Du er taget på et besøg i fængslet";
+	
 	public static final String field_Fleet1Rent = "1 Flåde: 500";
 	public static final String field_Fleet2Rent = "2 Flåder: 1000";
 	public static final String field_Fleet3Rent = "3 Flåder: 2000";
