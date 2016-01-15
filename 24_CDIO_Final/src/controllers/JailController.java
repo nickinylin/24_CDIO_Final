@@ -1,7 +1,7 @@
 package controllers;
 
 import desktop_resources.GUI;
-import fields.*;
+import fields.Field;
 import game.Dice;
 import game.Player;
 
