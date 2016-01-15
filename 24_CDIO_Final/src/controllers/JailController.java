@@ -39,7 +39,7 @@ public class JailController {
 		
 	}
 
-	public boolean rollOutOfJail(Player[] players,Player player, Field[] fields) {
+	public boolean rollOutOfJail(Player player, Field[] fields) {
 
 		if (player.getJailTurn() < 2){
 			GUI.getUserButtonPressed("", player.getName() + Language.roll);

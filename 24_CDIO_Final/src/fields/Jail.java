@@ -9,9 +9,6 @@ public class Jail extends Field {
         super(name);
     }
     
-    public void gotoJail(Player player) {
-    	
-    }
     
 	@Override
 	public String getFieldType() {

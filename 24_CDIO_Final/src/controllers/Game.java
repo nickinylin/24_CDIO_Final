@@ -7,14 +7,7 @@
 package controllers;
 
 import desktop_resources.GUI;
-import fields.Field;
-import fields.Fleet;
-import fields.Jail;
-import fields.Labor;
-import fields.Luck;
-import fields.Refuge;
-import fields.Tax;
-import fields.Territory;
+import fields.*;
 import game.Dice;
 import game.Player;
 import setup.Setup;
@@ -149,7 +142,7 @@ public class Game {
 
 		} else {
 
-			if (jailController.rollOutOfJail(players, player, fields)) {
+			if (jailController.rollOutOfJail(player, fields)) {
 				PlayerController.movePlayer(player, Dice.getSum(), fields);
 				chooseAction(player,fields[player.getPlayerPosition()-1]);
 				menuController.showMenu(players, player, fields);
