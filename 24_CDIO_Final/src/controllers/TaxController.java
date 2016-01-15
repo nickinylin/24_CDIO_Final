@@ -1,12 +1,15 @@
 package controllers;
 
 import desktop_resources.GUI;
+import fields.Field;
 import fields.Tax;
 import game.Player;
 
 public class TaxController {
 
-	public void payTax(Player player, Tax field) {
+	private MenuController menuController = new MenuController();
+	
+	public void payTax(Player[] players, Player player, Tax field, Field[] fields) {
 		
 		if (field.getSpecial().equals("special")) {
 
@@ -23,15 +26,7 @@ public class TaxController {
                     
                 } else {
                     
-            		String paymethod = GUI.getUserButtonPressed(Language.tax_missing$, Language.sellfield, Language.sellbuilding, Language.bankrupt);
-            		
-            		if (paymethod == Language.sellfield) {
-            			//Sælg felt metode
-            		} else if (paymethod == Language.sellbuilding) {
-            			
-            		} else if (paymethod == Language.bankrupt) {
-            			player.bankrupt();
-            		}
+            		menuController.showMenu(players, player, field, fields);
                     
                 }
                 

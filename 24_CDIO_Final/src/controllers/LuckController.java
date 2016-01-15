@@ -173,7 +173,7 @@ public class LuckController {
 				} else if (fields[destination] instanceof Tax) {
 					TaxController taxcontroller = new TaxController();
 					Tax tax= (Tax)fields[destination];
-					taxcontroller.payTax(player, tax);
+					taxcontroller.payTax(group, player, tax, fields);
 
 				} else if (fields[destination] instanceof Luck) {
 					landOnLuck(group, player, ((Luck) fields[destination]), fields);

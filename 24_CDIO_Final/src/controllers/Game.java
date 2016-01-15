@@ -131,7 +131,7 @@ public class Game {
 		} else if (currentfield instanceof Jail) {
 			jailController.jail(player, fields);
 		} else if (currentfield instanceof Tax) {
-			taxController.payTax(player, ((Tax) currentfield));
+			taxController.payTax(players, player, ((Tax) currentfield), fields);
 		}
 
 	}
