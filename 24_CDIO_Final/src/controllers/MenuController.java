@@ -96,7 +96,7 @@ public class MenuController {
 							player.setAssets(-territory.getPrice());
 							buyingplayer[0].giveMoney(territory.getPrice());
 							buyingplayer[0].payMoney(pris);
-							buyingplayer[0].setAssets(buyingplayer[0].getAssets()+territory.getPrice());
+							buyingplayer[0].setAssets(territory.getPrice());
 							GUI.setBalance(buyingplayer[0].getName(), buyingplayer[0].getMoney());
 							GUI.setBalance(player.getName(), player.getMoney());
 							territory.updateFieldGroup(buyingplayer[0], territory, fields);
@@ -115,7 +115,7 @@ public class MenuController {
 							player.setAssets(-fleet.getPrice());
 							buyingplayer[0].giveMoney(fleet.getPrice());
 							buyingplayer[0].payMoney(pris);
-							buyingplayer[0].setAssets(buyingplayer[0].getAssets()+fleet.getPrice());
+							buyingplayer[0].setAssets(fleet.getPrice());
 							GUI.setBalance(buyingplayer[0].getName(), buyingplayer[0].getMoney());
 							GUI.setBalance(player.getName(), player.getMoney());
 							fleet.updateFieldGroup(buyingplayer[0], fleet, fields);
@@ -134,7 +134,7 @@ public class MenuController {
 							player.setAssets(-labor.getPrice());
 							buyingplayer[0].giveMoney(labor.getPrice());
 							buyingplayer[0].payMoney(pris);
-							buyingplayer[0].setAssets(buyingplayer[0].getAssets()+labor.getPrice());
+							buyingplayer[0].setAssets(labor.getPrice());
 							GUI.setBalance(buyingplayer[0].getName(), buyingplayer[0].getMoney());
 							GUI.setBalance(player.getName(), player.getMoney());
 							labor.updateFieldGroup(buyingplayer[0], labor, fields);

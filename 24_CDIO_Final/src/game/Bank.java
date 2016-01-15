@@ -19,7 +19,7 @@ public class Bank {
 	 */
 	public Bank() {
 		if (Game.DemoMode){
-			money = 100;
+			money = 60000;
 		} else {
 			money = 30000;
 		}
