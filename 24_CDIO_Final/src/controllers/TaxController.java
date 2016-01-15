@@ -12,7 +12,7 @@ public class TaxController {
 
             GUI.displayChanceCard("<center>"+player.getName() + Language.tax_landon1);
             
-            boolean boo = GUI.getUserLeftButtonPressed(""+player.getName()+"", Language.tax_10pct, Language.tax_pay + field.getRent());
+            boolean boo = GUI.getUserLeftButtonPressed(player.getName(), Language.tax_10pct, Language.tax_pay + field.getRent());
             
             if (boo) {
                 int payamount = player.getAssets()*10/100;
@@ -23,19 +23,19 @@ public class TaxController {
                     
                 } else {
                     
-            		String paymethod = GUI.getUserButtonPressed(Language.tax_missing$, "Sælg felt", "Sælg bygning", "Bankrupt");
+            		String paymethod = GUI.getUserButtonPressed(Language.tax_missing$, Language.sellfield, Language.sellbuilding, Language.bankrupt);
             		
-            		if (paymethod == "Sælg felt") {
+            		if (paymethod == Language.sellfield) {
             			//Sælg felt metode
-            		} else if (paymethod == "Sælg bygning") {
+            		} else if (paymethod == Language.sellbuilding) {
             			
-            		} else if (paymethod == "Bankrupt") {
+            		} else if (paymethod == Language.bankrupt) {
             			player.bankrupt();
             		}
                     
                 }
                 
-                GUI.displayChanceCard("<center>"+player.getName()+" har landet på et TAX felt<br><br>Du betalte "+payamount+".");
+                GUI.displayChanceCard("<center>"+player.getName()+ Language.tax_landon1 + "<br><br>" + Language.ownable_rent1 + payamount);
                 
             } else {
             	
@@ -46,18 +46,18 @@ public class TaxController {
                     
                 } else {
                 	
-            		String paymethod = GUI.getUserButtonPressed("Hvordan vil du betale?", "Sælg felt", "Sælg bygning", "Bankrupt");
+             		String paymethod = GUI.getUserButtonPressed(Language.tax_missing$, Language.sellfield, Language.sellbuilding, Language.bankrupt);
             		
-            		if (paymethod == "Sælg felt") {
+            		if (paymethod == Language.sellfield) {
             			//Sælg felt metode
-            		} else if (paymethod == "Sælg bygning") {
+            		} else if (paymethod == Language.sellbuilding) {
             			
-            		} else if (paymethod == "Bankrupt") {
+            		} else if (paymethod == Language.bankrupt) {
             			player.bankrupt();
             		}
             		
                 }
-                GUI.displayChanceCard("<center>"+player.getName()+" har landet på et TAX felt<br><br>Du betalte "+field.getRent()+".");
+                GUI.displayChanceCard("<center>"+player.getName()+ Language.tax_landon1 + "<br><br>" + Language.ownable_rent1 + field.getRent());
             }
             GUI.setBalance(player.getName(), player.getMoney());
         
@@ -65,13 +65,13 @@ public class TaxController {
             
             if (player.getMoney() < field.getRent()) {
             	
-        		String paymethod = GUI.getUserButtonPressed("Hvordan vil du betale?", "Sælg felt", "Sælg bygning", "Bankrupt");
+            	String paymethod = GUI.getUserButtonPressed(Language.tax_missing$, Language.sellfield, Language.sellbuilding, Language.bankrupt);
         		
-        		if (paymethod == "Sælg felt") {
+        		if (paymethod == Language.sellfield) {
         			//Sælg felt metode
-        		} else if (paymethod == "Sælg bygning") {
+        		} else if (paymethod == Language.sellbuilding) {
         			
-        		} else if (paymethod == "Bankrupt") {
+        		} else if (paymethod == Language.bankrupt) {
         			player.bankrupt();
         		}
         		
@@ -79,7 +79,7 @@ public class TaxController {
             	
                 player.payMoney(field.getRent());
                 GUI.setBalance(player.getName(), player.getMoney());
-                GUI.displayChanceCard("<center>"+player.getName()+" har landet på et TAX felt<br><br>Du betalte "+field.getRent()+".");
+                GUI.displayChanceCard("<center>"+player.getName()+ Language.tax_landon1 + "<br><br>" + Language.ownable_rent1 + field.getRent());
                 
             }
             
