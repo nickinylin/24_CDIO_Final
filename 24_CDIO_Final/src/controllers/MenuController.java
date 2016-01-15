@@ -802,7 +802,7 @@ public class MenuController {
 					territory.fieldowned = false;
 					territory.fieldowner = null;
 					GUI.removeOwner(i+1);
-					GUI.setDescriptionText(i+1, Language.price +": "+ territory.getBaseRent());
+					GUI.setDescriptionText(i, Language.price +": "+ territory.getBaseRent());
 					
 					if (territory.getHouse() > 0) {
 						GUI.setHouses(i+1, 0);
