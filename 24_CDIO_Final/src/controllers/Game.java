@@ -180,7 +180,7 @@ public class Game {
 
 			for (int x = 0; x < players.length; x++) {
 
-				if (players[x].getBankrupt()) {
+				if (!players[x].getBankrupt()) {
 					GUI.displayChanceCard("<center>"+players[x].getName()+ Language.win_message1 +"<br><br>"+players[x].getAssets()+"<br>"+Language.win_message2);
 // TODO quit eller newgame
 					GUI.showMessage("");									

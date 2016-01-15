@@ -356,6 +356,7 @@ public class MenuController {
 			sellAllAssets(player, fields);
 			player.payMoney(player.getMoney());
 			GUI.setBalance(player.getName(), player.getMoney());
+			GUI.removeAllCars(player.getName());
 			}
 			break;
 			
@@ -424,7 +425,9 @@ public class MenuController {
 		for (int s = 0; s < players.length ; s++) {
 			if (player.getName().equals(players[s].getName())) {
 
-			} else if (!player.getBankrupt()) {
+			} else if (player.getBankrupt()) {
+
+			} else {
 				playernames[j] = players[s].getName();
 				j++;
 			}
