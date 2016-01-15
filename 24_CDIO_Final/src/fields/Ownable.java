@@ -44,19 +44,10 @@ public abstract class Ownable extends Field {
      * @param player
      */
     public void buyField(Player player, Field[] fields) {
-    	if (!pawned){
     		player.payMoney(fieldprice);
     		player.setAssets(fieldprice);
     		fieldowned = true;
     		fieldowner = player;
-    	} else {
-    		player.payMoney(fieldprice);
-    		player.setAssets(fieldprice);
-    		fieldowned = true;
-    		fieldowner = player;
-    		pawned = true;
-    	}
-    	
     }
     
     public abstract void updateFieldGroup(Player player, Field currentField, Field[] fields);
