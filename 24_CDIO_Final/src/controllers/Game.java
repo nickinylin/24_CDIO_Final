@@ -1,7 +1,7 @@
 /**
  * Game
  * @author Gruppe 24
- * @version 04/01-2016
+ * @version 15/01-2016
  **/
 
 package controllers;
@@ -87,7 +87,6 @@ public class Game {
 				Field currentfield = fields[player.getPlayerPosition()-1];
 
 				chooseAction(player, currentfield);
-				currentfield = fields[player.getPlayerPosition()-1];
 				menuController.showMenu(players, player, currentfield, fields);
 
 				if (player.isInJail()) {
@@ -112,7 +111,6 @@ public class Game {
 			Field currentfield = fields[player.getPlayerPosition()-1];
 
 			chooseAction(player, currentfield);
-			currentfield = fields[player.getPlayerPosition()-1];
 			menuController.showMenu(players, player, currentfield, fields);
 
 		}

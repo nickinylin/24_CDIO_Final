@@ -143,5 +143,18 @@ public class Language {
 	public static final String color_orange = "Orange";
 	public static final String color_turquoise = "Turkis";
 	
+	public static final String ownable_rent1 = "Du betaler ";
+	public static final String ownable_rent2 = " i leje.";
+	
+	public static final String ownable_buy1 = ", dette felt er ikke ejet.";
+	public static final String ownable_buy2 = "Du har mulighed for at købe feltet for ";
+	
+	// Territory
+	public static final String territory_landon1 = "Du er landet på ";
+	public static final String territory_landon2 = ", som er ejet af ";
+	public static final String territory_landon3 = "Du er landet på ";
+	public static final String territory_landon4 = ", som du selv ejer.";
+	
+	
 	
 	}
