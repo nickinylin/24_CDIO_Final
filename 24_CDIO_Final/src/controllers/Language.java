@@ -159,6 +159,10 @@ public class Language {
 	
 	// TAX
 	public static final String tax_landon1 = " er landet på et TAX felt.";
+	public static final String tax_landon2 = "Du har valgt at betale ";
+	public static final String tax_landon3 = ", som løber op i";
+	public static final String tax_landon4 = "Du er landet på et Tax felt og skal betale 2000";
+	public static final String tax_10 = "10%";
 	public static final String tax_10pct = "Betal 10%";
 	public static final String tax_pay = "Betal ";
 	public static final String tax_missing$ = "Hvordan vil du betale?";

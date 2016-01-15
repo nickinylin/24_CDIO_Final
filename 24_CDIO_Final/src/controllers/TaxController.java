@@ -20,11 +20,13 @@ public class TaxController {
 
 				player.payMoney(payamount);
 				GUI.setBalance(player.getName(), player.getMoney());
+				GUI.displayChanceCard(player.getName() +"<br><br>"+ Language.tax_landon2 + Language.tax_10 + Language.tax_landon3 +"<br><br>"+ payamount);
 
 			} else {
 
 				player.payMoney(field.getRent());
 				GUI.setBalance(player.getName(), player.getMoney());
+				GUI.displayChanceCard(player.getName() +"<br><br>"+ Language.tax_landon2 +"4000");
 
 			}
 
@@ -32,7 +34,7 @@ public class TaxController {
 
 			player.payMoney(field.getRent());
 			GUI.setBalance(player.getName(), player.getMoney());
-
+			GUI.displayChanceCard(player.getName() +"<br><br>"+ Language.tax_landon4);
 		}
 	}
 }
