@@ -231,22 +231,6 @@ public class Territory extends Ownable {
 		return currentplayer;
 	}
 
-	//	public void sellFieldToBank(Player player, Territory currentfield, Field[] fields) {
-	//
-	//		for (int i = 0; i < fields.length; i++) {
-	//			Field f = fields[i];
-	//			if (f instanceof Territory) {
-	//				Territory territory = (Territory) f;
-	//
-	//				if (territory.getFieldGroup() == currentfield.getFieldGroup() && player.equals(territory.fieldowner)) {
-	//					int price = (int) (currentfield.fieldprice);
-	//					player.giveMoney(price);
-	//					GUI.removeOwner(i);
-	//				}
-	//			} 
-	//		}
-	//	}
-
 	@Override
 	public String getFieldType() {
 		return "Territory";
@@ -312,7 +296,6 @@ public class Territory extends Ownable {
 					}
 					default:
 						sellable=true;
-						System.out.println("Uejet");
 				
 				}
 		
