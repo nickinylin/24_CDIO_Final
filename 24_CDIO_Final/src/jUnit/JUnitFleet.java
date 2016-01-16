@@ -52,7 +52,6 @@ public class JUnitFleet {
 				if (fleet.getOwner().equals(player2)){
 					fleet.payRent(player1, fields);
 					break;
-//				}
 				}
 			}
 		}
