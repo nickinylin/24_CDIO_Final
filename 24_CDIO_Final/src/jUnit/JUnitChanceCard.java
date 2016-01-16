@@ -53,21 +53,7 @@ public class JUnitChanceCard {
 		luckcontroller.resolveCard(player, player[0], fields, card);
 		assertEquals(expected , player[0].getMoney());
 	}
-<<<<<<< HEAD
-	int expected=player[0].getPlayerPosition();
-	luckcontroller.resolveCard(player, player[1], fields, card);
-	assertEquals(expected , player[1].getPlayerPosition());
-}
-@Test
-public void drawmovetonearestfleetcard(){
-	Cards card=deck.drawspecifik(6);
-	int i=0;
-	for(i=0; i<fields.length;i++){
-		if(fields[i] instanceof Fleet){
-			player[0].setPlayerPosition(i);
-			break;
-		}
-=======
+
 	@Test
 	public void drawsharecard(){
 		Cards card=deck.drawspecifik(2);
@@ -76,23 +62,7 @@ public void drawmovetonearestfleetcard(){
 		luckcontroller.resolveCard(player, player[0], fields, card);
 		assertEquals(expected , player[0].getMoney());
 		assertEquals(expectedloss,player[1].getMoney());
->>>>>>> branch 'master' of https://github.com/nickinylin/24_CDIO_Final.git
 	}
-<<<<<<< HEAD
-	int expected=player[0].getPlayerPosition();
-	luckcontroller.resolveCard(player, player[1], fields, card);
-	assertEquals(expected , player[1].getPlayerPosition());
-}
-@Test
-public void drawmovetojailcard(){
-	Cards card=deck.drawspecifik(7);
-	int i=0;
-	for(i=0; i<fields.length;i++){
-		if(fields[i] instanceof Refuge){
-			if(fields[i].getName().equals(Language.field_VisitJail)){
-			player[0].setPlayerPosition(i);
-			break;
-=======
 	@Test
 	public void drawlegatcard(){
 		Cards card=deck.drawspecifik(3);
@@ -116,29 +86,13 @@ public void drawmovetojailcard(){
 			if(fields[i].getName().equals(tempcard.getDestination())){
 				player[0].setPlayerPosition(i);
 				break;
->>>>>>> branch 'master' of https://github.com/nickinylin/24_CDIO_Final.git
 			}
 		}
 		int expected=player[0].getPlayerPosition();
 		luckcontroller.resolveCard(player, player[1], fields, card);
 		assertEquals(expected , player[1].getPlayerPosition());
 	}
-<<<<<<< HEAD
-	int expected=player[0].getPlayerPosition();
-	boolean expectedstatus=true;
-	luckcontroller.resolveCard(player, player[1], fields, card);
-	assertEquals(expected , player[1].getPlayerPosition());
-	assertEquals(expectedstatus,player[1].isInJail());
-}
-@Test
-public void drawmoveextracard(){
-	Cards card=deck.drawspecifik(5);
-	CardsMoveto tempcard=(CardsMoveto)card;
-	int expected=player[0].getPlayerPosition()+tempcard.getExtraMoves();
-	luckcontroller.resolveCard(player, player[0], fields, tempcard);
-	assertEquals(expected, player[0].getPlayerPosition());
-}
-=======
+
 	@Test
 	public void drawmovetonearestfleetcard(){
 		Cards card=deck.drawspecifik(6);
@@ -171,5 +125,13 @@ public void drawmoveextracard(){
 		assertEquals(expected , player[1].getPlayerPosition());
 		assertEquals(expectedstatus,player[1].isInJail());
 	}
->>>>>>> branch 'master' of https://github.com/nickinylin/24_CDIO_Final.git
+	@Test
+	public void drawmoveextracard(){
+		Cards card=deck.drawspecifik(5);
+		CardsMoveto tempcard=(CardsMoveto)card;
+		player[0].setPlayerPosition(6);
+		int expected=player[0].getPlayerPosition()+tempcard.getExtraMoves();
+		luckcontroller.resolveCard(player, player[0], fields, tempcard);
+		assertEquals(expected, player[0].getPlayerPosition());
+	}
 }

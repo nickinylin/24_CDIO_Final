@@ -85,27 +85,21 @@ public class CardsDeck {
 			shuffledeck();
 
 		Cards card = deck[currentdecksize];
-		deck[currentdecksize] = null;
 		currentdecksize = currentdecksize - 1;
 		return card;
 	}
 
 	public void shuffledeck() {
-		while (discardsize > 0) {
-			deck[deck.length - discardsize] = discard[deck.length - discardsize];
-			discard[deck.length - discardsize] = null;
-			discardsize--;
 			currentdecksize=deck.length-1;
-		}
 		java.util.List<?> lists = (java.util.List<?>) Arrays.asList(deck);
 		Collections.shuffle(lists);
 
 	}
 
-	public void discardcard(Cards card) {
-		discard[deck.length - discardsize] = card;
-		discardsize++;
-	}
+//	public void discardcard(Cards card) {
+//		discard[deck.length - discardsize] = card;
+//		discardsize++;
+//	}
 	public Cards drawspecifik(int type){
 		Cards card = drawcard();
 		while(true)
