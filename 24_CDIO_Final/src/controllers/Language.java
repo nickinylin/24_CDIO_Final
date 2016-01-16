@@ -50,7 +50,7 @@ public class Language {
 	public static final String luck_matadorlegat_draw = "De modtager matador legatet for værdigt trængende";
 	public static final String luck_matadorlegat_fail = "De anses ikke for værdigt trængende og modtager derfor ikke matador legatet";
 	
-	
+	public static final String prisonmovetojail = "Du rykker direkte i fængsel, passere du start modtager du ikke 4000";
 	public static final String prisonpay = "Betal 1000 kr";
 	public static final String prisonroll = "Slå med terningerne";
 	public static final String prison_stillinjail = " du er stadig i fængslet.";

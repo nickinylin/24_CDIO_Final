@@ -26,7 +26,7 @@ public class Game {
 	protected Field[] fields;
 	
 	// Demo Mode
-	public static final boolean DemoMode = false;
+	public static final boolean DemoMode = true;
 
 	public static void main(String[] args) {
 		new Game();
@@ -77,7 +77,7 @@ public class Game {
 		if (Dice.issame()) {
 			player.setNumberOfExtraTurns(1);
 			if (player.getNumberOfExtraTurns() < 3) {
-
+				
 				PlayerController.movePlayer(player, Dice.getSum(), fields);
 
 				Field currentfield = fields[player.getPlayerPosition()-1];
@@ -92,6 +92,7 @@ public class Game {
 				}
 
 			} else {
+				
 				jailController.jail(player, fields);
 
 			}

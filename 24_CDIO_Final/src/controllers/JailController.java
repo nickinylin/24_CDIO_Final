@@ -13,7 +13,7 @@ public class JailController {
 		
 		player.setIsInJail(true);
 		player.resetExtraTurns();
-
+		
 		if (player.getPlayerPosition()-1 > 11) {
 			
 			player.setPlayerPositionToField(11);
@@ -27,7 +27,7 @@ public class JailController {
 			GUI.setCar(11, player.getName());
 			
 		}
-
+		GUI.displayChanceCard(player.getName() +"<br><br>"+Language.prisonmovetojail);
 	}
 
 	public void payJail(Player player) {
