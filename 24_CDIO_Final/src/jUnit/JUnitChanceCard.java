@@ -19,15 +19,13 @@ import cards.CardsDeck;
 import cards.CardsTransaction;
 import controllers.LuckController;
 
-public class JUnitChanceCard 
-{
+public class JUnitChanceCard {
 	private Player spiller1;
 	private Player[] players;
 	protected Field[] fields;
 	
 	@Before
-	public void setUp()
-	{
+	public void setUp()	{
 		Setup setup = new Setup();
 		fields = setup.createFields();
 		
@@ -39,8 +37,7 @@ public class JUnitChanceCard
 	}
 
 	@Test
-	public void drawChanceCard() 
-	{		
+	public void drawChanceCard() {
 		CardsDeck deck = new CardsDeck();
 //		PlayerController.movePlayer(spiller1, 3, fields);
 		deck.shuffledeck();
@@ -49,8 +46,7 @@ public class JUnitChanceCard
 
 	}
 	@Test
-	public void drawSpecificCard()
-	{
+	public void drawSpecificCard() {
 		CardsDeck deck = new CardsDeck();
 		Cards card = deck.drawcard();
 //		Cards card = CardsTransaction;

@@ -3,12 +3,9 @@ package jUnit;
 import static org.junit.Assert.*;
 
 import org.junit.Test;
-
-import controllers.*;
 import game.*;
 import setup.*;
 import fields.*;
-import cards.*;
 
 import org.junit.Before;
 
@@ -32,11 +29,9 @@ public class JUnitFleetTest {
 	}
 
 	@Test
-	public void test1owned() {
+	public void test1FleetOwned() {
 		int expected = player1.getMoney()-500;
 		int count = 0;
-		
-//		for (int i = 0; i < fields.length; i++) {
 		
 		while(count < 1){
 			for (Field f : fields){
@@ -65,7 +60,7 @@ public class JUnitFleetTest {
 	}
 
 	@Test
-	public void test4owned() {
+	public void test4FleetsOwned() {
 		int expected = player1.getMoney()-4000;
 		int count = 0;
 		
@@ -76,7 +71,6 @@ public class JUnitFleetTest {
 					if (!fleet.getStatus()){
 						fleet.buyField(player2, fields);
 						count++;
-						break;
 					}
 				}
 			}

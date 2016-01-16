@@ -72,6 +72,10 @@ public class Dice {
     	value1 = 6;
     	value2 = 6;
     }
+    public static void testRollDice() {
+    	value1 = 3;
+    	value2 = 1;
+    }
     
     
 }

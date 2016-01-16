@@ -4,31 +4,19 @@ import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
 
-import controllers.Game;
-import controllers.PlayerController;
-import controllers.TerritoryController;
-import desktop_resources.GUI;
 import fields.Field;
 import fields.Territory;
-import game.Bank;
-import game.Dice;
 import game.Player;
 import setup.Setup;
-import cards.Cards;
-import cards.CardsDeck;
-import cards.CardsTransaction;
-import controllers.LuckController;
 
-public class JUnitBygning 
-{
+public class JUnitBygning {
 
 	private Player spiller1;
 	private Player spiller2;
 	protected Field[] fields;
 	
 	@Before
-	public void setUp()
-	{
+	public void setUp()	{
 		Setup setup = new Setup();
 		fields = setup.createFields();
 		
@@ -41,10 +29,20 @@ public class JUnitBygning
 		
 	}
 	
-	@Test
-	public void test() 
-	{
-		
-	}
+	@Test //tester om huslejen bliver fordoblet ved at eje alle felter i samme gruppe
+	public void testBuyBuilding() {
 
+		spiller1.setPlayerPositionToField(2);
+		Field currentfield = fields[spiller1.getPlayerPosition()-1];
+		((Territory) currentfield).buyField(spiller1, fields);
+
+		spiller1.setPlayerPositionToField(4);
+		currentfield = fields[spiller1.getPlayerPosition()-1];
+		((Territory) currentfield).buyField(spiller1, fields);
+		
+		((Territory) currentfield).setBuildingNumbers(5);
+		
+		assertEquals(6000, ((Territory) currentfield).getRent(spiller1, fields) );
+	}
+	
 }

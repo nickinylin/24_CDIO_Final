@@ -33,8 +33,7 @@ public class JUnitStartFelt
 	}
 
 	@Test
-	public void pengeStartFelt() 
-	{
+	public void pengeStartFelt() {
 		spiller1.getAssets(); // Her bør assets ligge på 30000
 		PlayerController.movePlayer(spiller1, 40, fields);
 		int expected = spiller1.getAssets(); // Efter han har krydset start, bør hans assets ligge på 34000
