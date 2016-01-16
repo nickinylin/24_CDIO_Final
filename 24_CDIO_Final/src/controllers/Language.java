@@ -167,5 +167,41 @@ public class Language {
 	public static final String tax_pay = "Betal ";
 	public static final String tax_missing$ = "Hvordan vil du betale?";
 	
+	//Card text
+	public static final String cards_transaction1 ="Modtag udbytte af Deres aktier, modtag 1000kr";
+	public static final String cards_transaction2 ="De har vundet i Klasselotteriet, modtag 500kr";
+	public static final String cards_transaction3 ="Deres præmieobligation er udtrukket. De modtager 1000kr";
+	public static final String cards_transaction4 ="Værdien af egen avl fra nyttehaven udgør 200kr, som De modtager af banken";
+	public static final String cards_transaction5 ="Kommunen har eftergivet et kvartals skat. Hæv i banken 3000kr";
+	public static final String cards_transaction6 ="De havde en række med elleve rigtige i tipning. Modtag 1000kr";
+	public static final String cards_transaction7 ="Grundet dyrtiden har de fået gageforhøjelse. Modtag 1000kr";
+	public static final String cards_transaction8 ="De har solgt nogle gamle møbler på auktion, og modtager 1000kr";
+	public static final String cards_transaction9 ="De modtager deres aktieudbytte. Modtag 1000kr af banken";
+	public static final String cards_transaction10 ="Betal deres bilforsikring på 1000kr";
+	public static final String cards_transaction11 ="De har været en tur i udlandet og har haft for mange cigaretter med hjem. Betal told 200kr";
+	public static final String cards_transaction12 ="De har fået en parkeringsbøde. Betal 200kr";
+	public static final String cards_transaction13 ="Betal 200kr for levering af 2 kasser øl";
+	public static final String cards_transaction14 ="De har kørt frem for fuldt stop, betal 1000kr i bøde";
+	public static final String cards_transaction15 ="De har modtaget Deres tandlægeregning, betal 2000kr";
+	public static final String cards_transaction16 ="De har købt 4 nye dæk til Deres vogn, betal 1000kr";
+	public static final String cards_transaction17 ="Betal 3000kr for reparation af Deres vogn";
+	public static final String cards_transaction18 ="Betal 300kr for vognvask og smøring";
 	
+	public static final String cards_share1 ="De skal holde familiefest og får et tilskud fra hver medspiller på kr. 500";
+	public static final String cards_share2 ="Det er Deres fødselsdag. Modtag af hver medspiller kr. 200";
+	public static final String cards_share3 ="De har lagt penge ud til et sammenskudsgilde. Mærkværdigvis betaler alle straks. Modtag fra hver spiller kr. 500";
+	
+	public static final String cards_legat ="De modtager Matador-legatet for værdigt trængende på kr. 40.000. Ved værdigt trængende forstås, at Deres formue, dvs. Deres kontante penge + skøder + bygninger, ikke overstiger kr. 15.000";
+	
+	public static final String cards_moveTo1 ="Ryk 3 felter frem";
+	public static final String cards_moveTo2 ="Ryk 3 felter tilbage";
+	public static final String cards_moveTo3 ="Ryk frem til START";
+	public static final String cards_moveTo4 ="Gå i fængsel. Ryk direkte til fængslet. Selv om De passerer START, indkasserer De ikke kr. 4000";
+	public static final String cards_moveTo5 ="Ryk frem til Strandvejen. Hvis de passerer START indkassér da kr. 4000";
+	public static final String cards_moveTo6 ="Ryk frem til Grønningen. Hvis De passerer START, indkassér da kr. 4000";
+	public static final String cards_moveTo7 ="Ryk frem til Vimmelskaftet. Hvis De passerer START, indkassér da kr. 4000";
+	public static final String cards_moveTo8 ="Ryk frem til Frederiksberg Allé. Hvis De passerer START, indkassér da kr. 4000";
+	public static final String cards_moveTo9 ="Tag ind på rådhuspladsen";
+	public static final String cards_moveTo10 ="Tag med Mols-linien. Flyt brikken frem, og hvis de passerer START, indkassér da kr. 4000";
+	public static final String cards_moveTo11 ="Ryk brikken frem til det nærmeste rederi og betal ejeren to gange den leje, han ellers er berretiget til. Hvis selskabet ikke ejes af nogen, kan De købe det af banken";
 	}
