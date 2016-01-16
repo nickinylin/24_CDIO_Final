@@ -6,7 +6,7 @@ import game.Player;
 
 public class MenuController {
 
-	public boolean menuBuild(Player[] players, Player player, Field[] fields) {
+	private boolean menuBuild(Player[] players, Player player, Field[] fields) {
 
 		int count = 0;
 		String[] tempmenu = new String[9];
@@ -658,7 +658,7 @@ public class MenuController {
 	}
 
 
-	protected boolean checkOwnField(Player player, Field[] fields) {
+	private boolean checkOwnField(Player player, Field[] fields) {
 
 		int i = 0;
 
