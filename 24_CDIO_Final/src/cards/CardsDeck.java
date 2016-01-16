@@ -71,7 +71,7 @@ public class CardsDeck {
 
 		};
 
-//		shuffledeck();
+		shuffledeck();
 		discard = new Cards[deck.length];
 		currentdecksize = deck.length-1;
 		discardsize = 0;

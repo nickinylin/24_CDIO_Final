@@ -11,8 +11,8 @@ import game.Player;
 
 public class Refuge extends Field {
     
-    protected int bonus;
-    protected String type;
+    private int bonus;
+    private String type;
     
     public Refuge(String name, String type, int bonus){
         super(name);
