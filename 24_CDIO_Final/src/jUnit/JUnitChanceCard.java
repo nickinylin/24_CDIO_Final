@@ -94,7 +94,6 @@ public void drawmovetodestinationcard(){
 @Test
 public void drawmovetonearestfleetcard(){
 	Cards card=deck.drawspecifik(6);
-	CardsMoveto tempcard=(CardsMoveto)card;
 	int i=0;
 	for(i=0; i<fields.length;i++){
 		if(fields[i] instanceof Fleet){
@@ -109,7 +108,6 @@ public void drawmovetonearestfleetcard(){
 @Test
 public void drawmovetojailcard(){
 	Cards card=deck.drawspecifik(7);
-	CardsMoveto tempcard=(CardsMoveto)card;
 	int i=0;
 	for(i=0; i<fields.length;i++){
 		if(fields[i] instanceof Refuge){
@@ -124,5 +122,13 @@ public void drawmovetojailcard(){
 	luckcontroller.resolveCard(player, player[1], fields, card);
 	assertEquals(expected , player[1].getPlayerPosition());
 	assertEquals(expectedstatus,player[1].isInJail());
+}
+@Test
+public void drawmoveextracard(){
+	Cards card=deck.drawspecifik(5);
+	CardsMoveto tempcard=(CardsMoveto)card;
+	int expected=player[0].getPlayerPosition()+tempcard.getExtraMoves();
+	luckcontroller.resolveCard(player, player[0], fields, tempcard);
+	assertEquals(expected, player[0].getPlayerPosition());
 }
 }
