@@ -53,6 +53,7 @@ public class JUnitChanceCard {
 		luckcontroller.resolveCard(player, player[0], fields, card);
 		assertEquals(expected , player[0].getMoney());
 	}
+
 	@Test
 	public void drawsharecard(){
 		Cards card=deck.drawspecifik(2);
@@ -91,6 +92,7 @@ public class JUnitChanceCard {
 		luckcontroller.resolveCard(player, player[1], fields, card);
 		assertEquals(expected , player[1].getPlayerPosition());
 	}
+
 	@Test
 	public void drawmovetonearestfleetcard(){
 		Cards card=deck.drawspecifik(6);
@@ -122,5 +124,14 @@ public class JUnitChanceCard {
 		luckcontroller.resolveCard(player, player[1], fields, card);
 		assertEquals(expected , player[1].getPlayerPosition());
 		assertEquals(expectedstatus,player[1].isInJail());
+	}
+	@Test
+	public void drawmoveextracard(){
+		Cards card=deck.drawspecifik(5);
+		CardsMoveto tempcard=(CardsMoveto)card;
+		player[0].setPlayerPosition(6);
+		int expected=player[0].getPlayerPosition()+tempcard.getExtraMoves();
+		luckcontroller.resolveCard(player, player[0], fields, tempcard);
+		assertEquals(expected, player[0].getPlayerPosition());
 	}
 }
