@@ -546,7 +546,7 @@ public class MenuController {
 	}
 
 
-	public String[] getWhereToSellBuildings(Player player, Field[] fields) {
+	private String[] getWhereToSellBuildings(Player player, Field[] fields) {
 		//		String[] fieldlist = new String[50];
 		Territory[] tempfields1 = new Territory[22];
 		int i = 0;
@@ -691,7 +691,7 @@ public class MenuController {
 	}
 
 
-	public boolean checkBuyBuilding(Player player, Field currentfield, Field[] fields) {
+	private boolean checkBuyBuilding(Player player, Field currentfield, Field[] fields) {
 
 
 		if (currentfield.getFieldType() == "Territory") {
