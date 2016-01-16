@@ -40,15 +40,6 @@ public class CardsDeck {
 				new CardsTransaction("Betal 3000kr for reparation af Deres vogn", -3000),
 				new CardsTransaction("Betal 300kr for vognvask og smøring", -300),
 
-				// Er slashed ud indtil vi har fundet en løsning
-
-				// new CardsEgendomsregning("Ejendomsskatterne er steget.
-				// Ekstraudgifterne er: 800kr pr. hus. 2300kr pr. hotel.",
-				// -800*amountOfHouses, 2300*amountOfHotels),
-
-				// new CardsEgendomsregning("Oliepriserne er steget og De skal
-				// betale: 500kr pr. hus. 2000kr pr. hotel.", -500, 2000),
-
 				new CardsShare("De skal holde familiefest og får et tilskud fra hver medspiller på kr. 500", 500),
 				new CardsShare("Det er Deres fødselsdag. Modtag af hver medspiller kr. 200", 200),
 				new CardsShare("De har lagt penge ud til et sammenskudsgilde. Mærkværdigvis betaler alle straks. Modtag fra hver spiller kr. 500", 500),
@@ -78,12 +69,9 @@ public class CardsDeck {
 				new CardsMoveto("Ryk brikken frem til det nærmeste rederi og betal ejeren to gange den leje, han ellers er berretiget til. Hvis selskabet ikke ejes af nogen, kan De købe det af banken", "fleet"),
 
 
-				// new CardsMoveto("Tag med den nærmeste færge. Flyt brikken frem, og hvis De passerer START indkassér da kr. 4000", "tour"),
-				// new GetOutofJail()
-
 		};
 
-		shuffledeck();
+//		shuffledeck();
 		discard = new Cards[deck.length];
 		currentdecksize = deck.length-1;
 		discardsize = 0;
