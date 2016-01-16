@@ -3,7 +3,6 @@ package jUnit;
 import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
-import fields.Field;
 import game.Player;
 import setup.Setup;
 
