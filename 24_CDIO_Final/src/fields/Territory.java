@@ -84,26 +84,6 @@ public class Territory extends Ownable {
 		}
 		return rent;
 	}
-	
-
-	@Override
-	public void setPawned(boolean pawn) {
-		this.pawned = pawn;
-	}
-
-	
-	@Override
-	public boolean getPawned() {
-		return pawned;
-	}
-
-	
-	@Override
-	public int getPawnPrice() {
-		int pawnprice = (int) (fieldprice * 0.5);
-		return pawnprice;
-	}
-
 
 	public int getPrice() {
 		return fieldprice;

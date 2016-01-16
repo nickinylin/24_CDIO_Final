@@ -79,19 +79,6 @@ public class Fleet extends Ownable {
 		}
 
 	}
-
-	public void setPawned(boolean pawn) {
-		this.pawned = pawn;
-	}
-
-	public boolean getPawned() {
-		return pawned;
-	}
-
-	public int getPawnPrice() {
-		int pawnprice = (int) (fieldprice * 0.5);
-		return pawnprice;
-	}
 	
 	@Override
 	public String getFieldType() {
