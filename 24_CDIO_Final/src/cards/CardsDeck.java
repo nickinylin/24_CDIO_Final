@@ -54,8 +54,8 @@ public class CardsDeck {
 				new CardsMoveto(Language.cards_moveTo3, Language.field_Start), 
 				new CardsMoveto(Language.cards_moveTo3, Language.field_Start),
 
-				new CardsMoveto(Language.cards_moveTo4, "De fængsles"),
-				new CardsMoveto(Language.cards_moveTo4, "De fængsles"),
+				new CardsMoveto(Language.cards_moveTo4, Language.field_VisitJail),
+				new CardsMoveto(Language.cards_moveTo4, Language.field_VisitJail),
 
 				new CardsMoveto(Language.cards_moveTo5, Language.field_Strandvejen),
 				new CardsMoveto(Language.cards_moveTo6, Language.field_Groenningen),
@@ -95,6 +95,7 @@ public class CardsDeck {
 			deck[deck.length - discardsize] = discard[deck.length - discardsize];
 			discard[deck.length - discardsize] = null;
 			discardsize--;
+			currentdecksize=deck.length-1;
 		}
 		java.util.List<?> lists = (java.util.List<?>) Arrays.asList(deck);
 		Collections.shuffle(lists);
@@ -104,5 +105,75 @@ public class CardsDeck {
 	public void discardcard(Cards card) {
 		discard[deck.length - discardsize] = card;
 		discardsize++;
+	}
+	public Cards drawspecifik(int type){
+		Cards card = drawcard();
+		while(true)
+switch(type){
+// transaction (type 1)
+case 1:
+	if (card instanceof CardsTransaction){
+				return card;
+	}
+		card=drawcard();
+	break;	
+
+// Share (type 2)
+case 2:
+	if (card instanceof CardsShare){
+				return card;
+	}
+		card=drawcard();
+		break;
+		
+// Legat (type 3)
+case 3:
+	if (card instanceof CardsLegat){
+		return card;
+}
+card=drawcard();
+break;
+
+// move to destination (type 4)
+case 4:
+	if (card instanceof CardsMoveto){
+		CardsMoveto tempcard=(CardsMoveto)card;
+		if(tempcard.getExtraMoves()==0 && !tempcard.getDestination().equals("fleet")&& !tempcard.getDestination().equals(Language.field_VisitJail))
+		return card;
+}
+card=drawcard();
+break;
+
+// move extra (type 5)
+case 5:
+if (card instanceof CardsMoveto){
+	CardsMoveto tempcard=(CardsMoveto)card;
+	if(tempcard.getExtraMoves()!=0)
+	return card;
+}
+card=drawcard();
+break;
+
+// move to nearest fleet (type 6)
+case 6:
+if (card instanceof CardsMoveto){
+	CardsMoveto tempcard=(CardsMoveto)card;
+	if(tempcard.getExtraMoves()==0 && tempcard.getDestination().equals("fleet")&& !tempcard.getDestination().equals(Language.field_VisitJail)){
+	return card;
+	}
+}
+card=drawcard();
+break;
+
+//move to jail (type 7)
+case 7:
+if (card instanceof CardsMoveto){
+	CardsMoveto tempcard=(CardsMoveto)card;
+	if(tempcard.getExtraMoves()==0 && !tempcard.getDestination().equals("fleet")&& tempcard.getDestination().equals(Language.field_VisitJail))
+	return card;
+}
+card=drawcard();
+break;
+}
 	}
 }

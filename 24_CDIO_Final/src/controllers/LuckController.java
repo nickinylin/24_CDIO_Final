@@ -15,7 +15,12 @@ public class LuckController {
 		Cards card = deck.drawcard();
 		GUI.displayChanceCard(Language.luck_titel+card.getText());
 		GUI.getUserButtonPressed(player.getName() + Language.luck_draw, Language.continues);
+		resolveCard(group, player, fields, card);
+	}
 
+	
+	
+	public void resolveCard(Player[] group, Player player, Field[] fields, Cards card) {
 		if (card instanceof CardsMoveto) {
 			doMoveTo(player, fields, group, card);
 			
@@ -44,9 +49,6 @@ public class LuckController {
 			CardsLegat legat = (CardsLegat) card;
 
 			if(player.getAssets() < 15000){
-				
-				player.giveMoney(legat.getValue());
-
 				GUI.showMessage(Language.luck_matadorlegat_draw);
 				player.giveMoney(legat.getValue());
 				GUI.setBalance(player.getName(), player.getMoney());
@@ -55,7 +57,6 @@ public class LuckController {
 				GUI.showMessage(Language.luck_matadorlegat_fail);
 			}
 		}
-
 	}
 
 	private void doMoveTo(Player player, Field[] fields, Player[] group, Cards card) {
@@ -140,7 +141,7 @@ public class LuckController {
 				}
 			}
 
-			if (move.getDestination().equals(Language.field_Jail)){
+			if (move.getDestination().equals(Language.field_VisitJail)){
 				JailController jailcontroller= new JailController();
 				jailcontroller.jail(player, fields);
 			}
