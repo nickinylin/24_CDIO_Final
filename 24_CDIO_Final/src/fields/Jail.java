@@ -1,7 +1,5 @@
 package fields;
 
-import game.Player;
-
 public class Jail extends Field {
 	
 	
