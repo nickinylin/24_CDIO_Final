@@ -8,7 +8,7 @@ import fields.Field;
 import game.*;
 import setup.Setup;
 
-public class JUnitSellField {
+public class JUnitSell {
     private Player spiller1;
     
 	protected Field[] fields;

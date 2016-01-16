@@ -10,7 +10,7 @@ import setup.Setup;
 import fields.*;
 import controllers.*;
 
-public class JUnitRefugeTest {
+public class JUnitRefuge {
 
 	private Player player1;
 	private Refuge testRefuge;

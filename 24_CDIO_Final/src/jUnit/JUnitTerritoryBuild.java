@@ -9,7 +9,7 @@ import fields.Territory;
 import game.Player;
 import setup.Setup;
 
-public class JUnitBygning {
+public class JUnitTerritoryBuild {
 
 	private Player spiller1;
 	private Player spiller2;

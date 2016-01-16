@@ -10,7 +10,7 @@ import fields.*;
 import org.junit.Before;
 
 
-public class JUnitFleetTest {
+public class JUnitFleet {
 	
 	private Player player1;
 	private Player player2;

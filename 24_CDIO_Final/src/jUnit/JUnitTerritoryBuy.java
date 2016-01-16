@@ -12,7 +12,7 @@ import fields.Territory;
 import game.Player;
 import setup.Setup;
 
-public class JUnitBuyField {
+public class JUnitTerritoryBuy {
 
 	private Player spiller1;
 
