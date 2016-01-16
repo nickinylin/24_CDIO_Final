@@ -89,11 +89,11 @@ public class Territory extends Ownable {
 		return fieldprice;
 	}
 
-	
+
 	public int buyHouse(Field currentfield, Field[] fields) {
 		houses = houses + 1;
 		int fieldgroup = ((Territory) currentfield).getFieldGroup();
-		
+
 		for (Field f : fields) {
 			if (f instanceof Territory) {
 				Territory t = (Territory) f;
@@ -101,7 +101,7 @@ public class Territory extends Ownable {
 				if (t.getFieldGroup() == fieldgroup) {
 					t.setSellAble(false);
 				}
-				
+
 			}
 		}
 
@@ -109,57 +109,88 @@ public class Territory extends Ownable {
 		return houses;
 	}
 
-	
-	public int sellHouse() {
 
-		if (getHouse() == 1){
-			setSellAble(true);
-		}
+	public int sellHouse(Field[] fields, Field currentfield, Player player) {
+		int x = 0;
+		int count = 0;
+
 		houses = houses - 1;
+
+		for (int i = 0; i < fields.length; i++) {
+			Field f = fields[i];
+			if (f instanceof Territory) {
+				Territory territory = (Territory) f;
+
+				if (territory.getFieldGroup() == ((Territory) currentfield).getFieldGroup()) {
+					x++;
+					if (territory.getHouse() < 1 && ((Territory) currentfield).getHouse() <= 1) {
+						count++;
+					}
+
+				}
+			} 
+		}
+
+		if (count == x) {
+			for (int i = 0; i < fields.length; i++) {
+				Field f = fields[i];
+				if (f instanceof Territory) {
+					Territory territory = (Territory) f;
+
+					if (territory.getFieldGroup() == ((Territory) currentfield).getFieldGroup()) {
+						territory.setSellAble(true);
+					}
+
+				}
+			} 
+
+
+		}
+
 		return houses;
 	}
 
-	
+
 	public int getHouse() {
 		return houses;
 	}
 
-	
+
 	public int getFieldrenthouse1() {
 		return fieldrenthouse1;
 	}
 
-	
+
 	public int getFieldrenthouse2() {
 		return fieldrenthouse2;
 	}
 
-	
+
 	public int getFieldrenthouse3() {
 		return fieldrenthouse3;
 	}
 
-	
+
 	public int getFieldrenthouse4() {
 		return fieldrenthouse4;
 	}
 
-	
+
 	public int getFieldrenthotel() {
 		return fieldrenthotel;
 	}
 
-	
+
 	public int getBuildingPrice() {
 		return fieldPriceBuilding;
 	}
 
-	
+
 	public int getFieldGroup() {
 		return fieldgroup;
 	}
 
-	
+
 	public void setBuildingNumbers(int buildingNumbers) {
 		this.houses = buildingNumbers;
 	}
@@ -171,9 +202,12 @@ public class Territory extends Ownable {
 			Field f = fields[i];
 			if (f instanceof Territory) {
 				Territory territory = (Territory) f;
-
+				
 				if (territory.getFieldGroup() == ((Territory) currentField).getFieldGroup() && player.equals(territory.fieldowner)) {
 					GUI.setOwner(i+1, player.getName());
+					GUI.setSubText(i+1, "Leje: "+territory.getRent(player, fields)+"");
+				} else if (territory.getFieldGroup() == ((Territory) currentField).getFieldGroup() && territory.fieldowned) {
+					GUI.setOwner(i+1, territory.getOwner().getName());
 					GUI.setSubText(i+1, "Leje: "+territory.getRent(player, fields)+"");
 				}
 			} 
@@ -216,26 +250,26 @@ public class Territory extends Ownable {
 		return "Territory";
 	}
 
-	
+
 	public boolean isSellAble() {
 		return sellAble;
 	}
 
-	
+
 	public void setSellAble(boolean sellAble) {
 		this.sellAble = sellAble;
 	}
-	
-	
+
+
 	public int getMaxHousesGroup (Territory[] fields, int group) {
 		int max = 0;
 		for (int i = 0; i < fields.length; i++){
 			if(fields[i] != null){
-			if (fields[i].getHouse() >= max && fields[i].getFieldGroup() == group){
+				if (fields[i].getHouse() >= max && fields[i].getFieldGroup() == group){
 					max = fields[i].getHouse();	
-			} else {
-				System.out.println("NFEJL....");
-			}
+				} else {
+					System.out.println("NFEJL....");
+				}
 			}
 		}
 		return max;
@@ -248,37 +282,37 @@ public class Territory extends Ownable {
 		int y=0;
 		for (int i = 0; i < fields.length; i++){
 			if(fields[i] != null){
-			if (fields[i].getFieldGroup() == group){
-				fieldsingroup++;
-			}
+				if (fields[i].getFieldGroup() == group){
+					fieldsingroup++;
+				}
 			}
 		}
-			Territory[] tempfields =new Territory[fieldsingroup];
-			for (int x = 0; x < fields.length; x++){
-				if(fields[x] != null){
+		Territory[] tempfields =new Territory[fieldsingroup];
+		for (int x = 0; x < fields.length; x++){
+			if(fields[x] != null){
 				if (fields[x].getFieldGroup() == group){
 					tempfields[y++]=fields[x];
 				}
-				}
 			}
-				switch(fieldsingroup){
-				case 3:
-					if(tempfields[0].fieldowned && tempfields[1].fieldowned && tempfields[2].fieldowned)
-					if(tempfields[0].isSellAble() && tempfields[1].isSellAble() &&tempfields[2].isSellAble()){
+		}
+		switch(fieldsingroup){
+		case 3:
+			if(tempfields[0].fieldowned && tempfields[1].fieldowned && tempfields[2].fieldowned)
+				if(tempfields[0].isSellAble() && tempfields[1].isSellAble() &&tempfields[2].isSellAble()){
 					sellable=true;
 					break;					
-					}
-				case 2:
-					if(tempfields[0].fieldowned && tempfields[1].fieldowned)
-					if(tempfields[0].isSellAble() && tempfields[1].isSellAble()){
+				}
+		case 2:
+			if(tempfields[0].fieldowned && tempfields[1].fieldowned)
+				if(tempfields[0].isSellAble() && tempfields[1].isSellAble()){
 					sellable=true;
 					break;
-					}
-					default:
-						sellable=true;
-				
 				}
-		
+		default:
+			sellable=true;
+
+		}
+
 		return sellable;
 	}
 }
