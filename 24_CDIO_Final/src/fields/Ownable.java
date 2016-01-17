@@ -31,10 +31,7 @@ public abstract class Ownable extends Field {
         player.payMoney(payamount);
         this.fieldowner.giveMoney(payamount);
         GUI.setBalance(player.getName(), player.getMoney());
-        GUI.setBalance(this.fieldowner.getName(), this.fieldowner.getMoney());
-        
-        
-        //ejerskab b�r defineres, evt. udnytte dele fra landsOnField().
+        GUI.setBalance(this.fieldowner.getName(), this.fieldowner.getMoney());   
     }
     
     

@@ -16,7 +16,8 @@ public class FleetController {
 				GUI.displayChanceCard(player.getName() +"<br><br>"+ Language.ownable_landon3 + fleet.getName() + Language.ownable_landon4);
 			} else {
 				
-				GUI.displayChanceCard(player.getName() +"<br><br>"+ Language.ownable_landon1 + fleet.getName() + Language.ownable_landon2 + fleet.getOwner().getName() +"<br><br>"+ Language.ownable_rent1 + fleet.getRent(fleet.getOwner(), fields) + Language.ownable_rent2);				fleet.payRent(player, fields);
+				GUI.displayChanceCard(player.getName() +"<br><br>"+ Language.ownable_landon1 + fleet.getName() + Language.ownable_landon2 + fleet.getOwner().getName() +"<br><br>"+ Language.ownable_rent1 + fleet.getRent(fleet.getOwner(), fields) + Language.ownable_rent2);
+				fleet.payRent(player, fields);
 				GUI.setBalance(player.getName(), player.getMoney());
 			}
 
