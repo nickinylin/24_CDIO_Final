@@ -37,8 +37,6 @@ public class Dice {
     		value1 = testDice1[turnCounter];
     		value2 = testDice2[turnCounter];
     	}
-    	value1 = 0;
-    	value2 = 1;
     }
     
     /**
