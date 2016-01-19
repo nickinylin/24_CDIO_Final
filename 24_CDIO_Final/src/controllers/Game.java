@@ -26,7 +26,7 @@ public class Game {
 	protected Field[] fields;
 	
 	// Demo Mode
-	public static final boolean DemoMode = false;
+	public static final boolean DemoMode = true;
 
 	public static void main(String[] args) {
 		new Game();
