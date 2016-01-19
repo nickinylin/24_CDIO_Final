@@ -13,7 +13,7 @@ public class CardsDeck {
 	private int discardsize;
 
 	public CardsDeck() {
-		if (!Game.DemoMode) {
+		if (Game.DemoMode) {
 			deck = new Cards[] {
 
 
@@ -85,7 +85,7 @@ public class CardsDeck {
 			};
 		}
 
-		if (!Game.DemoMode) {
+		if (Game.DemoMode) {
 			currentdecksize = deck.length-1;
 		} else {
 			shuffledeck();
@@ -99,9 +99,12 @@ public class CardsDeck {
 	// kortene fjernes.
 
 	public Cards drawcard() {
+		if (Game.DemoMode) {
+			
+		} else {
 		if(currentdecksize==0)
 			shuffledeck();
-
+		}
 		Cards card = deck[currentdecksize];
 		currentdecksize = currentdecksize - 1;
 		return card;
