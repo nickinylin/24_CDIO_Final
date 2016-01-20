@@ -18,6 +18,7 @@ public class CardsDeck {
 
 
 					// Nedenfor er alle kort der medfører at man modtager penge.
+					new CardsMoveto(Language.cards_moveTo1, 3),
 					new CardsMoveto(Language.cards_moveTo11, "fleet"),
 					new CardsMoveto(Language.cards_moveTo9, Language.field_Raadhuspladsen)
 					
