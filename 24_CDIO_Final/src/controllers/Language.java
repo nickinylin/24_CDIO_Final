@@ -44,7 +44,7 @@ public class Language {
 	
 	// Luck
 	public static final String luck = "Prøv lykken";
-	public static final String luck_titel = "====== Prøv lykken ======<br><br>";
+	public static final String luck_titel = "===== Prøv lykken =====<br><br>";
 	public static final String luck_draw = " du har trukket et prøv lykken kort";
 	
 	public static final String luck_matadorlegat_draw = "De modtager matador legatet for værdigt trængende";
