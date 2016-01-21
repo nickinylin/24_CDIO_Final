@@ -13,7 +13,7 @@ public class Dice {
     private static int value2;
     private static int turnCounter = 0;
     private static final int[] testDice1 = new int[]{0,0,0,1,1,4,1,5,1,5,3,1,1,3,6,6,6,6,4};
-    private static final int[] testDice2 = new int[]{0,0,0,1,1,4,2,3,1,5,4,1,2,2,6,4,6,6,3};
+    private static final int[] testDice2 = new int[]{0,0,0,1,1,4,2,3,1,5,4,1,2,2,6,4,6,5,3};
     
     /**
      * Creating the dices and calling the roll() method, to set dices value to a random,

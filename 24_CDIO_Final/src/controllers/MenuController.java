@@ -338,7 +338,7 @@ public class MenuController {
 					GUI.setHouses(getfieldnumber, thisfield[0].getHouse());
 					thisfield[0].updateFieldGroup(player, thisfield[0], fields);
 					player.giveMoney(thisfield[0].getBuildingPrice());
-					player.setAssets(player.getAssets()-thisfield[0].getBuildingPrice());
+					player.setAssets(-thisfield[0].getBuildingPrice());
 					GUI.setBalance(player.getName(), player.getMoney());
 				}
 			}
